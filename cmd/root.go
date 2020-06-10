@@ -22,6 +22,7 @@ func Execute() error {
 
 	rootCmd.AddCommand(MonikersCmd(cdc))
 	rootCmd.AddCommand(LaunchBlameCmd(cdc))
+	rootCmd.AddCommand(SubscribeCmd(cdc))
 
 	return rootCmd.Execute()
 }
