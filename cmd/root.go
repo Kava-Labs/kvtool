@@ -20,6 +20,7 @@ func Execute() error {
 
 	cdc := app.MakeCodec()
 
+	rootCmd.AddCommand(TestnetCmd())
 	rootCmd.AddCommand(MonikersCmd(cdc))
 	rootCmd.AddCommand(LaunchBlameCmd(cdc))
 	rootCmd.AddCommand(SubscribeCmd(cdc))
