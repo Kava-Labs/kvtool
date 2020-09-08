@@ -193,29 +193,3 @@ func generateBnbConfig(generatedConfigDst string) error {
 	}
 	return nil
 }
-
-// Could also use github.com/docker/cli/cli/compose to parse a compose file into a known type.
-// However the code has no go.mod, and a lot of dependencies (kept in a vendor directory, with exact listed in vendor.conf)
-// so importing it is not straightforwards.
-
-/*
-	unmarshal yaml
-	mapping, err := loader.ParseYAML(bz)
-
-	preloadConfig := types.ConfigDetails{
-		Version:    "", // ?
-		WorkingDir: "", // ?
-		ConfigFiles: []types.ConfigFile{{
-			Filename: "docker-compose.yaml", // ?
-			Config:   mapping,
-		}},
-		Environment: nil, // ?
-	}
-	composeConfig, err := loader.Load(preloadConfig)
-	if err != nil {
-		return err
-	}
-*/
-
-// Other failed attempt used github.com/Jeffail/gabs to automatically set/get from the map[string]interface{} structure created by yaml.Unmarshal
-// However it's designed for json, yaml actually uses an incompatible type map[interface{}]interface{}.
