@@ -1,0 +1,295 @@
+{
+  "app_hash": "",
+  "app_state": {
+    "accounts": [
+      {
+        "address": "bnb1x6lrll2juflscss0f708fu252ktt0h8cjpyzau",
+        "consensus_addr": "D5FC22D6400C1EED489B280FC13C7BE98D5595CD",
+        "name": "validator"
+      },
+      {
+        "address": "bnb18s9h2nsjlecwpntgyjd9g7h4wx5zez899azk04",
+        "name": "test_user_0"
+      },
+      {
+        "address": "bnb1zfa5vmsme2v3ttvqecfleeh2xtz5zghh49hfqe",
+        "name": "test_user_1"
+      },
+      {
+        "address": "bnb1nva9yljftdf6m2dwhufk5kzg204jg060sw0fv2",
+        "name": "test_user_2"
+      },
+      {
+        "address": "bnb1m5k0g7q0n8nzsre8ysuhsv09j03jhgcrrnwur3",
+        "name": "test_user_3"
+      },
+      {
+        "address": "bnb15udkjukldcejs3y3pep2jvwza0lfzwshv7ndfr",
+        "name": "test_user_4"
+      },
+      {
+        "address": "bnb1gzr37hrqlqk4wpdfqn6pp3dy9ek28tahy7dx2v",
+        "name": "test_user_5"
+      }
+    ],
+    "dex": {},
+    "gentxs": [
+      {
+        "type": "auth/StdTx",
+        "value": {
+          "data": null,
+          "memo": "870b9b8a01000fbdb397aaf19fc5e770910f031b@127.0.0.1:26656",
+          "msg": [
+            {
+              "type": "cosmos-sdk/MsgCreateValidatorProposal",
+              "value": {
+                "MsgCreateValidator": {
+                  "Commission": {
+                    "max_change_rate": "0",
+                    "max_rate": "0",
+                    "rate": "0"
+                  },
+                  "Description": {
+                    "details": "",
+                    "identity": "",
+                    "moniker": "validator",
+                    "website": ""
+                  },
+                  "delegation": {
+                    "amount": "1000000000000",
+                    "denom": "BNB"
+                  },
+                  "delegator_address": "bnb1x6lrll2juflscss0f708fu252ktt0h8cjpyzau",
+                  "pubkey": {
+                    "type": "tendermint/PubKeyEd25519",
+                    "value": "loHYND+0Jyp9eXoyJiwYYH/o+WIMPALxF+EyqVdJyek="
+                  },
+                  "validator_address": "bva1x6lrll2juflscss0f708fu252ktt0h8cja9jrc"
+                },
+                "proposal_id": "0"
+              }
+            }
+          ],
+          "signatures": [
+            {
+              "account_number": "0",
+              "pub_key": {
+                "type": "tendermint/PubKeySecp256k1",
+                "value": "AuKPzgSde1aYOy0skSdpo1CXivsvuF+37UhKpMgAZdSp"
+              },
+              "sequence": "0",
+              "signature": "Zh7E3IkyQp5UhXdj93mindV3fw/CZkrFJGQINmuRGoJfMLn76yYtYFl95hqdCojycHWl0rJQIN/mp+1lYP6rWA=="
+            }
+          ],
+          "source": "0"
+        }
+      }
+    ],
+    "gov": {
+      "deposit_params": {
+        "max_deposit_period": "172800000000000",
+        "min_deposit": [
+          {
+            "amount": "100000000000",
+            "denom": "BNB"
+          }
+        ]
+      },
+      "starting_proposalID": "1",
+      "tally_params": {
+        "quorum": "50000000",
+        "threshold": "50000000",
+        "veto": "33400000"
+      }
+    },
+    "param": {
+      "fees": [
+        {
+          "type": "params/FixedFeeParams",
+          "value": {
+            "fee": "1000000000",
+            "fee_for": 1,
+            "msg_type": "submit_proposal"
+          }
+        },
+        {
+          "type": "params/FixedFeeParams",
+          "value": {
+            "fee": "125000",
+            "fee_for": 1,
+            "msg_type": "deposit"
+          }
+        },
+        {
+          "type": "params/FixedFeeParams",
+          "value": {
+            "fee": "0",
+            "fee_for": 3,
+            "msg_type": "vote"
+          }
+        },
+        {
+          "type": "params/FixedFeeParams",
+          "value": {
+            "fee": "1000000000",
+            "fee_for": 1,
+            "msg_type": "create_validator"
+          }
+        },
+        {
+          "type": "params/FixedFeeParams",
+          "value": {
+            "fee": "100000000",
+            "fee_for": 1,
+            "msg_type": "remove_validator"
+          }
+        },
+        {
+          "type": "params/FixedFeeParams",
+          "value": {
+            "fee": "200000000000",
+            "fee_for": 2,
+            "msg_type": "dexList"
+          }
+        },
+        {
+          "type": "params/FixedFeeParams",
+          "value": {
+            "fee": "0",
+            "fee_for": 3,
+            "msg_type": "orderNew"
+          }
+        },
+        {
+          "type": "params/FixedFeeParams",
+          "value": {
+            "fee": "0",
+            "fee_for": 3,
+            "msg_type": "orderCancel"
+          }
+        },
+        {
+          "type": "params/FixedFeeParams",
+          "value": {
+            "fee": "100000000000",
+            "fee_for": 2,
+            "msg_type": "issueMsg"
+          }
+        },
+        {
+          "type": "params/FixedFeeParams",
+          "value": {
+            "fee": "20000000000",
+            "fee_for": 2,
+            "msg_type": "mintMsg"
+          }
+        },
+        {
+          "type": "params/FixedFeeParams",
+          "value": {
+            "fee": "100000000",
+            "fee_for": 1,
+            "msg_type": "tokensBurn"
+          }
+        },
+        {
+          "type": "params/FixedFeeParams",
+          "value": {
+            "fee": "1000000",
+            "fee_for": 1,
+            "msg_type": "tokensFreeze"
+          }
+        },
+        {
+          "type": "params/TransferFeeParams",
+          "value": {
+            "fixed_fee_params": {
+              "fee": "62500",
+              "fee_for": 1,
+              "msg_type": "send"
+            },
+            "lower_limit_as_multi": "2",
+            "multi_transfer_fee": "50000"
+          }
+        },
+        {
+          "type": "params/DexFeeParam",
+          "value": {
+            "dex_fee_fields": [
+              {
+                "fee_name": "ExpireFee",
+                "fee_value": "50000"
+              },
+              {
+                "fee_name": "ExpireFeeNative",
+                "fee_value": "10000"
+              },
+              {
+                "fee_name": "CancelFee",
+                "fee_value": "50000"
+              },
+              {
+                "fee_name": "CancelFeeNative",
+                "fee_value": "10000"
+              },
+              {
+                "fee_name": "FeeRate",
+                "fee_value": "1000"
+              },
+              {
+                "fee_name": "FeeRateNative",
+                "fee_value": "400"
+              },
+              {
+                "fee_name": "IOCExpireFee",
+                "fee_value": "25000"
+              },
+              {
+                "fee_name": "IOCExpireFeeNative",
+                "fee_value": "5000"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "stake": {
+      "bonds": null,
+      "params": {
+        "bond_denom": "BNB",
+        "max_validators": 21,
+        "unbonding_time": "604800000000000"
+      },
+      "pool": {
+        "bonded_tokens": "0",
+        "loose_tokens": "20000000000000000"
+      },
+      "validators": null
+    },
+    "tokens": [
+      {
+        "mintable": false,
+        "name": "Binance Chain Native Token",
+        "owner": "bnb1x6lrll2juflscss0f708fu252ktt0h8cjpyzau",
+        "symbol": "BNB",
+        "total_supply": "20000000000000000"
+      }
+    ]
+  },
+  "chain_id": "Binance-Chain-Tigris",
+  "consensus_params": {
+    "block_size": {
+      "max_bytes": "1048576",
+      "max_gas": "-1"
+    },
+    "evidence": {
+      "max_age": "100000"
+    },
+    "validator": {
+      "pub_key_types": [
+        "ed25519"
+      ]
+    }
+  },
+  "genesis_time": "2020-09-07T22:58:50.1584741Z"
+}

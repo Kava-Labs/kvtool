@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  bnbnode:
+    build: "./binance"
+    ports:
+      # open rpc port on a different port to avoid collisions with kavanode
+      - "26658:26657"
+    volumes:
+      - "./binance/initstate/.bnbchaind:/root/.bnbchaind"
+    command: ["bnbchaind", "start"]
+  bnbrest:
+    build: "./binance"
+    ports:
+      - "8080:8080"
+    volumes:
+      - "./binance/initstate/.bnbcli:/root/.bnbcli"
+    command:
+      - "bnbcli"
+      - "api-server"
+      - "--laddr=tcp://0.0.0.0:8080"
+      - "--node=tcp://bnbnode:26657"

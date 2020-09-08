@@ -29,7 +29,7 @@ func TestnetCmd() *cobra.Command {
 				return fmt.Errorf("could not clear old generated config: %v", err)
 			}
 
-			// 2) prepare new config
+			// 2) generate a complete docker-compose config
 			if err := generateFullConfig(generatedConfigOutput); err != nil {
 				return fmt.Errorf("could not generate config: %v", err)
 			}
@@ -49,55 +49,6 @@ func TestnetCmd() *cobra.Command {
 	return cmd
 }
 
-func generateFullConfig(generatedConfigDst string) error {
-	// copy templates into generated config folder
-	err := copy.Copy("./config_templates/kava/v0.10", filepath.Join(generatedConfigDst, "kava"))
-	if err != nil {
-		return err
-	}
-	// put together final compose file
-	composeFileName := filepath.Join(generatedConfigDst, "docker-compose.yaml")
-	err = copy.Copy("./config_templates/kava/v0.10/docker-compose.yaml", composeFileName)
-	if err != nil {
-		return err
-	}
-
-	bz, err := ioutil.ReadFile(composeFileName)
-	if err != nil {
-		return err
-	}
-	var composeConfig map[string]interface{}
-	err = yaml.Unmarshal(bz, &composeConfig)
-	if err != nil {
-		return err
-	}
-
-	serviceConfig := composeConfig["services"].(map[interface{}]interface{})
-	kavaConfig := serviceConfig["kavanode"].(map[interface{}]interface{})
-	volumeConfig := kavaConfig["volumes"].([]interface{})
-	volume := volumeConfig[0].(string)
-
-	volumePaths := strings.Split(volume, ":")
-	volumePaths[0] = strings.Join([]string{".", "kava", volumePaths[0]}, "/") // can't use filepath.Join as docker-compose requires the leading "./"
-
-	volume = strings.Join(volumePaths, ":")
-	volumeConfig[0] = volume
-	kavaConfig["volumes"] = volumeConfig
-	serviceConfig["kavanode"] = kavaConfig
-	composeConfig["services"] = serviceConfig
-
-	bz, err = yaml.Marshal(composeConfig)
-	if err != nil {
-		return err
-	}
-
-	fmt.Println("output: \n", string(bz))
-	if err := ioutil.WriteFile(composeFileName, bz, 0644); err != nil {
-		return err
-	}
-	return nil
-}
-
 func replaceCurrentProcess(command ...string) error {
 	if len(command) < 1 {
 		panic("must provide name of executable to run")
@@ -112,6 +63,132 @@ func replaceCurrentProcess(command ...string) error {
 
 	err = syscall.Exec(executable, command, env)
 	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func generateFullConfig(generatedConfigDst string) error {
+	if err := generateKavaConfig(generatedConfigDst); err != nil {
+		return err
+	}
+	if err := generateBnbConfig(generatedConfigDst); err != nil {
+		return err
+	}
+	return nil
+}
+
+func generateKavaConfig(generatedConfigDst string) error {
+	// copy templates into generated config folder
+	err := copy.Copy("./config_templates/kava/v0.10", filepath.Join(generatedConfigDst, "kava"))
+	if err != nil {
+		return err
+	}
+
+	// put together final compose file
+	bz, err := ioutil.ReadFile("./config_templates/kava/v0.10/docker-compose.yaml")
+	if err != nil {
+		return err
+	}
+	var composeConfig map[string]interface{}
+	err = yaml.Unmarshal(bz, &composeConfig)
+	if err != nil {
+		return err
+	}
+	serviceConfig := composeConfig["services"].(map[interface{}]interface{})
+
+	composeFileName := filepath.Join(generatedConfigDst, "docker-compose.yaml")
+	bz, err = ioutil.ReadFile(composeFileName)
+	if err != nil {
+		if os.IsNotExist(err) {
+			bz, err := yaml.Marshal(composeConfig)
+			if err != nil {
+				return err
+			}
+			if err := ioutil.WriteFile(composeFileName, bz, 0644); err != nil {
+				return fmt.Errorf("could not create file: %w", err)
+			}
+			return nil // TODO create empty file here, and fix yaml merging below to work on empty files
+		} else {
+			return err
+		}
+	}
+	var existingComposeConfig map[string]interface{}
+	err = yaml.Unmarshal(bz, &existingComposeConfig)
+	if err != nil {
+		return err
+	}
+	existingServiceConfig := existingComposeConfig["services"].(map[interface{}]interface{})
+
+	for k, v := range serviceConfig {
+		existingServiceConfig[k] = v
+	}
+	existingComposeConfig["services"] = existingServiceConfig
+	// TODO handle other compose file sections - volumes, networks
+
+	bz, err = yaml.Marshal(existingComposeConfig)
+	if err != nil {
+		return err
+	}
+	if err := ioutil.WriteFile(composeFileName, bz, 0644); err != nil {
+		return err
+	}
+	return nil
+}
+
+func generateBnbConfig(generatedConfigDst string) error {
+	// copy templates into generated config folder
+	err := copy.Copy("./config_templates/binance/v0.6", filepath.Join(generatedConfigDst, "binance"))
+	if err != nil {
+		return err
+	}
+
+	// put together final compose file
+	bz, err := ioutil.ReadFile("./config_templates/binance/v0.6/docker-compose.yaml")
+	if err != nil {
+		return err
+	}
+	var composeConfig map[string]interface{}
+	err = yaml.Unmarshal(bz, &composeConfig)
+	if err != nil {
+		return err
+	}
+	serviceConfig := composeConfig["services"].(map[interface{}]interface{})
+
+	composeFileName := filepath.Join(generatedConfigDst, "docker-compose.yaml")
+	bz, err = ioutil.ReadFile(composeFileName)
+	if err != nil {
+		if os.IsNotExist(err) {
+			bz, err := yaml.Marshal(composeConfig)
+			if err != nil {
+				return err
+			}
+			if err := ioutil.WriteFile(composeFileName, bz, 0644); err != nil {
+				return fmt.Errorf("could not create file: %w", err)
+			}
+			return nil // TODO create empty file here, and fix yaml merging below to work on empty files
+		} else {
+			return err
+		}
+	}
+	var existingComposeConfig map[string]interface{}
+	err = yaml.Unmarshal(bz, &existingComposeConfig)
+	if err != nil {
+		return err
+	}
+	existingServiceConfig := existingComposeConfig["services"].(map[interface{}]interface{})
+
+	for k, v := range serviceConfig {
+		existingServiceConfig[k] = v
+	}
+	existingComposeConfig["services"] = existingServiceConfig
+	// TODO handle other compose file sections - volumes, networks
+
+	bz, err = yaml.Marshal(existingComposeConfig)
+	if err != nil {
+		return err
+	}
+	if err := ioutil.WriteFile(composeFileName, bz, 0644); err != nil {
 		return err
 	}
 	return nil
