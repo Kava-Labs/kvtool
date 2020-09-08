@@ -91,5 +91,3 @@ We could use the types from github.com/docker/cli/cli/compose to unmarshal docke
 	if err != nil {
 		return err
 	}
-
-I also tried using github.com/Jeffail/gabs to work with raw unmarshalled yaml of type `map[interface{}]interface{}`. But it only works with raw unmarshalled json of type `map[string]interface{}`.

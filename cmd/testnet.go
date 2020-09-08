@@ -9,9 +9,10 @@ import (
 	"strings"
 	"syscall"
 
+	"github.com/Jeffail/gabs/v2"
 	"github.com/otiai10/copy"
 	"github.com/spf13/cobra"
-	"gopkg.in/yaml.v2"
+	"gopkg.in/yaml.v3"
 )
 
 func TestnetCmd() *cobra.Command {
@@ -75,6 +76,9 @@ func generateFullConfig(generatedConfigDst string) error {
 	if err := generateBnbConfig(generatedConfigDst); err != nil {
 		return err
 	}
+	if err := generateDeputyConfig(generatedConfigDst); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -86,51 +90,8 @@ func generateKavaConfig(generatedConfigDst string) error {
 	}
 
 	// put together final compose file
-	bz, err := ioutil.ReadFile("./config_templates/kava/v0.10/docker-compose.yaml")
-	if err != nil {
-		return err
-	}
-	var composeConfig map[string]interface{}
-	err = yaml.Unmarshal(bz, &composeConfig)
-	if err != nil {
-		return err
-	}
-	serviceConfig := composeConfig["services"].(map[interface{}]interface{})
-
 	composeFileName := filepath.Join(generatedConfigDst, "docker-compose.yaml")
-	bz, err = ioutil.ReadFile(composeFileName)
-	if err != nil {
-		if os.IsNotExist(err) {
-			bz, err := yaml.Marshal(composeConfig)
-			if err != nil {
-				return err
-			}
-			if err := ioutil.WriteFile(composeFileName, bz, 0644); err != nil {
-				return fmt.Errorf("could not create file: %w", err)
-			}
-			return nil // TODO create empty file here, and fix yaml merging below to work on empty files
-		} else {
-			return err
-		}
-	}
-	var existingComposeConfig map[string]interface{}
-	err = yaml.Unmarshal(bz, &existingComposeConfig)
-	if err != nil {
-		return err
-	}
-	existingServiceConfig := existingComposeConfig["services"].(map[interface{}]interface{})
-
-	for k, v := range serviceConfig {
-		existingServiceConfig[k] = v
-	}
-	existingComposeConfig["services"] = existingServiceConfig
-	// TODO handle other compose file sections - volumes, networks
-
-	bz, err = yaml.Marshal(existingComposeConfig)
-	if err != nil {
-		return err
-	}
-	if err := ioutil.WriteFile(composeFileName, bz, 0644); err != nil {
+	if err := overwriteMergeYAML("./config_templates/kava/v0.10/docker-compose.yaml", composeFileName); err != nil {
 		return err
 	}
 	return nil
@@ -144,51 +105,73 @@ func generateBnbConfig(generatedConfigDst string) error {
 	}
 
 	// put together final compose file
-	bz, err := ioutil.ReadFile("./config_templates/binance/v0.6/docker-compose.yaml")
-	if err != nil {
-		return err
-	}
-	var composeConfig map[string]interface{}
-	err = yaml.Unmarshal(bz, &composeConfig)
-	if err != nil {
-		return err
-	}
-	serviceConfig := composeConfig["services"].(map[interface{}]interface{})
-
 	composeFileName := filepath.Join(generatedConfigDst, "docker-compose.yaml")
-	bz, err = ioutil.ReadFile(composeFileName)
+	if err := overwriteMergeYAML("./config_templates/binance/v0.6/docker-compose.yaml", composeFileName); err != nil {
+		return err
+	}
+	return nil
+}
+
+func generateDeputyConfig(generatedConfigDst string) error {
+	// copy templates into generated config folder
+	err := copy.Copy("./config_templates/deputy", filepath.Join(generatedConfigDst, "deputy"))
+	if err != nil {
+		return err
+	}
+
+	// put together final compose file
+	composeFileName := filepath.Join(generatedConfigDst, "docker-compose.yaml")
+	if err := overwriteMergeYAML("./config_templates/deputy/docker-compose.yaml", composeFileName); err != nil {
+		return err
+	}
+	return nil
+}
+
+func overwriteMergeYAML(sourceFileName, destinationFileName string) error {
+	source, err := importYAML(sourceFileName)
+	if err != nil {
+		return err
+	}
+	destination, err := importYAML(destinationFileName)
 	if err != nil {
 		if os.IsNotExist(err) {
-			bz, err := yaml.Marshal(composeConfig)
-			if err != nil {
-				return err
-			}
-			if err := ioutil.WriteFile(composeFileName, bz, 0644); err != nil {
-				return fmt.Errorf("could not create file: %w", err)
-			}
-			return nil // TODO create empty file here, and fix yaml merging below to work on empty files
+			destination = gabs.New()
 		} else {
 			return err
 		}
 	}
-	var existingComposeConfig map[string]interface{}
-	err = yaml.Unmarshal(bz, &existingComposeConfig)
+	err = destination.MergeFn(source, func(destination, source interface{}) interface{} {
+		// overwrite any non-object values with the source's version
+		return source
+	})
 	if err != nil {
 		return err
 	}
-	existingServiceConfig := existingComposeConfig["services"].(map[interface{}]interface{})
-
-	for k, v := range serviceConfig {
-		existingServiceConfig[k] = v
+	if err := exportYAML(destinationFileName, destination); err != nil {
+		return err
 	}
-	existingComposeConfig["services"] = existingServiceConfig
-	// TODO handle other compose file sections - volumes, networks
+	return nil
+}
 
-	bz, err = yaml.Marshal(existingComposeConfig)
+func importYAML(filename string) (*gabs.Container, error) {
+	bz, err := ioutil.ReadFile(filename)
+	if err != nil {
+		return nil, err
+	}
+	unmarshalStructure := map[string]interface{}{}
+	err = yaml.Unmarshal(bz, &unmarshalStructure)
+	if err != nil {
+		return nil, err
+	}
+	return gabs.Wrap(unmarshalStructure), nil
+}
+
+func exportYAML(filename string, data *gabs.Container) error {
+	bz, err := yaml.Marshal(data.Data())
 	if err != nil {
 		return err
 	}
-	if err := ioutil.WriteFile(composeFileName, bz, 0644); err != nil {
+	if err := ioutil.WriteFile(filename, bz, 0644); err != nil {
 		return err
 	}
 	return nil

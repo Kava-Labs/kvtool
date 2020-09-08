@@ -1,0 +1,6 @@
+version: "3"
+services:
+  deputy:
+    image: kava/deputy:e6f4698
+    volumes:
+      - "./deputy/config.json:/deputy/config/config.json"
