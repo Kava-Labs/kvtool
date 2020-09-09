@@ -5,10 +5,10 @@
       "auctions": [],
       "next_auction_id": "1",
       "params": {
-        "bid_duration": "3600000000000",
-        "increment_collateral": "0.050000000000000000",
-        "increment_debt": "0.050000000000000000",
-        "increment_surplus": "0.050000000000000000",
+        "bid_duration": "600000000000",
+        "increment_collateral": "0.010000000000000000",
+        "increment_debt": "0.010000000000000000",
+        "increment_surplus": "0.010000000000000000",
         "max_auction_duration": "172800000000000"
       }
     },
@@ -21,9 +21,84 @@
             "address": "kava1ypjp0m04pyp73hwgtc0dgkx0e9rrydecm054da",
             "coins": [
               {
+                "amount": "1000000000000",
+                "denom": "ukava"
+              }
+            ],
+            "public_key": "",
+            "sequence": 0
+          }
+        },
+        {
+          "type": "cosmos-sdk/Account",
+          "value": {
+            "account_number": 0,
+            "address": "kava1agcvt07tcw0tglu0hmwdecsnuxp2yd45f3avgm",
+            "coins": [
+              {
                 "amount": "100000000000000",
                 "denom": "bnb"
               },
+              {
+                "amount": "1000000000000",
+                "denom": "ukava"
+              }
+            ],
+            "public_key": "",
+            "sequence": 0
+          }
+        },
+        {
+          "type": "cosmos-sdk/Account",
+          "value": {
+            "account_number": 0,
+            "address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
+            "coins": [
+              {
+                "amount": "1000000000000",
+                "denom": "ukava"
+              }
+            ],
+            "public_key": "",
+            "sequence": 0
+          }
+        },
+        {
+          "type": "cosmos-sdk/Account",
+          "value": {
+            "account_number": 0,
+            "address": "kava1g33w0mh4mjllhaj3y4dcwkwquxgwrma9ga5t94",
+            "coins": [
+              {
+                "amount": "1000000000000",
+                "denom": "ukava"
+              }
+            ],
+            "public_key": "",
+            "sequence": 0
+          }
+        },
+        {
+          "type": "cosmos-sdk/Account",
+          "value": {
+            "account_number": 0,
+            "address": "kava1sw54s6gq76acm35ls6m5c0kr93dstgrh6eftld",
+            "coins": [
+              {
+                "amount": "1000000000000",
+                "denom": "ukava"
+              }
+            ],
+            "public_key": "",
+            "sequence": 0
+          }
+        },
+        {
+          "type": "cosmos-sdk/Account",
+          "value": {
+            "account_number": 0,
+            "address": "kava1t4dvu32e309pzhmdn3aqcjlj79h9876plynrfm",
+            "coins": [
               {
                 "amount": "1000000000000",
                 "denom": "ukava"
@@ -49,7 +124,7 @@
       "assets_supplies": [],
       "atomic_swaps": [],
       "params": {
-        "bnb_deputy_address": "kava1r4v2zdhdalfj2ydazallqvrus9fkphmglhn6u6",
+        "bnb_deputy_address": "kava1agcvt07tcw0tglu0hmwdecsnuxp2yd45f3avgm",
         "bnb_deputy_fixed_fee": "1000",
         "max_amount": "1000000000000",
         "max_block_lock": "270",
