@@ -33,37 +33,22 @@ var (
 	supportedServices = []string{kavaServiceName, binanceServiceName, deputyServiceName}
 )
 
-/*
-localnet => start just kava v0.10?
-localnet --binance => start just binance
-localnet --kava kava/kava:latest --binance --deputy --oracle => starts all components
-
-kvtool testnet gen-config
-kvtool testnet up
-kvtool testnet down
-kvtool testnet defaults to config --kava v0.10, and up
-
-
-specifying master kava isn't easy - which config should be paired with it? v0.10 won't work right now. Could specify genesis file additionally.
-But doesn't handle other changes: kvd flags (--pruning, unsafe cors), kvcli data
-
-Only going to be two versions of kava at any one time
-
-Support features piece by piece, always the manual edit fallback.
-specify kava version - if folder not present error
-person working on new kava branch can create new kvtool branch and put updated genesis file in master template
-
---kava --binance --deputy --kava.configTemplate=dm-update-querier --deputy.configTemplate=d8c3e51
-*/
-
 func TestnetCmd() *cobra.Command {
 
 	var generatedConfigDir string
 
 	rootCmd := &cobra.Command{
 		Use:   "testnet",
-		Short: "Start a local kava testnet",
-		Args:  cobra.NoArgs,
+		Short: "Start a default kava and binance local testnet with a deputy. Stop with Ctrl-C and remove with 'testnet down'. Use sub commands for more options.",
+		Long: fmt.Sprintf(`This command helps run local kava testnets composed of various independent processes.
+
+Processes are run via docker-compose. This command generates a docker-compose.yaml and other necessary config files that are synchronized with each so the services all work together.
+
+By default this command will generate configuration for a kvd node and rest server, a binance node and rest server, and a deputy. And then 'run docker-compose up'.
+This is the equivalent of running 'testnet gen-config kava binance deputy' then 'testnet up'.
+
+Docker compose files are (by default) written to %s`, defaultGeneratedConfigDir),
+		Args: cobra.NoArgs,
 		RunE: func(_ *cobra.Command, args []string) error {
 
 			// 1) clear out generated config folder
@@ -90,8 +75,13 @@ func TestnetCmd() *cobra.Command {
 	var kavaConfigTemplate string
 
 	genConfigCmd := &cobra.Command{
-		Use:       "gen-config [services...]",
-		Short:     "Generate a complete docker-compose configuration for a new testnet.",
+		Use:   "gen-config services_to_include...",
+		Short: "Generate a complete docker-compose configuration for a new testnet.",
+		Long: fmt.Sprintf(`Generate a docker-compose.yaml file and any other necessary config files needed by services.
+
+available services: %s
+`, supportedServices),
+		Example:   "gen-config kava binance deputy --kava.configTemplate v0.10",
 		ValidArgs: supportedServices,
 		Args:      Minimum1ValidArgs,
 		RunE: func(_ *cobra.Command, args []string) error {
@@ -121,8 +111,38 @@ func TestnetCmd() *cobra.Command {
 		},
 	}
 	genConfigCmd.Flags().StringVar(&kavaConfigTemplate, "kava.configTemplate", "v0.10", "the directory name of the template used to generating the kava config")
-
 	rootCmd.AddCommand(genConfigCmd)
+
+	upCmd := &cobra.Command{
+		Use:   "up",
+		Short: "A convenience command that runs `docker-compose up` on the generated config.",
+		Args:  cobra.NoArgs,
+		RunE: func(_ *cobra.Command, _ []string) error {
+			cmd := []string{"docker-compose", "--file", filepath.Join(generatedConfigDir, "docker-compose.yaml"), "up"}
+			fmt.Println("running:", strings.Join(cmd, " "))
+			if err := replaceCurrentProcess(cmd...); err != nil {
+				return fmt.Errorf("could not run command: %v", err)
+			}
+			return nil
+		},
+	}
+	rootCmd.AddCommand(upCmd)
+
+	downCmd := &cobra.Command{
+		Use:   "down",
+		Short: "A convenience command that runs `docker-compose down` on the generated config.",
+		Args:  cobra.NoArgs,
+		RunE: func(_ *cobra.Command, _ []string) error {
+			cmd := []string{"docker-compose", "--file", filepath.Join(generatedConfigDir, "docker-compose.yaml"), "down"}
+			fmt.Println("running:", strings.Join(cmd, " "))
+			if err := replaceCurrentProcess(cmd...); err != nil {
+				return fmt.Errorf("could not run command: %v", err)
+			}
+			return nil
+		},
+	}
+	rootCmd.AddCommand(downCmd)
+
 	return rootCmd
 }
 
