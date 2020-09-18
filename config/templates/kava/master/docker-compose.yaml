@@ -15,4 +15,4 @@ services:
         ports:
             # open default rest port
             - "1317:1317"
-        command: ["kvcli", "rest-server", "--node=tcp://kavanode:26657", "--trust-node", "--laddr=tcp://0.0.0.0:1317"]
+        command: ["kvcli", "rest-server", "--node=tcp://kavanode:26657", "--trust-node", "--laddr=tcp://0.0.0.0:1317", "--unsafe-cors"]
