@@ -23,10 +23,6 @@
               {
                 "amount": "1000000000000",
                 "denom": "ukava"
-              },
-              {
-                "amount": "100000000000",
-                "denom": "bnb"
               }
             ],
             "public_key": "",
@@ -56,15 +52,11 @@
           "type": "cosmos-sdk/Account",
           "value": {
             "account_number": 0,
-            "address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
+            "address": "kava1g33w0mh4mjllhaj3y4dcwkwquxgwrma9ga5t94",
             "coins": [
               {
                 "amount": "1000000000000",
                 "denom": "ukava"
-              },
-              {
-                "amount": "100000000000",
-                "denom": "bnb"
               }
             ],
             "public_key": "",
@@ -75,15 +67,41 @@
           "type": "cosmos-sdk/Account",
           "value": {
             "account_number": 0,
-            "address": "kava1g33w0mh4mjllhaj3y4dcwkwquxgwrma9ga5t94",
+            "address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
             "coins": [
               {
                 "amount": "1000000000000",
                 "denom": "ukava"
-              },
+              }
+            ],
+            "public_key": "",
+            "sequence": 0
+          }
+        },
+        {
+          "type": "cosmos-sdk/Account",
+          "value": {
+            "account_number": 0,
+            "address": "kava173w2zz287s36ewnnkf4mjansnthnnsz7rtrxqc",
+            "coins": [
               {
-                "amount": "100000000000",
-                "denom": "bnb"
+                "amount": "1000000000000",
+                "denom": "ukava"
+              }
+            ],
+            "public_key": "",
+            "sequence": 0
+          }
+        },
+        {
+          "type": "cosmos-sdk/Account",
+          "value": {
+            "account_number": 0,
+            "address": "kava1fwfwmt6vupf3m9uvpdsuuc4dga8p5dtl4npcqz",
+            "coins": [
+              {
+                "amount": "1000000000000",
+                "denom": "ukava"
               }
             ],
             "public_key": "",
@@ -99,10 +117,6 @@
               {
                 "amount": "1000000000000",
                 "denom": "ukava"
-              },
-              {
-                "amount": "100000000000",
-                "denom": "bnb"
               }
             ],
             "public_key": "",
@@ -118,10 +132,21 @@
               {
                 "amount": "1000000000000",
                 "denom": "ukava"
-              },
+              }
+            ],
+            "public_key": "",
+            "sequence": 0
+          }
+        },
+        {
+          "type": "cosmos-sdk/Account",
+          "value": {
+            "account_number": 0,
+            "address": "kava1wuzhkn2f8nqe2aprnwt3jkjvvr9m7dlkpumtz2",
+            "coins": [
               {
-                "amount": "100000000000",
-                "denom": "bnb"
+                "amount": "1000000000000",
+                "denom": "ukava"
               }
             ],
             "public_key": "",

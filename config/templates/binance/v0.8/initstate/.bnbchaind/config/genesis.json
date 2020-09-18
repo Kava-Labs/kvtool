@@ -3,33 +3,37 @@
   "app_state": {
     "accounts": [
       {
-        "address": "bnb1x6lrll2juflscss0f708fu252ktt0h8cjpyzau",
-        "consensus_addr": "D5FC22D6400C1EED489B280FC13C7BE98D5595CD",
+        "address": "bnb1gg3a488t69ueg79lqneqx0h3442x7gtu8drvjz",
+        "consensus_addr": "C76C6CE8272885DB14724A2C35CFAFEDE87489DB",
         "name": "validator"
       },
       {
-        "address": "bnb18s9h2nsjlecwpntgyjd9g7h4wx5zez899azk04",
-        "name": "test_user_0"
-      },
-      {
         "address": "bnb1zfa5vmsme2v3ttvqecfleeh2xtz5zghh49hfqe",
-        "name": "test_user_1"
+        "name": "bnb_deputy_hot_wallet"
       },
       {
         "address": "bnb1nva9yljftdf6m2dwhufk5kzg204jg060sw0fv2",
-        "name": "test_user_2"
+        "name": "bnb_deputy_cold_wallet"
       },
       {
-        "address": "bnb1m5k0g7q0n8nzsre8ysuhsv09j03jhgcrrnwur3",
-        "name": "test_user_3"
+        "address": "bnb10rr5f8m73rxgnz9afvnfn7fn9pwhfskem5kn0x",
+        "name": "user_0"
       },
       {
         "address": "bnb15udkjukldcejs3y3pep2jvwza0lfzwshv7ndfr",
-        "name": "test_user_4"
+        "name": "user_1"
+      },
+      {
+        "address": "bnb1fzrs9etlhvg3k4wcrr6zqh4vdslld7933ln5a7",
+        "name": "user_2"
       },
       {
         "address": "bnb1gzr37hrqlqk4wpdfqn6pp3dy9ek28tahy7dx2v",
-        "name": "test_user_5"
+        "name": "user_3"
+      },
+      {
+        "address": "bnb1m5k0g7q0n8nzsre8ysuhsv09j03jhgcrrnwur3",
+        "name": "user_4"
       }
     ],
     "dex": {},
@@ -38,7 +42,7 @@
         "type": "auth/StdTx",
         "value": {
           "data": null,
-          "memo": "870b9b8a01000fbdb397aaf19fc5e770910f031b@127.0.0.1:26656",
+          "memo": "02d9e29140424460a26d62b833c34356ba85782d@127.0.0.1:26656",
           "msg": [
             {
               "type": "cosmos-sdk/MsgCreateValidatorProposal",
@@ -59,12 +63,12 @@
                     "amount": "1000000000000",
                     "denom": "BNB"
                   },
-                  "delegator_address": "bnb1x6lrll2juflscss0f708fu252ktt0h8cjpyzau",
+                  "delegator_address": "bnb1gg3a488t69ueg79lqneqx0h3442x7gtu8drvjz",
                   "pubkey": {
                     "type": "tendermint/PubKeyEd25519",
-                    "value": "loHYND+0Jyp9eXoyJiwYYH/o+WIMPALxF+EyqVdJyek="
+                    "value": "scJVYmFyPqV8noxuFq1iSS5C2gYIWVfIkl8SoQrBALQ="
                   },
-                  "validator_address": "bva1x6lrll2juflscss0f708fu252ktt0h8cja9jrc"
+                  "validator_address": "bva1gg3a488t69ueg79lqneqx0h3442x7gtu83zuvx"
                 },
                 "proposal_id": "0"
               }
@@ -75,10 +79,10 @@
               "account_number": "0",
               "pub_key": {
                 "type": "tendermint/PubKeySecp256k1",
-                "value": "AuKPzgSde1aYOy0skSdpo1CXivsvuF+37UhKpMgAZdSp"
+                "value": "AjLQAq51urG2cAv04ciNl8zu+qZpmQeraemHzd8ovFeL"
               },
               "sequence": "0",
-              "signature": "Zh7E3IkyQp5UhXdj93mindV3fw/CZkrFJGQINmuRGoJfMLn76yYtYFl95hqdCojycHWl0rJQIN/mp+1lYP6rWA=="
+              "signature": "afdOMMTgiHgYHcYWz6Z6wOwJq+e+hRGR4va8twwBWL9ueCEQuYzFX160AkTokaWTsxPrQ4BE90QcXlA6cRD5MA=="
             }
           ],
           "source": "0"
@@ -258,6 +262,8 @@
       "params": {
         "bond_denom": "BNB",
         "max_validators": 21,
+        "min_delegation_change": "100000000",
+        "min_self_delegation": "1000000000000",
         "unbonding_time": "604800000000000"
       },
       "pool": {
@@ -270,7 +276,7 @@
       {
         "mintable": false,
         "name": "Binance Chain Native Token",
-        "owner": "bnb1x6lrll2juflscss0f708fu252ktt0h8cjpyzau",
+        "owner": "bnb1gg3a488t69ueg79lqneqx0h3442x7gtu8drvjz",
         "symbol": "BNB",
         "total_supply": "20000000000000000"
       }
@@ -291,5 +297,5 @@
       ]
     }
   },
-  "genesis_time": "2020-09-07T22:58:50.1584741Z"
+  "genesis_time": "2020-09-18T00:42:17.643561Z"
 }

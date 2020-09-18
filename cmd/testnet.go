@@ -31,8 +31,9 @@ func TestnetCmd() *cobra.Command {
 	var generatedConfigDir string
 
 	rootCmd := &cobra.Command{
-		Use:   "testnet",
-		Short: "Start a default kava and binance local testnet with a deputy. Stop with Ctrl-C and remove with 'testnet down'. Use sub commands for more options.",
+		Use:     "testnet",
+		Aliases: []string{"t"},
+		Short:   "Start a default kava and binance local testnet with a deputy. Stop with Ctrl-C and remove with 'testnet down'. Use sub commands for more options.",
 		Long: fmt.Sprintf(`This command helps run local kava testnets composed of various independent processes.
 
 Processes are run via docker-compose. This command generates a docker-compose.yaml and other necessary config files that are synchronized with each so the services all work together.

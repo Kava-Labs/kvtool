@@ -42,14 +42,14 @@ func GenerateKavaConfig(kavaConfigTemplate, generatedConfigDir string) error {
 
 func GenerateBnbConfig(generatedConfigDir string) error {
 	// copy templates into generated config folder
-	err := copy.Copy(filepath.Join(ConfigTemplatesDir, "binance/v0.6"), filepath.Join(generatedConfigDir, "binance"))
+	err := copy.Copy(filepath.Join(ConfigTemplatesDir, "binance/v0.8"), filepath.Join(generatedConfigDir, "binance"))
 	if err != nil {
 		return err
 	}
 
 	// put together final compose file
 	err = overwriteMergeYAML(
-		filepath.Join(ConfigTemplatesDir, "binance/v0.6/docker-compose.yaml"),
+		filepath.Join(ConfigTemplatesDir, "binance/v0.8/docker-compose.yaml"),
 		filepath.Join(generatedConfigDir, "docker-compose.yaml"),
 	)
 	return err

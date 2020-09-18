@@ -22,20 +22,28 @@ BEP6Height = 1
 BEP9Height = 1
 # Block height of BEP10 upgrade
 BEP10Height = 1
-# Block height of BEP19Height upgrade
+# Block height of BEP19 upgrade
 BEP19Height = 1
 # Block height of BEP12 upgrade
 BEP12Height = 1
 # Block height of BEP3 upgrade
 BEP3Height = 1
 # Block height of FixSignBytesOverflow upgrade
-FixSignBytesOverflowHeight = 9223372036854775807
+FixSignBytesOverflowHeight = 1
 # Block height of LotSizeOptimization upgrade
-LotSizeUpgradeHeight = 9223372036854775807
+LotSizeUpgradeHeight = 1
 # Block height of changing listing rule upgrade
-ListingRuleUpgradeHeight = 9223372036854775807
+ListingRuleUpgradeHeight = 1
 # Block height of FixZeroBalanceHeight upgrade
-FixZeroBalanceHeight = 9223372036854775807
+FixZeroBalanceHeight = 1
+# Block height of smart chain upgrade
+LaunchBscUpgradeHeight = 9223372036854775807
+# Block height of BEP8 upgrade
+BEP8Height = 1
+# Block height of BEP67 upgrade
+BEP67Height = 1
+# Block height of BEP70 upgrade
+BEP70Height = 1
 
 [query]
 # ABCI query interface black list, suggested value: ["custom/gov/proposals", "custom/timelock/timelocks", "custom/atomicSwap/swapcreator", "custom/atomicSwap/swaprecipient"]
@@ -88,6 +96,36 @@ publishBlock = false
 blockTopic = "block"
 blockKafka = "127.0.0.1:9092"
 
+# Whether we want publish distribution
+publishDistributeReward = false
+distributeRewardTopic = "distribution"
+distributeRewardKafka = "127.0.0.1:9092"
+
+# Whether we want publish staking
+publishStaking = false
+stakingTopic = "staking"
+stakingKafka = "127.0.0.1:9092"
+
+# Whether we want publish slashing
+publishSlashing = false
+slashingTopic = "slashing"
+slashingKafka = "127.0.0.1:9092"
+
+# Whether we want publish cross transfer
+publishCrossTransfer = false
+crossTransferTopic = "crossTransfer"
+crossTransferKafka = "127.0.0.1:9092"
+
+# Whether we want publish side proposals
+publishSideProposal = false
+sideProposalTopic = "sideProposal"
+sideProposalKafka = "127.0.0.1:9092"
+
+# Whether we want publish breatheBlock
+publishBreatheBlock = false
+breatheBlockTopic = "breatheBlock"
+breatheBlockKafka = "127.0.0.1:9092"
+
 # Global setting
 publicationChannelSize = 10000
 publishKafka = false
@@ -121,3 +159,15 @@ logFileRoot = ""
 logFilePath = "bnc.log"
 # Number of logs keep in memory before writing to file
 logBuffSize = 10000
+
+[cross_chain]
+# IBC chain-id for current chain
+ibcChainId = 1
+# chain-id for bsc chain
+bscChainId = "bsc"
+# IBC chain-id for bsc chain
+bscIbcChainId = 2
+
+[dex]
+# The suffixed symbol of BUSD
+BUSDSymbol = ""

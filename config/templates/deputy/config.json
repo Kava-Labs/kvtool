@@ -81,7 +81,7 @@
     "rpc_addr": "tcp://kavanode:26657",
     "symbol": "bnb",
     "deputy_addr": "kava1agcvt07tcw0tglu0hmwdecsnuxp2yd45f3avgm",
-    "cold_wallet_addr": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
+    "cold_wallet_addr": "kava1g33w0mh4mjllhaj3y4dcwkwquxgwrma9ga5t94",
     "fetch_interval": 2,
     "token_balance_alert_threshold": 10000,
     "kava_balance_alert_threshold": 10000
