@@ -371,7 +371,7 @@
               "denom": "ukava"
             },
             "claim_duration": "86400000000000",
-            "collateral_type": "bnb-low-interest",
+            "collateral_type": "bnb-a",
             "duration": "3600000000000",
             "time_lock": "86400000000000"
           }
