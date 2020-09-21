@@ -207,7 +207,7 @@
             "prefix": 1,
             "spot_market_id": "bnb:usd",
             "stability_fee": "1.000000000782997700",
-            "type": "bnb-low-interest"
+            "type": "bnb-a"
           }
         ],
         "debt_auction_lot": "10000000000",
