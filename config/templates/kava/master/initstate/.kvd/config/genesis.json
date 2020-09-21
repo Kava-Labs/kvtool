@@ -232,7 +232,23 @@
       "starting_cdp_id": "1"
     },
     "committee": {
-      "committees": [],
+      "committees": [
+        {
+          "id": "1",
+          "description": "A test committee with the ability to change any system param.",
+          "members": [
+            "kava1n96qpdfcz2m7y364ewk8srv9zuq6ucwduyjaag"
+          ],
+          "permissions": [
+            {
+              "type": "kava/GodPermission",
+              "value": {}
+            }
+          ],
+          "vote_threshold": "0.500000000000000000",
+          "proposal_duration": "600000000000"
+        }
+      ],
       "next_proposal_id": "1",
       "proposals": [],
       "votes": []
