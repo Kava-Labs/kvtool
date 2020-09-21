@@ -17,7 +17,7 @@
         {
           "type": "cosmos-sdk/Account",
           "value": {
-            "account_number": 0,
+            "account_number": "0",
             "address": "kava1ypjp0m04pyp73hwgtc0dgkx0e9rrydecm054da",
             "coins": [
               {
@@ -25,14 +25,14 @@
                 "denom": "ukava"
               }
             ],
-            "public_key": "",
-            "sequence": 0
+            "public_key": null,
+            "sequence": "0"
           }
         },
         {
           "type": "cosmos-sdk/Account",
           "value": {
-            "account_number": 0,
+            "account_number": "0",
             "address": "kava1agcvt07tcw0tglu0hmwdecsnuxp2yd45f3avgm",
             "coins": [
               {
@@ -44,14 +44,14 @@
                 "denom": "ukava"
               }
             ],
-            "public_key": "",
-            "sequence": 0
+            "public_key": null,
+            "sequence": "0"
           }
         },
         {
           "type": "cosmos-sdk/Account",
           "value": {
-            "account_number": 0,
+            "account_number": "0",
             "address": "kava1g33w0mh4mjllhaj3y4dcwkwquxgwrma9ga5t94",
             "coins": [
               {
@@ -59,14 +59,14 @@
                 "denom": "ukava"
               }
             ],
-            "public_key": "",
-            "sequence": 0
+            "public_key": null,
+            "sequence": "0"
           }
         },
         {
           "type": "cosmos-sdk/Account",
           "value": {
-            "account_number": 0,
+            "account_number": "0",
             "address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
             "coins": [
               {
@@ -74,14 +74,14 @@
                 "denom": "ukava"
               }
             ],
-            "public_key": "",
-            "sequence": 0
+            "public_key": null,
+            "sequence": "0"
           }
         },
         {
           "type": "cosmos-sdk/Account",
           "value": {
-            "account_number": 0,
+            "account_number": "0",
             "address": "kava173w2zz287s36ewnnkf4mjansnthnnsz7rtrxqc",
             "coins": [
               {
@@ -89,14 +89,14 @@
                 "denom": "ukava"
               }
             ],
-            "public_key": "",
-            "sequence": 0
+            "public_key": null,
+            "sequence": "0"
           }
         },
         {
           "type": "cosmos-sdk/Account",
           "value": {
-            "account_number": 0,
+            "account_number": "0",
             "address": "kava1fwfwmt6vupf3m9uvpdsuuc4dga8p5dtl4npcqz",
             "coins": [
               {
@@ -104,14 +104,14 @@
                 "denom": "ukava"
               }
             ],
-            "public_key": "",
-            "sequence": 0
+            "public_key": null,
+            "sequence": "0"
           }
         },
         {
           "type": "cosmos-sdk/Account",
           "value": {
-            "account_number": 0,
+            "account_number": "0",
             "address": "kava1sw54s6gq76acm35ls6m5c0kr93dstgrh6eftld",
             "coins": [
               {
@@ -119,14 +119,14 @@
                 "denom": "ukava"
               }
             ],
-            "public_key": "",
-            "sequence": 0
+            "public_key": null,
+            "sequence": "0"
           }
         },
         {
           "type": "cosmos-sdk/Account",
           "value": {
-            "account_number": 0,
+            "account_number": "0",
             "address": "kava1t4dvu32e309pzhmdn3aqcjlj79h9876plynrfm",
             "coins": [
               {
@@ -134,14 +134,14 @@
                 "denom": "ukava"
               }
             ],
-            "public_key": "",
-            "sequence": 0
+            "public_key": null,
+            "sequence": "0"
           }
         },
         {
           "type": "cosmos-sdk/Account",
           "value": {
-            "account_number": 0,
+            "account_number": "0",
             "address": "kava1wuzhkn2f8nqe2aprnwt3jkjvvr9m7dlkpumtz2",
             "coins": [
               {
@@ -149,8 +149,8 @@
                 "denom": "ukava"
               }
             ],
-            "public_key": "",
-            "sequence": 0
+            "public_key": null,
+            "sequence": "0"
           }
         }
       ],
