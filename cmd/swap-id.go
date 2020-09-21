@@ -17,21 +17,24 @@ import (
 // SwapIDCmd returns a command to calculate a bep3 swap ID for binance and kava chains.
 func SwapIDCmd(cdc *codec.Codec) *cobra.Command {
 
+	var deputyAddr string
+
+	kavaDeputy, err := sdk.AccAddressFromBech32("kava1r4v2zdhdalfj2ydazallqvrus9fkphmglhn6u6")
+	if err != nil {
+		panic(err.Error())
+	}
+	bnbDeputy, err := binance.AccAddressFromBech32("bnb1jh7uv2rm6339yue8k4mj9406k3509kr4wt5nxn")
+	if err != nil {
+		panic(err.Error())
+	}
+
 	cmd := &cobra.Command{
-		Use:   "swap-id [random number hash] [non deputy address]",
+		Use:   "swap-id random_number_hash original_sender_address",
 		Short: "Calculate the binance and kava swap IDs given swap details.",
 		Args:  cobra.ExactArgs(2),
 		RunE: func(_ *cobra.Command, args []string) error {
 
 			// get deputy addresses
-			kavaDeputy, err := sdk.AccAddressFromBech32("kava1r4v2zdhdalfj2ydazallqvrus9fkphmglhn6u6")
-			if err != nil {
-				panic(err.Error())
-			}
-			bnbDeputy, err := binance.AccAddressFromBech32("bnb1jh7uv2rm6339yue8k4mj9406k3509kr4wt5nxn")
-			if err != nil {
-				panic(err.Error())
-			}
 
 			randomNumberHash, err := hex.DecodeString(args[0])
 			if err != nil {
@@ -81,6 +84,7 @@ func SwapIDCmd(cdc *codec.Codec) *cobra.Command {
 			return nil
 		},
 	}
+	cmd.Flags().StringVarP(&deputyAddr, "deputy-address", "d", "", "the deputy address on the receiving chain")
 
 	return cmd
 }

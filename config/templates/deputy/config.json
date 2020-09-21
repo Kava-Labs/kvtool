@@ -1,0 +1,89 @@
+{
+  "db_config": {
+    "dialect": "sqlite3",
+    "db_path": "./deputy.db",
+    "max_bnb_kept_block_height": 7200000,
+    "max_other_kept_block_height": 200000
+  },
+  "alert_config": {
+    "telegram_bot_id": "your_bot_id",
+    "telegram_chat_id": "your_chat_id",
+    "bnb_block_update_time_out": 60,
+    "other_chain_block_update_time_out": 600,
+    "reconciliation_diff_amount": "10"
+  },
+  "chain_config": {
+    "bnb_confirm_num": 2,
+    "bnb_auto_retry_num": 3,
+    "bnb_auto_retry_timeout": 60,
+    "bnb_expire_height_span": 360,
+    "bnb_min_accept_expire_height_span": 10000,
+    "bnb_min_remain_height": 1000,
+    "bnb_min_swap_amount": 0,
+    "bnb_max_swap_amount": 10000000000,
+    "bnb_max_deputy_out_amount": 20000000000,
+    "bnb_ratio": "1",
+    "bnb_fixed_fee": 1000,
+    "bnb_start_height": 1,
+    "bnb_hot_wallet_overflow": 99999999999999,
+
+    "other_chain": "KAVA",
+    "other_chain_confirm_num": 2,
+    "other_chain_decimal": 8,
+    "other_chain_expire_height_span": 250,
+    "other_chain_auto_retry_num": 3,
+    "other_chain_auto_retry_timeout": 1200,
+    "other_chain_min_accept_expire_height_span": 100,
+    "other_chain_min_remain_height": 10,
+    "other_chain_min_swap_amount": 0,
+    "other_chain_max_swap_amount": 10000000000,
+    "other_chain_max_deputy_out_amount": 20000000000,
+    "other_chain_ratio": "1",
+    "other_chain_fixed_fee": 1000,
+    "other_chain_start_height": 1,
+    "other_chain_hot_wallet_overflow": 99999999999999
+  },
+  "log_config": {
+    "level": "INFO",
+    "filename": "",
+    "max_file_size_in_mb": 0,
+    "max_backups_of_log_files": 0,
+    "max_age_to_retain_log_files_in_days": 0,
+    "use_console_logger": true,
+    "use_file_logger": false,
+    "compress": false
+  },
+  "admin_config": {
+    "listen_addr": "127.0.0.1:8080"
+  },
+  "instrumentation_config": {
+    "prometheus": true,
+    "prometheus_listen_addr": "127.0.0.1:9090"
+  },
+  "bnb_config": {
+    "key_type": "mnemonic",
+    "aws_region": "",
+    "aws_secret_name": "",
+    "mnemonic": "almost design doctor exist destroy candy zebra insane client grocery govern idea library degree two rebuild coffee hat scene deal average fresh measure potato",
+    "rpc_addr": "http://bnbnode:26657",
+    "symbol": "BNB",
+    "deputy_addr": "bnb1zfa5vmsme2v3ttvqecfleeh2xtz5zghh49hfqe",
+    "cold_wallet_addr": "bnb1nva9yljftdf6m2dwhufk5kzg204jg060sw0fv2",
+    "fetch_interval": 2,
+    "token_balance_alert_threshold": 10000,
+    "bnb_balance_alert_threshold": 10000
+  },
+  "kava_config": {
+    "key_type": "mnemonic",
+    "aws_region": "",
+    "aws_secret_name": "",
+    "mnemonic": "curtain camp spoil tiny vehicle pottery deer corn truly banner salmon lift yard throw open move state lamp van sign glow glue shrug faith",
+    "rpc_addr": "tcp://kavanode:26657",
+    "symbol": "bnb",
+    "deputy_addr": "kava1agcvt07tcw0tglu0hmwdecsnuxp2yd45f3avgm",
+    "cold_wallet_addr": "kava1g33w0mh4mjllhaj3y4dcwkwquxgwrma9ga5t94",
+    "fetch_interval": 2,
+    "token_balance_alert_threshold": 10000,
+    "kava_balance_alert_threshold": 10000
+  }
+}

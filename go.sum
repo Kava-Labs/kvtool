@@ -18,7 +18,6 @@ github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03
 github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802/go.mod h1:IVnqGOEym/WlBOVXweHU+Q+/VP0lqqI8lqeDx9IjBqo=
 github.com/ChainSafe/go-schnorrkel v0.0.0-20200102211924-4bcbc698314f h1:4O1om+UVU+Hfcihr1timk8YNXHxzZWgCo7ofnrZRApw=
 github.com/ChainSafe/go-schnorrkel v0.0.0-20200102211924-4bcbc698314f/go.mod h1:URdX5+vg25ts3aCh8H5IFZybJYKWhJHYMTnf+ULtoC4=
-github.com/Jeffail/gabs v1.4.0 h1://5fYRRTq1edjfIrQGvdkcd22pkYUrHZ5YC/H2GJVAo=
 github.com/Jeffail/gabs/v2 v2.6.0 h1:WdCnGaDhNa4LSRTMwhLZzJ7SRDXjABNP13SOKvCpL5w=
 github.com/Jeffail/gabs/v2 v2.6.0/go.mod h1:xCn81vdHKxFUuWWAaD5jCTQDNPBMh5pPs9IJ+NcziBI=
 github.com/Knetic/govaluate v3.0.1-0.20171022003610-9aa49832a739+incompatible/go.mod h1:r7JcOSlj0wfOMncg0iLm8Leh48TZaKVeNIfJntJ2wa0=
