@@ -12,6 +12,13 @@ kava:
       cold_wallet:
         mnemonic: "profit law bounce grunt earth ice share skill valve awful around shoot include kite lecture also smooth ball vintage snake embark brief ill gather"
         address: "kava1g33w0mh4mjllhaj3y4dcwkwquxgwrma9ga5t94"
+    btcb:
+      hot_wallet:
+        mnemonic: "shed crush identify inmate fault truck raw sausage afford fiction day delay people shrimp firm group maple square host thank motor radio visual cable"
+        address: "kava1kla4wl0ccv7u85cemvs3y987hqk0afcv7vue84"
+      cold_wallet:
+        mnemonic: "dirt better attack pulse amused derive female top wink cycle surge tell leopard remove nephew retreat allow stuff pipe come dinner globe open usage"
+        address: "kava1ynf22ap74j6znl503a56y23x5stfr0aw5kntp8"
   oracles:
     - mnemonic: "desert october mammal tuition illness album engine solid enjoy harvest symptom rely camera unable okay avocado actual oppose remember lady dove canal argue cave"
       address: "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
@@ -36,6 +43,13 @@ bnb:
       val_address: "bva1gg3a488t69ueg79lqneqx0h3442x7gtu83zuvx"
       cons_pubkey: "bcap1zcjduepqk8p92cnpwgl22ly733hpdttzfyhy9ksxppv40jyjtuf2zzkpqz6qn9phhh"
   deputys:
+    btcb:
+      hot_wallet:
+        mnemonic: "enjoy soldier replace ugly glimpse rude sponsor hood jewel inner hole tower initial drive jungle resist answer display capable give lesson mule spray whisper"
+        address: "bnb1z8ryd66lhc4d9c0mmxx9zyyq4t3cqht9mt0qz3"
+      cold_wallet:
+        mnemonic: "cancel library license destroy regret confirm fancy cupboard crew elite staff noodle slogan identify eternal tone gown pair donor list present forget rain awful"
+        address: "bnb1tpgqfslnm486qtnfatewdeya2khaav3x6hqhf9"
     bnb:
       hot_wallet:
         mnemonic: "almost design doctor exist destroy candy zebra insane client grocery govern idea library degree two rebuild coffee hat scene deal average fresh measure potato"
@@ -54,5 +68,5 @@ bnb:
       address: "bnb1gzr37hrqlqk4wpdfqn6pp3dy9ek28tahy7dx2v"
     - mnemonic: "end bicycle walnut empty bus silly camera lift fancy symptom office pluck detail unable cry sense scrap tuition relax amateur hold win debate hat"
       address: "bnb1m5k0g7q0n8nzsre8ysuhsv09j03jhgcrrnwur3"
-   
-    
+
+

@@ -16,6 +16,14 @@
         "name": "bnb_deputy_cold_wallet"
       },
       {
+        "address": "bnb1z8ryd66lhc4d9c0mmxx9zyyq4t3cqht9mt0qz3",
+        "name": "btcb_deputy_hot_wallet"
+      },
+      {
+        "address": "bnb1tpgqfslnm486qtnfatewdeya2khaav3x6hqhf9",
+        "name": "btcb_deputy_cold_wallet"
+      },
+      {
         "address": "bnb10rr5f8m73rxgnz9afvnfn7fn9pwhfskem5kn0x",
         "name": "user_0"
       },

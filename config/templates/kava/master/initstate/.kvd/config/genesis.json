@@ -52,7 +52,41 @@
           "type": "cosmos-sdk/Account",
           "value": {
             "account_number": "0",
+            "address": "kava1kla4wl0ccv7u85cemvs3y987hqk0afcv7vue84",
+            "coins": [
+              {
+                "amount": "100000000000000",
+                "denom": "btcb"
+              },
+              {
+                "amount": "1000000000000",
+                "denom": "ukava"
+              }
+            ],
+            "public_key": null,
+            "sequence": "0"
+          }
+        },
+        {
+          "type": "cosmos-sdk/Account",
+          "value": {
+            "account_number": "0",
             "address": "kava1g33w0mh4mjllhaj3y4dcwkwquxgwrma9ga5t94",
+            "coins": [
+              {
+                "amount": "1000000000000",
+                "denom": "ukava"
+              }
+            ],
+            "public_key": null,
+            "sequence": "0"
+          }
+        },
+        {
+          "type": "cosmos-sdk/Account",
+          "value": {
+            "account_number": "0",
+            "address": "kava1ynf22ap74j6znl503a56y23x5stfr0aw5kntp8",
             "coins": [
               {
                 "amount": "1000000000000",

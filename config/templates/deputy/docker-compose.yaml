@@ -1,6 +1,10 @@
 version: "3"
 services:
-  deputy:
+  bnb-deputy:
     image: kava/deputy:46d9406
     volumes:
-      - "./deputy/config.json:/deputy/config/config.json"
+      - "./deputy/bnb-config.json:/deputy/config/config.json"
+  btcb-deputy:
+    image: kava/deputy:46d9406
+    volumes:
+      - "./deputy/btcb-config.json:/deputy/config/config.json"
