@@ -279,6 +279,13 @@
         "owner": "bnb1gg3a488t69ueg79lqneqx0h3442x7gtu8drvjz",
         "symbol": "BNB",
         "total_supply": "20000000000000000"
+      },
+      {
+        "mintable": true,
+        "name": "Bitcoin BEP2",
+        "owner": "bnb1gg3a488t69ueg79lqneqx0h3442x7gtu8drvjz",
+        "symbol": "BTCB-1DE",
+        "total_supply": "900000000000"
       }
     ]
   },
