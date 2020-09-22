@@ -334,6 +334,76 @@
         }
       ]
     },
+    "harvest": {
+      "params": {
+        "active": true,
+        "liquidity_provider_schedules": [
+          {
+            "active": true,
+            "deposit_denom": "bnb",
+            "start": "2020-09-22T14:00:00Z",
+            "end": "2020-11-22T14:00:00Z",
+            "rewards_per_second": {
+              "denom": "hard",
+              "amount": "100"
+            },
+            "claim_end": "2021-11-22T14:00:00Z",
+            "claim_multipliers": [
+              {
+                "name": "small",
+                "months_lockup": "0",
+                "factor": "0.330000000000000000"
+              },
+              {
+                "name": "medium",
+                "months_lockup": "6",
+                "factor": "0.500000000000000000"
+              },
+              {
+                "name": "large",
+                "months_lockup": "24",
+                "factor": "1.000000000000000000"
+              }
+            ]
+          }
+        ],
+        "delegator_distribution_schedules": [
+          {
+            "distribution_schedule": {
+              "active": true,
+              "deposit_denom": "bnb",
+              "start": "2020-09-22T14:00:00Z",
+              "end": "2025-10-08T14:00:00Z",
+              "rewards_per_second": {
+                "denom": "hard",
+                "amount": "100"
+              },
+              "claim_end": "2026-10-08T14:00:00Z",
+              "claim_multipliers": [
+                {
+                  "name": "small",
+                  "months_lockup": "0",
+                  "factor": "0.330000000000000000"
+                },
+                {
+                  "name": "medium",
+                  "months_lockup": "6",
+                  "factor": "0.500000000000000000"
+                },
+                {
+                  "name": "large",
+                  "months_lockup": "24",
+                  "factor": "1.000000000000000000"
+                }
+              ]
+            },
+            "distribution_frequency": "86400000000000"
+          }
+        ]
+      },
+      "previous_block_time": "1970-01-01T00:00:00Z",
+      "previous_distribution_times": []
+    },
     "gov": {
       "deposit_params": {
         "max_deposit_period": "600000000000",
