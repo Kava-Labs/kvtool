@@ -15,6 +15,65 @@
     "auth": {
       "accounts": [
         {
+          "type": "cosmos-sdk/ModuleAccount",
+          "value": {
+            "address": "kava1cj7njkw2g9fqx4e768zc75dp9sks8u9znxrf0w",
+            "coins": [
+              {
+                "denom": "ukava",
+                "amount": "1000000000000"
+              }
+            ],
+            "public_key": null,
+            "account_number": "0",
+            "sequence": "0",
+            "name": "kavadist",
+            "permissions": [
+              "minter"
+            ]
+          }
+        },
+        {
+          "type": "cosmos-sdk/ModuleAccount",
+          "value": {
+            "address": "kava1nzenvfcapyjr9qe3cr3c5k2aucssg6wnknlvll",
+            "coins": [
+              {
+                "denom": "hard",
+                "amount": "1000000000000"
+              }
+            ],
+            "public_key": null,
+            "account_number": "0",
+            "sequence": "0",
+            "name": "harvest_lp_distribution",
+            "permissions": [
+              "minter",
+              "burner"
+            ]
+          }
+        },
+        {
+          "type": "cosmos-sdk/ModuleAccount",
+          "value": {
+            "address": "kava1e3qvdzau5ww0m43d00gqj0ncgy8j03ndge6c2c",
+            "coins": [
+              {
+                "denom": "hard",
+                "amount": "1000000000000"
+              }
+            ],
+            "public_key": null,
+            "account_number": "0",
+            "sequence": "0",
+            "name": "harvest_delegator_distribution",
+            "permissions": [
+              "minter",
+              "burner"
+            ]
+          }
+        },
+        {
           "type": "cosmos-sdk/Account",
           "value": {
             "account_number": "0",
