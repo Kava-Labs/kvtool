@@ -130,6 +130,44 @@
           "type": "cosmos-sdk/Account",
           "value": {
             "account_number": "0",
+            "address": "kava14q5sawxdxtpap5x5sgzj7v4sp3ucncjlpuk3hs",
+            "coins": [
+              {
+                "amount": "100000000000000",
+                "denom": "xrpb"
+              },
+              {
+                "amount": "1000000000000",
+                "denom": "ukava"
+              }
+            ],
+            "public_key": null,
+            "sequence": "0"
+          }
+        },
+        {
+          "type": "cosmos-sdk/Account",
+          "value": {
+            "account_number": "0",
+            "address": "kava1j9je7f6s0v6k7dmgv6u5k5ru202f5ffsc7af04",
+            "coins": [
+              {
+                "amount": "100000000000000",
+                "denom": "busd"
+              },
+              {
+                "amount": "1000000000000",
+                "denom": "ukava"
+              }
+            ],
+            "public_key": null,
+            "sequence": "0"
+          }
+        },
+        {
+          "type": "cosmos-sdk/Account",
+          "value": {
+            "account_number": "0",
             "address": "kava1g33w0mh4mjllhaj3y4dcwkwquxgwrma9ga5t94",
             "coins": [
               {
@@ -340,6 +378,38 @@
             "spot_market_id": "btc:usd",
             "stability_fee": "1.000000000782997700",
             "type": "btcb-a"
+          },
+          {
+            "denom": "xrpb",
+            "type": "xrpb-a",
+            "liquidation_ratio": "1.500000000000000000",
+            "debt_limit": {
+              "denom": "usdx",
+              "amount": "100000000000"
+            },
+            "stability_fee": "1.000000001547125958",
+            "auction_size": "100000000000",
+            "liquidation_penalty": "0.075000000000000000",
+            "prefix": 5,
+            "spot_market_id": "xrp:usd",
+            "liquidation_market_id": "xrp:usd:30",
+            "conversion_factor": "8"
+          },
+          {
+            "denom": "busd",
+            "type": "busd-a",
+            "liquidation_ratio": "1.010000000000000000",
+            "debt_limit": {
+              "denom": "usdx",
+              "amount": "3000000000000"
+            },
+            "stability_fee": "1.000000000000000000",
+            "auction_size": "1000000000000",
+            "liquidation_penalty": "0.075000000000000000",
+            "prefix": 3,
+            "spot_market_id": "busd:usd",
+            "liquidation_market_id": "busd:usd:30",
+            "conversion_factor": "8"
           }
         ],
         "debt_auction_lot": "10000000000",
@@ -352,7 +422,7 @@
           "savings_rate": "0.950000000000000000"
         },
         "global_debt_limit": {
-          "amount": "4000000000000",
+          "amount": "7100000000000",
           "denom": "usdx"
         },
         "savings_distribution_frequency": "43200000000000",
@@ -367,18 +437,270 @@
       "committees": [
         {
           "id": "1",
-          "description": "A test committee with the ability to change any system param.",
+          "description": "Stability Committee",
           "members": [
             "kava1n96qpdfcz2m7y364ewk8srv9zuq6ucwduyjaag"
           ],
           "permissions": [
             {
-              "type": "kava/GodPermission",
+              "type": "kava/SubParamChangePermission",
+              "value": {
+                "allowed_params": [
+                  {
+                    "subspace": "auction",
+                    "key": "BidDuration"
+                  },
+                  {
+                    "subspace": "auction",
+                    "key": "IncrementSurplus"
+                  },
+                  {
+                    "subspace": "auction",
+                    "key": "IncrementDebt"
+                  },
+                  {
+                    "subspace": "auction",
+                    "key": "IncrementCollateral"
+                  },
+                  {
+                    "subspace": "bep3",
+                    "key": "AssetParams"
+                  },
+                  {
+                    "subspace": "cdp",
+                    "key": "GlobalDebtLimit"
+                  },
+                  {
+                    "subspace": "cdp",
+                    "key": "SurplusThreshold"
+                  },
+                  {
+                    "subspace": "cdp",
+                    "key": "SurplusLot"
+                  },
+                  {
+                    "subspace": "cdp",
+                    "key": "DebtThreshold"
+                  },
+                  {
+                    "subspace": "cdp",
+                    "key": "DebtLot"
+                  },
+                  {
+                    "subspace": "cdp",
+                    "key": "DistributionFrequency"
+                  },
+                  {
+                    "subspace": "cdp",
+                    "key": "CollateralParams"
+                  },
+                  {
+                    "subspace": "cdp",
+                    "key": "DebtParam"
+                  },
+                  {
+                    "subspace": "incentive",
+                    "key": "Active"
+                  },
+                  {
+                    "subspace": "kavadist",
+                    "key": "Active"
+                  },
+                  {
+                    "subspace": "pricefeed",
+                    "key": "Markets"
+                  }
+                ],
+                "allowed_collateral_params": [
+                  {
+                    "type": "bnb-a",
+                    "denom": false,
+                    "liquidation_ratio": false,
+                    "debt_limit": true,
+                    "stability_fee": true,
+                    "auction_size": true,
+                    "liquidation_penalty": false,
+                    "prefix": false,
+                    "spot_market_id": false,
+                    "liquidation_market_id": false,
+                    "conversion_factor": false
+                  },
+                  {
+                    "type": "busd-a",
+                    "denom": false,
+                    "liquidation_ratio": false,
+                    "debt_limit": true,
+                    "stability_fee": true,
+                    "auction_size": true,
+                    "liquidation_penalty": false,
+                    "prefix": false,
+                    "spot_market_id": false,
+                    "liquidation_market_id": false,
+                    "conversion_factor": false
+                  },
+                  {
+                    "type": "busd-b",
+                    "denom": false,
+                    "liquidation_ratio": false,
+                    "debt_limit": true,
+                    "stability_fee": true,
+                    "auction_size": true,
+                    "liquidation_penalty": false,
+                    "prefix": false,
+                    "spot_market_id": false,
+                    "liquidation_market_id": false,
+                    "conversion_factor": false
+                  },
+                  {
+                    "type": "btcb-a",
+                    "denom": false,
+                    "liquidation_ratio": false,
+                    "debt_limit": true,
+                    "stability_fee": true,
+                    "auction_size": true,
+                    "liquidation_penalty": false,
+                    "prefix": false,
+                    "spot_market_id": false,
+                    "liquidation_market_id": false,
+                    "conversion_factor": false
+                  },
+                  {
+                    "type": "xrpb-a",
+                    "denom": false,
+                    "liquidation_ratio": false,
+                    "debt_limit": true,
+                    "stability_fee": true,
+                    "auction_size": true,
+                    "liquidation_penalty": false,
+                    "prefix": false,
+                    "spot_market_id": false,
+                    "liquidation_market_id": false,
+                    "conversion_factor": false
+                  }
+                ],
+                "allowed_debt_param": {
+                  "denom": false,
+                  "reference_asset": false,
+                  "conversion_factor": false,
+                  "debt_floor": true,
+                  "savings_rate": true
+                },
+                "allowed_asset_params": [
+                  {
+                    "denom": "bnb",
+                    "coin_id": false,
+                    "limit": true,
+                    "active": true,
+                    "max_swap_amount": true,
+                    "min_block_lock": true
+                  },
+                  {
+                    "denom": "busd",
+                    "coin_id": true,
+                    "limit": true,
+                    "active": true,
+                    "max_swap_amount": true,
+                    "min_block_lock": true
+                  },
+                  {
+                    "denom": "btcb",
+                    "coin_id": false,
+                    "limit": true,
+                    "active": true,
+                    "max_swap_amount": true,
+                    "min_block_lock": true
+                  },
+                  {
+                    "denom": "xrpb",
+                    "coin_id": false,
+                    "limit": true,
+                    "active": true,
+                    "max_swap_amount": true,
+                    "min_block_lock": true
+                  }
+                ],
+                "allowed_markets": [
+                  {
+                    "market_id": "bnb:usd",
+                    "base_asset": false,
+                    "quote_asset": false,
+                    "oracles": false,
+                    "active": true
+                  },
+                  {
+                    "market_id": "bnb:usd:30",
+                    "base_asset": false,
+                    "quote_asset": false,
+                    "oracles": false,
+                    "active": true
+                  },
+                  {
+                    "market_id": "btc:usd",
+                    "base_asset": false,
+                    "quote_asset": false,
+                    "oracles": false,
+                    "active": true
+                  },
+                  {
+                    "market_id": "btc:usd:30",
+                    "base_asset": false,
+                    "quote_asset": false,
+                    "oracles": false,
+                    "active": true
+                  },
+                  {
+                    "market_id": "xrp:usd",
+                    "base_asset": false,
+                    "quote_asset": false,
+                    "oracles": false,
+                    "active": true
+                  },
+                  {
+                    "market_id": "xrp:usd:30",
+                    "base_asset": false,
+                    "quote_asset": false,
+                    "oracles": false,
+                    "active": true
+                  },
+                  {
+                    "market_id": "busd:usd",
+                    "base_asset": false,
+                    "quote_asset": false,
+                    "oracles": false,
+                    "active": true
+                  },
+                  {
+                    "market_id": "busd:usd:30",
+                    "base_asset": false,
+                    "quote_asset": false,
+                    "oracles": false,
+                    "active": true
+                  }
+                ]
+              }
+            },
+            {
+              "type": "kava/TextPermission",
               "value": {}
             }
           ],
           "vote_threshold": "0.500000000000000000",
           "proposal_duration": "600000000000"
+        },
+        {
+          "id": "2",
+          "description": "Kava Safety Committee",
+          "members": [
+            "kava1n96qpdfcz2m7y364ewk8srv9zuq6ucwduyjaag"
+          ],
+          "permissions": [
+            {
+              "type": "kava/SoftwareUpgradePermission",
+              "value": {}
+            }
+          ],
+          "vote_threshold": "0.500000000000000000",
+          "proposal_duration": "604800000000000"
         }
       ],
       "next_proposal_id": "1",
@@ -484,16 +806,184 @@
               {
                 "name": "small",
                 "months_lockup": "0",
-                "factor": "0.330000000000000000"
+                "factor": "0.20000000000000000"
               },
               {
                 "name": "medium",
-                "months_lockup": "6",
+                "months_lockup": "1",
                 "factor": "0.500000000000000000"
               },
               {
                 "name": "large",
-                "months_lockup": "24",
+                "months_lockup": "12",
+                "factor": "1.000000000000000000"
+              }
+            ]
+          },
+          {
+            "active": true,
+            "deposit_denom": "xrpb",
+            "start": "2020-09-22T14:00:00Z",
+            "end": "2020-11-22T14:00:00Z",
+            "rewards_per_second": {
+              "denom": "hard",
+              "amount": "100"
+            },
+            "claim_end": "2021-11-22T14:00:00Z",
+            "claim_multipliers": [
+              {
+                "name": "small",
+                "months_lockup": "0",
+                "factor": "0.20000000000000000"
+              },
+              {
+                "name": "medium",
+                "months_lockup": "1",
+                "factor": "0.500000000000000000"
+              },
+              {
+                "name": "large",
+                "months_lockup": "12",
+                "factor": "1.000000000000000000"
+              }
+            ]
+          },
+          {
+            "active": true,
+            "deposit_denom": "btcb",
+            "start": "2020-09-22T14:00:00Z",
+            "end": "2020-11-22T14:00:00Z",
+            "rewards_per_second": {
+              "denom": "hard",
+              "amount": "100"
+            },
+            "claim_end": "2021-11-22T14:00:00Z",
+            "claim_multipliers": [
+              {
+                "name": "small",
+                "months_lockup": "0",
+                "factor": "0.20000000000000000"
+              },
+              {
+                "name": "medium",
+                "months_lockup": "1",
+                "factor": "0.500000000000000000"
+              },
+              {
+                "name": "large",
+                "months_lockup": "12",
+                "factor": "1.000000000000000000"
+              }
+            ]
+          },
+          {
+            "active": true,
+            "deposit_denom": "usdx",
+            "start": "2020-09-22T14:00:00Z",
+            "end": "2020-11-22T14:00:00Z",
+            "rewards_per_second": {
+              "denom": "hard",
+              "amount": "300"
+            },
+            "claim_end": "2021-11-22T14:00:00Z",
+            "claim_multipliers": [
+              {
+                "name": "small",
+                "months_lockup": "0",
+                "factor": "0.20000000000000000"
+              },
+              {
+                "name": "medium",
+                "months_lockup": "1",
+                "factor": "0.500000000000000000"
+              },
+              {
+                "name": "large",
+                "months_lockup": "12",
+                "factor": "1.000000000000000000"
+              }
+            ]
+          },
+          {
+            "active": true,
+            "deposit_denom": "hard",
+            "start": "2020-09-22T14:00:00Z",
+            "end": "2020-11-22T14:00:00Z",
+            "rewards_per_second": {
+              "denom": "hard",
+              "amount": "200"
+            },
+            "claim_end": "2021-11-22T14:00:00Z",
+            "claim_multipliers": [
+              {
+                "name": "small",
+                "months_lockup": "0",
+                "factor": "0.20000000000000000"
+              },
+              {
+                "name": "medium",
+                "months_lockup": "1",
+                "factor": "0.500000000000000000"
+              },
+              {
+                "name": "large",
+                "months_lockup": "12",
+                "factor": "1.000000000000000000"
+              }
+            ]
+          },
+          {
+            "active": true,
+            "deposit_denom": "ukava",
+            "start": "2020-09-22T14:00:00Z",
+            "end": "2020-11-22T14:00:00Z",
+            "rewards_per_second": {
+              "denom": "hard",
+              "amount": "50"
+            },
+            "claim_end": "2021-11-22T14:00:00Z",
+            "claim_multipliers": [
+              {
+                "name": "small",
+                "months_lockup": "0",
+                "factor": "0.20000000000000000"
+              },
+              {
+                "name": "medium",
+                "months_lockup": "1",
+                "factor": "0.500000000000000000"
+              },
+              {
+                "name": "large",
+                "months_lockup": "12",
+                "factor": "1.000000000000000000"
+              }
+            ]
+          },
+          {
+            "active": true,
+            "deposit_denom": "ukava",
+            "start": "2020-09-22T14:00:00Z",
+            "end": "2020-11-22T14:00:00Z",
+            "rewards_per_second": {
+              "denom": "busd",
+              "amount": "50"
+            },
+            "claim_end": "2021-11-22T14:00:00Z",
+            "claim_multipliers": [
+              {
+                "name": "small",
+                "months_lockup": "0",
+                "factor": "0.20000000000000000"
+              },
+              {
+                "name": "medium",
+                "months_lockup": "1",
+                "factor": "0.500000000000000000"
+              },
+              {
+                "name": "large",
+                "months_lockup": "12",
                 "factor": "1.000000000000000000"
               }
             ]
@@ -503,12 +993,12 @@
           {
             "distribution_schedule": {
               "active": true,
-              "deposit_denom": "bnb",
+              "deposit_denom": "ukava",
               "start": "2020-09-22T14:00:00Z",
               "end": "2025-10-08T14:00:00Z",
               "rewards_per_second": {
                 "denom": "hard",
-                "amount": "100"
+                "amount": "500"
               },
               "claim_end": "2026-10-08T14:00:00Z",
               "claim_multipliers": [
@@ -574,6 +1064,17 @@
             },
             "claim_duration": "86400000000000",
             "collateral_type": "bnb-a",
+            "duration": "3600000000000",
+            "time_lock": "86400000000000"
+          },
+          {
+            "active": true,
+            "available_rewards": {
+              "amount": "500000000",
+              "denom": "ukava"
+            },
+            "claim_duration": "86400000000000",
+            "collateral_type": "busd-a",
             "duration": "3600000000000",
             "time_lock": "86400000000000"
           }
@@ -648,6 +1149,42 @@
               "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
             ],
             "quote_asset": "usd"
+          },
+          {
+            "active": true,
+            "base_asset": "xrp",
+            "market_id": "xrp:usd:30",
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
+            "quote_asset": "usd"
+          },
+          {
+            "active": true,
+            "base_asset": "xrp",
+            "market_id": "xrp:usd",
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
+            "quote_asset": "usd"
+          },
+          {
+            "active": true,
+            "base_asset": "busd",
+            "market_id": "busd:usd",
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
+            "quote_asset": "usd"
+          },
+          {
+            "active": true,
+            "base_asset": "busd",
+            "market_id": "busd:usd:30",
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
+            "quote_asset": "usd"
           }
         ]
       },
@@ -675,6 +1212,30 @@
           "market_id": "btc:usd:30",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
           "price": "10500.962650000000001782"
+        },
+        {
+          "expiry": "2021-07-20T00:00:00Z",
+          "market_id": "xrp:usd",
+          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
+          "price": "0.252650000000001782"
+        },
+        {
+          "expiry": "2021-07-20T00:00:00Z",
+          "market_id": "xrp:usd:30",
+          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
+          "price": "0.252650000000001782"
+        },
+        {
+          "expiry": "2021-07-20T00:00:00Z",
+          "market_id": "busd:usd",
+          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
+          "price": "1.000000000000000000"
+        },
+        {
+          "expiry": "2021-07-20T00:00:00Z",
+          "market_id": "busd:usd:30",
+          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
+          "price": "1.000000000000000000"
         }
       ]
     },

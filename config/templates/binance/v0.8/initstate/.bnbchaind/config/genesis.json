@@ -24,6 +24,22 @@
         "name": "btcb_deputy_cold_wallet"
       },
       {
+        "address": "bnb1ryrenacljwghhc5zlnxs3pd86amta3jcaagyt0",
+        "name": "xrpb_deputy_hot_wallet"
+      },
+      {
+        "address": "bnb13l6w5vzqa3533ukrpzpycqh62qd4r3tman8cnv",
+        "name": "xrpb_deputy_cold_wallet"
+      },
+      {
+        "address": "bnb1j20j0e62n2l9sefxnu596a6jyn5x29lk2syd5j",
+        "name": "busd_deputy_hot_wallet"
+      },
+      {
+        "address": "bnb1q8d7pl0546qa08cc4ptatmfzwfs47ztlsgsfqz",
+        "name": "busd_deputy_cold_wallet"
+      },
+      {
         "address": "bnb10rr5f8m73rxgnz9afvnfn7fn9pwhfskem5kn0x",
         "name": "user_0"
       },
@@ -294,6 +310,20 @@
         "owner": "bnb1gg3a488t69ueg79lqneqx0h3442x7gtu8drvjz",
         "symbol": "BTCB-1DE",
         "total_supply": "900000000000"
+      },
+      {
+        "mintable": true,
+        "name": "XRP BEP2",
+        "owner": "bnb1gg3a488t69ueg79lqneqx0h3442x7gtu8drvjz",
+        "symbol": "XRP-BF2",
+        "total_supply": "4200000000000000"
+      },
+      {
+        "mintable": true,
+        "name": "BUSD BEP2",
+        "owner": "bnb1gg3a488t69ueg79lqneqx0h3442x7gtu8drvjz",
+        "symbol": "BUSD-BD1",
+        "total_supply": "12100000000000000"
       }
     ]
   },

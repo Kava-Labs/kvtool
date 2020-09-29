@@ -19,6 +19,20 @@ kava:
       cold_wallet:
         mnemonic: "dirt better attack pulse amused derive female top wink cycle surge tell leopard remove nephew retreat allow stuff pipe come dinner globe open usage"
         address: "kava1ynf22ap74j6znl503a56y23x5stfr0aw5kntp8"
+    xrpb:
+      hot_wallet:
+        mnemonic: "trial friend silly sugar maid behave slim onion swap report inmate hold hammer hip wrist above sketch mean fence reason master green panel chimney"
+        address: "kava14q5sawxdxtpap5x5sgzj7v4sp3ucncjlpuk3hs"
+      cold_wallet:
+        mnemonic: "stumble output prefer toast trip earth turn husband present dad fashion lizard hero protect blood expand book parrot ahead ensure alien shiver twice pledge"
+        address: "kava1z3ytjpr6ancl8gw80z6f47z9smug7986x29vtj"
+    busd:
+      hot_wallet:
+        mnemonic: "grab charge flame lamp genuine accuse truth orange split can faith spoon twist romance input raccoon tissue slice hire sauce hope fork primary unlock"
+        address: "kava1j9je7f6s0v6k7dmgv6u5k5ru202f5ffsc7af04"
+      cold_wallet:
+        mnemonic: "arrive guide way exit polar print kitchen hair series custom siege afraid shrug crew fashion mind script divorce pattern trust project regular robust safe"
+        address: "kava1ektgdyy0z23qqnd67ns3qvfzgfgjd5xe82lf5c"
   oracles:
     - mnemonic: "desert october mammal tuition illness album engine solid enjoy harvest symptom rely camera unable okay avocado actual oppose remember lady dove canal argue cave"
       address: "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
@@ -57,6 +71,20 @@ bnb:
       cold_wallet:
         mnemonic: "welcome bean crystal pave chapter process bless tribe inside bottom exhaust hollow display envelope rally moral admit round hidden junk silly afraid awesome muffin"
         address: "bnb1nva9yljftdf6m2dwhufk5kzg204jg060sw0fv2"
+    xrpb:
+      hot_wallet:
+        mnemonic: "forward argue march dignity puzzle celery caught maze judge chair cement choice bamboo pulse else local foam abuse crazy bullet feed hero rose seat"
+        address: "bnb1ryrenacljwghhc5zlnxs3pd86amta3jcaagyt0"
+      cold_wallet:
+        mnemonic: "exile theory key tree range grow shy pave round roof thing grow audit between echo join split certain gaze culture slab hour fury wool"
+        address: "bnb13l6w5vzqa3533ukrpzpycqh62qd4r3tman8cnv"
+    busd:
+      hot_wallet:
+        mnemonic: "bachelor also save receive tennis equal sign frog purse elevator gesture elegant legend drastic sorry sing consider project decrease critic thought screen detect honey"
+        address: "bnb1j20j0e62n2l9sefxnu596a6jyn5x29lk2syd5j"
+      cold_wallet:
+        mnemonic: "canoe all morning buffalo wet sting truck rebuild section raven rent lecture model pink burger alone bachelor amazing similar soon pretty doll youth invite"
+        address: "bnb1q8d7pl0546qa08cc4ptatmfzwfs47ztlsgsfqz"
   users:
     - mnemonic: "smile air crush cart puppy until upon distance pretty cabbage insect dream bargain more lift urban armor source case judge process cute seed verb"
       address: "bnb10rr5f8m73rxgnz9afvnfn7fn9pwhfskem5kn0x"
