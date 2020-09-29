@@ -108,15 +108,51 @@
           }
         },
         {
+          "type": "cosmos-sdk/PeriodicVestingAccount",
+          "value": {
+            "address": "kava1z3ytjpr6ancl8gw80z6f47z9smug7986x29vtj",
+            "coins": [
+              {
+                "denom": "ukava",
+                "amount": "565077579"
+              },
+              {
+                "denom": "usdx",
+                "amount": "1363200"
+              }
+            ],
+            "public_key": null,
+            "account_number": "0",
+            "sequence": "0",
+            "original_vesting": [
+              {
+                "denom": "ukava",
+                "amount": "560159828"
+              }
+            ],
+            "delegated_free": [],
+            "delegated_vesting": [],
+            "end_time": "1628213878",
+            "start_time": "1596677878",
+            "vesting_periods": [
+              {
+                "length": "31536000",
+                "amount": [
+                  {
+                    "denom": "ukava",
+                    "amount": "560159828"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
           "type": "cosmos-sdk/Account",
           "value": {
             "account_number": "0",
             "address": "kava1kla4wl0ccv7u85cemvs3y987hqk0afcv7vue84",
             "coins": [
-              {
-                "amount": "100000000000000",
-                "denom": "btcb"
-              },
               {
                 "amount": "1000000000000",
                 "denom": "ukava"
@@ -133,9 +169,20 @@
             "address": "kava14q5sawxdxtpap5x5sgzj7v4sp3ucncjlpuk3hs",
             "coins": [
               {
-                "amount": "100000000000000",
-                "denom": "xrpb"
-              },
+                "amount": "1000000000000",
+                "denom": "ukava"
+              }
+            ],
+            "public_key": null,
+            "sequence": "0"
+          }
+        },
+        {
+          "type": "cosmos-sdk/Account",
+          "value": {
+            "account_number": "0",
+            "address": "kava1tfvn5t8qwngqd2q427za2mel48pcus3z9u73fl",
+            "coins": [
               {
                 "amount": "1000000000000",
                 "denom": "ukava"
@@ -152,8 +199,43 @@
             "address": "kava1j9je7f6s0v6k7dmgv6u5k5ru202f5ffsc7af04",
             "coins": [
               {
+                "amount": "1000000000000",
+                "denom": "ukava"
+              }
+            ],
+            "public_key": null,
+            "sequence": "0"
+          }
+        },
+        {
+          "type": "cosmos-sdk/Account",
+          "value": {
+            "account_number": "0",
+            "address": "kava1ektgdyy0z23qqnd67ns3qvfzgfgjd5xe82lf5c",
+            "coins": [
+              {
                 "amount": "100000000000000",
                 "denom": "busd"
+              },
+              {
+                "amount": "100000000000000",
+                "denom": "bnb"
+              },
+              {
+                "amount": "100000000000000",
+                "denom": "xrpb"
+              },
+              {
+                "amount": "100000000000000",
+                "denom": "btcb"
+              },
+              {
+                "amount": "100000000000000",
+                "denom": "usdx"
+              },
+              {
+                "amount": "100000000000000",
+                "denom": "hard"
               },
               {
                 "amount": "1000000000000",
@@ -306,16 +388,33 @@
             "denom": "btcb",
             "coin_id": "0",
             "supply_limit": {
-              "limit": "100000000000",
+              "limit": "10000000000",
               "time_limited": false,
               "time_period": "0",
               "time_based_limit": "0"
             },
             "active": true,
             "deputy_address": "kava1kla4wl0ccv7u85cemvs3y987hqk0afcv7vue84",
-            "fixed_fee": "1000",
-            "min_swap_amount": "1",
-            "max_swap_amount": "100000000000",
+            "fixed_fee": "2",
+            "min_swap_amount": "3",
+            "max_swap_amount": "1000000000",
+            "min_block_lock": "220",
+            "max_block_lock": "270"
+          },
+          {
+            "denom": "xrpb",
+            "coin_id": "144",
+            "supply_limit": {
+              "limit": "100000000000000",
+              "time_limited": false,
+              "time_period": "0",
+              "time_based_limit": "0"
+            },
+            "active": true,
+            "deputy_address": "kava14q5sawxdxtpap5x5sgzj7v4sp3ucncjlpuk3hs",
+            "fixed_fee": "200000",
+            "min_swap_amount": "200001",
+            "max_swap_amount": "10000000000000",
             "min_block_lock": "220",
             "max_block_lock": "270"
           },
@@ -331,8 +430,25 @@
             "active": true,
             "deputy_address": "kava1tfvn5t8qwngqd2q427za2mel48pcus3z9u73fl",
             "fixed_fee": "1000",
-            "min_swap_amount": "1",
+            "min_swap_amount": "1001",
             "max_swap_amount": "100000000000",
+            "min_block_lock": "220",
+            "max_block_lock": "270"
+          },
+          {
+            "denom": "busd",
+            "coin_id": "727",
+            "supply_limit": {
+              "limit": "10000000000000",
+              "time_limited": false,
+              "time_period": "0",
+              "time_based_limit": "0"
+            },
+            "active": true,
+            "deputy_address": "kava1j9je7f6s0v6k7dmgv6u5k5ru202f5ffsc7af04",
+            "fixed_fee": "200000",
+            "min_swap_amount": "200001",
+            "max_swap_amount": "1000000000000",
             "min_block_lock": "220",
             "max_block_lock": "270"
           }
@@ -795,7 +911,7 @@
           {
             "active": true,
             "deposit_denom": "bnb",
-            "start": "2020-09-22T14:00:00Z",
+            "start": "2020-09-29T16:55:00Z",
             "end": "2020-11-22T14:00:00Z",
             "rewards_per_second": {
               "denom": "hard",
@@ -823,7 +939,7 @@
           {
             "active": true,
             "deposit_denom": "xrpb",
-            "start": "2020-09-22T14:00:00Z",
+            "start": "2020-09-29T16:55:00Z",
             "end": "2020-11-22T14:00:00Z",
             "rewards_per_second": {
               "denom": "hard",
@@ -851,7 +967,7 @@
           {
             "active": true,
             "deposit_denom": "btcb",
-            "start": "2020-09-22T14:00:00Z",
+            "start": "2020-09-29T16:55:00Z",
             "end": "2020-11-22T14:00:00Z",
             "rewards_per_second": {
               "denom": "hard",
@@ -879,7 +995,7 @@
           {
             "active": true,
             "deposit_denom": "usdx",
-            "start": "2020-09-22T14:00:00Z",
+            "start": "2020-09-29T16:55:00Z",
             "end": "2020-11-22T14:00:00Z",
             "rewards_per_second": {
               "denom": "hard",
@@ -907,7 +1023,7 @@
           {
             "active": true,
             "deposit_denom": "hard",
-            "start": "2020-09-22T14:00:00Z",
+            "start": "2020-09-29T16:55:00Z",
             "end": "2020-11-22T14:00:00Z",
             "rewards_per_second": {
               "denom": "hard",
@@ -935,7 +1051,7 @@
           {
             "active": true,
             "deposit_denom": "ukava",
-            "start": "2020-09-22T14:00:00Z",
+            "start": "2020-09-29T16:55:00Z",
             "end": "2020-11-22T14:00:00Z",
             "rewards_per_second": {
               "denom": "hard",
@@ -962,11 +1078,11 @@
           },
           {
             "active": true,
-            "deposit_denom": "ukava",
-            "start": "2020-09-22T14:00:00Z",
+            "deposit_denom": "busd",
+            "start": "2020-09-29T16:55:00Z",
             "end": "2020-11-22T14:00:00Z",
             "rewards_per_second": {
-              "denom": "busd",
+              "denom": "hard",
               "amount": "50"
             },
             "claim_end": "2021-11-22T14:00:00Z",
@@ -994,7 +1110,7 @@
             "distribution_schedule": {
               "active": true,
               "deposit_denom": "ukava",
-              "start": "2020-09-22T14:00:00Z",
+              "start": "2020-09-29T17:20:00Z",
               "end": "2025-10-08T14:00:00Z",
               "rewards_per_second": {
                 "denom": "hard",
@@ -1019,7 +1135,7 @@
                 }
               ]
             },
-            "distribution_frequency": "86400000000000"
+            "distribution_frequency": "60000000000"
           }
         ]
       },
@@ -1291,5 +1407,5 @@
       ]
     }
   },
-  "genesis_time": "2020-08-22T14:00:00Z"
+  "genesis_time": "2020-09-29T16:44:00Z"
 }
