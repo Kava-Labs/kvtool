@@ -1,0 +1,3 @@
+kvcli config keyring-backend test
+kvcli config trust-node true
+kvcli config chian-id kava-localnet
