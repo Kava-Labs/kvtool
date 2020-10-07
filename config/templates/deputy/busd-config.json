@@ -1,13 +1,13 @@
 {
   "db_config": {
     "dialect": "sqlite3",
-    "db_path": "./deputy.db",
-    "max_bnb_kept_block_height": 7200000,
+    "db_path": "/deputy/deputy_busd.db",
+    "max_bnb_kept_block_height": 200000,
     "max_other_kept_block_height": 200000
   },
   "alert_config": {
-    "telegram_bot_id": "your_bot_id",
-    "telegram_chat_id": "your_chat_id",
+    "telegram_bot_id": "",
+    "telegram_chat_id": "",
     "bnb_block_update_time_out": 60,
     "other_chain_block_update_time_out": 600,
     "reconciliation_diff_amount": "10"
@@ -20,28 +20,27 @@
     "bnb_min_accept_expire_height_span": 10000,
     "bnb_min_remain_height": 1000,
     "bnb_min_swap_amount": 0,
-    "bnb_max_swap_amount": 100000000000,
-    "bnb_max_deputy_out_amount": 100000000000,
+    "bnb_max_swap_amount": 1000000000000,
+    "bnb_max_deputy_out_amount": 1000000000000,
     "bnb_ratio": "1",
-    "bnb_fixed_fee": 1000,
+    "bnb_fixed_fee": 200000,
     "bnb_start_height": 1,
-    "bnb_hot_wallet_overflow": 99999999999999,
-
+    "bnb_hot_wallet_overflow": 10000000000000,
     "other_chain": "KAVA",
     "other_chain_confirm_num": 2,
     "other_chain_decimal": 8,
-    "other_chain_expire_height_span": 250,
+    "other_chain_expire_height_span": 220,
     "other_chain_auto_retry_num": 3,
     "other_chain_auto_retry_timeout": 1200,
-    "other_chain_min_accept_expire_height_span": 100,
-    "other_chain_min_remain_height": 10,
-    "other_chain_min_swap_amount": 0,
-    "other_chain_max_swap_amount": 100000000000,
-    "other_chain_max_deputy_out_amount": 100000000000,
+    "other_chain_min_accept_expire_height_span": 200,
+    "other_chain_min_remain_height": 200,
+    "other_chain_min_swap_amount": 1,
+    "other_chain_max_swap_amount": 1000000000000,
+    "other_chain_max_deputy_out_amount": 1000000000000,
     "other_chain_ratio": "1",
-    "other_chain_fixed_fee": 1000,
+    "other_chain_fixed_fee": 200000,
     "other_chain_start_height": 1,
-    "other_chain_hot_wallet_overflow": 99999999999999
+    "other_chain_hot_wallet_overflow": 10000000000000
   },
   "log_config": {
     "level": "INFO",
@@ -54,7 +53,7 @@
     "compress": false
   },
   "admin_config": {
-    "listen_addr": "127.0.0.1:8080"
+    "listen_addr": "127.0.0.1:8081"
   },
   "instrumentation_config": {
     "prometheus": true,
@@ -64,11 +63,11 @@
     "key_type": "mnemonic",
     "aws_region": "",
     "aws_secret_name": "",
-    "mnemonic": "almost design doctor exist destroy candy zebra insane client grocery govern idea library degree two rebuild coffee hat scene deal average fresh measure potato",
+    "mnemonic": "bachelor also save receive tennis equal sign frog purse elevator gesture elegant legend drastic sorry sing consider project decrease critic thought screen detect honey",
     "rpc_addr": "http://bnbnode:26657",
-    "symbol": "BNB",
-    "deputy_addr": "bnb1zfa5vmsme2v3ttvqecfleeh2xtz5zghh49hfqe",
-    "cold_wallet_addr": "bnb1nva9yljftdf6m2dwhufk5kzg204jg060sw0fv2",
+    "symbol": "BUSD-BD1",
+    "deputy_addr": "bnb1j20j0e62n2l9sefxnu596a6jyn5x29lk2syd5j",
+    "cold_wallet_addr": "bnb1q8d7pl0546qa08cc4ptatmfzwfs47ztlsgsfqz",
     "fetch_interval": 2,
     "token_balance_alert_threshold": 10000,
     "bnb_balance_alert_threshold": 10000
@@ -77,11 +76,11 @@
     "key_type": "mnemonic",
     "aws_region": "",
     "aws_secret_name": "",
-    "mnemonic": "curtain camp spoil tiny vehicle pottery deer corn truly banner salmon lift yard throw open move state lamp van sign glow glue shrug faith",
+    "mnemonic": "grab charge flame lamp genuine accuse truth orange split can faith spoon twist romance input raccoon tissue slice hire sauce hope fork primary unlock",
     "rpc_addr": "tcp://kavanode:26657",
-    "symbol": "bnb",
-    "deputy_addr": "kava1agcvt07tcw0tglu0hmwdecsnuxp2yd45f3avgm",
-    "cold_wallet_addr": "kava1g33w0mh4mjllhaj3y4dcwkwquxgwrma9ga5t94",
+    "symbol": "busd",
+    "deputy_addr": "kava1j9je7f6s0v6k7dmgv6u5k5ru202f5ffsc7af04",
+    "cold_wallet_addr": "kava1ektgdyy0z23qqnd67ns3qvfzgfgjd5xe82lf5c",
     "fetch_interval": 2,
     "token_balance_alert_threshold": 10000,
     "kava_balance_alert_threshold": 10000
