@@ -8,7 +8,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/genutil"
 	"github.com/spf13/cobra"
 	"github.com/tendermint/tendermint/consensus/types"
-	"github.com/tendermint/tendermint/rpc/client"
+	"github.com/tendermint/tendermint/rpc/client/http"
 )
 
 const fingerPrintLength = 12
@@ -25,7 +25,7 @@ func LaunchBlameCmd(cdc *codec.Codec) *cobra.Command {
 		RunE: func(_ *cobra.Command, args []string) error {
 
 			// 1) Load the genesis file
-			c, err := client.NewHTTP(nodeAddress, "/websocket")
+			c, err := http.New(nodeAddress, "/websocket")
 			if err != nil {
 				return fmt.Errorf("can't connect to node: %w", err)
 			}
