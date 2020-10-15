@@ -68,7 +68,7 @@ func LaunchBlameCmd(cdc *codec.Codec) *cobra.Command {
 
 			// 4) return non-signing validator monikers
 
-			nonVoters := []string{}
+			output := displayData{}
 			for addr, moniker := range addrMonikers {
 				if len(addr) < fingerPrintLength {
 					panic("address too short")
@@ -80,12 +80,14 @@ func LaunchBlameCmd(cdc *codec.Codec) *cobra.Command {
 						break
 					}
 				}
-				if !found {
-					nonVoters = append(nonVoters, moniker)
+				if found {
+					output.Online = append(output.Online, moniker)
+				} else {
+					output.Offline = append(output.Offline, moniker)
 				}
 			}
 
-			bz, err := cdc.MarshalJSONIndent(nonVoters, "", "  ")
+			bz, err := cdc.MarshalJSONIndent(output, "", "  ")
 			if err != nil {
 				panic(err)
 			}
@@ -106,6 +108,11 @@ type roundVotes struct {
 	PrevotesBitArray   string   `json:"prevotes_bit_array"`
 	Precommits         []string `json:"precommits"`
 	PrecommitsBitArray string   `json:"precommits_bit_array"`
+}
+
+type displayData struct {
+	Offline []string `json:"offline" yaml:"offline"`
+	Online  []string `json:"online" yaml:"online"`
 }
 
 func fetchValidators(cdc *codec.Codec, client *http.HTTP) (map[string]string, error) {
