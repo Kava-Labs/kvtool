@@ -8,7 +8,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/genutil"
 	"github.com/spf13/cobra"
 	"github.com/tendermint/tendermint/consensus/types"
-	"github.com/tendermint/tendermint/rpc/client"
+	"github.com/tendermint/tendermint/rpc/client/http"
 )
 
 const fingerPrintLength = 12
@@ -24,29 +24,14 @@ func LaunchBlameCmd(cdc *codec.Codec) *cobra.Command {
 		Args:  cobra.NoArgs,
 		RunE: func(_ *cobra.Command, args []string) error {
 
-			// 1) Load the genesis file
-			c, err := client.NewHTTP(nodeAddress, "/websocket")
+			c, err := http.New(nodeAddress, "/websocket")
 			if err != nil {
 				return fmt.Errorf("can't connect to node: %w", err)
 			}
-			genResponse, err := c.Genesis()
+			// 1) Load the validator monikers and consensus addresses
+			addrMonikers, err := fetchValidators(cdc, c)
 			if err != nil {
-				return fmt.Errorf("can't get genesis file from node: %w", err)
-			}
-			var genAppState genutil.AppMap
-			if err := cdc.UnmarshalJSON(genResponse.Genesis.AppState, &genAppState); err != nil {
-				return fmt.Errorf("can't unmarshal genesis app state: %w", err)
-			}
-
-			// 2) Create the map from hex addresses to monikers
-
-			// Use genutil.GenTxs, unless it's empty then use staking.Validators
-			addrMonikers, err := getAddressMonikersFromGenTxs(cdc, genAppState["genutil"])
-			if err != nil {
-				addrMonikers, err = getAddressMonikersFromStaking(cdc, genAppState["staking"])
-				if err != nil {
-					return err
-				}
+				return fmt.Errorf("could not fetch validator monikers: %w", err)
 			}
 
 			// 3) Fetch signing validators from the node
@@ -121,4 +106,40 @@ type roundVotes struct {
 	PrevotesBitArray   string   `json:"prevotes_bit_array"`
 	Precommits         []string `json:"precommits"`
 	PrecommitsBitArray string   `json:"precommits_bit_array"`
+}
+
+func fetchValidators(cdc *codec.Codec, client *http.HTTP) (map[string]string, error) {
+	genAppState, err := fetchGenesisState(cdc, client)
+	if err != nil {
+		return nil, err
+	}
+	validators, err := extractValidatorsFromGenesis(cdc, genAppState)
+	if err != nil {
+		return nil, err
+	}
+	return validators, nil
+}
+
+func fetchGenesisState(cdc *codec.Codec, client *http.HTTP) (genutil.AppMap, error) {
+	genResponse, err := client.Genesis()
+	if err != nil {
+		return nil, fmt.Errorf("can't get genesis file from node: %w", err)
+	}
+	var genAppState genutil.AppMap
+	if err := cdc.UnmarshalJSON(genResponse.Genesis.AppState, &genAppState); err != nil {
+		return nil, fmt.Errorf("can't unmarshal genesis app state: %w", err)
+	}
+	return genAppState, nil
+}
+
+func extractValidatorsFromGenesis(cdc *codec.Codec, genAppState genutil.AppMap) (map[string]string, error) {
+	// Use genutil.GenTxs, unless it's empty then use staking.Validators
+	validators, err := getAddressMonikersFromGenTxs(cdc, genAppState["genutil"])
+	if err != nil {
+		validators, err = getAddressMonikersFromStaking(cdc, genAppState["staking"])
+		if err != nil {
+			return nil, err
+		}
+	}
+	return validators, nil
 }
