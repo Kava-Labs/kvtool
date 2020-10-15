@@ -29,7 +29,7 @@ func LaunchBlameCmd(cdc *codec.Codec) *cobra.Command {
 				return fmt.Errorf("can't connect to node: %w", err)
 			}
 			// 1) Load the validator monikers and consensus addresses
-			addrMonikers, err := fetchValidators(cdc, c)
+			vals, err := fetchValidators(cdc, c)
 			if err != nil {
 				return fmt.Errorf("could not fetch validator monikers: %w", err)
 			}
@@ -69,21 +69,18 @@ func LaunchBlameCmd(cdc *codec.Codec) *cobra.Command {
 			// 4) return non-signing validator monikers
 
 			output := displayData{}
-			for addr, moniker := range addrMonikers {
-				if len(addr) < fingerPrintLength {
-					panic("address too short")
-				}
+			for _, val := range vals {
 				found := false
 				for _, fp := range valAddrFingerprints {
-					if fp == addr[:fingerPrintLength] {
+					if val.MatchesFingerPrint(fp) {
 						found = true
 						break
 					}
 				}
 				if found {
-					output.Online = append(output.Online, moniker)
+					output.Online = append(output.Online, val)
 				} else {
-					output.Offline = append(output.Offline, moniker)
+					output.Offline = append(output.Offline, val)
 				}
 			}
 
@@ -111,20 +108,64 @@ type roundVotes struct {
 }
 
 type displayData struct {
-	Offline []string `json:"offline" yaml:"offline"`
-	Online  []string `json:"online" yaml:"online"`
+	Offline validators `json:"offline" yaml:"offline"`
+	Online  validators `json:"online" yaml:"online"`
 }
 
-func fetchValidators(cdc *codec.Codec, client *http.HTTP) (map[string]string, error) {
+type validators []validator
+
+func (vs validators) TotalPower() int64 {
+	var totalPower int64
+	for _, v := range vs {
+		totalPower += v.VotingPower
+	}
+	return totalPower
+}
+
+type validator struct {
+	Moniker     string
+	ConsAddress string
+	VotingPower int64
+}
+
+func (v validator) MatchesFingerPrint(print string) bool {
+	if len(v.ConsAddress) < fingerPrintLength {
+		panic("address too short")
+	}
+	return print == v.ConsAddress[:fingerPrintLength]
+}
+
+func fetchValidators(cdc *codec.Codec, client *http.HTTP) (validators, error) {
 	genAppState, err := fetchGenesisState(cdc, client)
 	if err != nil {
 		return nil, err
 	}
-	validators, err := extractValidatorsFromGenesis(cdc, genAppState)
+	addrMonikers, err := extractAddressMonikersFromGenesis(cdc, genAppState)
 	if err != nil {
 		return nil, err
 	}
-	return validators, nil
+	var startHeight int64 = 1 // endpoint requires height > 0
+	validatorsResult, err := client.Validators(&startHeight, 0, 500)
+	if err != nil {
+		return nil, err
+	}
+	// ensure all validator were fetched
+	if validatorsResult.Count != validatorsResult.Total {
+		panic("did not fetch all validators")
+	}
+	var vals validators
+	for _, v := range validatorsResult.Validators {
+		vals = append(
+			vals,
+			validator{
+				Moniker:     addrMonikers[v.Address.String()],
+				ConsAddress: v.Address.String(),
+				VotingPower: v.VotingPower,
+			},
+		)
+	}
+	// add any extra validators
+	return vals, nil
 }
 
 func fetchGenesisState(cdc *codec.Codec, client *http.HTTP) (genutil.AppMap, error) {
@@ -139,7 +180,7 @@ func fetchGenesisState(cdc *codec.Codec, client *http.HTTP) (genutil.AppMap, err
 	return genAppState, nil
 }
 
-func extractValidatorsFromGenesis(cdc *codec.Codec, genAppState genutil.AppMap) (map[string]string, error) {
+func extractAddressMonikersFromGenesis(cdc *codec.Codec, genAppState genutil.AppMap) (map[string]string, error) {
 	// Use genutil.GenTxs, unless it's empty then use staking.Validators
 	validators, err := getAddressMonikersFromGenTxs(cdc, genAppState["genutil"])
 	if err != nil {
