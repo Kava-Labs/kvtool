@@ -9,6 +9,7 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/tendermint/tendermint/consensus/types"
 	"github.com/tendermint/tendermint/rpc/client/http"
+	tmtypes "github.com/tendermint/tendermint/types"
 )
 
 const fingerPrintLength = 12
@@ -17,6 +18,7 @@ const fingerPrintLength = 12
 // It's useful for running on stalled chain launches to see which validators are not online yet.
 func LaunchBlameCmd(cdc *codec.Codec) *cobra.Command {
 	var nodeAddress string
+	var genesisFile string
 
 	cmd := &cobra.Command{
 		Use:   "launch-blame",
@@ -29,7 +31,23 @@ func LaunchBlameCmd(cdc *codec.Codec) *cobra.Command {
 				return fmt.Errorf("can't connect to node: %w", err)
 			}
 			// 1) Load the validator monikers and consensus addresses
-			vals, err := fetchValidators(cdc, c)
+			var genAppState genutil.AppMap
+			if len(genesisFile) != 0 {
+				genAppState, err = readGenesisState(cdc, genesisFile)
+				if err != nil {
+					return err
+				}
+			} else {
+				genAppState, err = fetchGenesisState(cdc, c)
+				if err != nil {
+					return err
+				}
+			}
+			addrMonikers, err := extractAddressMonikersFromGenesis(cdc, genAppState)
+			if err != nil {
+				return err
+			}
+			vals, err := fetchValidatorPowers(c, addrMonikers)
 			if err != nil {
 				return fmt.Errorf("could not fetch validator monikers: %w", err)
 			}
@@ -83,6 +101,9 @@ func LaunchBlameCmd(cdc *codec.Codec) *cobra.Command {
 					output.Offline = append(output.Offline, val)
 				}
 			}
+			// TODO sort output by validator power, display power as a percentage
+			// TODO add flag to not display small validators
+			// TODO display total online percentage
 
 			bz, err := cdc.MarshalJSONIndent(output, "", "  ")
 			if err != nil {
@@ -95,6 +116,7 @@ func LaunchBlameCmd(cdc *codec.Codec) *cobra.Command {
 	}
 
 	cmd.Flags().StringVar(&nodeAddress, "node", "http://localhost:26657", "rpc node address")
+	cmd.Flags().StringVar(&genesisFile, "genesis-file", "", "local genesis file to fetch validator monikers from")
 
 	return cmd
 }
@@ -135,15 +157,7 @@ func (v validator) MatchesFingerPrint(print string) bool {
 	return print == v.ConsAddress[:fingerPrintLength]
 }
 
-func fetchValidators(cdc *codec.Codec, client *http.HTTP) (validators, error) {
-	genAppState, err := fetchGenesisState(cdc, client)
-	if err != nil {
-		return nil, err
-	}
-	addrMonikers, err := extractAddressMonikersFromGenesis(cdc, genAppState)
-	if err != nil {
-		return nil, err
-	}
+func fetchValidatorPowers(client *http.HTTP, addrMonikers map[string]string) (validators, error) {
 	var startHeight int64 = 1 // endpoint requires height > 0
 	validatorsResult, err := client.Validators(&startHeight, 0, 500)
 	if err != nil {
@@ -176,6 +190,18 @@ func fetchGenesisState(cdc *codec.Codec, client *http.HTTP) (genutil.AppMap, err
 	var genAppState genutil.AppMap
 	if err := cdc.UnmarshalJSON(genResponse.Genesis.AppState, &genAppState); err != nil {
 		return nil, fmt.Errorf("can't unmarshal genesis app state: %w", err)
+	}
+	return genAppState, nil
+}
+
+func readGenesisState(cdc *codec.Codec, file string) (genutil.AppMap, error) {
+	genDoc, err := tmtypes.GenesisDocFromFile(file)
+	if err != nil {
+		return nil, fmt.Errorf("failed to read genesis document from file %s: %w", file, err)
+	}
+	var genAppState genutil.AppMap
+	if err := cdc.UnmarshalJSON(genDoc.AppState, &genAppState); err != nil {
+		return nil, fmt.Errorf("couldn't unmarshal genesis state: %w", err)
 	}
 	return genAppState, nil
 }
