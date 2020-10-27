@@ -365,6 +365,18 @@
             "public_key": null,
             "sequence": "0"
           }
+        },
+        {
+          "type": "cosmos-sdk/ModuleAccount",
+          "value": {
+            "address": "kava1eyugkwc74zejgwdwl7mvm7pad4hzdnka4wmdmu",
+            "coins": [],
+            "public_key": "",
+            "account_number": "0",
+            "sequence": "0",
+            "name": "bep3",
+            "permissions": null
+          }
         }
       ],
       "params": {
