@@ -6,7 +6,7 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/codec"
 	"github.com/spf13/cobra"
-	"github.com/tendermint/tendermint/rpc/client"
+	"github.com/tendermint/tendermint/rpc/client/http"
 )
 
 func SubscribeCmd(cdc *codec.Codec) *cobra.Command {
@@ -21,7 +21,7 @@ Use --query "tm.event='Tx'" to listen for all transactions.`,
 		Args: cobra.NoArgs,
 		RunE: func(_ *cobra.Command, args []string) error {
 
-			c, err := client.NewHTTP(nodeAddress, "/websocket")
+			c, err := http.New(nodeAddress, "/websocket")
 			if err != nil {
 				return fmt.Errorf("can't connect to node: %w", err)
 			}
@@ -47,8 +47,6 @@ Use --query "tm.event='Tx'" to listen for all transactions.`,
 
 				// TODO graceful shutdown
 			}
-
-			return nil
 		},
 	}
 
