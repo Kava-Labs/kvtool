@@ -47,7 +47,7 @@ docker exec -it generated_kavanode_1 kvcli tx pricefeed postprice bnb:usd 100 99
 docker exec -it generated_kavanode_1 kvcli tx pricefeed postprice bnb:usd:30 100 99999999999 --from oracle
 ```
 
-Second, recover the user account, get some USDX, and
+Second, recover the user account, get some USDX, and load the Harvest lending module account by depositing some KAVA.
 
 ```bash
 # Recover user account
