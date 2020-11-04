@@ -1308,6 +1308,18 @@
           "market_id": "busd:usd:30",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
           "price": "1.000000000000000000"
+        },
+        {
+          "expiry": "2021-07-20T00:00:00Z",
+          "market_id": "usdx:usd",
+          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
+          "price": "1.000000000000000000"
+        },
+        {
+          "expiry": "2021-07-20T00:00:00Z",
+          "market_id": "kava:usd",
+          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
+          "price": "10.000000000000000000"
         }
       ]
     },
