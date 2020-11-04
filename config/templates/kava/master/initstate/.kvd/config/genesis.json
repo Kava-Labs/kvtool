@@ -56,6 +56,26 @@
         {
           "type": "cosmos-sdk/ModuleAccount",
           "value": {
+            "address": "kava16zr7aqvk473073s6a5jgaxus6hx2vn5laum9s3",
+            "coins": [
+              {
+                "denom": "usdx",
+                "amount": "100000000"
+              }
+            ],
+            "public_key": null,
+            "account_number": "0",
+            "sequence": "0",
+            "name": "harvest",
+            "permissions": [
+              "minter",
+              "burner"
+            ]
+          }
+        },
+        {
+          "type": "cosmos-sdk/ModuleAccount",
+          "value": {
             "address": "kava1e3qvdzau5ww0m43d00gqj0ncgy8j03ndge6c2c",
             "coins": [
               {
@@ -1029,6 +1049,32 @@
             },
             "start": "2020-10-07T14:00:00Z"
           }
+        ],
+        "money_markets": [
+          {
+            "denom": "usdx",
+            "borrow_limit": {
+              "maximum_limit": "10000000000000",
+              "loan_to_value": "0.99"
+            },
+            "spot_market_id": "usdx:bnb"
+          },
+          {
+            "denom": "ukava",
+            "borrow_limit": {
+              "maximum_limit": "100000000000",
+              "loan_to_value": "0.75"
+            },
+            "spot_market_id": "kava:usd"
+          },
+          {
+            "denom": "bnb",
+            "borrow_limit": {
+              "maximum_limit": "100000000000",
+              "loan_to_value": "0.6"
+            },
+            "spot_market_id": "bnb:usd"
+          }
         ]
       },
       "previous_block_time": "1970-01-01T00:00:00Z",
@@ -1189,6 +1235,24 @@
             "active": true,
             "base_asset": "busd",
             "market_id": "busd:usd:30",
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
+            "quote_asset": "usd"
+          },
+          {
+            "active": true,
+            "base_asset": "kava",
+            "market_id": "kava:usd",
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
+            "quote_asset": "usd"
+          },
+          {
+            "active": true,
+            "base_asset": "usdx",
+            "market_id": "usdx:usd",
             "oracles": [
               "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
             ],
