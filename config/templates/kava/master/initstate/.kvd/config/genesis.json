@@ -1055,17 +1055,19 @@
             "denom": "usdx",
             "borrow_limit": {
               "maximum_limit": "10000000000000",
-              "loan_to_value": "0.99"
+              "loan_to_value": "0.80"
             },
-            "spot_market_id": "usdx:bnb"
+            "spot_market_id": "usdx:usd",
+            "conversion_factor": "1000000"
           },
           {
             "denom": "ukava",
             "borrow_limit": {
               "maximum_limit": "100000000000",
-              "loan_to_value": "0.75"
+              "loan_to_value": "0.80"
             },
-            "spot_market_id": "kava:usd"
+            "spot_market_id": "kava:usd",
+            "conversion_factor": "1000000"
           },
           {
             "denom": "bnb",
@@ -1073,7 +1075,8 @@
               "maximum_limit": "100000000000",
               "loan_to_value": "0.6"
             },
-            "spot_market_id": "bnb:usd"
+            "spot_market_id": "bnb:usd",
+            "conversion_factor": "100000000"
           }
         ]
       },
@@ -1319,7 +1322,7 @@
           "expiry": "2021-07-20T00:00:00Z",
           "market_id": "kava:usd",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "price": "10.000000000000000000"
+          "price": "2.000000000000000000"
         }
       ]
     },
