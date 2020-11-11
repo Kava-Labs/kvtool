@@ -8,7 +8,7 @@ Assorted dev tools for working with the kava blockchain.
 make install
 ```
 
-## Running: kvtool testnet
+## Initialization: kvtool testnet
 
 The `kvtool testnet` command starts a local Kava blockchain, local Binance Chain blockchain, and deploys a deputy that relays swaps between the two.
 
@@ -23,7 +23,7 @@ cd ./full_configs/generated && docker-compose pull
 kvtool testnet up
 ```
 
-## Interaction: kvtool testnet
+## Usage: kvtool testnet
 
 REST APIs for both blockchains are exposed on localhost:
 - Kava: http://localhost:1317
