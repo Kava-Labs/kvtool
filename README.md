@@ -45,8 +45,6 @@ You can test the set up and alias by executing a sample query:
 dkvcli q cdp params
 ```
 
-## Set up: kvtool testnet chain state
-
 To send transactions you'll need to recover a user account in the dockerized environment. Valid mnemonics for the blockchains be found in the `config/common/addresses.yaml` file.
 
 ```bash
