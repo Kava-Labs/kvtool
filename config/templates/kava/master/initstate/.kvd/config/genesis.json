@@ -1054,29 +1054,50 @@
           {
             "denom": "usdx",
             "borrow_limit": {
-              "maximum_limit": "10000000000000",
+              "has_max_limit": true,
+              "maximum_limit": "20000000",
               "loan_to_value": "0.80"
             },
             "spot_market_id": "usdx:usd",
-            "conversion_factor": "1000000"
+            "conversion_factor": "1000000",
+            "interest_rate_model": {
+              "base_rate_apy": "0.05",
+              "base_multiplier": "2",
+              "kink": "0.85",
+              "jump_multiplier": "10"
+            }
           },
           {
             "denom": "ukava",
             "borrow_limit": {
+              "has_max_limit": false,
               "maximum_limit": "100000000000",
               "loan_to_value": "0.80"
             },
             "spot_market_id": "kava:usd",
-            "conversion_factor": "1000000"
+            "conversion_factor": "1000000",
+            "interest_rate_model": {
+              "base_rate_apy": "0.05",
+              "base_multiplier": "2",
+              "kink": "0.85",
+              "jump_multiplier": "10"
+            }
           },
           {
             "denom": "bnb",
             "borrow_limit": {
+              "has_max_limit": false,
               "maximum_limit": "100000000000",
               "loan_to_value": "0.6"
             },
             "spot_market_id": "bnb:usd",
-            "conversion_factor": "100000000"
+            "conversion_factor": "100000000",
+            "interest_rate_model": {
+              "base_rate_apy": "0.05",
+              "base_multiplier": "2",
+              "kink": "0.85",
+              "jump_multiplier": "10"
+            }
           }
         ]
       },
