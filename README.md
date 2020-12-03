@@ -16,6 +16,9 @@ The `kvtool testnet` command starts a local Kava blockchain, local Binance Chain
 # Generate a new kvtool configuration based off template files
 kvtool testnet gen-config kava binance deputy --kava.configTemplate master
 
+# To run a stand-alone kava node with the latest mainnet version:
+kvtool testnet gen-config kava --kava.configTemplate v0.12
+
 # Pull latest docker images. Docker must be running.
 cd ./full_configs/generated && docker-compose pull
 
@@ -36,12 +39,13 @@ You can also interact with the blockchain using the kvcli command line. In a new
 alias dkvcli='docker exec -it generated_kavanode_1 kvcli'
 
 # Confirm that the alias has been added
-alias
+alias dkvcli
 ```
 
 You can test the set up and alias by executing a sample query:
 
 ```bash
+dkvcli status
 dkvcli q cdp params
 ```
 
