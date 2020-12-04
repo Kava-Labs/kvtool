@@ -137,6 +137,39 @@ available services: %s
 	}
 	rootCmd.AddCommand(downCmd)
 
+	bootstrapCmd := &cobra.Command{
+		Use:     "bootstrap",
+		Short:   "A convenience command that creates a kava testnet with the input configTemplate (defaults to master)",
+		Example: "bootstrap --kava.configTemplate v0.12",
+		Args:    cobra.NoArgs,
+		RunE: func(_ *cobra.Command, _ []string) error {
+			cmd := exec.Command("docker-compose", "--file", filepath.Join(generatedConfigDir, "docker-compose.yaml"), "down")
+			cmd.Stdout = os.Stdout
+			cmd.Stderr = os.Stderr
+			if err := cmd.Run(); err != nil {
+				return err
+			}
+			if err := generate.GenerateKavaConfig(kavaConfigTemplate, generatedConfigDir); err != nil {
+				return err
+			}
+			cmd = exec.Command("docker-compose", "--file", filepath.Join(generatedConfigDir, "docker-compose.yaml"), "pull")
+			cmd.Stdout = os.Stdout
+			cmd.Stderr = os.Stderr
+			if err := cmd.Run(); err != nil {
+				return err
+			}
+
+			upCmd := []string{"docker-compose", "--file", filepath.Join(generatedConfigDir, "docker-compose.yaml"), "up", "-d"}
+			fmt.Println("running:", strings.Join(upCmd, " "))
+			if err := replaceCurrentProcess(upCmd...); err != nil {
+				return fmt.Errorf("could not run command: %v", err)
+			}
+			return nil
+		},
+	}
+	bootstrapCmd.Flags().StringVar(&kavaConfigTemplate, "kava.configTemplate", "v0.10", "the directory name of the template used to generating the kava config")
+	rootCmd.AddCommand(bootstrapCmd)
+
 	return rootCmd
 }
 
