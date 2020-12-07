@@ -10,19 +10,25 @@ make install
 
 ## Initialization: kvtool testnet
 
-The `kvtool testnet` command starts a local Kava blockchain, local Binance Chain blockchain, and deploys a deputy that relays swaps between the two.
+The `kvtool testnet bootstrap` command starts a local Kava blockchain as a background docker container called `generated_kavanode_1`
 
 ```bash
+
+# Start new testnet
+kvtool testnet bootstrap --kava.configTemplate v0.12
+```
+
+To generate a testnet for kava, binance chain, and a deputy that relays swaps between them:
+
+```bash
+
 # Generate a new kvtool configuration based off template files
 kvtool testnet gen-config kava binance deputy --kava.configTemplate master
-
-# To run a stand-alone kava node with the latest mainnet version:
-kvtool testnet gen-config kava --kava.configTemplate v0.12
 
 # Pull latest docker images. Docker must be running.
 cd ./full_configs/generated && docker-compose pull
 
-# Start testnet
+# start the testnet
 kvtool testnet up
 ```
 
