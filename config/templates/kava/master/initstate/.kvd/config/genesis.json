@@ -1066,7 +1066,9 @@
               "kink": "0.85",
               "jump_multiplier": "10"
             },
-            "reserve_factor": "0.1"
+            "reserve_factor": "0.1",
+            "auction_size": "1000000000000",
+            "keeper_reward_percentage": "0.05"
           },
           {
             "denom": "ukava",
@@ -1083,7 +1085,9 @@
               "kink": "0.85",
               "jump_multiplier": "10"
             },
-            "reserve_factor": "0.1"
+            "reserve_factor": "0.1",
+            "auction_size": "1000000000000",
+            "keeper_reward_percentage": "0.05"
           },
           {
             "denom": "bnb",
@@ -1100,10 +1104,13 @@
               "kink": "0.99",
               "jump_multiplier": "10"
             },
-            "reserve_factor": "0.99"
+            "reserve_factor": "0.99",
+            "auction_size": "100000000000000",
+            "keeper_reward_percentage": "0.05"
           }
         ]
       },
+      "check_ltv_index_count": 0,
       "previous_block_time": "1970-01-01T00:00:00Z",
       "previous_distribution_times": []
     },
