@@ -10,13 +10,17 @@ make install
 
 ## Initialization: kvtool testnet
 
-The `kvtool testnet bootstrap` command starts a local Kava blockchain as a background docker container called `generated_kavanode_1`
+Option 1:
+
+The `kvtool testnet bootstrap` command starts a local Kava blockchain as a background docker container called `generated_kavanode_1`. The bootstrap command only starts the Kava blockchain and Kava REST server services.
 
 ```bash
 
 # Start new testnet
-kvtool testnet bootstrap --kava.configTemplate v0.12
+kvtool testnet bootstrap --kava.configTemplate master
 ```
+
+Option 2:
 
 To generate a testnet for kava, binance chain, and a deputy that relays swaps between them:
 
@@ -30,11 +34,15 @@ cd ./full_configs/generated && docker-compose pull
 
 # start the testnet
 kvtool testnet up
+
+# When finished with usage, shut down the processes
+kvtool testnet down
 ```
 
 ## Usage: kvtool testnet
 
 REST APIs for both blockchains are exposed on localhost:
+
 - Kava: http://localhost:1317
 - Binance Chain: http://localhost:8080
 
@@ -65,6 +73,7 @@ arrive guide way exit polar print kitchen hair series custom siege afraid shrug 
 ```
 
 Test transaction sending by transferring some coins to yourself.
+
 ```bash
 # Query the recovered account's address
 dkvcli keys show user -a
