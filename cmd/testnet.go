@@ -104,7 +104,7 @@ available services: %s
 			return nil
 		},
 	}
-	genConfigCmd.Flags().StringVar(&kavaConfigTemplate, "kava.configTemplate", "v0.10", "the directory name of the template used to generating the kava config")
+	genConfigCmd.Flags().StringVar(&kavaConfigTemplate, "kava.configTemplate", "master", "the directory name of the template used to generating the kava config")
 	rootCmd.AddCommand(genConfigCmd)
 
 	upCmd := &cobra.Command{
@@ -170,7 +170,7 @@ available services: %s
 			return nil
 		},
 	}
-	bootstrapCmd.Flags().StringVar(&kavaConfigTemplate, "kava.configTemplate", "v0.10", "the directory name of the template used to generating the kava config")
+	bootstrapCmd.Flags().StringVar(&kavaConfigTemplate, "kava.configTemplate", "master", "the directory name of the template used to generating the kava config")
 	rootCmd.AddCommand(bootstrapCmd)
 
 	return rootCmd
