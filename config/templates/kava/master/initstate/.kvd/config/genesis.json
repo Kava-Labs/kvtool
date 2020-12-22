@@ -924,7 +924,7 @@
         }
       ]
     },
-    "harvest": {
+    "hard": {
       "params": {
         "active": true,
         "delegator_distribution_schedules": [
