@@ -26,6 +26,7 @@ var (
 	supportedServices = []string{kavaServiceName, binanceServiceName, deputyServiceName}
 )
 
+// TestnetCmd cli command for starting kava testnets with docker
 func TestnetCmd() *cobra.Command {
 
 	var generatedConfigDir string
@@ -159,7 +160,7 @@ available services: %s
 			cmd.Stdout = os.Stdout
 			cmd.Stderr = os.Stderr
 			if err := cmd.Run(); err != nil {
-				return err
+				fmt.Println(err.Error())
 			}
 
 			upCmd := []string{"docker-compose", "--file", filepath.Join(generatedConfigDir, "docker-compose.yaml"), "up", "-d"}
@@ -176,6 +177,7 @@ available services: %s
 	return rootCmd
 }
 
+// Minimum1ValidArgs checks if the input command has valid args
 func Minimum1ValidArgs(cmd *cobra.Command, args []string) error {
 	if len(args) < 1 {
 		return errors.New("must specify at least one argument")

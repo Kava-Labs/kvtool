@@ -36,7 +36,7 @@
         {
           "type": "cosmos-sdk/ModuleAccount",
           "value": {
-            "address": "kava1nzenvfcapyjr9qe3cr3c5k2aucssg6wnknlvll",
+            "address": "kava109zdedfhul6sq22dz2vdc4t7axdmkz6l636wjn",
             "coins": [
               {
                 "denom": "hard",
@@ -46,7 +46,7 @@
             "public_key": null,
             "account_number": "0",
             "sequence": "0",
-            "name": "harvest_lp_distribution",
+            "name": "hard_lp_distribution",
             "permissions": [
               "minter",
               "burner"
@@ -56,37 +56,37 @@
         {
           "type": "cosmos-sdk/ModuleAccount",
           "value": {
-            "address": "kava16zr7aqvk473073s6a5jgaxus6hx2vn5laum9s3",
+            "address": "kava1ahkcwd3pgdhve7vx0q0d6we6ds7ywdczl7hdsw",
+            "coins": [
+              {
+                "denom": "hard",
+                "amount": "1000000000000"
+              }
+            ],
+            "public_key": null,
+            "account_number": "0",
+            "sequence": "0",
+            "name": "hard_delegator_distribution",
+            "permissions": [
+              "minter",
+              "burner"
+            ]
+          }
+        },
+        {
+          "type": "cosmos-sdk/ModuleAccount",
+          "value": {
+            "address": "kava1a42xtwfzphuuu9mdp0es6633wu5mm8fhm789v3",
             "coins": [
               {
                 "denom": "usdx",
-                "amount": "100000000"
+                "amount": "1000000000"
               }
             ],
             "public_key": null,
             "account_number": "0",
             "sequence": "0",
-            "name": "harvest",
-            "permissions": [
-              "minter",
-              "burner"
-            ]
-          }
-        },
-        {
-          "type": "cosmos-sdk/ModuleAccount",
-          "value": {
-            "address": "kava1e3qvdzau5ww0m43d00gqj0ncgy8j03ndge6c2c",
-            "coins": [
-              {
-                "denom": "hard",
-                "amount": "1000000000000"
-              }
-            ],
-            "public_key": null,
-            "account_number": "0",
-            "sequence": "0",
-            "name": "harvest_delegator_distribution",
+            "name": "hard",
             "permissions": [
               "minter",
               "burner"
@@ -1061,12 +1061,12 @@
             "spot_market_id": "usdx:usd",
             "conversion_factor": "1000000",
             "interest_rate_model": {
-              "base_rate_apy": "0.05",
-              "base_multiplier": "2",
-              "kink": "0.85",
-              "jump_multiplier": "10"
+              "base_rate_apy": "0.0",
+              "base_multiplier": "0.1",
+              "kink": "0.8",
+              "jump_multiplier": "0.5"
             },
-            "reserve_factor": "0.1",
+            "reserve_factor": "0.0",
             "auction_size": "1000000000000",
             "keeper_reward_percentage": "0.05"
           },
