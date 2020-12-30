@@ -1061,7 +1061,7 @@
             "spot_market_id": "usdx:usd",
             "conversion_factor": "1000000",
             "interest_rate_model": {
-              "base_rate_apy": "0.0",
+              "base_rate_apy": "0.05",
               "base_multiplier": "0.1",
               "kink": "0.8",
               "jump_multiplier": "0.5"
