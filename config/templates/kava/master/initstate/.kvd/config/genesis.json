@@ -1108,9 +1108,9 @@
             "auction_size": "100000000000000",
             "keeper_reward_percentage": "0.05"
           }
-        ]
+        ],
+        "check_ltv_index_count": "10"
       },
-      "check_ltv_index_count": 0,
       "previous_block_time": "1970-01-01T00:00:00Z",
       "previous_distribution_times": []
     },
