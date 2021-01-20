@@ -10,6 +10,8 @@ make install
 
 ## Initialization: kvtool testnet
 
+Note: The current mainnet version of kava is `v0.12.1`. To start a local testnet with the current mainnet version use `--kava.configTemplate v0.12`
+
 Option 1:
 
 The `kvtool testnet bootstrap` command starts a local Kava blockchain as a background docker container called `generated_kavanode_1`. The bootstrap command only starts the Kava blockchain and Kava REST server services.
