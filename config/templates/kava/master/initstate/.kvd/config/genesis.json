@@ -22,6 +22,10 @@
               {
                 "denom": "ukava",
                 "amount": "1000000000000"
+              },
+              {
+                "denom": "hard",
+                "amount": "1000000000000"
               }
             ],
             "public_key": null,
@@ -971,129 +975,6 @@
     "hard": {
       "params": {
         "active": true,
-        "delegator_distribution_schedules": [
-          {
-            "distribution_frequency": "86400000000000",
-            "distribution_schedule": {
-              "active": true,
-              "claim_end": "2025-10-16T14:00:00Z",
-              "claim_multipliers": [
-                {
-                  "factor": "0.330000000000000000",
-                  "months_lockup": "1",
-                  "name": "small"
-                },
-                {
-                  "factor": "1.000000000000000000",
-                  "months_lockup": "12",
-                  "name": "large"
-                }
-              ],
-              "deposit_denom": "ukava",
-              "end": "2024-10-16T14:00:00Z",
-              "rewards_per_second": {
-                "amount": "1267522",
-                "denom": "hard"
-              },
-              "start": "2020-10-16T14:00:00Z"
-            },
-            "start": "2020-10-07T14:00:00Z"
-          }
-        ],
-        "liquidity_provider_schedules": [
-          {
-            "active": true,
-            "claim_end": "2025-10-16T14:00:00Z",
-            "claim_multipliers": [
-              {
-                "factor": "0.330000000000000000",
-                "months_lockup": "1",
-                "name": "small"
-              },
-              {
-                "factor": "1.000000000000000000",
-                "months_lockup": "12",
-                "name": "large"
-              }
-            ],
-            "deposit_denom": "usdx",
-            "end": "2024-10-16T14:00:00Z",
-            "rewards_per_second": {
-              "amount": "310543",
-              "denom": "hard"
-            },
-            "start": "2020-10-07T14:00:00Z"
-          },
-          {
-            "active": true,
-            "claim_end": "2025-10-16T14:00:00Z",
-            "claim_multipliers": [
-              {
-                "factor": "0.330000000000000000",
-                "months_lockup": "1",
-                "name": "small"
-              },
-              {
-                "factor": "1.000000000000000000",
-                "months_lockup": "12",
-                "name": "large"
-              }
-            ],
-            "deposit_denom": "hard",
-            "end": "2024-10-16T14:00:00Z",
-            "rewards_per_second": {
-              "amount": "285193",
-              "denom": "hard"
-            },
-            "start": "2020-10-07T14:00:00Z"
-          },
-          {
-            "active": true,
-            "claim_end": "2025-10-16T14:00:00Z",
-            "claim_multipliers": [
-              {
-                "factor": "0.330000000000000000",
-                "months_lockup": "1",
-                "name": "small"
-              },
-              {
-                "factor": "1.000000000000000000",
-                "months_lockup": "12",
-                "name": "large"
-              }
-            ],
-            "deposit_denom": "bnb",
-            "end": "2024-10-16T14:00:00Z",
-            "rewards_per_second": {
-              "amount": "12675",
-              "denom": "hard"
-            },
-            "start": "2020-10-07T14:00:00Z"
-          },
-          {
-            "active": true,
-            "claim_end": "2025-10-16T14:00:00Z",
-            "claim_multipliers": [
-              {
-                "factor": "0.330000000000000000",
-                "months_lockup": "1",
-                "name": "small"
-              },
-              {
-                "factor": "1.000000000000000000",
-                "months_lockup": "12",
-                "name": "large"
-              }
-            ],
-            "deposit_denom": "ukava",
-            "end": "2024-10-16T14:00:00Z",
-            "rewards_per_second": {
-              "amount": "25350",
-              "denom": "hard"
-            },
-            "start": "2020-10-07T14:00:00Z"
-          }
-        ],
         "money_markets": [
           {
             "denom": "usdx",
@@ -1155,8 +1036,7 @@
         ],
         "check_ltv_index_count": "10"
       },
-      "previous_block_time": "1970-01-01T00:00:00Z",
-      "previous_distribution_times": []
+      "previous_block_time": "1970-01-01T00:00:00Z"
     },
     "gov": {
       "deposit_params": {
@@ -1183,7 +1063,7 @@
     },
     "incentive": {
       "params": {
-        "reward_periods": [
+        "usdx_minting_reward_periods": [
           {
             "active": true,
             "rewards_per_second": {
@@ -1245,19 +1125,55 @@
             "end": "2024-10-16T14:00:00Z"
           }
         ],
-        "claim_end": "2025-10-16T14:00:00Z",
+        "hard_supply_reward_periods": [
+          {
+            "active": true,
+            "collateral_type": "bnb",
+            "start": "2020-01-01T00:00:00Z",
+            "end": "2024-01-01T00:00:00Z",
+            "rewards_per_second": {
+              "amount": "123455",
+              "denom": "hard"
+            }
+          }
+        ],
+        "hard_borrow_reward_periods": [
+          {
+            "active": true,
+            "collateral_type": "bnb",
+            "start": "2020-01-01T00:00:00Z",
+            "end": "2024-01-01T00:00:00Z",
+            "rewards_per_second": {
+              "amount": "123455",
+              "denom": "hard"
+            }
+          }
+        ],
+        "hard_delegator_reward_periods": [
+          {
+            "active": true,
+            "collateral_type": "bnb",
+            "start": "2020-01-01T00:00:00Z",
+            "end": "2024-01-01T00:00:00Z",
+            "rewards_per_second": {
+              "amount": "123455",
+              "denom": "hard"
+            }
+          }
+        ],
         "claim_multipliers": [
           {
             "name": "small",
             "months_lockup": "1",
-            "factor": "0.250000000000000000"
+            "factor": "0.33"
           },
           {
             "name": "large",
             "months_lockup": "12",
-            "factor": "1.000000000000000000"
+            "factor": "1.0"
           }
-        ]
+        ],
+        "claim_end": "2025-01-01T00:00:00Z"
       },
       "previous_accumulation_times": [],
       "usdx_minting_claims": []
