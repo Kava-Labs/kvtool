@@ -40,46 +40,6 @@
         {
           "type": "cosmos-sdk/ModuleAccount",
           "value": {
-            "address": "kava109zdedfhul6sq22dz2vdc4t7axdmkz6l636wjn",
-            "coins": [
-              {
-                "denom": "hard",
-                "amount": "1000000000000"
-              }
-            ],
-            "public_key": null,
-            "account_number": "0",
-            "sequence": "0",
-            "name": "hard_lp_distribution",
-            "permissions": [
-              "minter",
-              "burner"
-            ]
-          }
-        },
-        {
-          "type": "cosmos-sdk/ModuleAccount",
-          "value": {
-            "address": "kava1ahkcwd3pgdhve7vx0q0d6we6ds7ywdczl7hdsw",
-            "coins": [
-              {
-                "denom": "hard",
-                "amount": "1000000000000"
-              }
-            ],
-            "public_key": null,
-            "account_number": "0",
-            "sequence": "0",
-            "name": "hard_delegator_distribution",
-            "permissions": [
-              "minter",
-              "burner"
-            ]
-          }
-        },
-        {
-          "type": "cosmos-sdk/ModuleAccount",
-          "value": {
             "address": "kava1a42xtwfzphuuu9mdp0es6633wu5mm8fhm789v3",
             "coins": [
               {
