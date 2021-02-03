@@ -1091,10 +1091,10 @@
             "collateral_type": "bnb",
             "start": "2020-01-01T00:00:00Z",
             "end": "2024-01-01T00:00:00Z",
-            "rewards_per_second": {
+            "rewards_per_second": [{
               "amount": "123455",
               "denom": "hard"
-            }
+            }]
           }
         ],
         "hard_borrow_reward_periods": [
@@ -1103,10 +1103,10 @@
             "collateral_type": "bnb",
             "start": "2020-01-01T00:00:00Z",
             "end": "2024-01-01T00:00:00Z",
-            "rewards_per_second": {
+            "rewards_per_second": [{
               "amount": "123455",
               "denom": "hard"
-            }
+            }]
           }
         ],
         "hard_delegator_reward_periods": [
