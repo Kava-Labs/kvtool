@@ -1141,6 +1141,12 @@
       "hard_liquidity_provider_claims": [],
       "usdx_minting_claims": []
     },
+    "issuance": {
+      "params": {
+        "assets": []
+      },
+      "supplies": []
+    },
     "kavadist": {
       "params": {
         "active": true,
