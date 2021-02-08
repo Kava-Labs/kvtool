@@ -1,0 +1,1 @@
+{"type":"cosmos-sdk/StdTx","value":{"msg":[{"type":"issuance/MsgIssueTokens","value":{"sender":"kava15mn90s7aca3hfkucqn3mee7lsvm9mmwc5eaymm","tokens":{"denom":"hbtc","amount":"500000000"},"receiver":"kava173w2zz287s36ewnnkf4mjansnthnnsz7rtrxqc"}}],"fee":{"amount":[],"gas":"200000"},"signatures":null,"memo":""}}

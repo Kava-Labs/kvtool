@@ -569,6 +569,25 @@
       "savings_rate_distributed": "0",
       "starting_cdp_id": "1"
     },
+    "issuance": {
+      "params": {
+        "assets": [
+          {
+            "owner": "kava15mn90s7aca3hfkucqn3mee7lsvm9mmwc5eaymm",
+            "denom": "hbtc",
+            "blocked_addresses": [],
+            "paused": false,
+            "blockable": true,
+            "rate_limit": {
+              "active": false,
+              "limit": "0",
+              "time_period": "0"
+            }
+          }
+        ]
+      },
+      "supplies": []
+    },
     "committee": {
       "committees": [
         {
