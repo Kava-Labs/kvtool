@@ -1135,8 +1135,17 @@
         ],
         "claim_end": "2025-01-01T00:00:00Z"
       },
-      "previous_accumulation_times": [],
+      "hard_supply_accumulation_times": [],
+      "hard_borrow_accumulation_times": [],
+      "hard_delegator_accumulation_times": [],
+      "hard_liquidity_provider_claims": [],
       "usdx_minting_claims": []
+    },
+    "issuance": {
+      "params": {
+        "assets": []
+      },
+      "supplies": []
     },
     "kavadist": {
       "params": {
