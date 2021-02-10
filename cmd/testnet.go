@@ -3,11 +3,13 @@ package cmd
 import (
 	"errors"
 	"fmt"
+	"io/ioutil"
 	"os"
 	"os/exec"
 	"path/filepath"
 	"strings"
 	"syscall"
+	"time"
 
 	"github.com/spf13/cobra"
 
@@ -173,6 +175,88 @@ available services: %s
 	}
 	bootstrapCmd.Flags().StringVar(&kavaConfigTemplate, "kava.configTemplate", "master", "the directory name of the template used to generating the kava config")
 	rootCmd.AddCommand(bootstrapCmd)
+
+	exportCmd := &cobra.Command{
+		Use:     "export",
+		Short:   "Pauses the current kava testnet, exports the current kava testnet state to a JSON file, then restarts the testnet.",
+		Example: "export",
+		Args:    cobra.NoArgs,
+		RunE: func(_ *cobra.Command, _ []string) error {
+			cmd := exec.Command("docker-compose", "--file", filepath.Join(generatedConfigDir, "docker-compose.yaml"), "stop")
+			cmd.Stdout = os.Stdout
+			cmd.Stderr = os.Stderr
+
+			err := cmd.Run()
+			if err != nil {
+				return err
+			}
+			// docker ps -aqf "name=containername"
+			containerIDCmd := exec.Command("docker", "ps", "-aqf", "name=generated_kavanode_1")
+			container, err := containerIDCmd.Output()
+			if err != nil {
+				return err
+			}
+
+			makeNewImageCmd := exec.Command("docker", "commit", strings.TrimSpace(string(container)), "kava-export-temp")
+
+			imageOutput, err := makeNewImageCmd.Output()
+			if err != nil {
+				return err
+			}
+			localKvdMountPath := filepath.Join(generatedConfigDir, "kava", "initstate", ".kvd", "config")
+			localKvcliMountPath := filepath.Join(generatedConfigDir, "kava", "initstate", ".kvcli")
+			exportCmd := exec.Command(
+				"docker", "run",
+				"-v", strings.TrimSpace(fmt.Sprintf("%s:/root/.kvd/config", localKvdMountPath)),
+				"-v", strings.TrimSpace(fmt.Sprintf("%s:/root/.kvcli", localKvcliMountPath)),
+				"kava-export-temp",
+				"kvd", "export")
+			exportJSON, err := exportCmd.Output()
+			if err != nil {
+				return err
+			}
+
+			filename := fmt.Sprintf("export-%d.json", time.Now().Unix())
+
+			fmt.Printf("Created export %s\nCleaning up...", filename)
+
+			err = ioutil.WriteFile(filename, exportJSON, 0644)
+			if err != nil {
+				return err
+			}
+
+			// docker ps -aqf "name=containername"
+			tempContainerIDCmd := exec.Command("docker", "ps", "-aqf", "ancestor=kava-export-temp")
+			tempContainer, err := tempContainerIDCmd.Output()
+
+			if err != nil {
+				return err
+			}
+
+			deleteContainerCmd := exec.Command("docker", "rm", strings.TrimSpace(string(tempContainer)))
+			err = deleteContainerCmd.Run()
+			if err != nil {
+				return err
+			}
+
+			deleteImageCdm := exec.Command("docker", "rmi", strings.TrimSpace(string(imageOutput)))
+			err = deleteImageCdm.Run()
+			if err != nil {
+				return err
+			}
+			fmt.Printf("Restarting testnet...")
+			restartCmd := exec.Command("docker-compose", "--file", filepath.Join(generatedConfigDir, "docker-compose.yaml"), "start")
+			restartCmd.Stdout = os.Stdout
+			restartCmd.Stderr = os.Stderr
+
+			err = restartCmd.Run()
+			if err != nil {
+				return err
+			}
+			return nil
+		},
+	}
+	rootCmd.AddCommand(exportCmd)
 
 	return rootCmd
 }
