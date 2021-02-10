@@ -26,6 +26,7 @@ var (
 	supportedServices = []string{kavaServiceName, binanceServiceName, deputyServiceName}
 )
 
+// TestnetCmd cli command for starting kava testnets with docker
 func TestnetCmd() *cobra.Command {
 
 	var generatedConfigDir string
@@ -104,7 +105,7 @@ available services: %s
 			return nil
 		},
 	}
-	genConfigCmd.Flags().StringVar(&kavaConfigTemplate, "kava.configTemplate", "v0.10", "the directory name of the template used to generating the kava config")
+	genConfigCmd.Flags().StringVar(&kavaConfigTemplate, "kava.configTemplate", "master", "the directory name of the template used to generating the kava config")
 	rootCmd.AddCommand(genConfigCmd)
 
 	upCmd := &cobra.Command{
@@ -137,9 +138,46 @@ available services: %s
 	}
 	rootCmd.AddCommand(downCmd)
 
+	bootstrapCmd := &cobra.Command{
+		Use:     "bootstrap",
+		Short:   "A convenience command that creates a kava testnet with the input configTemplate (defaults to master)",
+		Example: "bootstrap --kava.configTemplate v0.12",
+		Args:    cobra.NoArgs,
+		RunE: func(_ *cobra.Command, _ []string) error {
+			cmd := exec.Command("docker-compose", "--file", filepath.Join(generatedConfigDir, "docker-compose.yaml"), "down")
+			cmd.Stdout = os.Stdout
+			cmd.Stderr = os.Stderr
+			// check that dockerfile exists before calling 'docker-compose down down'
+			if _, err := os.Stat(filepath.Join(generatedConfigDir, "docker-compose.yaml")); err == nil {
+				if err2 := cmd.Run(); err2 != nil {
+					return err2
+				}
+			}
+			if err := generate.GenerateKavaConfig(kavaConfigTemplate, generatedConfigDir); err != nil {
+				return err
+			}
+			cmd = exec.Command("docker-compose", "--file", filepath.Join(generatedConfigDir, "docker-compose.yaml"), "pull")
+			cmd.Stdout = os.Stdout
+			cmd.Stderr = os.Stderr
+			if err := cmd.Run(); err != nil {
+				fmt.Println(err.Error())
+			}
+
+			upCmd := []string{"docker-compose", "--file", filepath.Join(generatedConfigDir, "docker-compose.yaml"), "up", "-d"}
+			fmt.Println("running:", strings.Join(upCmd, " "))
+			if err := replaceCurrentProcess(upCmd...); err != nil {
+				return fmt.Errorf("could not run command: %v", err)
+			}
+			return nil
+		},
+	}
+	bootstrapCmd.Flags().StringVar(&kavaConfigTemplate, "kava.configTemplate", "master", "the directory name of the template used to generating the kava config")
+	rootCmd.AddCommand(bootstrapCmd)
+
 	return rootCmd
 }
 
+// Minimum1ValidArgs checks if the input command has valid args
 func Minimum1ValidArgs(cmd *cobra.Command, args []string) error {
 	if len(args) < 1 {
 		return errors.New("must specify at least one argument")

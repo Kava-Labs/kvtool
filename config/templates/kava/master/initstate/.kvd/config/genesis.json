@@ -22,6 +22,10 @@
               {
                 "denom": "ukava",
                 "amount": "1000000000000"
+              },
+              {
+                "denom": "hard",
+                "amount": "1000000000000"
               }
             ],
             "public_key": null,
@@ -36,37 +40,17 @@
         {
           "type": "cosmos-sdk/ModuleAccount",
           "value": {
-            "address": "kava1nzenvfcapyjr9qe3cr3c5k2aucssg6wnknlvll",
+            "address": "kava1a42xtwfzphuuu9mdp0es6633wu5mm8fhm789v3",
             "coins": [
               {
-                "denom": "hard",
-                "amount": "1000000000000"
+                "denom": "usdx",
+                "amount": "1000000000"
               }
             ],
             "public_key": null,
             "account_number": "0",
             "sequence": "0",
-            "name": "harvest_lp_distribution",
-            "permissions": [
-              "minter",
-              "burner"
-            ]
-          }
-        },
-        {
-          "type": "cosmos-sdk/ModuleAccount",
-          "value": {
-            "address": "kava1e3qvdzau5ww0m43d00gqj0ncgy8j03ndge6c2c",
-            "coins": [
-              {
-                "denom": "hard",
-                "amount": "1000000000000"
-              }
-            ],
-            "public_key": null,
-            "account_number": "0",
-            "sequence": "0",
-            "name": "harvest_delegator_distribution",
+            "name": "hard",
             "permissions": [
               "minter",
               "burner"
@@ -474,6 +458,8 @@
             "liquidation_market_id": "bnb:usd:30",
             "liquidation_penalty": "0.050000000000000000",
             "liquidation_ratio": "1.500000000000000000",
+            "keeper_reward_percentage": "0.01",
+            "check_collateralization_index_count": "10",
             "prefix": 1,
             "spot_market_id": "bnb:usd",
             "stability_fee": "1.000000000782997700",
@@ -490,6 +476,8 @@
             "liquidation_market_id": "btc:usd:30",
             "liquidation_penalty": "0.050000000000000000",
             "liquidation_ratio": "1.500000000000000000",
+            "keeper_reward_percentage": "0.01",
+            "check_collateralization_index_count": "10",
             "prefix": 2,
             "spot_market_id": "btc:usd",
             "stability_fee": "1.000000000782997700",
@@ -506,6 +494,8 @@
             "stability_fee": "1.000000001547125958",
             "auction_size": "100000000000",
             "liquidation_penalty": "0.075000000000000000",
+            "keeper_reward_percentage": "0.01",
+            "check_collateralization_index_count": "10",
             "prefix": 5,
             "spot_market_id": "xrp:usd",
             "liquidation_market_id": "xrp:usd:30",
@@ -522,10 +512,48 @@
             "stability_fee": "1.000000000000000000",
             "auction_size": "1000000000000",
             "liquidation_penalty": "0.075000000000000000",
+            "check_collateralization_index_count": "10",
+            "keeper_reward_percentage": "0.01",
             "prefix": 3,
             "spot_market_id": "busd:usd",
             "liquidation_market_id": "busd:usd:30",
             "conversion_factor": "8"
+          },
+          {
+            "auction_size": "50000000000",
+            "conversion_factor": "8",
+            "debt_limit": {
+              "amount": "2000000000000",
+              "denom": "usdx"
+            },
+            "denom": "ukava",
+            "liquidation_market_id": "kava:usd:30",
+            "liquidation_penalty": "0.050000000000000000",
+            "liquidation_ratio": "1.500000000000000000",
+            "keeper_reward_percentage": "0.01",
+            "check_collateralization_index_count": "10",
+            "prefix": 4,
+            "spot_market_id": "kava:usd",
+            "stability_fee": "1.000000000782997700",
+            "type": "ukava-a"
+          },
+          {
+            "auction_size": "50000000000",
+            "conversion_factor": "8",
+            "debt_limit": {
+              "amount": "2000000000000",
+              "denom": "usdx"
+            },
+            "denom": "hard",
+            "liquidation_market_id": "hard:usd:30",
+            "liquidation_penalty": "0.050000000000000000",
+            "liquidation_ratio": "1.500000000000000000",
+            "keeper_reward_percentage": "0.01",
+            "check_collateralization_index_count": "10",
+            "prefix": 6,
+            "spot_market_id": "hard:usd",
+            "stability_fee": "1.000000000782997700",
+            "type": "hard-a"
           }
         ],
         "debt_auction_lot": "10000000000",
@@ -538,7 +566,7 @@
           "savings_rate": "0.950000000000000000"
         },
         "global_debt_limit": {
-          "amount": "7100000000000",
+          "amount": "11100000000000",
           "denom": "usdx"
         },
         "savings_distribution_frequency": "43200000000000",
@@ -904,135 +932,71 @@
         }
       ]
     },
-    "harvest": {
+    "hard": {
       "params": {
         "active": true,
-        "delegator_distribution_schedules": [
+        "money_markets": [
           {
-            "distribution_frequency": "86400000000000",
-            "distribution_schedule": {
-              "active": true,
-              "claim_end": "2025-10-16T14:00:00Z",
-              "claim_multipliers": [
-                {
-                  "factor": "0.330000000000000000",
-                  "months_lockup": "1",
-                  "name": "small"
-                },
-                {
-                  "factor": "1.000000000000000000",
-                  "months_lockup": "12",
-                  "name": "large"
-                }
-              ],
-              "deposit_denom": "ukava",
-              "end": "2024-10-16T14:00:00Z",
-              "rewards_per_second": {
-                "amount": "1267522",
-                "denom": "hard"
-              },
-              "start": "2020-10-16T14:00:00Z"
+            "denom": "usdx",
+            "borrow_limit": {
+              "has_max_limit": false,
+              "maximum_limit": "20000000",
+              "loan_to_value": "0.80"
             },
-            "start": "2020-10-07T14:00:00Z"
+            "spot_market_id": "usdx:usd",
+            "conversion_factor": "1000000",
+            "interest_rate_model": {
+              "base_rate_apy": "0.05",
+              "base_multiplier": "0.1",
+              "kink": "0.8",
+              "jump_multiplier": "0.5"
+            },
+            "reserve_factor": "0.0",
+            "auction_size": "1000000000000",
+            "keeper_reward_percentage": "0.05"
+          },
+          {
+            "denom": "ukava",
+            "borrow_limit": {
+              "has_max_limit": false,
+              "maximum_limit": "100000000000",
+              "loan_to_value": "0.80"
+            },
+            "spot_market_id": "kava:usd",
+            "conversion_factor": "1000000",
+            "interest_rate_model": {
+              "base_rate_apy": "0.05",
+              "base_multiplier": "2",
+              "kink": "0.85",
+              "jump_multiplier": "10"
+            },
+            "reserve_factor": "0.1",
+            "auction_size": "1000000000000",
+            "keeper_reward_percentage": "0.05"
+          },
+          {
+            "denom": "bnb",
+            "borrow_limit": {
+              "has_max_limit": false,
+              "maximum_limit": "100000000000",
+              "loan_to_value": "0.8"
+            },
+            "spot_market_id": "bnb:usd",
+            "conversion_factor": "100000000",
+            "interest_rate_model": {
+              "base_rate_apy": "0.99",
+              "base_multiplier": "2",
+              "kink": "0.99",
+              "jump_multiplier": "10"
+            },
+            "reserve_factor": "0.99",
+            "auction_size": "100000000000000",
+            "keeper_reward_percentage": "0.05"
           }
         ],
-        "liquidity_provider_schedules": [
-          {
-            "active": true,
-            "claim_end": "2025-10-16T14:00:00Z",
-            "claim_multipliers": [
-              {
-                "factor": "0.330000000000000000",
-                "months_lockup": "1",
-                "name": "small"
-              },
-              {
-                "factor": "1.000000000000000000",
-                "months_lockup": "12",
-                "name": "large"
-              }
-            ],
-            "deposit_denom": "usdx",
-            "end": "2024-10-16T14:00:00Z",
-            "rewards_per_second": {
-              "amount": "310543",
-              "denom": "hard"
-            },
-            "start": "2020-10-07T14:00:00Z"
-          },
-          {
-            "active": true,
-            "claim_end": "2025-10-16T14:00:00Z",
-            "claim_multipliers": [
-              {
-                "factor": "0.330000000000000000",
-                "months_lockup": "1",
-                "name": "small"
-              },
-              {
-                "factor": "1.000000000000000000",
-                "months_lockup": "12",
-                "name": "large"
-              }
-            ],
-            "deposit_denom": "hard",
-            "end": "2024-10-16T14:00:00Z",
-            "rewards_per_second": {
-              "amount": "285193",
-              "denom": "hard"
-            },
-            "start": "2020-10-07T14:00:00Z"
-          },
-          {
-            "active": true,
-            "claim_end": "2025-10-16T14:00:00Z",
-            "claim_multipliers": [
-              {
-                "factor": "0.330000000000000000",
-                "months_lockup": "1",
-                "name": "small"
-              },
-              {
-                "factor": "1.000000000000000000",
-                "months_lockup": "12",
-                "name": "large"
-              }
-            ],
-            "deposit_denom": "bnb",
-            "end": "2024-10-16T14:00:00Z",
-            "rewards_per_second": {
-              "amount": "12675",
-              "denom": "hard"
-            },
-            "start": "2020-10-07T14:00:00Z"
-          },
-          {
-            "active": true,
-            "claim_end": "2025-10-16T14:00:00Z",
-            "claim_multipliers": [
-              {
-                "factor": "0.330000000000000000",
-                "months_lockup": "1",
-                "name": "small"
-              },
-              {
-                "factor": "1.000000000000000000",
-                "months_lockup": "12",
-                "name": "large"
-              }
-            ],
-            "deposit_denom": "ukava",
-            "end": "2024-10-16T14:00:00Z",
-            "rewards_per_second": {
-              "amount": "25350",
-              "denom": "hard"
-            },
-            "start": "2020-10-07T14:00:00Z"
-          }
-        ]
+        "check_ltv_index_count": "10"
       },
-      "previous_block_time": "1970-01-01T00:00:00Z",
-      "previous_distribution_times": []
+      "previous_block_time": "1970-01-01T00:00:00Z"
     },
     "gov": {
       "deposit_params": {
@@ -1058,38 +1022,130 @@
       }
     },
     "incentive": {
-      "claim_periods": [],
-      "claims": [],
-      "next_claim_period_ids": [],
       "params": {
-        "active": true,
-        "rewards": [
+        "usdx_minting_reward_periods": [
           {
             "active": true,
-            "available_rewards": {
-              "amount": "500000000",
+            "rewards_per_second": {
+              "amount": "122354",
               "denom": "ukava"
             },
-            "claim_duration": "86400000000000",
             "collateral_type": "bnb-a",
-            "duration": "3600000000000",
-            "time_lock": "86400000000000"
+            "start": "2020-10-16T14:00:00Z",
+            "end": "2024-10-16T14:00:00Z"
           },
           {
             "active": true,
-            "available_rewards": {
-              "amount": "500000000",
+            "rewards_per_second": {
+              "amount": "122354",
               "denom": "ukava"
             },
-            "claim_duration": "86400000000000",
+            "collateral_type": "btcb-a",
+            "start": "2020-10-16T14:00:00Z",
+            "end": "2024-10-16T14:00:00Z"
+          },
+          {
+            "active": true,
+            "rewards_per_second": {
+              "amount": "30588",
+              "denom": "ukava"
+            },
             "collateral_type": "busd-a",
-            "duration": "3600000000000",
-            "time_lock": "86400000000000"
+            "start": "2020-10-16T14:00:00Z",
+            "end": "2024-10-16T14:00:00Z"
+          },
+          {
+            "active": true,
+            "rewards_per_second": {
+              "amount": "31746",
+              "denom": "ukava"
+            },
+            "collateral_type": "xrpb-a",
+            "start": "2020-10-16T14:00:00Z",
+            "end": "2024-10-16T14:00:00Z"
+          },
+          {
+            "active": true,
+            "rewards_per_second": {
+              "amount": "31746",
+              "denom": "ukava"
+            },
+            "collateral_type": "ukava-a",
+            "start": "2020-10-16T14:00:00Z",
+            "end": "2024-10-16T14:00:00Z"
+          },
+          {
+            "active": true,
+            "rewards_per_second": {
+              "amount": "23809",
+              "denom": "ukava"
+            },
+            "collateral_type": "hard-a",
+            "start": "2020-10-16T14:00:00Z",
+            "end": "2024-10-16T14:00:00Z"
           }
-        ]
+        ],
+        "hard_supply_reward_periods": [
+          {
+            "active": true,
+            "collateral_type": "bnb",
+            "start": "2020-01-01T00:00:00Z",
+            "end": "2024-01-01T00:00:00Z",
+            "rewards_per_second": [{
+              "amount": "123455",
+              "denom": "hard"
+            }]
+          }
+        ],
+        "hard_borrow_reward_periods": [
+          {
+            "active": true,
+            "collateral_type": "bnb",
+            "start": "2020-01-01T00:00:00Z",
+            "end": "2024-01-01T00:00:00Z",
+            "rewards_per_second": [{
+              "amount": "123455",
+              "denom": "hard"
+            }]
+          }
+        ],
+        "hard_delegator_reward_periods": [
+          {
+            "active": true,
+            "collateral_type": "bnb",
+            "start": "2020-01-01T00:00:00Z",
+            "end": "2024-01-01T00:00:00Z",
+            "rewards_per_second": {
+              "amount": "123455",
+              "denom": "hard"
+            }
+          }
+        ],
+        "claim_multipliers": [
+          {
+            "name": "small",
+            "months_lockup": "1",
+            "factor": "0.33"
+          },
+          {
+            "name": "large",
+            "months_lockup": "12",
+            "factor": "1.0"
+          }
+        ],
+        "claim_end": "2025-01-01T00:00:00Z"
       },
-      "previous_block_time": "1970-01-01T00:00:00Z",
-      "reward_periods": []
+      "hard_supply_accumulation_times": [],
+      "hard_borrow_accumulation_times": [],
+      "hard_delegator_accumulation_times": [],
+      "hard_liquidity_provider_claims": [],
+      "usdx_minting_claims": []
+    },
+    "issuance": {
+      "params": {
+        "assets": []
+      },
+      "supplies": []
     },
     "kavadist": {
       "params": {
@@ -1193,6 +1249,51 @@
               "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
             ],
             "quote_asset": "usd"
+          },
+          {
+            "active": true,
+            "base_asset": "kava",
+            "market_id": "kava:usd",
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
+            "quote_asset": "usd"
+          },
+          {
+            "active": true,
+            "base_asset": "kava",
+            "market_id": "kava:usd:30",
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
+            "quote_asset": "usd"
+          },
+          {
+            "active": true,
+            "base_asset": "hard",
+            "market_id": "hard:usd",
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
+            "quote_asset": "usd"
+          },
+          {
+            "active": true,
+            "base_asset": "hard",
+            "market_id": "hard:usd:30",
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
+            "quote_asset": "usd"
+          },
+          {
+            "active": true,
+            "base_asset": "usdx",
+            "market_id": "usdx:usd",
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
+            "quote_asset": "usd"
           }
         ]
       },
@@ -1244,6 +1345,36 @@
           "market_id": "busd:usd:30",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
           "price": "1.000000000000000000"
+        },
+        {
+          "expiry": "2021-07-20T00:00:00Z",
+          "market_id": "usdx:usd",
+          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
+          "price": "1.000000000000000000"
+        },
+        {
+          "expiry": "2021-07-20T00:00:00Z",
+          "market_id": "kava:usd",
+          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
+          "price": "2.000000000000000000"
+        },
+        {
+          "expiry": "2021-07-20T00:00:00Z",
+          "market_id": "kava:usd:30",
+          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
+          "price": "2.000000000000000000"
+        },
+        {
+          "expiry": "2021-07-20T00:00:00Z",
+          "market_id": "hard:usd",
+          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
+          "price": "0.500000000000000000"
+        },
+        {
+          "expiry": "2021-07-20T00:00:00Z",
+          "market_id": "hard:usd:30",
+          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
+          "price": "0.500000000000000000"
         }
       ]
     },

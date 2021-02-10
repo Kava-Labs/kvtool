@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@binance-chain/javascript-sdk": "^4.1.1",
+    "@kava-labs/javascript-sdk": "3.0.0-beta.1"
+  }
+}
