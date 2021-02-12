@@ -934,7 +934,7 @@
     },
     "hard": {
       "params": {
-        "active": true,
+        "minimum_borrow_usd_value": "10.0",
         "money_markets": [
           {
             "denom": "usdx",
@@ -991,8 +991,7 @@
             "keeper_reward_percentage": "0.05"
           }
         ]
-      },
-      "previous_block_time": "1970-01-01T00:00:00Z"
+      }
     },
     "gov": {
       "deposit_params": {
