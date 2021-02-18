@@ -76,6 +76,21 @@
           "type": "cosmos-sdk/Account",
           "value": {
             "account_number": "0",
+            "address": "kava1n96qpdfcz2m7y364ewk8srv9zuq6ucwduyjaag",
+            "coins": [
+              {
+                "amount": "1000000000000",
+                "denom": "ukava"
+              }
+            ],
+            "public_key": null,
+            "sequence": "0"
+          }
+        },
+        {
+          "type": "cosmos-sdk/Account",
+          "value": {
+            "account_number": "0",
             "address": "kava1agcvt07tcw0tglu0hmwdecsnuxp2yd45f3avgm",
             "coins": [
               {
