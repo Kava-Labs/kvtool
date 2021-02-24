@@ -3,16 +3,16 @@ services:
   bnb_deputy:
     image: kava/deputy:e408a65
     volumes:
-      - "./deputy/bnb-config.json:/deputy/config/config.json"
+      - "./deputy/config-bnb.json:/deputy/config/config.json"
   btcb_deputy:
     image: kava/deputy:e408a65
     volumes:
-      - "./deputy/btcb-config.json:/deputy/config/config.json"
+      - "./deputy/config-btcb.json:/deputy/config/config.json"
   busd_deputy:
     image: kava/deputy:e408a65
     volumes:
-      - "./deputy/busd-config.json:/deputy/config/config.json"
+      - "./deputy/config-busd.json:/deputy/config/config.json"
   xrpb_deputy:
     image: kava/deputy:e408a65
     volumes:
-      - "./deputy/xrpb-config.json:/deputy/config/config.json"
+      - "./deputy/config-xrpb.json:/deputy/config/config.json"
