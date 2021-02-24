@@ -10,37 +10,38 @@
     "telegram_chat_id": "",
     "bnb_block_update_time_out": 60,
     "other_chain_block_update_time_out": 600,
-    "reconciliation_diff_amount": "10"
+    "reconciliation_diff_amount": "100"
   },
   "chain_config": {
     "bnb_confirm_num": 2,
     "bnb_auto_retry_num": 3,
     "bnb_auto_retry_timeout": 60,
-    "bnb_expire_height_span": 360,
-    "bnb_min_accept_expire_height_span": 10000,
-    "bnb_min_remain_height": 1000,
-    "bnb_min_swap_amount": 0,
-    "bnb_max_swap_amount": 10000000000000,
-    "bnb_max_deputy_out_amount": 10000000000000,
+    "bnb_expire_height_span": 8490,
+    "bnb_min_accept_expire_height_span": 399057,
+    "bnb_min_remain_height": 399057,
+    "bnb_min_swap_amount": 100001,
+    "bnb_max_swap_amount": 60000000000000,
+    "bnb_max_deputy_out_amount": 60000000000000,
     "bnb_ratio": "1",
     "bnb_fixed_fee": 100000,
     "bnb_start_height": 1,
-    "bnb_hot_wallet_overflow": 100000000000000,
+    "bnb_hot_wallet_overflow": 400000000000000,
+
     "other_chain": "KAVA",
     "other_chain_confirm_num": 2,
     "other_chain_decimal": 8,
-    "other_chain_expire_height_span": 220,
+    "other_chain_expire_height_span": 514,
     "other_chain_auto_retry_num": 3,
     "other_chain_auto_retry_timeout": 1200,
-    "other_chain_min_accept_expire_height_span": 200,
-    "other_chain_min_remain_height": 200,
-    "other_chain_min_swap_amount": 1,
-    "other_chain_max_swap_amount": 10000000000000,
-    "other_chain_max_deputy_out_amount": 10000000000000,
+    "other_chain_min_accept_expire_height_span": 24171,
+    "other_chain_min_remain_height": 24171,
+    "other_chain_min_swap_amount": 100001,
+    "other_chain_max_swap_amount": 60000000000000,
+    "other_chain_max_deputy_out_amount": 60000000000000,
     "other_chain_ratio": "1",
     "other_chain_fixed_fee": 100000,
-    "other_chain_start_height": 1,
-    "other_chain_hot_wallet_overflow": 100000000000000
+    "other_chain_start_height": 0,
+    "other_chain_hot_wallet_overflow": 0
   },
   "log_config": {
     "level": "INFO",
@@ -53,11 +54,11 @@
     "compress": false
   },
   "admin_config": {
-    "listen_addr": "127.0.0.1:8081"
+    "listen_addr": "0.0.0.0:8080"
   },
   "instrumentation_config": {
     "prometheus": true,
-    "prometheus_listen_addr": "127.0.0.1:9090"
+    "prometheus_listen_addr": "0.0.0.0:9090"
   },
   "bnb_config": {
     "key_type": "mnemonic",
@@ -69,8 +70,8 @@
     "deputy_addr": "bnb1ryrenacljwghhc5zlnxs3pd86amta3jcaagyt0",
     "cold_wallet_addr": "bnb13l6w5vzqa3533ukrpzpycqh62qd4r3tman8cnv",
     "fetch_interval": 2,
-    "token_balance_alert_threshold": 10000,
-    "bnb_balance_alert_threshold": 10000
+    "token_balance_alert_threshold": 200000000000000,
+    "bnb_balance_alert_threshold": 50000000
   },
   "kava_config": {
     "key_type": "mnemonic",
@@ -82,7 +83,16 @@
     "deputy_addr": "kava14q5sawxdxtpap5x5sgzj7v4sp3ucncjlpuk3hs",
     "cold_wallet_addr": "kava1z3ytjpr6ancl8gw80z6f47z9smug7986x29vtj",
     "fetch_interval": 2,
-    "token_balance_alert_threshold": 10000,
-    "kava_balance_alert_threshold": 10000
+    "token_balance_alert_threshold": 0,
+    "kava_balance_alert_threshold": 50000000,
+    "tx_fee": {
+      "amount": [
+        {
+          "denom": "ukava",
+          "amount": "50000"
+        }
+      ],
+      "gas": 200000
+    }
   }
 }
