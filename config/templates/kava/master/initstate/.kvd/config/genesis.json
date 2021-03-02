@@ -387,7 +387,7 @@
             "denom": "btcb",
             "coin_id": "0",
             "supply_limit": {
-              "limit": "10000000000",
+              "limit": "100000000000",
               "time_limited": false,
               "time_period": "0",
               "time_based_limit": "0"
@@ -404,7 +404,7 @@
             "denom": "xrpb",
             "coin_id": "144",
             "supply_limit": {
-              "limit": "100000000000000",
+              "limit": "2000000000000000",
               "time_limited": false,
               "time_period": "0",
               "time_based_limit": "0"
@@ -421,7 +421,7 @@
             "denom": "bnb",
             "coin_id": "714",
             "supply_limit": {
-              "limit": "10000000000000",
+              "limit": "100000000000000",
               "time_limited": false,
               "time_period": "0",
               "time_based_limit": "0"
@@ -438,7 +438,7 @@
             "denom": "busd",
             "coin_id": "727",
             "supply_limit": {
-              "limit": "10000000000000",
+              "limit": "2000000000000000",
               "time_limited": false,
               "time_period": "0",
               "time_based_limit": "0"
