@@ -16,7 +16,7 @@ func NodeKeysCmd(cdc *codec.Codec) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:     "node-keys number_of_keys",
 		Short:   "Generate n node_key.json files",
-		Long:    fmt.Sprintf("Generates n node_key.json files in the current directory with names node_key1.json ... node_keyn.json"),
+		Long:    fmt.Sprintf("Generates n node_key.json files in the current directory with names node_key_1.json ... node_key_n.json"),
 		Example: "node-keys 3",
 		Args:    cobra.ExactArgs(1),
 		RunE: func(_ *cobra.Command, args []string) error {
