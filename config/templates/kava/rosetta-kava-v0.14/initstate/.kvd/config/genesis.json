@@ -1041,7 +1041,7 @@
     },
     "gov": {
       "deposit_params": {
-        "max_deposit_period": "600000000000",
+        "max_deposit_period": "30000000000",
         "min_deposit": [
           {
             "amount": "200000000",
