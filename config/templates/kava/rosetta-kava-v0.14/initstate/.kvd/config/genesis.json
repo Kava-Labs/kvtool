@@ -5,7 +5,7 @@
       "auctions": [],
       "next_auction_id": "1",
       "params": {
-        "bid_duration": "600000000000",
+        "bid_duration": "30000000000",
         "increment_collateral": "0.010000000000000000",
         "increment_debt": "0.010000000000000000",
         "increment_surplus": "0.010000000000000000",
