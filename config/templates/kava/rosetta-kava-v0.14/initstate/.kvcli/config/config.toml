@@ -1,0 +1,4 @@
+keyring-backend = "test"
+chain-id = "kava-localnet"
+trust-node = true
+broadcast-mode = "async"
