@@ -1059,7 +1059,7 @@
       },
       "votes": null,
       "voting_params": {
-        "voting_period": "600000000000"
+        "voting_period": "120000000000"
       }
     },
     "incentive": {
