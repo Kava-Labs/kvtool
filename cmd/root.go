@@ -25,6 +25,7 @@ func Execute() error {
 	rootCmd.AddCommand(LaunchBlameCmd(cdc))
 	rootCmd.AddCommand(SubscribeCmd(cdc))
 	rootCmd.AddCommand(SwapIDCmd(cdc))
+	rootCmd.AddCommand(TxCmd())
 
 	return rootCmd.Execute()
 }

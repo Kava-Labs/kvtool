@@ -299,6 +299,18 @@
               {
                 "amount": "1000000000000",
                 "denom": "ukava"
+              },
+              {
+                "amount": "1000000000000",
+                "denom": "hard"
+              },
+              {
+                "amount": "1000000000000",
+                "denom": "usdx"
+              },
+              {
+                "amount": "1000000000000000",
+                "denom": "busd"
               }
             ],
             "public_key": null,

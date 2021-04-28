@@ -4,8 +4,9 @@ go 1.13
 
 require (
 	github.com/Jeffail/gabs/v2 v2.6.0
-	github.com/cosmos/cosmos-sdk v0.39.2
-	github.com/kava-labs/kava v0.13.1
+	github.com/cosmos/cosmos-sdk v0.39.3
+	github.com/kava-labs/go-tools/signer v0.0.0-20210427182302-fd67dec4285e
+	github.com/kava-labs/kava v0.14.1
 	github.com/kr/text v0.2.0 // indirect
 	github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e // indirect
 	github.com/onsi/ginkgo v1.12.0 // indirect
