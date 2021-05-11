@@ -10,7 +10,7 @@ make install
 
 ## Initialization: kvtool testnet
 
-Note: The current mainnet version of kava is `v0.12.1`. To start a local testnet with the current mainnet version use `--kava.configTemplate v0.12`
+Note: The current mainnet version of kava is `v0.14.1`. To start a local testnet with the current mainnet version use `--kava.configTemplate v0.14`
 
 Option 1:
 
