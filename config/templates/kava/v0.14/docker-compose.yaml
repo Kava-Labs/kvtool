@@ -17,7 +17,7 @@ services:
         "/root/.kvd/config/init-data-directory.sh && kvd start --pruning=nothing --rpc.laddr=tcp://0.0.0.0:26657",
       ]
   kavarest:
-    image: "kava/kava:master"
+    image: "kava/kava:v0.14.1"
     ports:
       # open default rest port
       - "1317:1317"
