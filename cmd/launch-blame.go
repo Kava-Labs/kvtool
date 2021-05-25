@@ -3,6 +3,7 @@ package cmd
 import (
 	"fmt"
 	"regexp"
+	"sort"
 
 	"github.com/cosmos/cosmos-sdk/codec"
 	"github.com/cosmos/cosmos-sdk/x/genutil"
@@ -10,6 +11,7 @@ import (
 	"github.com/tendermint/tendermint/consensus/types"
 	"github.com/tendermint/tendermint/rpc/client/http"
 	tmtypes "github.com/tendermint/tendermint/types"
+	"gopkg.in/yaml.v3"
 )
 
 const fingerPrintLength = 12
@@ -26,7 +28,7 @@ func LaunchBlameCmd(cdc *codec.Codec) *cobra.Command {
 		Args:  cobra.NoArgs,
 		RunE: func(_ *cobra.Command, args []string) error {
 
-			c, err := http.New(nodeAddress, "/websocket")
+			client, err := http.New(nodeAddress, "/websocket")
 			if err != nil {
 				return fmt.Errorf("can't connect to node: %w", err)
 			}
@@ -38,7 +40,7 @@ func LaunchBlameCmd(cdc *codec.Codec) *cobra.Command {
 					return err
 				}
 			} else {
-				genAppState, err = fetchGenesisState(cdc, c)
+				genAppState, err = fetchGenesisState(cdc, client)
 				if err != nil {
 					return err
 				}
@@ -47,14 +49,17 @@ func LaunchBlameCmd(cdc *codec.Codec) *cobra.Command {
 			if err != nil {
 				return err
 			}
-			vals, err := fetchValidatorPowers(c, addrMonikers)
+			vals, err := fetchValidatorPowers(client, addrMonikers)
 			if err != nil {
 				return fmt.Errorf("could not fetch validator monikers: %w", err)
+			}
+			for i := range vals {
+				vals[i].VotingPowerPct = float64(vals[i].VotingPower) / float64(vals.TotalPower())
 			}
 
 			// 3) Fetch signing validators from the node
 
-			state, err := c.ConsensusState()
+			state, err := client.ConsensusState()
 			if err != nil {
 				return fmt.Errorf("can't get consensus state from node: %w", err)
 			}
@@ -101,11 +106,13 @@ func LaunchBlameCmd(cdc *codec.Codec) *cobra.Command {
 					output.Offline = append(output.Offline, val)
 				}
 			}
-			// TODO sort output by validator power, display power as a percentage
-			// TODO add flag to not display small validators
-			// TODO display total online percentage
+			sort.SliceStable(output.Online, func(i, j int) bool { return output.Online[i].VotingPower > output.Online[j].VotingPower })
+			sort.SliceStable(output.Offline, func(i, j int) bool { return output.Offline[i].VotingPower > output.Offline[j].VotingPower })
+			output.PowerOnline = output.Online.TotalPower()
+			output.PowerOnlinePct = output.Online.TotalPowerPct()
 
-			bz, err := cdc.MarshalJSONIndent(output, "", "  ")
+			// bz, err := cdc.MarshalJSONIndent(output, "", "  ")
+			bz, err := yaml.Marshal(output)
 			if err != nil {
 				panic(err)
 			}
@@ -130,8 +137,10 @@ type roundVotes struct {
 }
 
 type displayData struct {
-	Offline validators `json:"offline" yaml:"offline"`
-	Online  validators `json:"online" yaml:"online"`
+	PowerOnline    int64      `json:"power_online" yaml:"power_online"`
+	PowerOnlinePct float64    `json:"power_online_pct" yaml:"power_online_pct"`
+	Offline        validators `json:"offline" yaml:"offline"`
+	Online         validators `json:"online" yaml:"online"`
 }
 
 type validators []validator
@@ -143,11 +152,19 @@ func (vs validators) TotalPower() int64 {
 	}
 	return totalPower
 }
+func (vs validators) TotalPowerPct() float64 {
+	var totalPower float64
+	for _, v := range vs {
+		totalPower += v.VotingPowerPct
+	}
+	return totalPower
+}
 
 type validator struct {
-	Moniker     string
-	ConsAddress string
-	VotingPower int64
+	Moniker        string  `json:"moniker" yaml:"moniker"`
+	ConsAddress    string  `json:"cons_address" yaml:"cons_address"`
+	VotingPower    int64   `json:"voting_power" yaml:"voting_power"`
+	VotingPowerPct float64 `json:"voting_power_pct" yaml:"voting_power_pct"`
 }
 
 func (v validator) MatchesFingerPrint(print string) bool {
