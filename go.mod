@@ -12,7 +12,7 @@ require (
 	github.com/onsi/gomega v1.9.0 // indirect
 	github.com/otiai10/copy v1.2.0
 	github.com/spf13/cobra v1.0.0
-	github.com/spf13/viper v1.7.0 // indirect
+	github.com/spf13/viper v1.7.0
 	github.com/tendermint/tendermint v0.33.9
 	go.etcd.io/bbolt v1.3.4 // indirect
 	google.golang.org/grpc v1.30.0 // indirect

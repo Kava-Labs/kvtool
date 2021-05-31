@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"io/ioutil"
+	"math/rand"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -12,7 +13,18 @@ import (
 	"time"
 
 	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
 
+	"github.com/cosmos/cosmos-sdk/codec"
+	sdk "github.com/cosmos/cosmos-sdk/types"
+	"github.com/cosmos/cosmos-sdk/x/auth"
+	"github.com/cosmos/cosmos-sdk/x/auth/vesting"
+	"github.com/cosmos/cosmos-sdk/x/genutil"
+
+	"github.com/tendermint/tendermint/crypto/secp256k1"
+	tmtypes "github.com/tendermint/tendermint/types"
+
+	"github.com/kava-labs/kava/app"
 	"github.com/kava-labs/kvtool/config/generate"
 )
 
@@ -70,6 +82,7 @@ Docker compose files are (by default) written to %s`, defaultGeneratedConfigDir)
 	rootCmd.PersistentFlags().StringVar(&generatedConfigDir, "generated-dir", defaultGeneratedConfigDir, "output directory for the generated config")
 
 	var kavaConfigTemplate string
+	const flagVesting = "add-vesting-accounts"
 
 	genConfigCmd := &cobra.Command{
 		Use:   "gen-config services_to_include...",
@@ -90,6 +103,14 @@ available services: %s
 
 			// 2) generate a complete docker-compose config
 			if stringSlice(args).contains(kavaServiceName) {
+				boolValue := viper.GetBool(flagVesting)
+				fmt.Printf("Vesting boolean: %t\n", boolValue)
+				if boolValue {
+					err := addVestingAccountsToGenesis(kavaConfigTemplate, generatedConfigDir, 500)
+					if err != nil {
+						return err
+					}
+				}
 				if err := generate.GenerateKavaConfig(kavaConfigTemplate, generatedConfigDir); err != nil {
 					return err
 				}
@@ -108,6 +129,11 @@ available services: %s
 		},
 	}
 	genConfigCmd.Flags().StringVar(&kavaConfigTemplate, "kava.configTemplate", "master", "the directory name of the template used to generating the kava config")
+	genConfigCmd.Flags().Bool(flagVesting, false, "generates 500 additional vesting accounts as part of genesis file")
+	err := viper.BindPFlag(flagVesting, genConfigCmd.Flags().Lookup(flagVesting))
+	if err != nil {
+		panic(fmt.Sprintf("failed to bind flag: %s", err))
+	}
 	rootCmd.AddCommand(genConfigCmd)
 
 	upCmd := &cobra.Command{
@@ -297,4 +323,79 @@ func (strings stringSlice) contains(match string) bool {
 		}
 	}
 	return false
+}
+
+func addVestingAccountsToGenesis(kavaConfigTemplate, generatedConfigDir string, numAccounts int) error {
+	genesisTemplate := filepath.Join(generate.ConfigTemplatesDir, "kava", kavaConfigTemplate, "initstate", ".kvd", "config", "genesis.json")
+	templateGenesisDoc, err := tmtypes.GenesisDocFromFile(genesisTemplate)
+	if err != nil {
+		return err
+	}
+	cdc := app.MakeCodec()
+	var appStateMap genutil.AppMap
+	if err := cdc.UnmarshalJSON(templateGenesisDoc.AppState, &appStateMap); err != nil {
+		return err
+	}
+
+	var templateAuthGenesisState auth.GenesisState
+	cdc.MustUnmarshalJSON(appStateMap[auth.ModuleName], &templateAuthGenesisState)
+
+	authGenState := addAccountsToAuthGenesisState(cdc, templateAuthGenesisState, numAccounts)
+
+	appStateMap[auth.ModuleName] = cdc.MustMarshalJSON(&authGenState)
+	templateGenesisDoc.AppState = cdc.MustMarshalJSON(appStateMap)
+	err = templateGenesisDoc.SaveAs(genesisTemplate)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func addAccountsToAuthGenesisState(cdc *codec.Codec, authGenState auth.GenesisState, numAccounts int) auth.GenesisState {
+	for i := 0; i < numAccounts; i++ {
+		vestingAccount := makeRandomVestingAccount()
+		authGenState.Accounts = append(authGenState.Accounts, vestingAccount)
+	}
+	return authGenState
+}
+
+func makeRandomVestingAccount() *vesting.PeriodicVestingAccount {
+	rand.Seed(time.Now().UnixNano())
+	coins := sdk.NewCoins()
+	numPeriods := rand.Intn(20-1) + 1
+	startTime := rand.Intn(1617883200-1573218000) + 1573218000
+	endTime := startTime
+	periods := vesting.Periods{}
+	for i := 0; i < numPeriods; i++ {
+		periodCoins := sdk.NewCoins()
+		hasHard := rand.Float32() < 0.5
+		oneMonth := rand.Float32() < 0.5
+		kavaAmount := rand.Intn(10000000000-10000000) + 10000000
+		periodCoins = periodCoins.Add(sdk.NewInt64Coin("ukava", int64(kavaAmount)))
+		if hasHard {
+			hardAmount := rand.Intn(10000000000-10000000) + 10000000
+			periodCoins = periodCoins.Add(sdk.NewInt64Coin("hard", int64(hardAmount)))
+		}
+		length := 86400 * 30
+		if !oneMonth {
+			length = 86400 * 365
+		}
+		period := vesting.Period{Length: int64(length), Amount: periodCoins}
+		periods = append(periods, period)
+		coins = coins.Add(periodCoins...)
+		endTime += length
+	}
+	randomAddr := sdk.AccAddress(secp256k1.GenPrivKey().PubKey().Address())
+	bacc := auth.NewBaseAccountWithAddress(randomAddr)
+	bacc.Coins = coins
+	bva, err := vesting.NewBaseVestingAccount(&bacc, coins, int64(endTime))
+	if err != nil {
+		panic(err)
+	}
+	pva := vesting.NewPeriodicVestingAccountRaw(bva, int64(startTime), periods)
+	if err := pva.Validate(); err != nil {
+		panic(err)
+	}
+	return pva
 }

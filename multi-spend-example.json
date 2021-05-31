@@ -1,0 +1,30 @@
+{
+  "title": "Community Pool Multi-Spend",
+  "description": "Pay many users some KAVA!",
+  "recipient_list": [
+    {
+      "address": "kava1mz2003lathm95n5vnlthmtfvrzrjkrr53j4464",
+      "amount": [
+        {
+          "denom": "ukava",
+          "amount": "1000000"
+        }
+      ]
+    },
+    {
+      "address": "kava1zqezafa0luyetvtj8j67g336vaqtuudnsjq7vm",
+      "amount": [
+        {
+          "denom": "ukava",
+          "amount": "1000000"
+        }
+      ]
+    }
+  ],
+  "deposit": [
+    {
+      "denom": "ukava",
+      "amount": "1000000000"
+    }
+  ]
+}
