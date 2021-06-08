@@ -1061,7 +1061,7 @@
     },
     "swap": {
       "params": {
-        "allowedPools": [
+        "allowed_pools": [
           {
             "token_a": "ukava",
             "token_b": "usdx"
