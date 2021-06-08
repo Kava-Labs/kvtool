@@ -1059,6 +1059,21 @@
         ]
       }
     },
+    "swap": {
+      "params": {
+        "allowed_pools": [
+          {
+            "token_a": "ukava",
+            "token_b": "usdx"
+          },
+          {
+            "token_a": "hard",
+            "token_b": "usdx"
+          }
+        ],
+        "swap_fee": "0.03"
+      }
+    },
     "gov": {
       "deposit_params": {
         "max_deposit_period": "600000000000",
