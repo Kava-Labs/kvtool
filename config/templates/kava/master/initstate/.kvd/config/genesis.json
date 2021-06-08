@@ -848,7 +848,7 @@
               ],
               "vote_threshold": "0.500000000000000000",
               "proposal_duration": "600000000000",
-              "tally_option": "1"
+              "tally_option": "firstpastthepost"
             }
           }
         },
@@ -869,7 +869,7 @@
               ],
               "vote_threshold": "0.500000000000000000",
               "proposal_duration": "604800000000000",
-              "tally_option": "1"
+              "tally_option": "firstpastthepost"
             }
           }
         },
@@ -890,7 +890,7 @@
               ],
               "vote_threshold": "0.500000000000000000",
               "proposal_duration": "604800000000000",
-              "tally_option": "1"
+              "tally_option": "firstpastthepost"
             }
           }
         }
