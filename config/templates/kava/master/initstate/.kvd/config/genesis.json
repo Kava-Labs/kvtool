@@ -1063,12 +1063,12 @@
       "params": {
         "allowedPools": [
           {
-            "token_a": "usdx",
-            "token_b": "ukava"
+            "token_a": "ukava",
+            "token_b": "usdx"
           },
           {
-            "token_a": "usdx",
-            "token_b": "hard"
+            "token_a": "hard",
+            "token_b": "usdx"
           }
         ],
         "swap_fee": "0.03"
