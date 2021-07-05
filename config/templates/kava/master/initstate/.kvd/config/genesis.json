@@ -1469,12 +1469,26 @@
           {
             "active": true,
             "collateral_type": "bnb",
-            "start": "2020-01-01T00:00:00Z",
+            "start": "2020-07-01T00:00:00Z",
             "end": "2024-01-01T00:00:00Z",
-            "rewards_per_second": [{
-              "amount": "123455",
-              "denom": "hard"
-            }]
+            "rewards_per_second": [
+              {
+                "amount": "123455",
+                "denom": "hard"
+              }
+            ]
+          },
+          {
+            "active": true,
+            "collateral_type": "ukava",
+            "start": "2020-07-01T00:00:00Z",
+            "end": "2024-01-01T00:00:00Z",
+            "rewards_per_second": [
+              {
+                "amount": "123455",
+                "denom": "hard"
+              }
+            ]
           }
         ],
         "hard_borrow_reward_periods": [
@@ -1483,22 +1497,30 @@
             "collateral_type": "bnb",
             "start": "2020-01-01T00:00:00Z",
             "end": "2024-01-01T00:00:00Z",
-            "rewards_per_second": [{
-              "amount": "123455",
-              "denom": "hard"
-            }]
+            "rewards_per_second": [
+              {
+                "amount": "123455",
+                "denom": "hard"
+              }
+            ]
           }
         ],
         "hard_delegator_reward_periods": [
           {
             "active": true,
-            "collateral_type": "bnb",
+            "collateral_type": "ukava",
             "start": "2020-01-01T00:00:00Z",
             "end": "2024-01-01T00:00:00Z",
-            "rewards_per_second": {
-              "amount": "123455",
-              "denom": "hard"
-            }
+            "rewards_per_second": [
+              {
+                "amount": "316880",
+                "denom": "hard"
+              },
+              {
+                "amount": "316880",
+                "denom": "swp"
+              }
+            ]
           }
         ],
         "claim_multipliers": [
