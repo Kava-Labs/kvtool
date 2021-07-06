@@ -1511,16 +1511,10 @@
             "collateral_type": "ukava",
             "start": "2020-01-01T00:00:00Z",
             "end": "2024-01-01T00:00:00Z",
-            "rewards_per_second": [
-              {
-                "amount": "316880",
-                "denom": "hard"
-              },
-              {
-                "amount": "316880",
-                "denom": "swp"
-              }
-            ]
+            "rewards_per_second": {
+              "amount": "316880",
+              "denom": "swp"
+            }
           }
         ],
         "claim_multipliers": [
