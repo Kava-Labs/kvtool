@@ -1505,7 +1505,7 @@
             ]
           }
         ],
-        "hard_delegator_reward_periods": [
+        "delegator_reward_periods": [
           {
             "active": true,
             "collateral_type": "ukava",
@@ -1539,9 +1539,10 @@
       },
       "hard_supply_accumulation_times": [],
       "hard_borrow_accumulation_times": [],
-      "hard_delegator_accumulation_times": [],
+      "delegator_accumulation_times": [],
       "hard_liquidity_provider_claims": [],
-      "usdx_minting_claims": []
+      "usdx_minting_claims": [],
+      "delegator_claims": []
     },
     "issuance": {
       "params": {
@@ -1692,6 +1693,15 @@
             "active": true,
             "base_asset": "usdx",
             "market_id": "usdx:usd",
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
+            "quote_asset": "usd"
+          },
+          {
+            "active": true,
+            "base_asset": "usdx",
+            "market_id": "usdx:usd:30",
             "oracles": [
               "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
             ],
