@@ -1477,7 +1477,7 @@
             "token_b": "usdx"
           }
         ],
-        "swap_fee": "0.03"
+        "swap_fee": "0.0015"
       }
     },
     "gov": {
