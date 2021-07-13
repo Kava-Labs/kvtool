@@ -151,6 +151,108 @@
           }
         },
         {
+          "type": "cosmos-sdk/ValidatorVestingAccount",
+          "value": {
+            "address": "kava1h932rkxxhwf0gz3gq23qsnedgax5vwuxw4ufhy",
+            "coins": [
+              {
+                "denom": "ukava",
+                "amount": "2499984990625"
+              }
+            ],
+            "public_key": null,
+            "account_number": "0",
+            "sequence": "0",
+            "original_vesting": [
+              {
+                "denom": "ukava",
+                "amount": "1499974990625"
+              }
+            ],
+            "delegated_free": [],
+            "delegated_vesting": [],
+            "end_time": "1636120800",
+            "start_time": "1572962400",
+            "vesting_periods": [
+              {
+                "length": "31622400",
+                "amount": [
+                  {
+                    "denom": "ukava",
+                    "amount": "416659707952"
+                  }
+                ]
+              },
+              {
+                "length": "7948800",
+                "amount": [
+                  {
+                    "denom": "ukava",
+                    "amount": "270828734420"
+                  }
+                ]
+              },
+              {
+                "length": "7689600",
+                "amount": [
+                  {
+                    "denom": "ukava",
+                    "amount": "270828734420"
+                  }
+                ]
+              },
+              {
+                "length": "7948800",
+                "amount": [
+                  {
+                    "denom": "ukava",
+                    "amount": "270828734420"
+                  }
+                ]
+              },
+              {
+                "length": "7948800",
+                "amount": [
+                  {
+                    "denom": "ukava",
+                    "amount": "270829079413"
+                  }
+                ]
+              }
+            ],
+            "validator_address": "kavavalcons16mkm6ggf280kjtsxnvzur7tnqttgavj4mzr4zf",
+            "return_address": "kava1qvsus5qg8yhre7k2c78xkkw4nvqqgev7ezrja8",
+            "signing_threshold": "90",
+            "current_period_progress": {
+              "missed_blocks": "0",
+              "total_blocks": "1"
+            },
+            "vesting_period_progress": [
+              {
+                "period_complete": false,
+                "vesting_successful": false
+              },
+              {
+                "period_complete": false,
+                "vesting_successful": false
+              },
+              {
+                "period_complete": false,
+                "vesting_successful": false
+              },
+              {
+                "period_complete": false,
+                "vesting_successful": false
+              },
+              {
+                "period_complete": false,
+                "vesting_successful": false
+              }
+            ],
+            "debt_after_failed_vesting": []
+          }
+        },
+        {
           "type": "cosmos-sdk/Account",
           "value": {
             "account_number": "0",
