@@ -44,6 +44,27 @@
         {
           "type": "cosmos-sdk/ModuleAccount",
           "value": {
+            "account_number": "0",
+            "address": "kava1mfru9azs5nua2wxcd4sq64g5nt7nn4n8s2w8cu",
+            "coins": [
+              {
+                "amount": "1000000000000",
+                "denom": "ukava"
+              },
+              {
+                "amount": "4100000000000",
+                "denom": "usdx"
+              }
+            ],
+            "name": "swap",
+            "permissions": null,
+            "public_key": null,
+            "sequence": "0"
+          }
+        },
+        {
+          "type": "cosmos-sdk/ModuleAccount",
+          "value": {
             "address": "kava1a42xtwfzphuuu9mdp0es6633wu5mm8fhm789v3",
             "coins": [
               {
@@ -1477,8 +1498,29 @@
             "token_b": "usdx"
           }
         ],
-        "swap_fee": "0.03"
-      }
+        "swap_fee": "0.030000000000000000"
+      },
+      "pool_records": [
+        {
+          "PoolID": "ukava/usdx",
+          "reserves_a": {
+            "amount": "1000000000000",
+            "denom": "ukava"
+          },
+          "reserves_b": {
+            "amount": "4100000000000",
+            "denom": "usdx"
+          },
+          "total_shares": "2024845673131"
+        }
+      ],
+      "share_records": [
+        {
+          "depositor": "kava1ektgdyy0z23qqnd67ns3qvfzgfgjd5xe82lf5c",
+          "pool_id": "ukava/usdx",
+          "shares_owned": "2024845673131"
+        }
+      ]
     },
     "gov": {
       "deposit_params": {
