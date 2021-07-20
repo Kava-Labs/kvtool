@@ -1873,79 +1873,79 @@
       },
       "posted_prices": [
         {
-          "expiry": "2021-07-20T00:00:00Z",
+          "expiry": "2022-07-20T00:00:00Z",
           "market_id": "bnb:usd",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "price": "21.962650000000001782"
+          "price": "215.962650000000001782"
         },
         {
-          "expiry": "2021-07-20T00:00:00Z",
+          "expiry": "2022-07-20T00:00:00Z",
           "market_id": "bnb:usd:30",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "price": "21.962650000000001782"
+          "price": "217.962650000000001782"
         },
         {
-          "expiry": "2021-07-20T00:00:00Z",
+          "expiry": "2022-07-20T00:00:00Z",
           "market_id": "btc:usd",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "price": "10500.962650000000001782"
+          "price": "29500.962650000000001782"
         },
         {
-          "expiry": "2021-07-20T00:00:00Z",
+          "expiry": "2022-07-20T00:00:00Z",
           "market_id": "btc:usd:30",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "price": "10500.962650000000001782"
+          "price": "28500.962650000000001782"
         },
         {
-          "expiry": "2021-07-20T00:00:00Z",
+          "expiry": "2022-07-20T00:00:00Z",
           "market_id": "xrp:usd",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "price": "0.252650000000001782"
+          "price": "0.552650000000001782"
         },
         {
-          "expiry": "2021-07-20T00:00:00Z",
+          "expiry": "2022-07-20T00:00:00Z",
           "market_id": "xrp:usd:30",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "price": "0.252650000000001782"
+          "price": "0.552650000000001782"
         },
         {
-          "expiry": "2021-07-20T00:00:00Z",
+          "expiry": "2022-07-20T00:00:00Z",
           "market_id": "busd:usd",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
           "price": "1.000000000000000000"
         },
         {
-          "expiry": "2021-07-20T00:00:00Z",
+          "expiry": "2022-07-20T00:00:00Z",
           "market_id": "busd:usd:30",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
           "price": "1.000000000000000000"
         },
         {
-          "expiry": "2021-07-20T00:00:00Z",
+          "expiry": "2022-07-20T00:00:00Z",
           "market_id": "usdx:usd",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
           "price": "1.000000000000000000"
         },
         {
-          "expiry": "2021-07-20T00:00:00Z",
+          "expiry": "2022-07-20T00:00:00Z",
           "market_id": "kava:usd",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "price": "2.000000000000000000"
+          "price": "3.000000000000000000"
         },
         {
-          "expiry": "2021-07-20T00:00:00Z",
+          "expiry": "2022-07-20T00:00:00Z",
           "market_id": "kava:usd:30",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "price": "2.000000000000000000"
+          "price": "3.000000000000000000"
         },
         {
-          "expiry": "2021-07-20T00:00:00Z",
+          "expiry": "2022-07-20T00:00:00Z",
           "market_id": "hard:usd",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
           "price": "0.500000000000000000"
         },
         {
-          "expiry": "2021-07-20T00:00:00Z",
+          "expiry": "2022-07-20T00:00:00Z",
           "market_id": "hard:usd:30",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
           "price": "0.500000000000000000"
