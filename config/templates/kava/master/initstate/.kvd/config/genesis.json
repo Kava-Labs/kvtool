@@ -1496,6 +1496,26 @@
           {
             "token_a": "hard",
             "token_b": "usdx"
+          },
+          {
+            "token_a": "swp",
+            "token_b": "usdx"
+          },
+          {
+            "token_a": "bnb",
+            "token_b": "usdx"
+          },
+          {
+            "token_a": "btcb",
+            "token_b": "usdx"
+          },
+          {
+            "token_a": "busd",
+            "token_b": "usdx"
+          },
+          {
+            "token_a": "usdx",
+            "token_b": "xrpb"
           }
         ],
         "swap_fee": "0.001500000000000000"
