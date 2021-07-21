@@ -1814,7 +1814,7 @@
         "swap_reward_periods": [
           {
             "active": true,
-            "collateral_type": "ukava/usdx",
+            "collateral_type": "ukava:usdx",
             "start": "2021-07-14T00:00:00Z",
             "end": "2024-01-01T00:00:00Z",
             "rewards_per_second": [
@@ -1830,7 +1830,7 @@
           },
           {
             "active": true,
-            "collateral_type": "swp/usdx",
+            "collateral_type": "swp:usdx",
             "start": "2021-07-14T00:00:00Z",
             "end": "2024-01-01T00:00:00Z",
             "rewards_per_second": [
@@ -1846,7 +1846,7 @@
           },
           {
             "active": true,
-            "collateral_type": "hard/usdx",
+            "collateral_type": "hard:usdx",
             "start": "2021-07-14T00:00:00Z",
             "end": "2024-01-01T00:00:00Z",
             "rewards_per_second": [
@@ -1858,7 +1858,7 @@
           },
           {
             "active": true,
-            "collateral_type": "busd/usdx",
+            "collateral_type": "busd:usdx",
             "start": "2021-07-14T00:00:00Z",
             "end": "2024-01-01T00:00:00Z",
             "rewards_per_second": [
