@@ -1457,9 +1457,27 @@
             "spot_market_id": "bnb:usd",
             "conversion_factor": "100000000",
             "interest_rate_model": {
-              "base_rate_apy": "0.99",
+              "base_rate_apy": "0.05",
               "base_multiplier": "2",
-              "kink": "0.99",
+              "kink": "0.8",
+              "jump_multiplier": "10"
+            },
+            "reserve_factor": "0.01",
+            "keeper_reward_percentage": "0.01"
+          },
+          {
+            "denom": "busd",
+            "borrow_limit": {
+              "has_max_limit": false,
+              "maximum_limit": "100000000000",
+              "loan_to_value": "0.8"
+            },
+            "spot_market_id": "busd:usd",
+            "conversion_factor": "100000000",
+            "interest_rate_model": {
+              "base_rate_apy": "0.01",
+              "base_multiplier": "2",
+              "kink": "0.8",
               "jump_multiplier": "10"
             },
             "reserve_factor": "0.01",
