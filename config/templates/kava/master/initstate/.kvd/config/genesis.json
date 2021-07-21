@@ -1906,7 +1906,21 @@
       "delegator_accumulation_times": [],
       "hard_liquidity_provider_claims": [],
       "usdx_minting_claims": [],
-      "delegator_claims": []
+      "delegator_claims": [],
+      "swap_claims": [
+        {
+          "base_claim": {
+            "owner": "kava1ektgdyy0z23qqnd67ns3qvfzgfgjd5xe82lf5c",
+            "reward": []
+          },
+          "reward_indexes": [
+            {
+              "collateral_type": "ukava:usdx",
+              "reward_indexes": []
+            }
+          ]
+        }
+      ]
     },
     "issuance": {
       "params": {
