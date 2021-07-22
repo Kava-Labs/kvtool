@@ -1889,24 +1889,76 @@
         ],
         "claim_multipliers": [
           {
-            "name": "small",
-            "months_lockup": "1",
-            "factor": "0.2"
+            "denom": "hard",
+            "multipliers": [
+              {
+                "name": "small",
+                "months_lockup": "1",
+                "factor": "0.2"
+              },
+              {
+                "name": "large",
+                "months_lockup": "12",
+                "factor": "1.0"
+              }
+            ]
           },
           {
-            "name": "large",
-            "months_lockup": "12",
-            "factor": "1.0"
+            "denom": "swp",
+            "multipliers": [
+              {
+                "name": "small",
+                "months_lockup": "1",
+                "factor": "0.1"
+              },
+              {
+                "name": "large",
+                "months_lockup": "12",
+                "factor": "1.0"
+              }
+            ]
+          },
+          {
+            "denom": "ukava",
+            "multipliers": [
+              {
+                "name": "small",
+                "months_lockup": "1",
+                "factor": "0.2"
+              },
+              {
+                "name": "large",
+                "months_lockup": "12",
+                "factor": "1.0"
+              }
+            ]
           }
         ],
         "claim_end": "2025-01-01T00:00:00Z"
       },
-      "hard_supply_accumulation_times": [],
-      "hard_borrow_accumulation_times": [],
-      "delegator_accumulation_times": [],
+      "delegator_reward_state": {
+        "accumulation_times": [],
+        "multi_reward_indexes": []
+      },
+      "hard_borrow_reward_state": {
+        "accumulation_times": [],
+        "multi_reward_indexes": []
+      },
+      "hard_supply_reward_state": {
+        "accumulation_times": [],
+        "multi_reward_indexes": []
+      },
+      "swap_reward_state": {
+        "accumulation_times": [],
+        "multi_reward_indexes": []
+      },
+      "usdx_reward_state": {
+        "accumulation_times": [],
+        "multi_reward_indexes": []
+      },
+      "delegator_claims": [],
       "hard_liquidity_provider_claims": [],
       "usdx_minting_claims": [],
-      "delegator_claims": [],
       "swap_claims": [
         {
           "base_claim": {
@@ -2220,5 +2272,5 @@
       ]
     }
   },
-  "genesis_time": "2020-09-29T16:44:00Z"
+  "genesis_time": "2021-07-01T14:00:00Z"
 }
