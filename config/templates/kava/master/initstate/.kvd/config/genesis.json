@@ -1298,6 +1298,10 @@
                       {
                         "subspace": "incentive",
                         "key": "HardDelegatorRewardPeriods"
+                      },
+                      {
+                        "subspace": "incentive",
+                        "key": "SwapRewardPeriods"
                       }
                     ],
                     "allowed_collateral_params": null,
