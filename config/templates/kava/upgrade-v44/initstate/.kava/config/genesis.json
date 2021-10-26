@@ -45,7 +45,7 @@
     },
     "crisis": {
       "constant_fee": {
-        "amount": "1000",
+        "amount": "1333000000",
         "denom": "ukava"
       }
     },
@@ -59,7 +59,7 @@
       "params": {
         "base_proposer_reward": "0.010000000000000000",
         "bonus_proposer_reward": "0.040000000000000000",
-        "community_tax": "0.020000000000000000",
+        "community_tax": "0.000000000000000000",
         "withdraw_addr_enabled": true
       },
       "previous_proposer": "",
@@ -138,10 +138,10 @@
     },
     "gov": {
       "deposit_params": {
-        "max_deposit_period": "172800s",
+        "max_deposit_period": "600s",
         "min_deposit": [
           {
-            "amount": "10000000",
+            "amount": "200000000",
             "denom": "ukava"
           }
         ]
@@ -156,19 +156,19 @@
       },
       "votes": [],
       "voting_params": {
-        "voting_period": "172800s"
+        "voting_period": "600s"
       }
     },
     "mint": {
       "minter": {
         "annual_provisions": "0.000000000000000000",
-        "inflation": "0.130000000000000000"
+        "inflation": "0.020000000000000000"
       },
       "params": {
         "blocks_per_year": "6311520",
         "goal_bonded": "0.670000000000000000",
         "inflation_max": "0.200000000000000000",
-        "inflation_min": "0.070000000000000000",
+        "inflation_min": "0.150000000000000000",
         "inflation_rate_change": "0.130000000000000000",
         "mint_denom": "ukava"
       }
@@ -178,10 +178,10 @@
       "missed_blocks": [],
       "params": {
         "downtime_jail_duration": "600s",
-        "min_signed_per_window": "0.500000000000000000",
+        "min_signed_per_window": "0.010000000000000000",
         "signed_blocks_window": "100",
         "slash_fraction_double_sign": "0.050000000000000000",
-        "slash_fraction_downtime": "0.010000000000000000"
+        "slash_fraction_downtime": "0.000100000000000000"
       },
       "signing_infos": []
     },
@@ -192,10 +192,10 @@
       "last_validator_powers": [],
       "params": {
         "bond_denom": "ukava",
-        "historical_entries": 10000,
+        "historical_entries": 0,
         "max_entries": 7,
         "max_validators": 100,
-        "unbonding_time": "1814400s"
+        "unbonding_time": "3600s"
       },
       "redelegations": [],
       "unbonding_delegations": [],
@@ -206,8 +206,8 @@
   "chain_id": "kava-localnet",
   "consensus_params": {
     "block": {
-      "max_bytes": "22020096",
-      "max_gas": "-1",
+      "max_bytes": "200000",
+      "max_gas": "20000000",
       "time_iota_ms": "1000"
     },
     "evidence": {
@@ -222,6 +222,6 @@
     },
     "version": {}
   },
-  "genesis_time": "2021-10-26T20:23:08.199019Z",
+  "genesis_time": "2021-10-01T15:00:00Z",
   "initial_height": "1"
 }
