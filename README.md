@@ -10,7 +10,7 @@ make install
 
 ## Initialization: kvtool testnet
 
-Note: The current mainnet version of kava is `v0.14.1`. To start a local testnet with the current mainnet version use `--kava.configTemplate v0.14`
+Note: The current mainnet version of kava is `v0.15.0`. To start a local testnet with the current mainnet version use `--kava.configTemplate v0.15`
 
 Option 1:
 
@@ -20,6 +20,9 @@ The `kvtool testnet bootstrap` command starts a local Kava blockchain as a backg
 
 # Start new testnet
 kvtool testnet bootstrap --kava.configTemplate master
+
+# Start new v44 testnet
+kvtool testnet bootstrap --kava.configTemplate upgrade-v44
 ```
 
 Option 2:
@@ -53,6 +56,10 @@ You can also interact with the blockchain using the kvcli command line. In a new
 ```bash
 # Add an alias to the dockerized kvcli
 alias dkvcli='docker exec -it generated_kavanode_1 kvcli'
+
+
+# for v44 of the cosmos-sdk, the monolithic "kava" process has replaced kvcli
+alias dkava='docker exec -it generated_kavanode_1 kava'
 
 # Confirm that the alias has been added
 alias dkvcli
