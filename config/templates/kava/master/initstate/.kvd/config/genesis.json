@@ -668,7 +668,7 @@
           {
             "denom": "busd",
             "type": "busd-b",
-            "liquidation_ratio": "1.010000000000000000",
+            "liquidation_ratio": "1.100000000000000000",
             "debt_limit": {
               "denom": "usdx",
               "amount": "3000000000000"
