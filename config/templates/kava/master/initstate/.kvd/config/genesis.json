@@ -666,6 +666,24 @@
             "conversion_factor": "8"
           },
           {
+            "denom": "busd",
+            "type": "busd-b",
+            "liquidation_ratio": "1.010000000000000000",
+            "debt_limit": {
+              "denom": "usdx",
+              "amount": "3000000000000"
+            },
+            "stability_fee": "1.000000000000000000",
+            "auction_size": "1000000000000",
+            "liquidation_penalty": "0.075000000000000000",
+            "check_collateralization_index_count": "10",
+            "keeper_reward_percentage": "0.01",
+            "prefix": 3,
+            "spot_market_id": "busd:usd",
+            "liquidation_market_id": "busd:usd:30",
+            "conversion_factor": "8"
+          },
+          {
             "auction_size": "50000000000",
             "conversion_factor": "6",
             "debt_limit": {
