@@ -673,7 +673,7 @@
               "denom": "usdx",
               "amount": "3000000000000"
             },
-            "stability_fee": "1.000000000000000000",
+            "stability_fee": "1.000000012857214317",
             "auction_size": "1000000000000",
             "liquidation_penalty": "0.075000000000000000",
             "check_collateralization_index_count": "10",
