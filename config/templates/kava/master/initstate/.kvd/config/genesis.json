@@ -678,7 +678,7 @@
             "liquidation_penalty": "0.075000000000000000",
             "check_collateralization_index_count": "10",
             "keeper_reward_percentage": "0.01",
-            "prefix": 3,
+            "prefix": 7,
             "spot_market_id": "busd:usd",
             "liquidation_market_id": "busd:usd:30",
             "conversion_factor": "8"
