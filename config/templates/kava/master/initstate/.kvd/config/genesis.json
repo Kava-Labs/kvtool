@@ -2115,6 +2115,24 @@
             "market_id": "usdx:usd:30",
             "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "quote_asset": "usd"
+          },
+          {
+            "active": true,
+            "base_asset": "swp",
+            "market_id": "swp:usd",
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
+            "quote_asset": "usd"
+          },
+          {
+            "active": true,
+            "base_asset": "swp",
+            "market_id": "swp:usd:30",
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
+            "quote_asset": "usd"
           }
         ]
       },
@@ -2196,6 +2214,18 @@
           "market_id": "hard:usd:30",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
           "price": "0.500000000000000000"
+        },
+        {
+          "expiry": "2022-07-20T00:00:00Z",
+          "market_id": "swp:usd",
+          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
+          "price": "2.150000000000000000"
+        },
+        {
+          "expiry": "2022-07-20T00:00:00Z",
+          "market_id": "swp:usd:30",
+          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
+          "price": "2.150000000000000000"
         }
       ]
     },
