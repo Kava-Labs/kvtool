@@ -713,6 +713,24 @@
             "spot_market_id": "hard:usd",
             "stability_fee": "1.000000000782997700",
             "type": "hard-a"
+          },
+          {
+            "denom": "hbtc",
+            "type": "hbtc-a",
+            "liquidation_ratio": "1.500000000000000000",
+            "debt_limit": {
+              "denom": "usdx",
+              "amount": "10000000000000"
+            },
+            "stability_fee": "1.000000001547125958",
+            "auction_size": "1000000000000",
+            "liquidation_penalty": "0.075000000000000000",
+            "check_collateralization_index_count": "10",
+            "keeper_reward_percentage": "0.01",
+            "prefix": 8,
+            "spot_market_id": "btc:usd",
+            "liquidation_market_id": "btc:usd:30",
+            "conversion_factor": "8"
           }
         ],
         "debt_auction_lot": "10000000000",
@@ -725,7 +743,7 @@
           "savings_rate": "0.950000000000000000"
         },
         "global_debt_limit": {
-          "amount": "33000000000000",
+          "amount": "43000000000000",
           "denom": "usdx"
         },
         "savings_distribution_frequency": "43200000000000",
