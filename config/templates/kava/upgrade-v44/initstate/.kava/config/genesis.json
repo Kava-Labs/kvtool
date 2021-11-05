@@ -827,6 +827,25 @@
           "price": "2.150000000000000000"
         }
       ]
+    },
+    "issuance": {
+      "params": {
+        "assets": [
+          {
+              "owner": "kava173w2zz287s36ewnnkf4mjansnthnnsz7rtrxqc",
+              "denom": "kpop",
+              "blocked_addresses": null,
+              "paused": false,
+              "blockable": false,
+              "rate_limit": {
+                  "active": false,
+                  "limit": "0",
+                  "time_period": "0"
+              }
+          }
+      ]
+      },
+      "supplies": []
     }
   },
   "chain_id": "kava-localnet",
