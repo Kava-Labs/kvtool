@@ -975,6 +975,12 @@
           }
         ]
       }
+    },
+    "committee": {
+      "next_proposal_id": 1,
+      "committees": [],
+      "proposals": [],
+      "votes": []
     }
   },
   "chain_id": "kava-localnet",
