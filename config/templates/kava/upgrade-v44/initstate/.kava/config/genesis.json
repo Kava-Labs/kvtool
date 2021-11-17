@@ -320,7 +320,28 @@
         },
         {
           "address": "kava1mfru9azs5nua2wxcd4sq64g5nt7nn4n8s2w8cu",
-          "coins": []
+          "coins": [
+            {
+              "amount": "200000000",
+              "denom": "btcb"
+            },
+            {
+              "amount": "1000000000",
+              "denom": "hard"
+            },
+            {
+              "amount": "5000000000",
+              "denom": "swp"
+            },
+            {
+              "amount": "5000000000",
+              "denom": "ukava"
+            },
+            {
+              "amount": "103000000000",
+              "denom": "usdx"
+            }
+          ]
         },
         {
           "address": "kava1fwfwmt6vupf3m9uvpdsuuc4dga8p5dtl4npcqz",
@@ -380,7 +401,7 @@
           "denom": "bnb"
         },
         {
-          "amount": "10000000000000000",
+          "amount": "10000000200000000",
           "denom": "btcb"
         },
         {
@@ -388,19 +409,19 @@
           "denom": "busd"
         },
         {
-          "amount": "1000001000000000000",
+          "amount": "1000001001000000000",
           "denom": "hard"
         },
         {
-          "amount": "1000001000000000000",
+          "amount": "1000001005000000000",
           "denom": "swp"
         },
         {
-          "amount": "10015000565077579",
+          "amount": "10015005565077579",
           "denom": "ukava"
         },
         {
-          "amount": "10000000000000000",
+          "amount": "10000103000000000",
           "denom": "usdx"
         },
         {
@@ -896,8 +917,78 @@
         ],
         "swap_fee": "0.001500000000000000"
       },
-      "pool_records": [],
-      "share_records": []
+      "pool_records": [
+        {
+          "pool_id": "btcb:usdx",
+          "reserves_a": {
+            "amount": "200000000",
+            "denom": "btcb"
+          },
+          "reserves_b": {
+            "amount": "100000000000",
+            "denom": "usdx"
+          },
+          "total_shares": "4472135954"
+        },
+        {
+          "pool_id": "hard:usdx",
+          "reserves_a": {
+            "amount": "1000000000",
+            "denom": "hard"
+          },
+          "reserves_b": {
+            "amount": "1000000000",
+            "denom": "usdx"
+          },
+          "total_shares": "1000000000"
+        },
+        {
+          "pool_id": "swp:usdx",
+          "reserves_a": {
+            "amount": "5000000000",
+            "denom": "swp"
+          },
+          "reserves_b": {
+            "amount": "1000000000",
+            "denom": "usdx"
+          },
+          "total_shares": "2236067977"
+        },
+        {
+          "pool_id": "ukava:usdx",
+          "reserves_a": {
+            "amount": "5000000000",
+            "denom": "ukava"
+          },
+          "reserves_b": {
+            "amount": "1000000000",
+            "denom": "usdx"
+          },
+          "total_shares": "2236067977"
+        }
+      ],
+      "share_records": [
+        {
+          "depositor": "kava173w2zz287s36ewnnkf4mjansnthnnsz7rtrxqc",
+          "pool_id": "btcb:usdx",
+          "shares_owned": "4472135954"
+        },
+        {
+          "depositor": "kava173w2zz287s36ewnnkf4mjansnthnnsz7rtrxqc",
+          "pool_id": "hard:usdx",
+          "shares_owned": "1000000000"
+        },
+        {
+          "depositor": "kava173w2zz287s36ewnnkf4mjansnthnnsz7rtrxqc",
+          "pool_id": "swp:usdx",
+          "shares_owned": "2236067977"
+        },
+        {
+          "depositor": "kava173w2zz287s36ewnnkf4mjansnthnnsz7rtrxqc",
+          "pool_id": "ukava:usdx",
+          "shares_owned": "2236067977"
+        }
+      ]
     },
     "bep3": {
       "supplies": [],
