@@ -320,7 +320,16 @@
         },
         {
           "address": "kava1mfru9azs5nua2wxcd4sq64g5nt7nn4n8s2w8cu",
-          "coins": []
+          "coins": [
+            {
+              "amount": "1000000000000",
+              "denom": "ukava"
+            },
+            {
+              "amount": "4100000000000",
+              "denom": "usdx"
+            }
+          ]
         },
         {
           "address": "kava1fwfwmt6vupf3m9uvpdsuuc4dga8p5dtl4npcqz",
