@@ -106,12 +106,9 @@ available services: %s
 				}
 			}
 			if ibcFlag {
-				fmt.Println("ibc flag on")
 				if err := generate.GenerateIbcChainConfig(generatedConfigDir); err != nil {
 					return err
 				}
-			} else {
-				fmt.Println("ibc flag off")
 			}
 			return nil
 		},
