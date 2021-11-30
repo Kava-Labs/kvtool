@@ -203,14 +203,12 @@ available services: %s
 			if err != nil {
 				return err
 			}
-			localKvdMountPath := filepath.Join(generatedConfigDir, "kava", "initstate", ".kvd", "config")
-			localKvcliMountPath := filepath.Join(generatedConfigDir, "kava", "initstate", ".kvcli")
+			localKvdMountPath := filepath.Join(generatedConfigDir, "kava", "initstate", ".kava", "config")
 			exportCmd := exec.Command(
 				"docker", "run",
-				"-v", strings.TrimSpace(fmt.Sprintf("%s:/root/.kvd/config", localKvdMountPath)),
-				"-v", strings.TrimSpace(fmt.Sprintf("%s:/root/.kvcli", localKvcliMountPath)),
+				"-v", strings.TrimSpace(fmt.Sprintf("%s:/root/.kava/config", localKvdMountPath)),
 				"kava-export-temp",
-				"kvd", "export")
+				"kava", "export")
 			exportJSON, err := exportCmd.Output()
 			if err != nil {
 				return err
