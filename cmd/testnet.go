@@ -70,6 +70,7 @@ Docker compose files are (by default) written to %s`, defaultGeneratedConfigDir)
 	rootCmd.PersistentFlags().StringVar(&generatedConfigDir, "generated-dir", defaultGeneratedConfigDir, "output directory for the generated config")
 
 	var kavaConfigTemplate string
+	var ibcFlag bool
 
 	genConfigCmd := &cobra.Command{
 		Use:   "gen-config services_to_include...",
@@ -104,10 +105,19 @@ available services: %s
 					return err
 				}
 			}
+			if ibcFlag {
+				fmt.Println("ibc flag on")
+				if err := generate.GenerateIbcChainConfig(generatedConfigDir); err != nil {
+					return err
+				}
+			} else {
+				fmt.Println("ibc flag off")
+			}
 			return nil
 		},
 	}
 	genConfigCmd.Flags().StringVar(&kavaConfigTemplate, "kava.configTemplate", "master", "the directory name of the template used to generating the kava config")
+	genConfigCmd.Flags().BoolVar(&ibcFlag, "ibc", false, "flag for if ibc is enabled")
 	rootCmd.AddCommand(genConfigCmd)
 
 	upCmd := &cobra.Command{
