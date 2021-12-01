@@ -4,7 +4,7 @@ services:
     ibcnode:
         image: "kava/kava:ibc-spike"
         ports:
-            # open default kava rpc port
+            # open rpc port
             - "26658:26658"
             # open rest port
             - "1318:1318"
