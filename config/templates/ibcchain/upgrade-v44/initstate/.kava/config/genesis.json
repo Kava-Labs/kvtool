@@ -147,7 +147,7 @@
             "original_vesting": [
               {
                 "amount": "560159828",
-                "denom": "ukava"
+                "denom": "uatom"
               }
             ]
           },
@@ -157,7 +157,7 @@
               "amount": [
                 {
                   "amount": "560159828",
-                  "denom": "ukava"
+                  "denom": "uatom"
                 }
               ],
               "length": "31536000"
@@ -180,7 +180,7 @@
           "coins": [
             {
               "amount": "1000000000000",
-              "denom": "ukava"
+              "denom": "uatom"
             }
           ]
         },
@@ -189,7 +189,7 @@
           "coins": [
             {
               "amount": "1000000000000",
-              "denom": "ukava"
+              "denom": "uatom"
             }
           ]
         },
@@ -198,7 +198,7 @@
           "coins": [
             {
               "amount": "1000000000000",
-              "denom": "ukava"
+              "denom": "uatom"
             }
           ]
         },
@@ -207,7 +207,7 @@
           "coins": [
             {
               "amount": "1000000000000",
-              "denom": "ukava"
+              "denom": "uatom"
             }
           ]
         },
@@ -216,7 +216,7 @@
           "coins": [
             {
               "amount": "1000000000000",
-              "denom": "ukava"
+              "denom": "uatom"
             }
           ]
         },
@@ -225,7 +225,7 @@
           "coins": [
             {
               "amount": "1000000000000",
-              "denom": "ukava"
+              "denom": "uatom"
             }
           ]
         },
@@ -234,7 +234,7 @@
           "coins": [
             {
               "amount": "1000000000000",
-              "denom": "ukava"
+              "denom": "uatom"
             }
           ]
         },
@@ -243,7 +243,7 @@
           "coins": [
             {
               "amount": "1000000000000",
-              "denom": "ukava"
+              "denom": "uatom"
             }
           ]
         },
@@ -252,7 +252,7 @@
           "coins": [
             {
               "amount": "1000000000000",
-              "denom": "ukava"
+              "denom": "uatom"
             }
           ]
         },
@@ -261,7 +261,7 @@
           "coins": [
             {
               "amount": "1000000000000",
-              "denom": "ukava"
+              "denom": "uatom"
             }
           ]
         },
@@ -270,7 +270,7 @@
           "coins": [
             {
               "amount": "1000000000000",
-              "denom": "ukava"
+              "denom": "uatom"
             }
           ]
         },
@@ -279,7 +279,7 @@
           "coins": [
             {
               "amount": "1000000000000",
-              "denom": "ukava"
+              "denom": "uatom"
             }
           ]
         },
@@ -288,7 +288,7 @@
           "coins": [
             {
               "amount": "1000000000000",
-              "denom": "ukava"
+              "denom": "uatom"
             }
           ]
         },
@@ -297,7 +297,7 @@
           "coins": [
             {
               "amount": "1000000000000",
-              "denom": "ukava"
+              "denom": "uatom"
             }
           ]
         },
@@ -314,7 +314,7 @@
             },
             {
               "amount": "1000000000000",
-              "denom": "ukava"
+              "denom": "uatom"
             }
           ]
         },
@@ -335,7 +335,7 @@
             },
             {
               "amount": "5000000000",
-              "denom": "ukava"
+              "denom": "uatom"
             },
             {
               "amount": "103000000000",
@@ -348,7 +348,7 @@
           "coins": [
             {
               "amount": "565077579",
-              "denom": "ukava"
+              "denom": "uatom"
             }
           ]
         },
@@ -356,36 +356,28 @@
           "address": "kava173w2zz287s36ewnnkf4mjansnthnnsz7rtrxqc",
           "coins": [
             {
-              "amount": "10000000000000000",
-              "denom": "bnb"
-            },
-            {
-              "amount": "10000000000000000",
-              "denom": "btcb"
-            },
-            {
-              "amount": "10000000000000000",
-              "denom": "busd"
+              "amount": "100",
+              "denom": "ion"
             },
             {
               "amount": "1000000000000000000",
-              "denom": "hard"
-            },
-            {
-              "amount": "1000000000000000000",
-              "denom": "swp"
+              "denom": "luna"
             },
             {
               "amount": "10000000000000000",
-              "denom": "ukava"
+              "denom": "uakt"
+            },
+            {
+              "amount": "10000000000000000",
+              "denom": "uosmo"
             },
             {
               "amount": "10000000000000000",
               "denom": "usdx"
             },
             {
-              "amount": "10000000000000000",
-              "denom": "xrpb"
+              "amount": "1000000000000000000",
+              "denom": "ust"
             }
           ]
         }
@@ -397,43 +389,51 @@
       },
       "supply": [
         {
-          "amount": "10000000000000000",
-          "denom": "bnb"
-        },
-        {
-          "amount": "10000000200000000",
+          "amount": "200000000",
           "denom": "btcb"
         },
         {
-          "amount": "10000000000000000",
-          "denom": "busd"
-        },
-        {
-          "amount": "1000001001000000000",
+          "amount": "1001000000000",
           "denom": "hard"
         },
         {
-          "amount": "1000001005000000000",
+          "amount": "100",
+          "denom": "ion"
+        },
+        {
+          "amount": "1000000000000000000",
+          "denom": "luna"
+        },
+        {
+          "amount": "1005000000000",
           "denom": "swp"
         },
         {
-          "amount": "10015005565077579",
-          "denom": "ukava"
+          "amount": "10000000000000000",
+          "denom": "uakt"
+        },
+        {
+          "amount": "15005565077579",
+          "denom": "uatom"
+        },
+        {
+          "amount": "10000000000000000",
+          "denom": "uosmo"
         },
         {
           "amount": "10000103000000000",
           "denom": "usdx"
         },
         {
-          "amount": "10000000000000000",
-          "denom": "xrpb"
+          "amount": "1000000000000000000",
+          "denom": "ust"
         }
       ]
     },
     "crisis": {
       "constant_fee": {
         "amount": "1333000000",
-        "denom": "ukava"
+        "denom": "uatom"
       }
     },
     "distribution": {
@@ -485,7 +485,7 @@
                   "key": "3W2cdgC0U1qIXdrGXQL6q3vnYLUVO1vBT0GhPr8ockc="
                 },
                 "value": {
-                  "denom": "ukava",
+                  "denom": "uatom",
                   "amount": "1000000000"
                 }
               }
@@ -518,7 +518,7 @@
             }
           },
           "signatures": [
-            "ITyfUx/ex2i9hk1o3lohTyHIkXxqEBWMpVeDIeY4mEcXsSljAXxN/2aIZ1krdOKjx4daEcoC0MIeMsMf1N/p5A=="
+            "pf9W/j+1p0bWJAnDWC0SmiviJ/Ip12J2fIRxpFgNxsQk4zoDQjOBQ2zFkBPHIAV+zS4KVMEFup+M0mjioQVgbQ=="
           ]
         }
       ]
@@ -529,7 +529,7 @@
         "min_deposit": [
           {
             "amount": "200000000",
-            "denom": "ukava"
+            "denom": "uatom"
           }
         ]
       },
@@ -570,7 +570,7 @@
         "inflation_max": "0.200000000000000000",
         "inflation_min": "0.150000000000000000",
         "inflation_rate_change": "0.130000000000000000",
-        "mint_denom": "ukava"
+        "mint_denom": "uatom"
       }
     },
     "params": null,
@@ -591,7 +591,7 @@
       "last_total_power": "0",
       "last_validator_powers": [],
       "params": {
-        "bond_denom": "ukava",
+        "bond_denom": "uatom",
         "historical_entries": 0,
         "max_entries": 7,
         "max_validators": 100,
@@ -931,7 +931,7 @@
       "params": {
         "allowed_pools": [
           {
-            "token_a": "ukava",
+            "token_a": "uatom",
             "token_b": "usdx"
           },
           {
@@ -999,10 +999,10 @@
           "total_shares": "2236067977"
         },
         {
-          "pool_id": "ukava:usdx",
+          "pool_id": "uatom:usdx",
           "reserves_a": {
             "amount": "5000000000",
-            "denom": "ukava"
+            "denom": "uatom"
           },
           "reserves_b": {
             "amount": "1000000000",
@@ -1029,7 +1029,7 @@
         },
         {
           "depositor": "kava173w2zz287s36ewnnkf4mjansnthnnsz7rtrxqc",
-          "pool_id": "ukava:usdx",
+          "pool_id": "uatom:usdx",
           "shares_owned": "2236067977"
         }
       ]
@@ -1115,7 +1115,7 @@
       "cdps": [],
       "debt_denom": "debt",
       "deposits": [],
-      "gov_denom": "ukava",
+      "gov_denom": "uatom",
       "params": {
         "circuit_breaker": false,
         "collateral_params": [
@@ -1211,7 +1211,7 @@
               "amount": "2000000000000",
               "denom": "usdx"
             },
-            "denom": "ukava",
+            "denom": "uatom",
             "liquidation_market_id": "kava:usd:30",
             "liquidation_penalty": "0.050000000000000000",
             "liquidation_ratio": "1.500000000000000000",
@@ -1219,7 +1219,7 @@
             "check_collateralization_index_count": "10",
             "spot_market_id": "kava:usd",
             "stability_fee": "1.000000000782997700",
-            "type": "ukava-a"
+            "type": "uatom-a"
           },
           {
             "auction_size": "50000000000",
