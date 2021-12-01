@@ -6,7 +6,7 @@
 ###############################################################################
 
 # The network chain ID
-chain-id = "kava-localnet"
+chain-id = "kava-localnet-2"
 # The keyring's backend, where the keys are stored (os|file|kwallet|pass|test|memory)
 keyring-backend = "test"
 # CLI output format (text|json)
