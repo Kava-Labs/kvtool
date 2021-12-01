@@ -165,6 +165,11 @@ available services: %s
 			if err := generate.GenerateKavaConfig(kavaConfigTemplate, generatedConfigDir); err != nil {
 				return err
 			}
+			if ibcFlag {
+				if err := generate.GenerateIbcChainConfig(generatedConfigDir); err != nil {
+					return err
+				}
+			}
 			cmd = exec.Command("docker-compose", "--file", filepath.Join(generatedConfigDir, "docker-compose.yaml"), "pull")
 			cmd.Stdout = os.Stdout
 			cmd.Stderr = os.Stderr
@@ -181,6 +186,7 @@ available services: %s
 		},
 	}
 	bootstrapCmd.Flags().StringVar(&kavaConfigTemplate, "kava.configTemplate", "master", "the directory name of the template used to generating the kava config")
+	bootstrapCmd.Flags().BoolVar(&ibcFlag, "ibc", false, "flag for if ibc is enabled")
 	rootCmd.AddCommand(bootstrapCmd)
 
 	exportCmd := &cobra.Command{
