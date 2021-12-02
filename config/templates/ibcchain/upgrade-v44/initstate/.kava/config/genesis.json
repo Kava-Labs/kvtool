@@ -592,7 +592,7 @@
       "last_validator_powers": [],
       "params": {
         "bond_denom": "uatom",
-        "historical_entries": 0,
+        "historical_entries": 10000,
         "max_entries": 7,
         "max_validators": 100,
         "unbonding_time": "3600s"
