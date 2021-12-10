@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+    ibcnode:
+        image: "kava/kava:upgrade-v44"
+        ports:
+            # open rpc port
+            - "26658:26658"
+            # open rest port
+            - "1318:1318"
+        volumes:
+            - "./ibcchain/initstate/.kava/config:/root/.kava/config"
+            - "./ibcchain/initstate/.kava/keyring-test/:/root/.kava/keyring-test"
+        # start the blockchain, and set rpc to listen to connections from outside the container
+        command: ["sh", "-c", "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26658"]

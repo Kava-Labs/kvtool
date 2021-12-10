@@ -70,6 +70,7 @@ Docker compose files are (by default) written to %s`, defaultGeneratedConfigDir)
 	rootCmd.PersistentFlags().StringVar(&generatedConfigDir, "generated-dir", defaultGeneratedConfigDir, "output directory for the generated config")
 
 	var kavaConfigTemplate string
+	var ibcFlag bool
 
 	genConfigCmd := &cobra.Command{
 		Use:   "gen-config services_to_include...",
@@ -104,10 +105,16 @@ available services: %s
 					return err
 				}
 			}
+			if ibcFlag {
+				if err := generate.GenerateIbcChainConfig(generatedConfigDir); err != nil {
+					return err
+				}
+			}
 			return nil
 		},
 	}
 	genConfigCmd.Flags().StringVar(&kavaConfigTemplate, "kava.configTemplate", "master", "the directory name of the template used to generating the kava config")
+	genConfigCmd.Flags().BoolVar(&ibcFlag, "ibc", false, "flag for if ibc is enabled")
 	rootCmd.AddCommand(genConfigCmd)
 
 	upCmd := &cobra.Command{
@@ -158,6 +165,11 @@ available services: %s
 			if err := generate.GenerateKavaConfig(kavaConfigTemplate, generatedConfigDir); err != nil {
 				return err
 			}
+			if ibcFlag {
+				if err := generate.GenerateIbcChainConfig(generatedConfigDir); err != nil {
+					return err
+				}
+			}
 			cmd = exec.Command("docker-compose", "--file", filepath.Join(generatedConfigDir, "docker-compose.yaml"), "pull")
 			cmd.Stdout = os.Stdout
 			cmd.Stderr = os.Stderr
@@ -174,6 +186,7 @@ available services: %s
 		},
 	}
 	bootstrapCmd.Flags().StringVar(&kavaConfigTemplate, "kava.configTemplate", "master", "the directory name of the template used to generating the kava config")
+	bootstrapCmd.Flags().BoolVar(&ibcFlag, "ibc", false, "flag for if ibc is enabled")
 	rootCmd.AddCommand(bootstrapCmd)
 
 	exportCmd := &cobra.Command{
@@ -203,14 +216,13 @@ available services: %s
 			if err != nil {
 				return err
 			}
-			localKvdMountPath := filepath.Join(generatedConfigDir, "kava", "initstate", ".kvd", "config")
-			localKvcliMountPath := filepath.Join(generatedConfigDir, "kava", "initstate", ".kvcli")
+			localKvdMountPath := filepath.Join(generatedConfigDir, "kava", "initstate", ".kava", "config")
+
 			exportCmd := exec.Command(
 				"docker", "run",
-				"-v", strings.TrimSpace(fmt.Sprintf("%s:/root/.kvd/config", localKvdMountPath)),
-				"-v", strings.TrimSpace(fmt.Sprintf("%s:/root/.kvcli", localKvcliMountPath)),
+				"-v", strings.TrimSpace(fmt.Sprintf("%s:/root/.kava/config", localKvdMountPath)),
 				"kava-export-temp",
-				"kvd", "export")
+				"kava", "export")
 			exportJSON, err := exportCmd.Output()
 			if err != nil {
 				return err

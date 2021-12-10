@@ -1,5 +1,4 @@
 version: '3'
-
 services:
     kavanode:
         image: "kava/kava:upgrade-v44"
