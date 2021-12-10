@@ -1,7 +1,7 @@
 version: '3'
 services:
     kavanode:
-        image: "kava/kava:ibc-spike"
+        image: "kava/kava:upgrade-v44"
         ports:
             # open default kava rpc port
             - "26657:26657"
