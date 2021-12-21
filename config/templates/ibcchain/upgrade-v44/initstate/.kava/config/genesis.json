@@ -13,6 +13,13 @@
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
           "account_number": "0",
+          "address": "kava1vlpsrmdyuywvaqrv7rx6xga224sqfwz3fyfhwq",
+          "pub_key": null,
+          "sequence": "0"
+        },
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "account_number": "0",
           "address": "kava1agcvt07tcw0tglu0hmwdecsnuxp2yd45f3avgm",
           "pub_key": null,
           "sequence": "0"
@@ -306,14 +313,6 @@
           "coins": [
             {
               "amount": "1000000000000",
-              "denom": "hard"
-            },
-            {
-              "amount": "1000000000000",
-              "denom": "swp"
-            },
-            {
-              "amount": "1000000000000",
               "denom": "uatom"
             }
           ]
@@ -322,24 +321,8 @@
           "address": "kava1mfru9azs5nua2wxcd4sq64g5nt7nn4n8s2w8cu",
           "coins": [
             {
-              "amount": "200000000",
-              "denom": "btcb"
-            },
-            {
-              "amount": "1000000000",
-              "denom": "hard"
-            },
-            {
-              "amount": "5000000000",
-              "denom": "swp"
-            },
-            {
               "amount": "5000000000",
               "denom": "uatom"
-            },
-            {
-              "amount": "103000000000",
-              "denom": "usdx"
             }
           ]
         },
@@ -380,6 +363,35 @@
               "denom": "ust"
             }
           ]
+        },
+        {
+          "address": "kava1vlpsrmdyuywvaqrv7rx6xga224sqfwz3fyfhwq",
+          "coins": [
+            {
+              "amount": "100",
+              "denom": "ion"
+            },
+            {
+              "amount": "1000000000000000000",
+              "denom": "luna"
+            },
+            {
+              "amount": "10000000000000000",
+              "denom": "uakt"
+            },
+            {
+              "amount": "10000000000000000",
+              "denom": "uosmo"
+            },
+            {
+              "amount": "10000000000000000",
+              "denom": "usdx"
+            },
+            {
+              "amount": "1000000000000000000",
+              "denom": "ust"
+            }
+          ]
         }
       ],
       "denom_metadata": [],
@@ -387,48 +399,7 @@
         "default_send_enabled": true,
         "send_enabled": []
       },
-      "supply": [
-        {
-          "amount": "200000000",
-          "denom": "btcb"
-        },
-        {
-          "amount": "1001000000000",
-          "denom": "hard"
-        },
-        {
-          "amount": "100",
-          "denom": "ion"
-        },
-        {
-          "amount": "1000000000000000000",
-          "denom": "luna"
-        },
-        {
-          "amount": "1005000000000",
-          "denom": "swp"
-        },
-        {
-          "amount": "10000000000000000",
-          "denom": "uakt"
-        },
-        {
-          "amount": "15005565077579",
-          "denom": "uatom"
-        },
-        {
-          "amount": "10000000000000000",
-          "denom": "uosmo"
-        },
-        {
-          "amount": "10000103000000000",
-          "denom": "usdx"
-        },
-        {
-          "amount": "1000000000000000000",
-          "denom": "ust"
-        }
-      ]
+      "supply": []
     },
     "crisis": {
       "constant_fee": {
