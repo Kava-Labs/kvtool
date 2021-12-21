@@ -43,6 +43,9 @@ kava:
     whale:
       mnemonic: "season bone lucky dog depth pond royal decide unknown device fruit inch clock trap relief horse morning taxi bird session throw skull avocado private"
       address: "kava173w2zz287s36ewnnkf4mjansnthnnsz7rtrxqc"
+    dev_wallet:
+      mnemonic: "1pass"
+      address: "kava1vlpsrmdyuywvaqrv7rx6xga224sqfwz3fyfhwq"
     vesting_periodic:
       mnemonic: "twice brief orbit assist average victory shrimp visit rookie nation sentence obscure all deny immense borrow debate demise gorilla fault session transfer wide because"
       address: "kava1fwfwmt6vupf3m9uvpdsuuc4dga8p5dtl4npcqz"

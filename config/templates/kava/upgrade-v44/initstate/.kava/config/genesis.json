@@ -13,6 +13,13 @@
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
           "account_number": "0",
+          "address": "kava1vlpsrmdyuywvaqrv7rx6xga224sqfwz3fyfhwq",
+          "pub_key": null,
+          "sequence": "0"
+        },
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "account_number": "0",
           "address": "kava1agcvt07tcw0tglu0hmwdecsnuxp2yd45f3avgm",
           "pub_key": null,
           "sequence": "0"
@@ -388,6 +395,43 @@
               "denom": "xrpb"
             }
           ]
+        },
+        {
+          "address": "kava1vlpsrmdyuywvaqrv7rx6xga224sqfwz3fyfhwq",
+          "coins": [
+            {
+              "amount": "10000000000000000",
+              "denom": "bnb"
+            },
+            {
+              "amount": "10000000000000000",
+              "denom": "btcb"
+            },
+            {
+              "amount": "10000000000000000",
+              "denom": "busd"
+            },
+            {
+              "amount": "1000000000000000000",
+              "denom": "hard"
+            },
+            {
+              "amount": "1000000000000000000",
+              "denom": "swp"
+            },
+            {
+              "amount": "10000000000000000",
+              "denom": "ukava"
+            },
+            {
+              "amount": "10000000000000000",
+              "denom": "usdx"
+            },
+            {
+              "amount": "10000000000000000",
+              "denom": "xrpb"
+            }
+          ]
         }
       ],
       "denom_metadata": [],
@@ -395,40 +439,7 @@
         "default_send_enabled": true,
         "send_enabled": []
       },
-      "supply": [
-        {
-          "amount": "10000000000000000",
-          "denom": "bnb"
-        },
-        {
-          "amount": "10000000200000000",
-          "denom": "btcb"
-        },
-        {
-          "amount": "10000000000000000",
-          "denom": "busd"
-        },
-        {
-          "amount": "1000001001000000000",
-          "denom": "hard"
-        },
-        {
-          "amount": "1000001005000000000",
-          "denom": "swp"
-        },
-        {
-          "amount": "10015005565077579",
-          "denom": "ukava"
-        },
-        {
-          "amount": "10000103000000000",
-          "denom": "usdx"
-        },
-        {
-          "amount": "10000000000000000",
-          "denom": "xrpb"
-        }
-      ]
+      "supply": []
     },
     "crisis": {
       "constant_fee": {
