@@ -2031,7 +2031,7 @@
   "chain_id": "kava-localnet",
   "consensus_params": {
     "block": {
-      "max_bytes": "200000",
+      "max_bytes": "20000000",
       "max_gas": "20000000",
       "time_iota_ms": "1000"
     },
