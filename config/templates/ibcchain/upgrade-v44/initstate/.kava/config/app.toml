@@ -158,7 +158,7 @@ offline = false
 enable = true
 
 # Address defines the gRPC server address to bind to.
-address = "0.0.0.0:9090"
+address = "0.0.0.0:9092"
 
 ###############################################################################
 ###                        gRPC Web Configuration                           ###
@@ -171,7 +171,7 @@ address = "0.0.0.0:9090"
 enable = true
 
 # Address defines the gRPC-web server address to bind to.
-address = "0.0.0.0:9091"
+address = "0.0.0.0:9093"
 
 # EnableUnsafeCORS defines if CORS should be enabled (unsafe - use it at your own risk).
 enable-unsafe-cors = false

@@ -162,11 +162,17 @@ available services: %s
 					return err2
 				}
 			}
+			if err := os.RemoveAll(generatedConfigDir); err != nil {
+				return fmt.Errorf("could not clear old generated config: %v", err)
+			}
 			if err := generate.GenerateKavaConfig(kavaConfigTemplate, generatedConfigDir); err != nil {
 				return err
 			}
 			if ibcFlag {
 				if err := generate.GenerateIbcChainConfig(generatedConfigDir); err != nil {
+					return err
+				}
+				if err := generate.GenerateHermesRelayerConfig(generatedConfigDir); err != nil {
 					return err
 				}
 			}
@@ -177,10 +183,58 @@ available services: %s
 				fmt.Println(err.Error())
 			}
 
-			upCmd := []string{"docker-compose", "--file", filepath.Join(generatedConfigDir, "docker-compose.yaml"), "up", "-d"}
-			fmt.Println("running:", strings.Join(upCmd, " "))
-			if err := replaceCurrentProcess(upCmd...); err != nil {
-				return fmt.Errorf("could not run command: %v", err)
+			upCmd := exec.Command("docker-compose", "--file", filepath.Join(generatedConfigDir, "docker-compose.yaml"), "up", "-d")
+			upCmd.Stdout = os.Stdout
+			upCmd.Stderr = os.Stderr
+			if err := upCmd.Run(); err != nil {
+				fmt.Println(err.Error())
+			}
+			// if err := replaceCurrentProcess(upCmd...); err != nil {
+			// 	return fmt.Errorf("could not run command: %v", err)
+			// }
+			if ibcFlag {
+				fmt.Printf("Starting ibc connection between chains...\n")
+				time.Sleep(time.Second * 10)
+				restoreKeys1Cmd := exec.Command("docker", "run", "-v", fmt.Sprintf("%s:%s", filepath.Join(generatedConfigDir, "hermes"), "/home/hermes/.hermes"), "kava/hermes:latest", "keys", "restore", "kava-localnet", "-n", "testkey", "-m", "very health column only surface project output absent outdoor siren reject era legend legal twelve setup roast lion rare tunnel devote style random food", "--hd-path", "m/44'/459'/0'/0/0")
+				restoreKeys1Cmd.Stdout = os.Stdout
+				restoreKeys1Cmd.Stderr = os.Stderr
+				if err := restoreKeys1Cmd.Run(); err != nil {
+					fmt.Println(err.Error())
+				}
+				restoreKeys2Cmd := exec.Command("docker", "run", "-v", fmt.Sprintf("%s:%s", filepath.Join(generatedConfigDir, "hermes"), "/home/hermes/.hermes"), "kava/hermes:latest", "keys", "restore", "kava-localnet-2", "-n", "testkey", "-m", "very health column only surface project output absent outdoor siren reject era legend legal twelve setup roast lion rare tunnel devote style random food", "--hd-path", "m/44'/459'/0'/0/0")
+				restoreKeys2Cmd.Stdout = os.Stdout
+				restoreKeys2Cmd.Stderr = os.Stderr
+				if err := restoreKeys2Cmd.Run(); err != nil {
+					fmt.Println(err.Error())
+				}
+				openChannelCmd := exec.Command("docker", "run", "-v", fmt.Sprintf("%s:%s", filepath.Join(generatedConfigDir, "hermes"), "/home/hermes/.hermes"), "--network", "generated_default", "kava/hermes:latest", "create", "channel", "kava-localnet", "kava-localnet-2", "--port-a", "transfer", "--port-b", "transfer")
+				openChannelCmd.Stdout = os.Stdout
+				openChannelCmd.Stderr = os.Stderr
+				if err := openChannelCmd.Run(); err != nil {
+					fmt.Println(err.Error())
+				}
+				fmt.Printf("IBC connection complete, starting relayer process...\n")
+				time.Sleep(time.Second * 5)
+				err := generate.AddHermesRelayerToNetwork(generatedConfigDir)
+				if err != nil {
+					return err
+				}
+				restartCmd := exec.Command("docker-compose", "--file", filepath.Join(generatedConfigDir, "docker-compose.yaml"), "up", "-d", "hermes-relayer")
+				restartCmd.Stdout = os.Stdout
+				restartCmd.Stderr = os.Stderr
+
+				err = restartCmd.Run()
+				if err != nil {
+					return err
+				}
+				pruneCmd := exec.Command("docker", "container", "prune", "-f")
+				pruneCmd.Stdout = os.Stdout
+				pruneCmd.Stderr = os.Stderr
+				err = pruneCmd.Run()
+				if err != nil {
+					return err
+				}
+				fmt.Printf("IBC relayer ready!\n")
 			}
 			return nil
 		},
@@ -204,58 +258,102 @@ available services: %s
 				return err
 			}
 			// docker ps -aqf "name=containername"
-			containerIDCmd := exec.Command("docker", "ps", "-aqf", "name=generated_kavanode_1")
-			container, err := containerIDCmd.Output()
+			kavaContainerIDCmd := exec.Command("docker", "ps", "-aqf", "name=generated_kavanode_1")
+			kavaContainer, err := kavaContainerIDCmd.Output()
 			if err != nil {
 				return err
 			}
 
-			makeNewImageCmd := exec.Command("docker", "commit", strings.TrimSpace(string(container)), "kava-export-temp")
-
-			imageOutput, err := makeNewImageCmd.Output()
+			ibcChainContainerIDCmd := exec.Command("docker", "ps", "-aqf", "name=generated_ibcnode_1")
+			ibcContainer, err := ibcChainContainerIDCmd.Output()
 			if err != nil {
 				return err
 			}
-			localKvdMountPath := filepath.Join(generatedConfigDir, "kava", "initstate", ".kava", "config")
 
-			exportCmd := exec.Command(
+			makeNewKavaImageCmd := exec.Command("docker", "commit", strings.TrimSpace(string(kavaContainer)), "kava-export-temp")
+
+			kavaImageOutput, err := makeNewKavaImageCmd.Output()
+			if err != nil {
+				return err
+			}
+
+			makeNewIbcImageCmd := exec.Command("docker", "commit", strings.TrimSpace(string(ibcContainer)), "ibc-export-temp")
+			ibcImageOutput, err := makeNewIbcImageCmd.Output()
+			if err != nil {
+				return err
+			}
+
+			localKavaMountPath := filepath.Join(generatedConfigDir, "kava", "initstate", ".kava", "config")
+			localIbcMountPath := filepath.Join(generatedConfigDir, "ibcchain", "initstate", ".kava", "config")
+
+			kavaExportCmd := exec.Command(
 				"docker", "run",
-				"-v", strings.TrimSpace(fmt.Sprintf("%s:/root/.kava/config", localKvdMountPath)),
+				"-v", strings.TrimSpace(fmt.Sprintf("%s:/root/.kava/config", localKavaMountPath)),
 				"kava-export-temp",
 				"kava", "export")
-			exportJSON, err := exportCmd.Output()
+			kavaExportJSON, err := kavaExportCmd.Output()
 			if err != nil {
 				return err
 			}
 
-			filename := fmt.Sprintf("export-%d.json", time.Now().Unix())
+			ibcExportCmd := exec.Command(
+				"docker", "run",
+				"-v", strings.TrimSpace(fmt.Sprintf("%s:/root/.kava/config", localIbcMountPath)),
+				"ibc-export-temp",
+				"kava", "export")
+			ibcExportJSON, err := ibcExportCmd.Output()
+			if err != nil {
+				return err
+			}
+			ts := time.Now().Unix()
+			kavaFilename := fmt.Sprintf("kava-export-%d.json", ts)
+			ibcFilename := fmt.Sprintf("ibc-export-%d.json", ts)
 
-			fmt.Printf("Created export %s\nCleaning up...", filename)
+			fmt.Printf("Created exports %s and %s\nCleaning up...", kavaFilename, ibcFilename)
 
-			err = ioutil.WriteFile(filename, exportJSON, 0644)
+			err = ioutil.WriteFile(kavaFilename, kavaExportJSON, 0644)
+			if err != nil {
+				return err
+			}
+			err = ioutil.WriteFile(ibcFilename, ibcExportJSON, 0644)
 			if err != nil {
 				return err
 			}
 
 			// docker ps -aqf "name=containername"
-			tempContainerIDCmd := exec.Command("docker", "ps", "-aqf", "ancestor=kava-export-temp")
-			tempContainer, err := tempContainerIDCmd.Output()
-
+			tempKavaContainerIDCmd := exec.Command("docker", "ps", "-aqf", "ancestor=kava-export-temp")
+			tempKavaContainer, err := tempKavaContainerIDCmd.Output()
+			if err != nil {
+				return err
+			}
+			tempIbcContainerIDCmd := exec.Command("docker", "ps", "-aqf", "ancestor=ibc-export-temp")
+			tempIbcContainer, err := tempIbcContainerIDCmd.Output()
 			if err != nil {
 				return err
 			}
 
-			deleteContainerCmd := exec.Command("docker", "rm", strings.TrimSpace(string(tempContainer)))
-			err = deleteContainerCmd.Run()
+			deleteKavaContainerCmd := exec.Command("docker", "rm", strings.TrimSpace(string(tempKavaContainer)))
+			err = deleteKavaContainerCmd.Run()
+			if err != nil {
+				return err
+			}
+			deleteIbcContainerCmd := exec.Command("docker", "rm", strings.TrimSpace(string(tempIbcContainer)))
+			err = deleteIbcContainerCmd.Run()
 			if err != nil {
 				return err
 			}
 
-			deleteImageCdm := exec.Command("docker", "rmi", strings.TrimSpace(string(imageOutput)))
-			err = deleteImageCdm.Run()
+			deleteKavaImageCmd := exec.Command("docker", "rmi", strings.TrimSpace(string(kavaImageOutput)))
+			err = deleteKavaImageCmd.Run()
 			if err != nil {
 				return err
 			}
+			deleteIbcImageCmd := exec.Command("docker", "rmi", strings.TrimSpace(string(ibcImageOutput)))
+			err = deleteIbcImageCmd.Run()
+			if err != nil {
+				return err
+			}
+
 			fmt.Printf("Restarting testnet...")
 			restartCmd := exec.Command("docker-compose", "--file", filepath.Join(generatedConfigDir, "docker-compose.yaml"), "start")
 			restartCmd.Stdout = os.Stdout

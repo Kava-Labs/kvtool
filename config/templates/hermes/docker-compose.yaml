@@ -1,0 +1,7 @@
+version: "3"
+services:
+  hermes-relayer:
+    image: informalsystems/hermes:latest
+    volumes:
+            - "./hermes:/home/hermes/.hermes"
+    command: ["start"]
