@@ -334,10 +334,6 @@
           "address": "kava173w2zz287s36ewnnkf4mjansnthnnsz7rtrxqc",
           "coins": [
             {
-              "amount": "100",
-              "denom": "ion"
-            },
-            {
               "amount": "1000000000000000000",
               "denom": "luna"
             },
@@ -351,7 +347,7 @@
             },
             {
               "amount": "10000000000000000",
-              "denom": "usdx"
+              "denom": "uatom"
             },
             {
               "amount": "1000000000000000000",
