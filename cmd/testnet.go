@@ -189,9 +189,6 @@ available services: %s
 			if err := upCmd.Run(); err != nil {
 				fmt.Println(err.Error())
 			}
-			// if err := replaceCurrentProcess(upCmd...); err != nil {
-			// 	return fmt.Errorf("could not run command: %v", err)
-			// }
 			if ibcFlag {
 				fmt.Printf("Starting ibc connection between chains...\n")
 				time.Sleep(time.Second * 10)
