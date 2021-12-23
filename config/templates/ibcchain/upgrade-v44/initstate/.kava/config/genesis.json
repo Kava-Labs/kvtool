@@ -343,11 +343,11 @@
             },
             {
               "amount": "10000000000000000",
-              "denom": "uosmo"
+              "denom": "uatom"
             },
             {
               "amount": "10000000000000000",
-              "denom": "uatom"
+              "denom": "uosmo"
             },
             {
               "amount": "1000000000000000000",
