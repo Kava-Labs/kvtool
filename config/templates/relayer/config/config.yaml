@@ -1,0 +1,20 @@
+global:
+  api-listen-addr: :5183
+  timeout: 10s
+  light-cache-size: 20
+chains:
+- key: testkey
+  chain-id: kava-localnet
+  rpc-addr: 'http://kavanode:26657'
+  account-prefix: kava
+  gas-adjustment: 1.5
+  gas-prices: 0.001ukava
+  trusting-period: 30m
+- key: testkey
+  chain-id: kava-localnet-2
+  rpc-addr: 'http://ibcnode:26658'
+  account-prefix: kava
+  gas-adjustment: 1.5
+  gas-prices: 0.001uatom
+  trusting-period: 30m
+paths: {}

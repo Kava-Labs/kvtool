@@ -1,0 +1,64 @@
+[global]
+log_level = 'info'
+
+[mode]
+
+[mode.clients]
+enabled = true
+refresh = true
+misbehaviour = false
+
+[mode.connections]
+enabled = false
+
+[mode.channels]
+enabled = false
+
+[mode.packets]
+enabled = true
+clear_interval = 100
+clear_on_start = true
+filter = false
+tx_confirmation = true
+
+[rest]
+enabled = true
+host = '127.0.0.1'
+port = 3000
+
+[telemetry]
+enabled = true
+host = '127.0.0.1'
+port = 3001
+
+[[chains]]
+id = 'kava-localnet'
+rpc_addr = 'http://kavanode:26657'
+grpc_addr = 'http://kavanode:9090'
+websocket_addr = 'ws://kavanode:26657/websocket'
+rpc_timeout = '10s'
+account_prefix = 'kava'
+key_name = 'testkey'
+store_prefix = 'ibc'
+max_gas = 2000000
+gas_price = { price = 0.001, denom = 'ukava' }
+gas_adjustment = 0.1
+clock_drift = '5s'
+trusting_period = '30min'
+trust_threshold = { numerator = '1', denominator = '3' }
+
+[[chains]]
+id = 'kava-localnet-2'
+rpc_addr = 'http://ibcnode:26658'
+grpc_addr = 'http://ibcnode:9092'
+websocket_addr = 'ws://ibcnode:26658/websocket'
+rpc_timeout = '10s'
+account_prefix = 'kava'
+key_name = 'testkey'
+store_prefix = 'ibc'
+max_gas = 2000000
+gas_price = { price = 0.001, denom = 'uatom' }
+gas_adjustment = 0.1
+clock_drift = '5s'
+trusting_period = '30min'
+trust_threshold = { numerator = '1', denominator = '3' }

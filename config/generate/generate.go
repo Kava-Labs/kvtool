@@ -84,3 +84,20 @@ func GenerateIbcChainConfig(generatedConfigDir string) error {
 	)
 	return err
 }
+
+func GenerateHermesRelayerConfig(generatedConfigDir string) error {
+	err := copy.Copy(filepath.Join(ConfigTemplatesDir, "hermes"), filepath.Join(generatedConfigDir, "hermes"))
+	return err
+}
+
+func AddHermesRelayerToNetwork(generatedConfigDir string) error {
+	return overwriteMergeYAML(
+		filepath.Join(ConfigTemplatesDir, "hermes", "docker-compose.yaml"),
+		filepath.Join(generatedConfigDir, "docker-compose.yaml"),
+	)
+}
+
+func GenerateGoRelayerConfig(generatedConfigDir string) error {
+	err := copy.Copy(filepath.Join(ConfigTemplatesDir, "relayer"), filepath.Join(generatedConfigDir, "relayer"))
+	return err
+}

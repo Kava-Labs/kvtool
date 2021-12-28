@@ -8,6 +8,10 @@ services:
             - "26658:26658"
             # open rest port
             - "1318:1318"
+            # open grpc port
+            - "9092:9092"
+            # open grpc-web port
+            - "9093:9093"
         volumes:
             - "./ibcchain/initstate/.kava/config:/root/.kava/config"
             - "./ibcchain/initstate/.kava/keyring-test/:/root/.kava/keyring-test"

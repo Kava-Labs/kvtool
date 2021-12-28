@@ -7,6 +7,10 @@ services:
             - "26657:26657"
             # open rest port
             - "1317:1317"
+            # open grpc port
+            - "9090:9090"
+            # open grpc-web port
+            - "9091:9091"
         volumes:
             - "./kava/initstate/.kava/config:/root/.kava/config"
             - "./kava/initstate/.kava/keyring-test/:/root/.kava/keyring-test"
