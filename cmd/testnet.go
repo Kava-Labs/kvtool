@@ -194,7 +194,19 @@ available services: %s
 			}
 			if ibcFlag {
 				fmt.Printf("Starting ibc connection between chains...\n")
-				time.Sleep(time.Second * 10)
+				time.Sleep(time.Second * 7)
+				restoreKeys1Cmd := exec.Command("docker", "run", "-v", fmt.Sprintf("%s:%s", filepath.Join(generatedConfigDir, "hermes"), "/home/hermes/.hermes"), "kava/hermes:latest", "keys", "restore", "kava-localnet", "-n", "testkey", "-m", "very health column only surface project output absent outdoor siren reject era legend legal twelve setup roast lion rare tunnel devote style random food", "--hd-path", "m/44'/459'/0'/0/0")
+				restoreKeys1Cmd.Stdout = os.Stdout
+				restoreKeys1Cmd.Stderr = os.Stderr
+				if err := restoreKeys1Cmd.Run(); err != nil {
+					fmt.Println(err.Error())
+				}
+				restoreKeys2Cmd := exec.Command("docker", "run", "-v", fmt.Sprintf("%s:%s", filepath.Join(generatedConfigDir, "hermes"), "/home/hermes/.hermes"), "kava/hermes:latest", "keys", "restore", "kava-localnet-2", "-n", "testkey", "-m", "very health column only surface project output absent outdoor siren reject era legend legal twelve setup roast lion rare tunnel devote style random food", "--hd-path", "m/44'/459'/0'/0/0")
+				restoreKeys2Cmd.Stdout = os.Stdout
+				restoreKeys2Cmd.Stderr = os.Stderr
+				if err := restoreKeys2Cmd.Run(); err != nil {
+					fmt.Println(err.Error())
+				}
 				generatePathCmd := exec.Command("docker", "run", "-v", fmt.Sprintf("%s:%s", filepath.Join(generatedConfigDir, "relayer"), "/relayer/.relayer"), "--network", "generated_default", "kava/relayer:v1.0.0", "paths", "generate", "kava-localnet-2", "kava-localnet", "transfer", "--port", "transfer")
 				generatePathCmd.Stdout = os.Stdout
 				generatePathCmd.Stderr = os.Stderr
