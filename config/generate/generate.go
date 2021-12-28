@@ -96,3 +96,8 @@ func AddHermesRelayerToNetwork(generatedConfigDir string) error {
 		filepath.Join(generatedConfigDir, "docker-compose.yaml"),
 	)
 }
+
+func GenerateGoRelayerConfig(generatedConfigDir string) error {
+	err := copy.Copy(filepath.Join(ConfigTemplatesDir, "relayer"), filepath.Join(generatedConfigDir, "relayer"))
+	return err
+}
