@@ -645,7 +645,7 @@
         "next_connection_sequence": "0",
         "params": {
           "max_expected_time_per_block": "3600000000000"
-        } 
+        }
       }
     },
     "transfer": {
@@ -2269,75 +2269,421 @@
                 "allowed_params_changes": [
                   {
                     "subspace": "auction",
-                    "key": "BidDuration"
+                    "key": "BidDuration",
+                    "single_subparam_allowed_attrs": [],
+                    "multi_subparams_requirements": []
                   },
                   {
                     "subspace": "auction",
-                    "key": "IncrementSurplus"
+                    "key": "IncrementSurplus",
+                    "single_subparam_allowed_attrs": [],
+                    "multi_subparams_requirements": []
                   },
                   {
                     "subspace": "auction",
-                    "key": "IncrementDebt"
+                    "key": "IncrementDebt",
+                    "single_subparam_allowed_attrs": [],
+                    "multi_subparams_requirements": []
                   },
                   {
                     "subspace": "auction",
-                    "key": "IncrementCollateral"
+                    "key": "IncrementCollateral",
+                    "single_subparam_allowed_attrs": [],
+                    "multi_subparams_requirements": []
                   },
                   {
                     "subspace": "bep3",
-                    "key": "AssetParams"
+                    "key": "AssetParams",
+                    "single_subparam_allowed_attrs": [],
+                    "multi_subparams_requirements": [
+                      {
+                        "key": "denom",
+                        "val": "bnb",
+                        "allowed_subparam_attr_changes": [
+                          "active",
+                          "limit",
+                          "max_swap_amount",
+                          "min_block_lock"
+                        ]
+                      },
+                      {
+                        "key": "denom",
+                        "val": "busd",
+                        "allowed_subparam_attr_changes": [
+                          "active",
+                          "coin_id",
+                          "limit",
+                          "max_swap_amount",
+                          "min_block_lock"
+                        ]
+                      },
+                      {
+                        "key": "denom",
+                        "val": "btcb",
+                        "allowed_subparam_attr_changes": [
+                          "active",
+                          "limit",
+                          "max_swap_amount",
+                          "min_block_lock"
+                        ]
+                      },
+                      {
+                        "key": "denom",
+                        "val": "xrpb",
+                        "allowed_subparam_attr_changes": [
+                          "active",
+                          "limit",
+                          "max_swap_amount",
+                          "min_block_lock"
+                        ]
+                      }
+                    ]
                   },
                   {
                     "subspace": "cdp",
-                    "key": "GlobalDebtLimit"
+                    "key": "GlobalDebtLimit",
+                    "single_subparam_allowed_attrs": [],
+                    "multi_subparams_requirements": []
                   },
                   {
                     "subspace": "cdp",
-                    "key": "SurplusThreshold"
+                    "key": "SurplusThreshold",
+                    "single_subparam_allowed_attrs": [],
+                    "multi_subparams_requirements": []
                   },
                   {
                     "subspace": "cdp",
-                    "key": "SurplusLot"
+                    "key": "SurplusLot",
+                    "single_subparam_allowed_attrs": [],
+                    "multi_subparams_requirements": []
                   },
                   {
                     "subspace": "cdp",
-                    "key": "DebtThreshold"
+                    "key": "DebtThreshold",
+                    "single_subparam_allowed_attrs": [],
+                    "multi_subparams_requirements": []
                   },
                   {
                     "subspace": "cdp",
-                    "key": "DebtLot"
+                    "key": "DebtLot",
+                    "single_subparam_allowed_attrs": [],
+                    "multi_subparams_requirements": []
                   },
                   {
                     "subspace": "cdp",
-                    "key": "DistributionFrequency"
+                    "key": "CollateralParams",
+                    "single_subparam_allowed_attrs": [],
+                    "multi_subparams_requirements": [
+                      {
+                        "key": "type",
+                        "val": "bnb-a",
+                        "allowed_subparam_attr_changes": [
+                          "auction_size",
+                          "check_collateralization_index_count",
+                          "debt_limit",
+                          "keeper_reward_percentage",
+                          "stability_fee"
+                        ]
+                      },
+                      {
+                        "key": "type",
+                        "val": "busd-a",
+                        "allowed_subparam_attr_changes": [
+                          "auction_size",
+                          "check_collateralization_index_count",
+                          "debt_limit",
+                          "keeper_reward_percentage",
+                          "stability_fee"
+                        ]
+                      },
+                      {
+                        "key": "type",
+                        "val": "busd-b",
+                        "allowed_subparam_attr_changes": [
+                          "auction_size",
+                          "check_collateralization_index_count",
+                          "debt_limit",
+                          "keeper_reward_percentage",
+                          "stability_fee"
+                        ]
+                      },
+                      {
+                        "key": "type",
+                        "val": "btcb-a",
+                        "allowed_subparam_attr_changes": [
+                          "auction_size",
+                          "check_collateralization_index_count",
+                          "debt_limit",
+                          "keeper_reward_percentage",
+                          "stability_fee"
+                        ]
+                      },
+                      {
+                        "key": "type",
+                        "val": "xrpb-a",
+                        "allowed_subparam_attr_changes": [
+                          "auction_size",
+                          "check_collateralization_index_count",
+                          "debt_limit",
+                          "keeper_reward_percentage",
+                          "stability_fee"
+                        ]
+                      },
+                      {
+                        "key": "type",
+                        "val": "ukava-a",
+                        "allowed_subparam_attr_changes": [
+                          "auction_size",
+                          "check_collateralization_index_count",
+                          "debt_limit",
+                          "keeper_reward_percentage",
+                          "stability_fee"
+                        ]
+                      },
+                      {
+                        "key": "type",
+                        "val": "hard-a",
+                        "allowed_subparam_attr_changes": [
+                          "auction_size",
+                          "check_collateralization_index_count",
+                          "debt_limit",
+                          "keeper_reward_percentage",
+                          "stability_fee"
+                        ]
+                      },
+                      {
+                        "key": "type",
+                        "val": "swp-a",
+                        "allowed_subparam_attr_changes": [
+                          "auction_size",
+                          "check_collateralization_index_count",
+                          "debt_limit",
+                          "keeper_reward_percentage",
+                          "stability_fee"
+                        ]
+                      },
+                      {
+                        "key": "type",
+                        "val": "hbtc-a",
+                        "allowed_subparam_attr_changes": [
+                          "auction_size",
+                          "check_collateralization_index_count",
+                          "debt_limit",
+                          "keeper_reward_percentage",
+                          "stability_fee"
+                        ]
+                      },
+                      {
+                        "key": "type",
+                        "val": "luna-a",
+                        "allowed_subparam_attr_changes": [
+                          "auction_size",
+                          "check_collateralization_index_count",
+                          "debt_limit",
+                          "keeper_reward_percentage",
+                          "stability_fee"
+                        ]
+                      },
+                      {
+                        "key": "type",
+                        "val": "akt-a",
+                        "allowed_subparam_attr_changes": [
+                          "auction_size",
+                          "check_collateralization_index_count",
+                          "debt_limit",
+                          "keeper_reward_percentage",
+                          "stability_fee"
+                        ]
+                      },
+                      {
+                        "key": "type",
+                        "val": "osmo-a",
+                        "allowed_subparam_attr_changes": [
+                          "auction_size",
+                          "check_collateralization_index_count",
+                          "debt_limit",
+                          "keeper_reward_percentage",
+                          "stability_fee"
+                        ]
+                      },
+                      {
+                        "key": "type",
+                        "val": "atom-a",
+                        "allowed_subparam_attr_changes": [
+                          "auction_size",
+                          "check_collateralization_index_count",
+                          "debt_limit",
+                          "keeper_reward_percentage",
+                          "stability_fee"
+                        ]
+                      }
+                    ]
                   },
                   {
                     "subspace": "cdp",
-                    "key": "CollateralParams"
-                  },
-                  {
-                    "subspace": "cdp",
-                    "key": "DebtParam"
+                    "key": "DebtParam",
+                    "single_subparam_allowed_attrs": [
+                      "debt_floor"
+                    ],
+                    "multi_subparams_requirements": []
                   },
                   {
                     "subspace": "incentive",
-                    "key": "Active"
+                    "key": "Active",
+                    "single_subparam_allowed_attrs": [],
+                    "multi_subparams_requirements": []
                   },
                   {
                     "subspace": "kavadist",
-                    "key": "Active"
+                    "key": "Active",
+                    "single_subparam_allowed_attrs": [],
+                    "multi_subparams_requirements": []
                   },
                   {
                     "subspace": "pricefeed",
-                    "key": "Markets"
+                    "key": "Markets",
+                    "single_subparam_allowed_attrs": [],
+                    "multi_subparams_requirements": [
+                      {
+                        "key": "market_id",
+                        "val": "bnb:usd",
+                        "allowed_subparam_attr_changes": [
+                          "active"
+                        ]
+                      },
+                      {
+                        "key": "market_id",
+                        "val": "bnb:usd:30",
+                        "allowed_subparam_attr_changes": [
+                          "active"
+                        ]
+                      },
+                      {
+                        "key": "market_id",
+                        "val": "btc:usd",
+                        "allowed_subparam_attr_changes": [
+                          "active"
+                        ]
+                      },
+                      {
+                        "key": "market_id",
+                        "val": "btc:usd:30",
+                        "allowed_subparam_attr_changes": [
+                          "active"
+                        ]
+                      },
+                      {
+                        "key": "market_id",
+                        "val": "xrp:usd",
+                        "allowed_subparam_attr_changes": [
+                          "active"
+                        ]
+                      },
+                      {
+                        "key": "market_id",
+                        "val": "xrp:usd:30",
+                        "allowed_subparam_attr_changes": [
+                          "active"
+                        ]
+                      },
+                      {
+                        "key": "market_id",
+                        "val": "busd:usd",
+                        "allowed_subparam_attr_changes": [
+                          "active"
+                        ]
+                      },
+                      {
+                        "key": "market_id",
+                        "val": "busd:usd:30",
+                        "allowed_subparam_attr_changes": [
+                          "active"
+                        ]
+                      }
+                    ]
                   },
                   {
                     "subspace": "hard",
-                    "key": "MoneyMarkets"
+                    "key": "MoneyMarkets",
+                    "single_subparam_allowed_attrs": [],
+                    "multi_subparams_requirements": [
+                      {
+                        "key": "denom",
+                        "val": "bnb",
+                        "allowed_subparam_attr_changes": [
+                          "borrow_limit",
+                          "interest_rate_model",
+                          "keeper_reward_percentage",
+                          "reserve_factor"
+                        ]
+                      },
+                      {
+                        "key": "denom",
+                        "val": "busd",
+                        "allowed_subparam_attr_changes": [
+                          "borrow_limit",
+                          "interest_rate_model",
+                          "keeper_reward_percentage",
+                          "reserve_factor"
+                        ]
+                      },
+                      {
+                        "key": "denom",
+                        "val": "btcb",
+                        "allowed_subparam_attr_changes": [
+                          "borrow_limit",
+                          "interest_rate_model",
+                          "keeper_reward_percentage",
+                          "reserve_factor"
+                        ]
+                      },
+                      {
+                        "key": "denom",
+                        "val": "xrpb",
+                        "allowed_subparam_attr_changes": [
+                          "borrow_limit",
+                          "interest_rate_model",
+                          "keeper_reward_percentage",
+                          "reserve_factor"
+                        ]
+                      },
+                      {
+                        "key": "denom",
+                        "val": "usdx",
+                        "allowed_subparam_attr_changes": [
+                          "borrow_limit",
+                          "interest_rate_model",
+                          "keeper_reward_percentage",
+                          "reserve_factor"
+                        ]
+                      },
+                      {
+                        "key": "denom",
+                        "val": "ukava",
+                        "allowed_subparam_attr_changes": [
+                          "borrow_limit",
+                          "interest_rate_model",
+                          "keeper_reward_percentage",
+                          "reserve_factor"
+                        ]
+                      },
+                      {
+                        "key": "denom",
+                        "val": "hard",
+                        "allowed_subparam_attr_changes": [
+                          "borrow_limit",
+                          "interest_rate_model",
+                          "keeper_reward_percentage",
+                          "reserve_factor"
+                        ]
+                      }
+                    ]
                   },
                   {
                     "subspace": "hard",
-                    "key": "MinimumBorrowUSDValue"
+                    "key": "MinimumBorrowUSDValue",
+                    "single_subparam_allowed_attrs": [],
+                    "multi_subparams_requirements": []
                   }
                 ]
               }
@@ -2393,35 +2739,122 @@
             ],
             "permissions": [
               {
-                "@type": "/kava.committee.v1beta1.TextPermission"
-              },
-              {
                 "@type": "/kava.committee.v1beta1.ParamsChangePermission",
                 "allowed_params_changes": [
                   {
                     "subspace": "hard",
-                    "key": "MoneyMarkets"
+                    "key": "MinimumBorrowUSDValue",
+                    "single_subparam_allowed_attrs": [],
+                    "multi_subparams_requirements": []
+                  },
+                  {
+                    "subspace": "incentive",
+                    "key": "HardSupplyRewardPeriods",
+                    "single_subparam_allowed_attrs": [],
+                    "multi_subparams_requirements": []
+                  },
+                  {
+                    "subspace": "incentive",
+                    "key": "HardBorrowRewardPeriods",
+                    "single_subparam_allowed_attrs": [],
+                    "multi_subparams_requirements": []
+                  },
+                  {
+                    "subspace": "incentive",
+                    "key": "DelegatorRewardPeriods",
+                    "single_subparam_allowed_attrs": [],
+                    "multi_subparams_requirements": []
                   },
                   {
                     "subspace": "hard",
-                    "key": "MinimumBorrowUSDValue"
-                  },
-                  {
-                    "subspace": "incentive",
-                    "key": "HardSupplyRewardPeriods"
-                  },
-                  {
-                    "subspace": "incentive",
-                    "key": "HardBorrowRewardPeriods"
-                  },
-                  {
-                    "subspace": "incentive",
-                    "key": "HardDelegatorRewardPeriods"
+                    "key": "MoneyMarkets",
+                    "single_subparam_allowed_attrs": [],
+                    "multi_subparams_requirements": [
+                      {
+                        "key": "denom",
+                        "val": "bnb",
+                        "allowed_subparam_attr_changes": [
+                          "borrow_limit",
+                          "interest_rate_model",
+                          "keeper_reward_percentage",
+                          "reserve_factor",
+                          "spot_market_id"
+                        ]
+                      },
+                      {
+                        "key": "denom",
+                        "val": "busd",
+                        "allowed_subparam_attr_changes": [
+                          "borrow_limit",
+                          "interest_rate_model",
+                          "keeper_reward_percentage",
+                          "reserve_factor",
+                          "spot_market_id"
+                        ]
+                      },
+                      {
+                        "key": "denom",
+                        "val": "btcb",
+                        "allowed_subparam_attr_changes": [
+                          "borrow_limit",
+                          "interest_rate_model",
+                          "keeper_reward_percentage",
+                          "reserve_factor",
+                          "spot_market_id"
+                        ]
+                      },
+                      {
+                        "key": "denom",
+                        "val": "xrpb",
+                        "allowed_subparam_attr_changes": [
+                          "borrow_limit",
+                          "interest_rate_model",
+                          "keeper_reward_percentage",
+                          "reserve_factor",
+                          "spot_market_id"
+                        ]
+                      },
+                      {
+                        "key": "denom",
+                        "val": "usdx",
+                        "allowed_subparam_attr_changes": [
+                          "borrow_limit",
+                          "interest_rate_model",
+                          "keeper_reward_percentage",
+                          "reserve_factor",
+                          "spot_market_id"
+                        ]
+                      },
+                      {
+                        "key": "denom",
+                        "val": "ukava",
+                        "allowed_subparam_attr_changes": [
+                          "borrow_limit",
+                          "interest_rate_model",
+                          "keeper_reward_percentage",
+                          "reserve_factor",
+                          "spot_market_id"
+                        ]
+                      },
+                      {
+                        "key": "denom",
+                        "val": "hard",
+                        "allowed_subparam_attr_changes": [
+                          "borrow_limit",
+                          "interest_rate_model",
+                          "keeper_reward_percentage",
+                          "reserve_factor",
+                          "spot_market_id"
+                        ]
+                      }
+                    ]
                   }
                 ]
+              },
+              {
+                "@type": "/kava.committee.v1beta1.TextPermission"
               }
-            ],
-            "vote_threshold": "0.667000000000000000",
+            ],            "vote_threshold": "0.667000000000000000",
             "proposal_duration": "604800s",
             "tally_option": "TALLY_OPTION_DEADLINE"
           },
@@ -2438,28 +2871,36 @@
             ],
             "permissions": [
               {
-                "@type": "/kava.committee.v1beta1.TextPermission"
-              },
-              {
                 "@type": "/kava.committee.v1beta1.ParamsChangePermission",
                 "allowed_params_changes": [
                   {
                     "subspace": "swap",
-                    "key": "AllowedPools"
+                    "key": "AllowedPools",
+                    "single_subparam_allowed_attrs": [],
+                    "multi_subparams_requirements": []
                   },
                   {
                     "subspace": "swap",
-                    "key": "SwapFee"
+                    "key": "SwapFee",
+                    "single_subparam_allowed_attrs": [],
+                    "multi_subparams_requirements": []
                   },
                   {
                     "subspace": "incentive",
-                    "key": "DelegatorRewardPeriods"
+                    "key": "DelegatorRewardPeriods",
+                    "single_subparam_allowed_attrs": [],
+                    "multi_subparams_requirements": []
                   },
                   {
                     "subspace": "incentive",
-                    "key": "SwapRewardPeriods"
+                    "key": "SwapRewardPeriods",
+                    "single_subparam_allowed_attrs": [],
+                    "multi_subparams_requirements": []
                   }
                 ]
+              },
+              {
+                "@type": "/kava.committee.v1beta1.TextPermission"
               }
             ],
             "vote_threshold": "0.667000000000000000",
