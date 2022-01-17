@@ -2,7 +2,7 @@ version: '3'
 
 services:
     ibcnode:
-        image: "kava/kava:upgrade-v44"
+        image: "kava/kava:master"
         ports:
             # open rpc port
             - "26658:26658"

@@ -10,7 +10,7 @@ make install
 
 ## Initialization: kvtool testnet
 
-Note: The current mainnet version of kava is `v0.15.0`. To start a local testnet with the current mainnet version use `--kava.configTemplate v0.15`. To start a local testnet with the latest v44 version, use `--kava configTemplate upgrade-v44`
+Note: The current mainnet version of kava is `v0.15.0`. To start a local testnet with the current mainnet version use `--kava.configTemplate v0.15`. To start a local testnet with the latest v44 version, use `--kava configTemplate master`
 
 Option 1:
 
@@ -20,9 +20,6 @@ The `kvtool testnet bootstrap` command starts a local Kava blockchain as a backg
 
 # Start new testnet
 kvtool testnet bootstrap --kava.configTemplate master
-
-# Start new v44 testnet
-kvtool testnet bootstrap --kava.configTemplate upgrade-v44
 ```
 
 Option 2:
