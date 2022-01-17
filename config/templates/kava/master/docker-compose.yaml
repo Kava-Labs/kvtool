@@ -1,19 +1,18 @@
 version: '3'
-
 services:
     kavanode:
-        image: "kava/kava:master"
+        image: "kava/kava:upgrade-v44"
         ports:
             # open default kava rpc port
             - "26657:26657"
-        volumes:
-            - "./kava/initstate/.kvd/config:/root/.kvd/config"
-            - "./kava/initstate/.kvcli/:/root/.kvcli/"
-        # start the blockchain, and set rpc to listen to connections from outside the container
-        command: ["sh", "-c", "/root/.kvd/config/init-data-directory.sh && kvd start --pruning=nothing --rpc.laddr=tcp://0.0.0.0:26657"]
-    kavarest:
-        image: "kava/kava:master"
-        ports:
-            # open default rest port
+            # open rest port
             - "1317:1317"
-        command: ["kvcli", "rest-server", "--node=tcp://kavanode:26657", "--trust-node", "--laddr=tcp://0.0.0.0:1317", "--unsafe-cors"]
+            # open grpc port
+            - "9090:9090"
+            # open grpc-web port
+            - "9091:9091"
+        volumes:
+            - "./kava/initstate/.kava/config:/root/.kava/config"
+            - "./kava/initstate/.kava/keyring-test/:/root/.kava/keyring-test"
+        # start the blockchain, and set rpc to listen to connections from outside the container
+        command: ["sh", "-c", "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657"]
