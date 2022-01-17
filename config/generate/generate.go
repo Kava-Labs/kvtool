@@ -72,14 +72,14 @@ func GenerateDeputyConfig(generatedConfigDir string) error {
 
 func GenerateIbcChainConfig(generatedConfigDir string) error {
 	// copy templates into generated config folder
-	err := copy.Copy(filepath.Join(ConfigTemplatesDir, "ibcchain", "upgrade-v44"), filepath.Join(generatedConfigDir, "ibcchain"))
+	err := copy.Copy(filepath.Join(ConfigTemplatesDir, "ibcchain", "master"), filepath.Join(generatedConfigDir, "ibcchain"))
 	if err != nil {
 		return err
 	}
 
 	// put together final compose file
 	err = overwriteMergeYAML(
-		filepath.Join(ConfigTemplatesDir, "ibcchain", "upgrade-v44", "docker-compose.yaml"),
+		filepath.Join(ConfigTemplatesDir, "ibcchain", "master", "docker-compose.yaml"),
 		filepath.Join(generatedConfigDir, "docker-compose.yaml"),
 	)
 	return err
