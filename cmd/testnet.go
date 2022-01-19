@@ -20,12 +20,13 @@ const (
 	kavaServiceName    = "kava"
 	binanceServiceName = "binance"
 	deputyServiceName  = "deputy"
+	claimerServiceName = "claimer"
 )
 
 var (
 	defaultGeneratedConfigDir string = filepath.Join(generate.ConfigTemplatesDir, "../..", "full_configs", "generated")
 
-	supportedServices = []string{kavaServiceName, binanceServiceName, deputyServiceName}
+	supportedServices = []string{kavaServiceName, binanceServiceName, deputyServiceName, claimerServiceName}
 )
 
 // TestnetCmd cli command for starting kava testnets with docker
@@ -102,6 +103,11 @@ available services: %s
 			}
 			if stringSlice(args).contains(deputyServiceName) {
 				if err := generate.GenerateDeputyConfig(generatedConfigDir); err != nil {
+					return err
+				}
+			}
+			if stringSlice(args).contains(claimerServiceName) {
+				if err := generate.GenerateClaimerConfig(generatedConfigDir); err != nil {
 					return err
 				}
 			}
