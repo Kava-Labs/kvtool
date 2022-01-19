@@ -8,6 +8,7 @@ services:
       - "26659:26657"
     volumes:
       - "./binance/initstate/.bnbchaind/config:/root/.bnbchaind/config"
+      - "./binance/initstate/.bnbcli:/root/.bnbcli"
     command:
         - sh
         - -c
