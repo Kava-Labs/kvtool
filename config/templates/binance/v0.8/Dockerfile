@@ -2,8 +2,8 @@ FROM ubuntu:18.04
 
 RUN apt-get update && apt-get install -y ca-certificates wget moreutils jq curl nginx
 
-ARG BVER=0.8.0
-ARG CLIVER=0.8.0-hotfix
+ARG BVER=0.8.2
+ARG CLIVER=0.8.2
 
 COPY nginx.conf /etc/nginx/sites-enabled/default
 

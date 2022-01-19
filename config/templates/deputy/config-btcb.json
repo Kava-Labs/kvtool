@@ -16,7 +16,7 @@
     "bnb_confirm_num": 2,
     "bnb_auto_retry_num": 3,
     "bnb_auto_retry_timeout": 60,
-    "bnb_expire_height_span": 8490,
+    "bnb_expire_height_span": 8491,
     "bnb_min_accept_expire_height_span": 399057,
     "bnb_min_remain_height": 399057,
     "bnb_min_swap_amount": 3,
@@ -92,7 +92,7 @@
           "amount": "50000"
         }
       ],
-      "gas": 200000
+      "gas_limit": 200000
     }
   }
 }

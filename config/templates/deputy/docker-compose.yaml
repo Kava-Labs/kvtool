@@ -1,18 +1,18 @@
 version: "3"
 services:
   bnb_deputy:
-    image: kava/deputy:v0.1.0
+    image: kava/deputy:v0.4.0
     volumes:
       - "./deputy/config-bnb.json:/deputy/config/config.json"
   btcb_deputy:
-    image: kava/deputy:v0.1.0
+    image: kava/deputy:v0.4.0
     volumes:
       - "./deputy/config-btcb.json:/deputy/config/config.json"
   busd_deputy:
-    image: kava/deputy:v0.1.0
+    image: kava/deputy:v0.4.0
     volumes:
       - "./deputy/config-busd.json:/deputy/config/config.json"
   xrpb_deputy:
-    image: kava/deputy:v0.1.0
+    image: kava/deputy:v0.4.0
     volumes:
       - "./deputy/config-xrpb.json:/deputy/config/config.json"
