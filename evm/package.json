@@ -1,0 +1,19 @@
+{
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.4",
+    "@nomiclabs/hardhat-waffle": "^2.0.2",
+    "ethereum-waffle": "^3.4.0",
+    "hardhat": "^2.8.3"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.4.2"
+  },
+  "scripts": {
+    "token-deploy": "npx hardhat run --network local scripts/deploy/token.js",
+    "token-totalSupply": "npx hardhat totalSupply --network local",
+    "token-balanceOf": "npx hardhat balanceOf --network local",
+    "token-transfer": "npx hardhat transfer --network local",
+    "token-approve": "npx hardhat approve --network local",
+    "token-transferFrom": "npx hardhat transferFrom --network local"
+  }
+}
