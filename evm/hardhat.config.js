@@ -18,25 +18,25 @@ module.exports = {
 };
 
 task("totalSupply", "Total supply of ERC-20 token")
-.addParam("token", "Token address")
-.setAction(async function ({ token }) {
-  const tokenFactory = await ethers.getContractFactory("Token")
-  const tokenInstance = tokenFactory.attach(token)
-  const [minter] = await ethers.getSigners();
-  const totalSupply = (await (await tokenInstance.connect(minter)).totalSupply()).toNumber()
-  console.log(`Total Supply is ${totalSupply}`);
+  .addParam("token", "Token address")
+  .setAction(async function ({ token }) {
+    const tokenFactory = await ethers.getContractFactory("Token")
+    const tokenInstance = tokenFactory.attach(token)
+    const [minter] = await ethers.getSigners();
+    const totalSupply = (await (await tokenInstance.connect(minter)).totalSupply()).toNumber()
+    console.log(`Total Supply is ${totalSupply}`);
 });
 
 task("balanceOf", "Account balance of ERC-20 token")
-.addParam("token", "Token address")
-.addParam("account", "Account address")
-.setAction(async function ({ token, account }) {
-  const tokenFactory = await ethers.getContractFactory("Token")
-  const tokenInstance = tokenFactory.attach(token)
-  const [minter] = await ethers.getSigners();
-  const balance = (await (await tokenInstance.connect(minter)).balanceOf(account)).toNumber()
-  const symbol = await tokenInstance.symbol()
-  console.log(`${account} token balance: ${balance} ${symbol}`);
+  .addParam("token", "Token address")
+  .addParam("account", "Account address")
+  .setAction(async function ({ token, account }) {
+    const tokenFactory = await ethers.getContractFactory("Token")
+    const tokenInstance = tokenFactory.attach(token)
+    const [minter] = await ethers.getSigners();
+    const balance = (await (await tokenInstance.connect(minter)).balanceOf(account)).toNumber()
+    const symbol = await tokenInstance.symbol()
+    console.log(`${account} token balance: ${balance} ${symbol}`);
 });
 
 task("transfer", "ERC-20 transfer")
@@ -50,19 +50,19 @@ task("transfer", "ERC-20 transfer")
     await (await tokenInstance.connect(minter).transfer(recipient, amount)).wait()
     const symbol = await tokenInstance.symbol()
     console.log(`${minter.address} has transferred ${amount} ${symbol} to ${recipient}`);
-  });
+});
 
 task("approve", "ERC-20 approve")
-    .addParam("token", "Token address")
-    .addParam("spender", "Spender address")
-    .addParam("amount", "Token amount")
-    .setAction(async function ({ token, spender, amount }) {
-      const tokenFactory = await ethers.getContractFactory("Token")
-      const tokenInstance = tokenFactory.attach(token)
-      const [sender] = await ethers.getSigners();
-      await (await tokenInstance.connect(sender).approve(spender, amount)).wait()
-      console.log(`${sender.address} has approved ${amount} ${symbol} tokens to ${spender}`);
-    });
+  .addParam("token", "Token address")
+  .addParam("spender", "Spender address")
+  .addParam("amount", "Token amount")
+  .setAction(async function ({ token, spender, amount }) {
+    const tokenFactory = await ethers.getContractFactory("Token")
+    const tokenInstance = tokenFactory.attach(token)
+    const [sender] = await ethers.getSigners();
+    await (await tokenInstance.connect(sender).approve(spender, amount)).wait()
+    console.log(`${sender.address} has approved ${amount} ${symbol} tokens to ${spender}`);
+});
 
 task("transferFrom", "ERC-20 transferFrom")
   .addParam("token", "Token address")
@@ -75,4 +75,4 @@ task("transferFrom", "ERC-20 transferFrom")
     console.log(recipient.address);
     await (await tokenInstance.connect(recipient).transferFrom(sender, recipient.address, amount)).wait()
     console.log(`${recipient.address} has received ${amount} ${symbol} tokens from ${sender}`)
-  });
+});
