@@ -1,6 +1,7 @@
 async function main() {
     const Token = await ethers.getContractFactory("Token");
-    const token = await Token.deploy(1*10**8);
+    const totalSupply = ethers.utils.parseEther("10").toString()
+    const token = await Token.deploy(totalSupply);
 
     const symbol = await token.symbol();
     console.log(symbol, "token deployed to:", token.address);

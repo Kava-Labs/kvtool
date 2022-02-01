@@ -23,7 +23,7 @@ task("totalSupply", "Total supply of ERC-20 token")
     const tokenFactory = await ethers.getContractFactory("Token")
     const tokenInstance = tokenFactory.attach(token)
     const [minter] = await ethers.getSigners();
-    const totalSupply = (await (await tokenInstance.connect(minter)).totalSupply()).toNumber()
+    const totalSupply = Number(await (await tokenInstance.connect(minter)).totalSupply());
     console.log(`Total Supply is ${totalSupply}`);
 });
 
@@ -34,7 +34,7 @@ task("balanceOf", "Account balance of ERC-20 token")
     const tokenFactory = await ethers.getContractFactory("Token")
     const tokenInstance = tokenFactory.attach(token)
     const [minter] = await ethers.getSigners();
-    const balance = (await (await tokenInstance.connect(minter)).balanceOf(account)).toNumber()
+    const balance = Number(await (await tokenInstance.connect(minter)).balanceOf(account))
     const symbol = await tokenInstance.symbol()
     console.log(`${account} token balance: ${balance} ${symbol}`);
 });
