@@ -2243,7 +2243,8 @@
       "auctions": [],
       "next_auction_id": "1",
       "params": {
-        "bid_duration": "16h",
+        "forward_bid_duration": "24h",
+        "reverse_bid_duration": "1h",
         "increment_collateral": "0.010000000000000000",
         "increment_debt": "0.010000000000000000",
         "increment_surplus": "0.010000000000000000",
