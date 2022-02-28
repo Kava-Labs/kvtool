@@ -1147,7 +1147,7 @@
     "evm": {
       "accounts": [],
       "params": {
-        "evm_denom": "agas",
+        "evm_denom": "ukava",
         "enable_create": true,
         "enable_call": true,
         "extra_eips": [],
