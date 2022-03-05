@@ -84,7 +84,7 @@ Test transaction sending by transferring some coins to yourself.
 # Query the recovered account's address
 dkvcli keys show user -a
 # Send yourself some coins by creating a send transaction with your address as both sender and receiver
-dkvcli tx send [user-address] [user-address] 1000000ukava --from user
+dkvcli tx bank send [user-address] [user-address] 1000000ukava --from user
 # Enter 'y' to confirm the transaction
 confirm transaction before signing and broadcasting [y/N]:
 
