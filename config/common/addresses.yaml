@@ -49,13 +49,13 @@ kava:
     vesting_periodic:
       mnemonic: "twice brief orbit assist average victory shrimp visit rookie nation sentence obscure all deny immense borrow debate demise gorilla fault session transfer wide because"
       address: "kava1fwfwmt6vupf3m9uvpdsuuc4dga8p5dtl4npcqz"
-    generic_0:
+    generic-0:
       mnemonic: "census museum crew rude tower vapor mule rib weasel faith page cushion rain inherit much cram that blanket occur region track hub zero topple"
       address: "kava1sw54s6gq76acm35ls6m5c0kr93dstgrh6eftld"
-    generic_1:
+    generic-1:
       mnemonic: "flavor print loyal canyon expand salmon century field say frequent human dinosaur frame claim bridge affair web way direct win become merry crash frequent"
       address: "kava1t4dvu32e309pzhmdn3aqcjlj79h9876plynrfm"
-    generic_2:
+    generic-2:
       mnemonic: "height space double mask panic fashion soon bright rude narrow shuffle pull scale box science plastic plug churn hub donor reason piece learn police"
       address: "kava1wuzhkn2f8nqe2aprnwt3jkjvvr9m7dlkpumtz2"
 bnb:
