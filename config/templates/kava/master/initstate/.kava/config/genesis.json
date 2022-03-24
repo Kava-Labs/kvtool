@@ -645,7 +645,7 @@
         "next_connection_sequence": "0",
         "params": {
           "max_expected_time_per_block": "3600000000000"
-        } 
+        }
       }
     },
     "transfer": {
@@ -2474,6 +2474,16 @@
       "next_proposal_id": "1",
       "proposals": [],
       "votes": []
+    },
+    "savings": {
+      "params": {
+        "supported_denoms": [
+          "usdx",
+          "ukava",
+          "hard",
+          "swp"
+        ]
+      }
     }
   },
   "chain_id": "kava-localnet",
