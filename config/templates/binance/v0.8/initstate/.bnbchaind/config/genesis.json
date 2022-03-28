@@ -58,6 +58,10 @@
       {
         "address": "bnb1m5k0g7q0n8nzsre8ysuhsv09j03jhgcrrnwur3",
         "name": "user_4"
+      },
+      {
+        "address": "bnb1ldgf6232r63jrftrw4lefzswrdvj7g7lzxhkzk",
+        "name": "claimer"
       }
     ],
     "dex": {},

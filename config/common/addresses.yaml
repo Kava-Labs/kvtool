@@ -58,6 +58,10 @@ kava:
     generic-2:
       mnemonic: "height space double mask panic fashion soon bright rude narrow shuffle pull scale box science plastic plug churn hub donor reason piece learn police"
       address: "kava1wuzhkn2f8nqe2aprnwt3jkjvvr9m7dlkpumtz2"
+  claimer:
+    mnemonic: "input inform coyote drum crash ecology advance midnight foam divorce milk tower exotic afraid misery shiver churn fine inmate expect execute grass blast trigger"
+    address: "kava1yewvuhltxzkty5pt70jmv6aup6fzfjvyr2ycs5"
+
 bnb:
   validators:
     - mnemonic: "village fiscal december liquid better drink disorder unusual tent ivory cage diesel bike slab tilt spray wife neck oak science beef upper chapter blade"
@@ -104,5 +108,8 @@ bnb:
       address: "bnb1gzr37hrqlqk4wpdfqn6pp3dy9ek28tahy7dx2v"
     - mnemonic: "end bicycle walnut empty bus silly camera lift fancy symptom office pluck detail unable cry sense scrap tuition relax amateur hold win debate hat"
       address: "bnb1m5k0g7q0n8nzsre8ysuhsv09j03jhgcrrnwur3"
+  claimer:
+    mnemonic: "wide ostrich display public file virus put unit airport glide proud economy genius manual notice cheese initial garment draw gentle boring cousin fine assume"
+    address: "bnb1ldgf6232r63jrftrw4lefzswrdvj7g7lzxhkzk"
 
 

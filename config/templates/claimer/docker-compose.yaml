@@ -1,0 +1,9 @@
+version: "3"
+services:
+  claimer:
+    image: kava/claimer:79934d4
+    command: ["/main", "--config=/config.json"]
+    ports:
+      - "5000:8080"
+    volumes:
+      - "./claimer/config.json:/config.json"

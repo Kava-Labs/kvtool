@@ -101,3 +101,18 @@ func GenerateGoRelayerConfig(generatedConfigDir string) error {
 	err := copy.Copy(filepath.Join(ConfigTemplatesDir, "relayer"), filepath.Join(generatedConfigDir, "relayer"))
 	return err
 }
+
+func GenerateClaimerConfig(generatedConfigDir string) error {
+	// copy templates into generated config folder
+	err := copy.Copy(filepath.Join(ConfigTemplatesDir, "claimer"), filepath.Join(generatedConfigDir, "claimer"))
+	if err != nil {
+		return err
+	}
+
+	// put together final compose file
+	err = overwriteMergeYAML(
+		filepath.Join(ConfigTemplatesDir, "claimer", "docker-compose.yaml"),
+		filepath.Join(generatedConfigDir, "docker-compose.yaml"),
+	)
+	return err
+}
