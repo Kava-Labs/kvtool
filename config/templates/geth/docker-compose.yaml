@@ -3,10 +3,11 @@ services:
     gethnode:
         image: "ethereum/client-go:latest"
         ports:
+            # Non-default ports (+10) to not conflict with Kava EVM ports
             # HTTP JSON-RPC port
-            - "8545:8545"
+            - "8555:8545"
             # WS-RPC port
-            - "8546:8546"
+            - "8556:8546"
         volumes:
             - "./geth/initstate/.geth/keystore:/root/.ethereum/keystore"
             - "./geth/initstate/exported_state:/root/exported_state"
