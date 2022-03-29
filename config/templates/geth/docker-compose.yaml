@@ -1,0 +1,17 @@
+version: '3'
+services:
+    gethnode:
+        image: "ethereum/client-go:latest"
+        ports:
+            # HTTP JSON-RPC port
+            - "8545:8545"
+            # WS-RPC port
+            - "8546:8546"
+        volumes:
+            - "./geth/initstate/.geth/keystore:/root/.ethereum/keystore"
+            - "./geth/initstate/exported_state:/root/exported_state"
+            - "./geth/initstate/eth-password:/root/eth-password"
+            - "./geth/initstate/genesis.json:/root/genesis.json"
+            - "./geth/initstate/entrypoint.sh:/entrypoint.sh"
+        entrypoint: ["/bin/sh"]
+        command: /entrypoint.sh
