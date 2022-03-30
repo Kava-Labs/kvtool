@@ -10,7 +10,7 @@ make install
 
 ## Initialization: kvtool testnet
 
-Note: The current mainnet version of kava is `v0.15.0`. To start a local testnet with the current mainnet version use `--kava.configTemplate v0.15`. To start a local testnet with the latest v44 version, use `--kava configTemplate master`
+Note: The current mainnet version of kava is `v0.16.0`. To start a local testnet with the current mainnet version use `--kava.configTemplate v0.16`. To start a local testnet with the latest v44 version, use `--kava configTemplate master`
 
 Option 1:
 
@@ -40,6 +40,43 @@ kvtool testnet up
 # When finished with usage, shut down the processes
 kvtool testnet down
 ```
+
+### Flags
+
+Additional flags can be added when initializing a testnet to add additional
+services:
+
+`--ibc`: Run Kava testnet with an additional IBC chain
+
+Example:
+
+```bash
+# Run Kava testnet with an additional IBC chain
+kvtool testnet bootstrap --kava.configTemplate master --ibc
+```
+
+`--geth`: Run a go-ethereum node alongside the Kava testnet. The geth node is
+initialized with the Kava Bridge contract and test ERC20 tokens.
+
+Example:
+
+```bash
+# Run the testnet with Kava EVM and a geth node in parallel
+kvtool testnet bootstrap --kava.configTemplate evm --geth
+```
+
+Geth node ports are **not** default, as the Kava EVM will use default JSON-RPC
+ports:
+
+Kava EVM RPC Ports:
+
+* HTTP JSON-RPC: `8545`
+* WS-RPC port: `8546`
+
+Geth RPC Ports:
+
+* HTTP JSON-RPC: `8555`
+* WS-RPC port: `8556`
 
 ## Usage: kvtool testnet
 
