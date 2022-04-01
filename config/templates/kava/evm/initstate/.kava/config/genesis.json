@@ -493,10 +493,6 @@
           "address": "kava123fxg0l602etulhhcdm0vt7l57qya5wjcrwhzz",
           "coins": [
             {
-              "denom": "agas",
-              "amount": "100000000000000000000"
-            },
-            {
               "denom": "bnb",
               "amount": "100000000000"
             },
@@ -510,10 +506,6 @@
           "address": "kava1ak4pa9z2aty94ze2cs06wsdnkg9hsvfkp40r02",
           "coins": [
             {
-              "denom": "agas",
-              "amount": "100000000000000000000"
-            },
-            {
               "denom": "bnb",
               "amount": "100000000000"
             },
@@ -525,10 +517,6 @@
         }
       ],
       "supply": [
-        {
-          "denom": "agas",
-          "amount": "200000000000000000000"
-        },
         {
           "denom": "bnb",
           "amount": "20000200000000000"
@@ -1169,6 +1157,9 @@
         }
       }
     },
+    "evmutil": {
+      "accounts": []
+    },
     "feemarket": {
       "params": {
         "no_base_fee": false,
@@ -1260,7 +1251,7 @@
         "max_deposit_period": "172800s"
       },
       "voting_params": {
-        "voting_period": "172800s"
+        "voting_period": "300s"
       },
       "tally_params": {
         "quorum": "0.334000000000000000",
