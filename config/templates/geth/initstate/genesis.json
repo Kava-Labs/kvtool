@@ -1,0 +1,24 @@
+{
+  "config": {
+    "chainId": 88881,
+    "homesteadBlock": 0,
+    "eip150Block": 0,
+    "eip155Block": 0,
+    "eip158Block": 0,
+    "byzantiumBlock": 0,
+    "constantinopleBlock": 0,
+    "petersburgBlock": 0,
+    "clique": {
+      "period": 5,
+      "epoch": 30000
+    }
+  },
+  "difficulty": "1",
+  "gasLimit": "8000000",
+  "extraData": "0x000000000000000000000000000000000000000000000000000000000000000021e360e198cde35740e88572b59f2cade421e6b10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+  "alloc": {
+    "21e360e198cde35740e88572b59f2cade421e6b1": {
+      "balance": "300000000000000000000000"
+    }
+  }
+}

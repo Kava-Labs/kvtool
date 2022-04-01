@@ -71,6 +71,7 @@ Docker compose files are (by default) written to %s`, defaultGeneratedConfigDir)
 
 	var kavaConfigTemplate string
 	var ibcFlag bool
+	var gethFlag bool
 
 	genConfigCmd := &cobra.Command{
 		Use:   "gen-config services_to_include...",
@@ -110,6 +111,12 @@ available services: %s
 					return err
 				}
 			}
+			if gethFlag {
+				if err := generate.GenerateGethConfig(generatedConfigDir); err != nil {
+					return err
+				}
+			}
+
 			return nil
 		},
 	}
@@ -179,6 +186,12 @@ available services: %s
 					return err
 				}
 			}
+			if gethFlag {
+				if err := generate.GenerateGethConfig(generatedConfigDir); err != nil {
+					return err
+				}
+			}
+
 			cmd = exec.Command("docker-compose", "--file", filepath.Join(generatedConfigDir, "docker-compose.yaml"), "pull")
 			cmd.Stdout = os.Stdout
 			cmd.Stderr = os.Stderr
@@ -247,6 +260,7 @@ available services: %s
 	}
 	bootstrapCmd.Flags().StringVar(&kavaConfigTemplate, "kava.configTemplate", "master", "the directory name of the template used to generating the kava config")
 	bootstrapCmd.Flags().BoolVar(&ibcFlag, "ibc", false, "flag for if ibc is enabled")
+	bootstrapCmd.Flags().BoolVar(&gethFlag, "geth", false, "flag for if geth is enabled")
 	rootCmd.AddCommand(bootstrapCmd)
 
 	exportCmd := &cobra.Command{
