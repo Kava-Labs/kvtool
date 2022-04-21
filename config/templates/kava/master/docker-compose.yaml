@@ -1,7 +1,7 @@
 version: '3'
 services:
     kavanode:
-        image: "kava/kava:master"
+        image: "kava/kava:upgrade-evm"
         ports:
             # open default kava rpc port
             - "26657:26657"
@@ -11,6 +11,10 @@ services:
             - "9090:9090"
             # open grpc-web port
             - "9091:9091"
+            # open EVM JSON-RPC port
+            - "8545:8545"
+            # open Eth websocket port
+            - "8546:8546"
         volumes:
             - "./kava/initstate/.kava/config:/root/.kava/config"
             - "./kava/initstate/.kava/keyring-test/:/root/.kava/keyring-test"
