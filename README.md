@@ -10,14 +10,18 @@ make install
 
 ## Initialization: kvtool testnet
 
-Note: The current mainnet version of kava is `v0.16.0`. To start a local testnet with the current mainnet version use `--kava.configTemplate v0.16`. To start a local testnet with the latest v44 version, use `--kava configTemplate master`
+Note: The current mainnet version of kava is `v0.16.0`. To start a local testnet
+with the current mainnet version use `--kava.configTemplate v0.16`. To start a
+local testnet with the latest unreleased version, use
+`--kava configTemplate master`
 
 Option 1:
 
-The `kvtool testnet bootstrap` command starts a local Kava blockchain as a background docker container called `generated_kavanode_1`. The bootstrap command only starts the Kava blockchain and Kava REST server services.
+The `kvtool testnet bootstrap` command starts a local Kava blockchain as a
+background docker container called `generated_kavanode_1`. The bootstrap command
+only starts the Kava blockchain and Kava REST server services.
 
 ```bash
-
 # Start new testnet
 kvtool testnet bootstrap --kava.configTemplate master
 ```
@@ -27,7 +31,6 @@ Option 2:
 To generate a testnet for kava, binance chain, and a deputy that relays swaps between them:
 
 ```bash
-
 # Generate a new kvtool configuration based off template files
 kvtool testnet gen-config kava binance deputy --kava.configTemplate master
 
@@ -56,7 +59,9 @@ kvtool testnet bootstrap --kava.configTemplate master --ibc
 ```
 
 `--geth`: Run a go-ethereum node alongside the Kava testnet. The geth node is
-initialized with the Kava Bridge contract and test ERC20 tokens.
+initialized with the Kava Bridge contract and test ERC20 tokens. The contract
+addresses can be found on the
+[Kava-Labs/kava-bridge](https://github.com/Kava-Labs/kava-bridge#development) README.
 
 Example:
 
