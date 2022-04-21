@@ -26,7 +26,8 @@
       "next_auction_id": "1",
       "params": {
         "max_auction_duration": "172800s",
-        "bid_duration": "3600s",
+        "forward_bid_duration": "28800s",
+        "reverse_bid_duration": "3600s",
         "increment_surplus": "0.050000000000000000",
         "increment_debt": "0.050000000000000000",
         "increment_collateral": "0.050000000000000000"
@@ -1174,10 +1175,9 @@
         "no_base_fee": false,
         "base_fee_change_denominator": 8,
         "elasticity_multiplier": 2,
-        "initial_base_fee": "1000000000",
-        "enable_height": "0"
+        "enable_height": "0",
+        "base_fee": "1000000000"
       },
-      "base_fee": "0",
       "block_gas": "0"
     },
     "genutil": {
