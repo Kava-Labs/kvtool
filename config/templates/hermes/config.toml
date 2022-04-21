@@ -32,7 +32,7 @@ host = '127.0.0.1'
 port = 3001
 
 [[chains]]
-id = 'kava-localnet'
+id = 'kavalocalnet_8888-1'
 rpc_addr = 'http://kavanode:26657'
 grpc_addr = 'http://kavanode:9090'
 websocket_addr = 'ws://kavanode:26657/websocket'
