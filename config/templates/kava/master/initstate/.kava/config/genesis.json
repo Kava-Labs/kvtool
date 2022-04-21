@@ -1180,6 +1180,19 @@
       },
       "block_gas": "0"
     },
+    "evmutil": {
+      "accounts": []
+    },
+    "savings": {
+      "params": {
+        "supported_denoms": [
+          "usdx",
+          "ukava",
+          "hard",
+          "swp"
+        ]
+      }
+    },
     "genutil": {
       "gen_txs": [
         {
@@ -1661,6 +1674,32 @@
               {
                 "amount": "316880",
                 "denom": "swp"
+              }
+            ]
+          }
+        ],
+        "savings_reward_periods": [
+          {
+            "active": true,
+            "collateral_type": "ukava",
+            "start": "2022-04-21T14:00:00Z",
+            "end": "2024-01-01T00:00:00Z",
+            "rewards_per_second": [
+              {
+                "amount": "31688",
+                "denom": "ukava"
+              }
+            ]
+          },
+          {
+            "active": true,
+            "collateral_type": "usdx",
+            "start": "2022-04-21T14:00:00Z",
+            "end": "2024-01-01T00:00:00Z",
+            "rewards_per_second": [
+              {
+                "amount": "31688",
+                "denom": "ukava"
               }
             ]
           }
