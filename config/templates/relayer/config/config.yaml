@@ -4,7 +4,7 @@ global:
   light-cache-size: 20
 chains:
 - key: testkey
-  chain-id: kava-localnet
+  chain-id: kavalocalnet_8888-1
   rpc-addr: 'http://kavanode:26657'
   account-prefix: kava
   gas-adjustment: 1.5
