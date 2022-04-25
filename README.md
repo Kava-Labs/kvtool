@@ -59,9 +59,10 @@ kvtool testnet bootstrap --kava.configTemplate master --ibc
 ```
 
 `--geth`: Run a go-ethereum node alongside the Kava testnet. The geth node is
-initialized with the Kava Bridge contract and test ERC20 tokens. The contract
-addresses can be found on the
-[Kava-Labs/kava-bridge](https://github.com/Kava-Labs/kava-bridge#development) README.
+initialized with the Kava Bridge contract and test ERC20 tokens. The Kava EVM
+also includes Multicall contracts deployed. The contract addresses can be found
+on the [Kava-Labs/kava-bridge](https://github.com/Kava-Labs/kava-bridge#development)
+README.
 
 Example:
 
