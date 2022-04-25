@@ -230,6 +230,26 @@
             "sequence": "0"
           },
           "code_hash": "0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470"
+        },
+        {
+          "@type": "/ethermint.types.v1.EthAccount",
+          "base_account": {
+            "address": "kava10wlnqzyss4accfqmyxwx5jy5x9nfkwh6qm7n4t",
+            "pub_key": null,
+            "account_number": "0",
+            "sequence": "0"
+          },
+          "code_hash": "0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470"
+        },
+        {
+          "@type": "/ethermint.types.v1.EthAccount",
+          "base_account": {
+            "address": "kava15tmj37vh7ch504px9fcfglmvx6y9m70646ev8t",
+            "pub_key": null,
+            "account_number": "0",
+            "sequence": "0"
+          },
+          "code_hash": "0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470"
         }
       ]
     },
@@ -523,6 +543,24 @@
               "amount": "2000000000"
             }
           ]
+        },
+        {
+          "address": "kava10wlnqzyss4accfqmyxwx5jy5x9nfkwh6qm7n4t",
+          "coins": [
+            {
+              "denom": "ukava",
+              "amount": "1000000000"
+            }
+          ]
+        },
+        {
+          "address": "kava15tmj37vh7ch504px9fcfglmvx6y9m70646ev8t",
+          "coins": [
+            {
+              "denom": "ukava",
+              "amount": "1000000000"
+            }
+          ]
         }
       ],
       "supply": [
@@ -552,7 +590,7 @@
         },
         {
           "denom": "ukava",
-          "amount": "20015008565077579"
+          "amount": "20015010565077579"
         },
         {
           "denom": "usdx",
