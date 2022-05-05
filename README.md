@@ -84,6 +84,14 @@ Geth RPC Ports:
 * HTTP JSON-RPC: `8555`
 * WS-RPC port: `8556`
 
+To connect to the associated Ethereum wallet with Metamask, setup a new network with the following parameters:
+* New RPC URL: `http://localhost:8555`
+* Chain ID: `88881` (configured from the [genesis](config/templates/geth/initstate/genesis.json#L3))
+* Currency Symbol: `ETH`
+
+Finally, connect the mining account by importing the JSON config in [this directory](config/templates/geth/initstate/.geth/keystore)
+with [this password](config/templates/geth/initstate/eth-password).
+
 ## Usage: kvtool testnet
 
 REST APIs for both blockchains are exposed on localhost:
