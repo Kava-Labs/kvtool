@@ -4,20 +4,27 @@ go 1.13
 
 require (
 	github.com/Jeffail/gabs/v2 v2.6.0
-	github.com/cosmos/cosmos-sdk v0.39.2
-	github.com/kava-labs/kava v0.13.1
-	github.com/kr/text v0.2.0 // indirect
-	github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e // indirect
-	github.com/onsi/ginkgo v1.12.0 // indirect
-	github.com/onsi/gomega v1.9.0 // indirect
-	github.com/otiai10/copy v1.2.0
-	github.com/spf13/cobra v1.0.0
-	github.com/spf13/viper v1.7.0 // indirect
-	github.com/tendermint/tendermint v0.33.9
-	go.etcd.io/bbolt v1.3.4 // indirect
-	golang.org/x/sys v0.0.0-20220412211240-33da011f77ad // indirect
-	google.golang.org/grpc v1.30.0 // indirect
-	gopkg.in/check.v1 v1.0.0-20200227125254-8fa46927fb4f // indirect
-	gopkg.in/yaml.v2 v2.3.0
-	gopkg.in/yaml.v3 v3.0.0-20200615113413-eeeca48fe776
+	github.com/cosmos/cosmos-sdk v0.45.4
+	github.com/kava-labs/kava v0.17.3
+	github.com/otiai10/copy v1.6.0
+	github.com/spf13/cobra v1.4.0
+	github.com/tendermint/tendermint v0.34.19
+	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b
+)
+
+replace (
+	// Use the cosmos keyring code
+	github.com/99designs/keyring => github.com/cosmos/keyring v1.1.7-0.20210622111912-ef00f8ac3d76
+	// Use cosmos-sdk fork with backported fix for unsafe-reset-all
+	github.com/cosmos/cosmos-sdk => github.com/kava-labs/cosmos-sdk v0.45.4-kava.1
+	// See https://github.com/cosmos/cosmos-sdk/pull/10401, https://github.com/cosmos/cosmos-sdk/commit/0592ba6158cd0bf49d894be1cef4faeec59e8320
+	github.com/gin-gonic/gin => github.com/gin-gonic/gin v1.7.0
+	// Use the cosmos modified protobufs
+	github.com/gogo/protobuf => github.com/regen-network/protobuf v1.3.3-alpha.regen.1
+	// Use rocksdb 7.1.2
+	github.com/tendermint/tm-db => github.com/kava-labs/tm-db v0.6.7-kava.1
+	// Use ethermint fork that respects min-gas-price with NoBaseFee true and london enabled
+	github.com/tharsis/ethermint => github.com/Kava-Labs/ethermint v0.14.0-kava-v17.2
+	// Make sure that we use grpc compatible with cosmos
+	google.golang.org/grpc => google.golang.org/grpc v1.33.2
 )

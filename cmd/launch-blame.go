@@ -1,14 +1,16 @@
 package cmd
 
 import (
+	"context"
 	"fmt"
 	"regexp"
 	"sort"
 
 	"github.com/cosmos/cosmos-sdk/codec"
-	"github.com/cosmos/cosmos-sdk/x/genutil"
+	genutil "github.com/cosmos/cosmos-sdk/x/genutil/types"
 	"github.com/spf13/cobra"
 	"github.com/tendermint/tendermint/consensus/types"
+	tmjson "github.com/tendermint/tendermint/libs/json"
 	"github.com/tendermint/tendermint/rpc/client/http"
 	tmtypes "github.com/tendermint/tendermint/types"
 	"gopkg.in/yaml.v3"
@@ -18,7 +20,7 @@ const fingerPrintLength = 12
 
 // LaunchBlameCmd fetches the consesnus state from a rpc node. It outputs the monikers of the validators that have not signed.
 // It's useful for running on stalled chain launches to see which validators are not online yet.
-func LaunchBlameCmd(cdc *codec.Codec) *cobra.Command {
+func LaunchBlameCmd(cdc codec.Codec) *cobra.Command {
 	var nodeAddress string
 	var genesisFile string
 
@@ -59,17 +61,17 @@ func LaunchBlameCmd(cdc *codec.Codec) *cobra.Command {
 
 			// 3) Fetch signing validators from the node
 
-			state, err := client.ConsensusState()
+			state, err := client.ConsensusState(context.Background())
 			if err != nil {
 				return fmt.Errorf("can't get consensus state from node: %w", err)
 			}
 			var roundState types.RoundStateSimple
-			err = cdc.UnmarshalJSON(state.RoundState, &roundState)
+			err = tmjson.Unmarshal(state.RoundState, &roundState)
 			if err != nil {
 				return fmt.Errorf("can't unmarshal response from node: %w", err)
 			}
 			var votes []roundVotes
-			err = cdc.UnmarshalJSON(roundState.Votes, &votes)
+			err = tmjson.Unmarshal(roundState.Votes, &votes)
 			if err != nil {
 				return fmt.Errorf("can't unmarshal response from node: %w", err)
 			}
@@ -111,7 +113,7 @@ func LaunchBlameCmd(cdc *codec.Codec) *cobra.Command {
 			output.PowerOnline = output.Online.TotalPower()
 			output.PowerOnlinePct = output.Online.TotalPowerPct()
 
-			// bz, err := cdc.MarshalJSONIndent(output, "", "  ")
+			// bz, err := cdc.MarshaltmjsonIndent(output, "", "  ")
 			bz, err := yaml.Marshal(output)
 			if err != nil {
 				panic(err)
@@ -129,18 +131,18 @@ func LaunchBlameCmd(cdc *codec.Codec) *cobra.Command {
 }
 
 type roundVotes struct {
-	Round              int      `json:"round"`
-	Prevotes           []string `json:"prevotes"`
-	PrevotesBitArray   string   `json:"prevotes_bit_array"`
-	Precommits         []string `json:"precommits"`
-	PrecommitsBitArray string   `json:"precommits_bit_array"`
+	Round              int      `tmjson:"round"`
+	Prevotes           []string `tmjson:"prevotes"`
+	PrevotesBitArray   string   `tmjson:"prevotes_bit_array"`
+	Precommits         []string `tmjson:"precommits"`
+	PrecommitsBitArray string   `tmjson:"precommits_bit_array"`
 }
 
 type displayData struct {
-	PowerOnline    int64      `json:"power_online" yaml:"power_online"`
-	PowerOnlinePct float64    `json:"power_online_pct" yaml:"power_online_pct"`
-	Offline        validators `json:"offline" yaml:"offline"`
-	Online         validators `json:"online" yaml:"online"`
+	PowerOnline    int64      `tmjson:"power_online" yaml:"power_online"`
+	PowerOnlinePct float64    `tmjson:"power_online_pct" yaml:"power_online_pct"`
+	Offline        validators `tmjson:"offline" yaml:"offline"`
+	Online         validators `tmjson:"online" yaml:"online"`
 }
 
 type validators []validator
@@ -161,10 +163,10 @@ func (vs validators) TotalPowerPct() float64 {
 }
 
 type validator struct {
-	Moniker        string  `json:"moniker" yaml:"moniker"`
-	ConsAddress    string  `json:"cons_address" yaml:"cons_address"`
-	VotingPower    int64   `json:"voting_power" yaml:"voting_power"`
-	VotingPowerPct float64 `json:"voting_power_pct" yaml:"voting_power_pct"`
+	Moniker        string  `tmjson:"moniker" yaml:"moniker"`
+	ConsAddress    string  `tmjson:"cons_address" yaml:"cons_address"`
+	VotingPower    int64   `tmjson:"voting_power" yaml:"voting_power"`
+	VotingPowerPct float64 `tmjson:"voting_power_pct" yaml:"voting_power_pct"`
 }
 
 func (v validator) MatchesFingerPrint(print string) bool {
@@ -176,7 +178,9 @@ func (v validator) MatchesFingerPrint(print string) bool {
 
 func fetchValidatorPowers(client *http.HTTP, addrMonikers map[string]string) (validators, error) {
 	var startHeight int64 = 1 // endpoint requires height > 0
-	validatorsResult, err := client.Validators(&startHeight, 0, 500)
+	start := 1
+	end := 500
+	validatorsResult, err := client.Validators(context.Background(), &startHeight, &start, &end)
 	if err != nil {
 		return nil, err
 	}
@@ -199,38 +203,35 @@ func fetchValidatorPowers(client *http.HTTP, addrMonikers map[string]string) (va
 	return vals, nil
 }
 
-func fetchGenesisState(cdc *codec.Codec, client *http.HTTP) (genutil.AppMap, error) {
-	genResponse, err := client.Genesis()
+func fetchGenesisState(cdc codec.Codec, client *http.HTTP) (genutil.AppMap, error) {
+	genResponse, err := client.Genesis(context.Background())
 	if err != nil {
 		return nil, fmt.Errorf("can't get genesis file from node: %w", err)
 	}
 	var genAppState genutil.AppMap
-	if err := cdc.UnmarshalJSON(genResponse.Genesis.AppState, &genAppState); err != nil {
+	if err := tmjson.Unmarshal(genResponse.Genesis.AppState, &genAppState); err != nil {
 		return nil, fmt.Errorf("can't unmarshal genesis app state: %w", err)
 	}
 	return genAppState, nil
 }
 
-func readGenesisState(cdc *codec.Codec, file string) (genutil.AppMap, error) {
+func readGenesisState(cdc codec.Codec, file string) (genutil.AppMap, error) {
 	genDoc, err := tmtypes.GenesisDocFromFile(file)
 	if err != nil {
 		return nil, fmt.Errorf("failed to read genesis document from file %s: %w", file, err)
 	}
 	var genAppState genutil.AppMap
-	if err := cdc.UnmarshalJSON(genDoc.AppState, &genAppState); err != nil {
+	if err := tmjson.Unmarshal(genDoc.AppState, &genAppState); err != nil {
 		return nil, fmt.Errorf("couldn't unmarshal genesis state: %w", err)
 	}
 	return genAppState, nil
 }
 
-func extractAddressMonikersFromGenesis(cdc *codec.Codec, genAppState genutil.AppMap) (map[string]string, error) {
+func extractAddressMonikersFromGenesis(cdc codec.Codec, genAppState genutil.AppMap) (map[string]string, error) {
 	// Use genutil.GenTxs, unless it's empty then use staking.Validators
-	validators, err := getAddressMonikersFromGenTxs(cdc, genAppState["genutil"])
+	validators, err := getAddressMonikersFromStaking(cdc, genAppState["staking"])
 	if err != nil {
-		validators, err = getAddressMonikersFromStaking(cdc, genAppState["staking"])
-		if err != nil {
-			return nil, err
-		}
+		return nil, err
 	}
 	return validators, nil
 }

@@ -18,13 +18,9 @@ func Execute() error {
 	app.SetBip44CoinType(config)
 	config.Seal()
 
-	cdc := app.MakeCodec()
+	cdc := app.MakeEncodingConfig().Marshaler
 
 	rootCmd.AddCommand(TestnetCmd())
-	rootCmd.AddCommand(MonikersCmd(cdc))
 	rootCmd.AddCommand(LaunchBlameCmd(cdc))
-	rootCmd.AddCommand(SubscribeCmd(cdc))
-	rootCmd.AddCommand(SwapIDCmd(cdc))
-	rootCmd.AddCommand(NodeKeysCmd(cdc))
 	return rootCmd.Execute()
 }
