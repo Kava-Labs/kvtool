@@ -1004,6 +1004,18 @@
       },
       "starting_cdp_id": "1"
     },
+    "earn": {
+      "params": {
+        "allowed_vaults": [
+          {
+            "denom": "usdx",
+            "vault_strategy": 1
+          }
+        ]
+      },
+      "vault_records": [],
+      "vault_share_records": []
+    },
     "committee": {
       "committees": [
         {
@@ -1327,7 +1339,139 @@
           "london_block": null,
           "arrow_glacier_block": null,
           "merge_fork_block": null
-        }
+        },
+        "eip712_allowed_msgs": [
+          {
+            "msg_type_url": "/kava.evmutil.v1beta1.MsgConvertERC20ToCoin",
+            "msg_value_type_name": "MsgValueEVMConvertERC20ToCoin",
+            "value_types": [
+              {
+                "name": "initiator",
+                "type": "string"
+              },
+              {
+                "name": "receiver",
+                "type": "string"
+              },
+              {
+                "name": "kava_erc20_address",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "string"
+              }
+            ]
+          },
+          {
+            "msg_type_url": "/kava.cdp.v1beta1.MsgCreateCDP",
+            "msg_value_type_name": "MsgValueCDPCreate",
+            "value_types": [
+              {
+                "name": "sender",
+                "type": "string"
+              },
+              {
+                "name": "collateral",
+                "type": "Coin"
+              },
+              {
+                "name": "principal",
+                "type": "Coin"
+              },
+              {
+                "name": "collateral_type",
+                "type": "string"
+              }
+            ]
+          },
+          {
+            "msg_type_url": "/kava.cdp.v1beta1.MsgDeposit",
+            "msg_value_type_name": "MsgValueCDPDeposit",
+            "value_types": [
+              {
+                "name": "depositor",
+                "type": "string"
+              },
+              {
+                "name": "owner",
+                "type": "string"
+              },
+              {
+                "name": "collateral",
+                "type": "Coin"
+              },
+              {
+                "name": "collateral_type",
+                "type": "string"
+              }
+            ]
+          },
+          {
+            "msg_type_url": "/kava.hard.v1beta1.MsgDeposit",
+            "msg_value_type_name": "MsgValueHardDeposit",
+            "value_types": [
+              {
+                "name": "depositor",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "Coin[]"
+              }
+            ]
+          },
+          {
+            "msg_type_url": "/kava.evmutil.v1beta1.MsgConvertCoinToERC20",
+            "msg_value_type_name": "MsgValueEVMConvertCoinToERC20",
+            "value_types": [
+              {
+                "name": "initiator",
+                "type": "string"
+              },
+              {
+                "name": "receiver",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "Coin"
+              }
+            ]
+          },
+          {
+            "msg_type_url": "/kava.cdp.v1beta1.MsgRepayDebt",
+            "msg_value_type_name": "MsgValueCDPRepayDebt",
+            "value_types": [
+              {
+                "name": "sender",
+                "type": "string"
+              },
+              {
+                "name": "collateral_type",
+                "type": "string"
+              },
+              {
+                "name": "payment",
+                "type": "Coin"
+              }
+            ]
+          },
+          {
+            "msg_type_url": "/kava.hard.v1beta1.MsgWithdraw",
+            "msg_value_type_name": "MsgValueHardWithdraw",
+            "value_types": [
+              {
+                "name": "depositor",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "Coin"
+              }
+            ]
+          }
+        ]
       }
     },
     "feemarket": {
@@ -1341,7 +1485,15 @@
       "block_gas": "0"
     },
     "evmutil": {
-      "accounts": []
+      "accounts": [],
+      "params": {
+        "enabled_conversion_pairs": [
+          {
+            "kava_erc20_address": "0xeA7100edA2f805356291B0E55DaD448599a72C6d",
+            "denom": "erc20/usdc"
+          }
+        ]
+      }
     },
     "savings": {
       "params": {
