@@ -1498,7 +1498,7 @@
               },
               {
                 "name": "amount",
-                "type": "Coin"
+                "type": "Coin[]"
               }
             ]
           }
