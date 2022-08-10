@@ -17,6 +17,7 @@ geth --unlock 21e360e198cde35740e88572b59f2cade421e6b1 \
      --http.addr 0.0.0.0 \
      --http.corsdomain '*' \
      --http.api eth,net,rpc,web3,debug \
+     --http.vhosts '*' \
      --ws \
      --ws.addr 0.0.0.0 \
      --ws.origins '*'
