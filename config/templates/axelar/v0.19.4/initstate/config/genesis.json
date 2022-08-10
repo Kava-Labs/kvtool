@@ -1,0 +1,564 @@
+{
+  "genesis_time": "2022-02-08T17:39:44.562912Z",
+  "chain_id": "axelar-local-testnet",
+  "initial_height": "1",
+  "consensus_params": {
+    "block": {
+      "max_bytes": "22020096",
+      "max_gas": "-1",
+      "time_iota_ms": "1000"
+    },
+    "evidence": {
+      "max_age_num_blocks": "100000",
+      "max_age_duration": "172800000000000",
+      "max_bytes": "1048576"
+    },
+    "validator": {
+      "pub_key_types": ["ed25519"]
+    },
+    "version": {}
+  },
+  "app_hash": "",
+  "app_state": {
+    "auth": {
+      "params": {
+        "max_memo_characters": "256",
+        "tx_sig_limit": "7",
+        "tx_size_cost_per_byte": "10",
+        "sig_verify_cost_ed25519": "590",
+        "sig_verify_cost_secp256k1": "1000"
+      },
+      "accounts": [
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "axelar1m3pwte7n0av9vmz5eqv5vdcmfc0t850r592crp",
+          "pub_key": null,
+          "account_number": "0",
+          "sequence": "0"
+        }
+      ]
+    },
+    "axelarnet": {
+      "params": {
+        "route_timeout_window": "17000"
+      },
+      "collector_address": "",
+      "chains": [
+        {
+          "name": "Axelarnet",
+          "ibc_path": "",
+          "assets": [],
+          "addr_prefix": "axelar"
+        }
+      ],
+      "pending_transfers": []
+    },
+    "bank": {
+      "params": {
+        "send_enabled": [],
+        "default_send_enabled": true
+      },
+      "balances": [
+        {
+          "address": "axelar1m3pwte7n0av9vmz5eqv5vdcmfc0t850r592crp",
+          "coins": [
+            {
+              "denom": "uaxl",
+              "amount": "2000000000"
+            }
+          ]
+        }
+      ],
+      "supply": [],
+      "denom_metadata": []
+    },
+    "capability": {
+      "index": "1",
+      "owners": []
+    },
+    "crisis": {
+      "constant_fee": {
+        "denom": "uaxl",
+        "amount": "1000"
+      }
+    },
+    "distribution": {
+      "params": {
+        "community_tax": "0.020000000000000000",
+        "base_proposer_reward": "0.010000000000000000",
+        "bonus_proposer_reward": "0.040000000000000000",
+        "withdraw_addr_enabled": true
+      },
+      "fee_pool": {
+        "community_pool": []
+      },
+      "delegator_withdraw_infos": [],
+      "previous_proposer": "",
+      "outstanding_rewards": [],
+      "validator_accumulated_commissions": [],
+      "validator_historical_rewards": [],
+      "validator_current_rewards": [],
+      "delegator_starting_infos": [],
+      "validator_slash_events": []
+    },
+    "evidence": {
+      "evidence": []
+    },
+    "evm": {
+      "chains": [
+        {
+          "params": {
+            "chain": "Ethereum",
+            "confirmation_height": "1",
+            "network": "ganache",
+            "token_code": "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oIQBNZRQYMCQkwE1kpFQUFZbYACAYECDhQMSFWERVVdgAID9W2ERXoNhECtWW5FQYRFsYCCEAWEQK1ZbkFCSUJKQUFZbYAGBgRyQghaAYRGJV2B/ghaRUFtgIIIQgRQVYRGqV2NOSHtxYOAbYABSYCJgBFJgJGAA/VtQkZBQVltjTkh7cWDgG2AAUmARYARSYCRgAP1bYACCghAVYRHYV2ER2GERsFZbUAOQVltgAIJRYRHvgYRgIIcBYQ+vVluRkJEBkpFQUFZbYACCGYIRFWESDFdhEgxhEbBWW1ABkFZbYABgABmCFBVhEiVXYRIlYRGwVltQYAEBkFZbYACEUWESPoGEYCCJAWEPr1ZbkZCRAZKDUlBgIIIBUmBAAZGQUFZbYABgIIKEAxIVYRJlV2AAgP1bgVGAFRWBFGEQyFdgAID9W2AAYCCAg1JgAIRUgWABgoEckVCAgxaAYRKXV2B/gxaSUFuFgxCBFBVhErVXY05Ie3Fg4BuFUmAiYARSYCSF/VuHhgGDgVJgIAGBgBVhEtJXYAGBFGES41dhEw5WW2D/GYYWglKHggGWUGETDlZbYACLgVJgIJAgYABbhoEQFWETCFeBVISCAVKQhQGQiQFhEu9WW4MBl1BQW1CUmZhQUFBQUFBQUFBW/mCAYEBSYAFgAFU0gBVhABVXYACA/VtQYQL3gGEAJWAAOWAA8/5ggGBAUjSAFWEAEFdgAID9W1BgBDYQYQA1V2AANWDgHIBi9V2dFGEAOleAYxz/ec0UYQBPV1tgAID9W2EATWEASDZgBGEBrVZbYQB5VlsAW2EAYmEAXTZgBGEBz1ZbYQC7VltgQFFhAHCSkZBhAlJWW2BAUYCRA5DzW2ACYABUFBVhAJ1XYEBRY8qjD1Vg4BuBUmAEAWBAUYCRA5D9W2ACYABVc///////////////////////////gRb/W2AAYGBgAmAAVBQVYQDjV2BAUWPKow9VYOAbgVJgBAFgQFGAkQOQ/VtgAmAAVXP//////////////////////////4UWOxVhAXVXhHP//////////////////////////xaEhGBAUWEBLJKRkGECsVZbYABgQFGAgwOBYACGWvGRUFA9gGAAgRRhAWlXYEBRkVBgHxlgPz0BFoIBYEBSPYJSPWAAYCCEAT5hAW5WW2BgkVBbUJCSUJBQW2ABYABVkJSQk1CRUFBWW4A1c///////////////////////////gRaBFGEBqFdgAID9W5GQUFZbYABgIIKEAxIVYQG/V2AAgP1bYQHIgmEBhFZbk5JQUFBWW2AAgGAAYECEhgMSFWEB5FdgAID9W2EB7YRhAYRWW5JQYCCEATVn//////////+AghEVYQIKV2AAgP1bgYYBkVCGYB+DARJhAh5XYACA/VuBNYGBERVhAi1XYACA/VuHYCCChQEBERVhAj9XYACA/VtgIIMBlFCAk1BQUFCSUJJQklZbghUVgVJgAGAgYECBhAFSg1GAYECFAVJgAFuBgRAVYQKIV4WBAYMBUYWCAWBgAVKCAWECbFZbgYERFWECmldgAGBgg4cBAVJbUGAfAWAfGRaSkJIBYGABlJNQUFBQVluBg4I3YACRAZCBUpGQUFb+omRpcGZzWCISIJiGU+aHtaNRUXPjOqxHoMhOtc2CC2v2hwpLxUdGKfD5ZHNvbGNDAAgJADOiZGlwZnNYIhIgLd+zncbUPmBhlwIq352xlex573bSeYgxgnvs+N0rv/Vkc29sY0MACAkAMw==",
+            "burnable": "YIBgQFJgAWAAVTSAFWEAFVdgAID9W1BhAveAYQAlYAA5YADz/mCAYEBSNIAVYQAQV2AAgP1bUGAENhBhADVXYAA1YOAcgGL1XZ0UYQA6V4BjHP95zRRhAE9XW2AAgP1bYQBNYQBINmAEYQGtVlthAHlWWwBbYQBiYQBdNmAEYQHPVlthALtWW2BAUWEAcJKRkGECUlZbYEBRgJEDkPNbYAJgAFQUFWEAnVdgQFFjyqMPVWDgG4FSYAQBYEBRgJEDkP1bYAJgAFVz//////////////////////////+BFv9bYABgYGACYABUFBVhAONXYEBRY8qjD1Vg4BuBUmAEAWBAUYCRA5D9W2ACYABVc///////////////////////////hRY7FWEBdVeEc///////////////////////////FoSEYEBRYQEskpGQYQKxVltgAGBAUYCDA4FgAIZa8ZFQUD2AYACBFGEBaVdgQFGRUGAfGWA/PQEWggFgQFI9glI9YABgIIQBPmEBblZbYGCRUFtQkJJQkFBbYAFgAFWQlJCTUJFQUFZbgDVz//////////////////////////+BFoEUYQGoV2AAgP1bkZBQVltgAGAggoQDEhVhAb9XYACA/VthAciCYQGEVluTklBQUFZbYACAYABgQISGAxIVYQHkV2AAgP1bYQHthGEBhFZbklBgIIQBNWf//////////4CCERVhAgpXYACA/VuBhgGRUIZgH4MBEmECHldgAID9W4E1gYERFWECLVdgAID9W4dgIIKFAQERFWECP1dgAID9W2AggwGUUICTUFBQUJJQklCSVluCFRWBUmAAYCBgQIGEAVKDUYBgQIUBUmAAW4GBEBVhAohXhYEBgwFRhYIBYGABUoIBYQJsVluBgREVYQKaV2AAYGCDhwEBUltQYB8BYB8ZFpKQkgFgYAGUk1BQUFBWW4GDgjdgAJEBkIFSkZBQVv6iZGlwZnNYIhIgmIZT5oe1o1FRc+M6rEegyE61zYILa/aHCkvFR0Yp8Plkc29sY0MACAkAMw==",
+            "revote_locking_period": "50",
+            "networks": [
+              {
+                "name": "mainnet",
+                "id": "1"
+              },
+              {
+                "name": "ropsten",
+                "id": "3"
+              },
+              {
+                "name": "rinkeby",
+                "id": "4"
+              },
+              {
+                "name": "goerli",
+                "id": "5"
+              },
+              {
+                "name": "ganache",
+                "id": "1337"
+              }
+            ],
+            "voting_threshold": {
+              "numerator": "51",
+              "denominator": "100"
+            },
+            "min_voter_count": "1",
+            "commands_gas_limit": 5000000,
+            "voting_grace_period": "3"
+          },
+          "burner_infos": [],
+          "command_queue": {
+            "items": {}
+          },
+          "confirmed_deposits": [],
+          "burned_deposits": [],
+          "command_batches": [],
+          "gateway": {
+            "address": [
+              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+            ],
+            "status": "STATUS_UNSPECIFIED"
+          },
+          "tokens": [],
+          "events": [],
+          "confirmed_event_queue": {
+            "items": {}
+          }
+        }
+      ]
+    },
+    "feegrant": {
+      "allowances": []
+    },
+    "genutil": {
+      "gen_txs": [
+        {
+          "body": {
+            "messages": [
+              {
+                "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
+                "description": {
+                  "moniker": "validator",
+                  "identity": "",
+                  "website": "",
+                  "security_contact": "",
+                  "details": ""
+                },
+                "commission": {
+                  "rate": "0.100000000000000000",
+                  "max_rate": "0.200000000000000000",
+                  "max_change_rate": "0.010000000000000000"
+                },
+                "min_self_delegation": "1",
+                "delegator_address": "axelar1m3pwte7n0av9vmz5eqv5vdcmfc0t850r592crp",
+                "validator_address": "axelarvaloper1m3pwte7n0av9vmz5eqv5vdcmfc0t850r5yua3w",
+                "pubkey": {
+                  "@type": "/cosmos.crypto.ed25519.PubKey",
+                  "key": "jdprmGHHm+ezV2H6BCn79H2Ei1lcf7v64QSL/XJpdew="
+                },
+                "value": {
+                  "denom": "uaxl",
+                  "amount": "1000000000"
+                }
+              }
+            ],
+            "memo": "116d9deced96295697bc1264b1b4fdc74b3a43e0@172.23.0.4:26656",
+            "timeout_height": "0",
+            "extension_options": [],
+            "non_critical_extension_options": []
+          },
+          "auth_info": {
+            "signer_infos": [
+              {
+                "public_key": {
+                  "@type": "/cosmos.crypto.secp256k1.PubKey",
+                  "key": "A+UUu7MQf5NwMhBHCslKUuC5IDNRKKHOOhh8/cmZQAkS"
+                },
+                "mode_info": {
+                  "single": {
+                    "mode": "SIGN_MODE_DIRECT"
+                  }
+                },
+                "sequence": "0"
+              }
+            ],
+            "fee": {
+              "amount": [
+                {
+                  "denom": "uaxl",
+                  "amount": "10"
+                }
+              ],
+              "gas_limit": "200000",
+              "payer": "",
+              "granter": ""
+            }
+          },
+          "signatures": [
+            "gQImCAJ3Hp6r6ox/evvQfZISl71K2DHqrDynvKxZPy5l9knsWEjfsK3zxFAchDO9NqqUxgxYfKnO2p06/Esn8w=="
+          ]
+        }
+      ]
+    },
+    "gov": {
+      "starting_proposal_id": "1",
+      "deposits": [],
+      "votes": [],
+      "proposals": [],
+      "deposit_params": {
+        "min_deposit": [
+          {
+            "denom": "uaxl",
+            "amount": "10000000"
+          }
+        ],
+        "max_deposit_period": "172800s"
+      },
+      "voting_params": {
+        "voting_period": "172800s"
+      },
+      "tally_params": {
+        "quorum": "0.334000000000000000",
+        "threshold": "0.500000000000000000",
+        "veto_threshold": "0.334000000000000000"
+      }
+    },
+    "ibc": {
+      "client_genesis": {
+        "clients": [],
+        "clients_consensus": [],
+        "clients_metadata": [],
+        "params": {
+          "allowed_clients": ["06-solomachine", "07-tendermint"]
+        },
+        "create_localhost": false,
+        "next_client_sequence": "0"
+      },
+      "connection_genesis": {
+        "connections": [],
+        "client_connection_paths": [],
+        "next_connection_sequence": "0",
+        "params": {
+          "max_expected_time_per_block": "30000000000"
+        }
+      },
+      "channel_genesis": {
+        "channels": [],
+        "acknowledgements": [],
+        "commitments": [],
+        "receipts": [],
+        "send_sequences": [],
+        "recv_sequences": [],
+        "ack_sequences": [],
+        "next_channel_sequence": "0"
+      }
+    },
+    "mint": {
+      "minter": {
+        "inflation": "0.130000000000000000",
+        "annual_provisions": "0.000000000000000000"
+      },
+      "params": {
+        "mint_denom": "uaxl",
+        "inflation_rate_change": "0.130000000000000000",
+        "inflation_max": "0.200000000000000000",
+        "inflation_min": "0.070000000000000000",
+        "goal_bonded": "0.670000000000000000",
+        "blocks_per_year": "6311520"
+      }
+    },
+    "nexus": {
+      "params": {
+        "chain_activation_threshold": {
+          "numerator": "55",
+          "denominator": "100"
+        },
+        "chain_maintainer_missing_vote_threshold": {
+          "numerator": "20",
+          "denominator": "100"
+        },
+        "chain_maintainer_incorrect_vote_threshold": {
+          "numerator": "5",
+          "denominator": "100"
+        },
+        "chain_maintainer_check_window": 500
+      },
+      "nonce": "0",
+      "chains": [
+        {
+          "name": "Ethereum",
+          "supports_foreign_assets": true,
+          "key_type": "KEY_TYPE_MULTISIG",
+          "module": "evm"
+        },
+        {
+          "name": "Axelarnet",
+          "supports_foreign_assets": true,
+          "key_type": "KEY_TYPE_NONE",
+          "module": "axelarnet"
+        },
+        {
+          "name": "Kava",
+          "supports_foreign_assets": true,
+          "key_type": "KEY_TYPE_MULTISIG",
+          "module": "evm"
+        }
+      ],
+      "chain_states": [
+        {
+          "chain": {
+            "name": "Axelarnet",
+            "supports_foreign_assets": true,
+            "key_type": "KEY_TYPE_NONE",
+            "module": "axelarnet"
+          },
+          "maintainers": [],
+          "activated": false,
+          "assets": [
+            {
+              "denom": "uaxl",
+              "is_native_asset": true
+            }
+          ],
+          "maintainer_states": []
+        }
+      ],
+      "linked_addresses": [],
+      "transfers": [],
+      "fee": {
+        "coins": []
+      },
+      "fee_infos": []
+    },
+    "params": null,
+    "permission": {
+      "params": {},
+      "governance_key": null,
+      "gov_accounts": []
+    },
+    "reward": {
+      "params": {
+        "external_chain_voting_inflation_rate": "0.000000000000000000",
+        "tss_relative_inflation_rate": "0.000000000000000000"
+      },
+      "pools": []
+    },
+    "slashing": {
+      "params": {
+        "signed_blocks_window": "100",
+        "min_signed_per_window": "0.500000000000000000",
+        "downtime_jail_duration": "600s",
+        "slash_fraction_double_sign": "0.050000000000000000",
+        "slash_fraction_downtime": "0.010000000000000000"
+      },
+      "signing_infos": [],
+      "missed_blocks": []
+    },
+    "snapshot": {
+      "params": {
+        "min_proxy_balance": "5000000"
+      },
+      "snapshots": [],
+      "proxied_validators": []
+    },
+    "staking": {
+      "params": {
+        "unbonding_time": "1814400s",
+        "max_validators": 100,
+        "max_entries": 7,
+        "historical_entries": 10000,
+        "bond_denom": "uaxl"
+      },
+      "last_total_power": "0",
+      "last_validator_powers": [],
+      "validators": [],
+      "delegations": [],
+      "unbonding_delegations": [],
+      "redelegations": [],
+      "exported": false
+    },
+    "transfer": {
+      "port_id": "transfer",
+      "denom_traces": [],
+      "params": {
+        "send_enabled": true,
+        "receive_enabled": true
+      }
+    },
+    "tss": {
+      "params": {
+        "key_requirements": [
+          {
+            "key_role": "KEY_ROLE_MASTER_KEY",
+            "key_type": "KEY_TYPE_THRESHOLD",
+            "min_keygen_threshold": {
+              "numerator": "5",
+              "denominator": "6"
+            },
+            "safety_threshold": {
+              "numerator": "2",
+              "denominator": "3"
+            },
+            "key_share_distribution_policy": "KEY_SHARE_DISTRIBUTION_POLICY_WEIGHTED_BY_STAKE",
+            "max_total_share_count": "50",
+            "min_total_share_count": "4",
+            "keygen_voting_threshold": {
+              "numerator": "5",
+              "denominator": "6"
+            },
+            "sign_voting_threshold": {
+              "numerator": "2",
+              "denominator": "3"
+            },
+            "keygen_timeout": "250",
+            "sign_timeout": "250"
+          },
+          {
+            "key_role": "KEY_ROLE_SECONDARY_KEY",
+            "key_type": "KEY_TYPE_THRESHOLD",
+            "min_keygen_threshold": {
+              "numerator": "15",
+              "denominator": "20"
+            },
+            "safety_threshold": {
+              "numerator": "11",
+              "denominator": "20"
+            },
+            "key_share_distribution_policy": "KEY_SHARE_DISTRIBUTION_POLICY_ONE_PER_VALIDATOR",
+            "max_total_share_count": "20",
+            "min_total_share_count": "4",
+            "keygen_voting_threshold": {
+              "numerator": "15",
+              "denominator": "20"
+            },
+            "sign_voting_threshold": {
+              "numerator": "11",
+              "denominator": "20"
+            },
+            "keygen_timeout": "150",
+            "sign_timeout": "150"
+          },
+          {
+            "key_role": "KEY_ROLE_MASTER_KEY",
+            "key_type": "KEY_TYPE_MULTISIG",
+            "min_keygen_threshold": {
+              "numerator": "31",
+              "denominator": "40"
+            },
+            "safety_threshold": {
+              "numerator": "11",
+              "denominator": "20"
+            },
+            "key_share_distribution_policy": "KEY_SHARE_DISTRIBUTION_POLICY_WEIGHTED_BY_STAKE",
+            "max_total_share_count": "50",
+            "min_total_share_count": "4",
+            "keygen_voting_threshold": {
+              "numerator": "31",
+              "denominator": "40"
+            },
+            "sign_voting_threshold": {
+              "numerator": "11",
+              "denominator": "20"
+            },
+            "keygen_timeout": "20",
+            "sign_timeout": "20"
+          },
+          {
+            "key_role": "KEY_ROLE_SECONDARY_KEY",
+            "key_type": "KEY_TYPE_MULTISIG",
+            "min_keygen_threshold": {
+              "numerator": "15",
+              "denominator": "20"
+            },
+            "safety_threshold": {
+              "numerator": "11",
+              "denominator": "20"
+            },
+            "key_share_distribution_policy": "KEY_SHARE_DISTRIBUTION_POLICY_ONE_PER_VALIDATOR",
+            "max_total_share_count": "20",
+            "min_total_share_count": "4",
+            "keygen_voting_threshold": {
+              "numerator": "15",
+              "denominator": "20"
+            },
+            "sign_voting_threshold": {
+              "numerator": "11",
+              "denominator": "20"
+            },
+            "keygen_timeout": "20",
+            "sign_timeout": "20"
+          }
+        ],
+        "suspend_duration_in_blocks": "8500",
+        "heartbeat_period_in_blocks": "50",
+        "max_missed_blocks_per_window": {
+          "numerator": "5",
+          "denominator": "100"
+        },
+        "unbonding_locking_key_rotation_count": "4",
+        "external_multisig_threshold": {
+          "numerator": "4",
+          "denominator": "8"
+        },
+        "max_sign_queue_size": "50",
+        "max_simultaneous_sign_shares": "100",
+        "tss_signed_blocks_window": "100"
+      },
+      "key_recovery_infos": [],
+      "keys": [],
+      "multisig_infos": [],
+      "external_keys": [],
+      "signatures": [],
+      "validator_statuses": []
+    },
+    "upgrade": {},
+    "vesting": {},
+    "vote": {
+      "params": {
+        "default_voting_threshold": {
+          "numerator": "2",
+          "denominator": "3"
+        }
+      },
+      "poll_metadatas": []
+    }
+  }
+}

@@ -1,0 +1,17 @@
+version: "3"
+services:
+  axelarnode:
+    build:
+      context: axelar
+      dockerfile: Dockerfile
+    volumes:
+      - ./axelar/initstate/config:/root/.axelar/config
+      - ./axelar/initstate/keyring-test:/root/.axelar/keyring-test
+    ports:
+      # Cosmos SDK RPC port, minus 10 to not conflict with kava
+      - 26647:26657
+    environment:
+      - CHAIN_ID=axelar-local-testnet
+      - MONIKER=validator
+      - VALIDATOR_OPERATOR_ADDRESS=axelarvaloper1m3pwte7n0av9vmz5eqv5vdcmfc0t850r5yua3w
+      - BROADCASTER_ADDRESS=axelarvaloper1rxlvwsevctjvrtjfvczu78jyuyeccngu9ycjct

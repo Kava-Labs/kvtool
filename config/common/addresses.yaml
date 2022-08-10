@@ -104,5 +104,13 @@ bnb:
       address: "bnb1gzr37hrqlqk4wpdfqn6pp3dy9ek28tahy7dx2v"
     - mnemonic: "end bicycle walnut empty bus silly camera lift fancy symptom office pluck detail unable cry sense scrap tuition relax amateur hold win debate hat"
       address: "bnb1m5k0g7q0n8nzsre8ysuhsv09j03jhgcrrnwur3"
-
-
+axelar:
+  validators:
+    - mnemonic: "soldier dance reward crunch broom pink damage purchase pill little secret live sister member all allow excuse upset actor garlic hamster amused blood creek"
+      address: axelar1m3pwte7n0av9vmz5eqv5vdcmfc0t850r592crp
+      pubkey: '{"@type":"/cosmos.crypto.secp256k1.PubKey","key":"A+UUu7MQf5NwMhBHCslKUuC5IDNRKKHOOhh8/cmZQAkS"}'
+      val_address: TODO
+  broadcasters:
+    - mnemonic: "drum garment civil above glimpse whisper jewel puppy review enrich top predict silly fuel glow climb latin neutral position party where evoke midnight expect"
+      address: axelar1rxlvwsevctjvrtjfvczu78jyuyeccngu99wh2y
+      pubkey: '{"@type":"/cosmos.crypto.secp256k1.PubKey","key":"A2ci8zUW2XnL1uZ0ZHbOUtpRVpWSyNt2NKI2ZSrOR7Ih"}'
