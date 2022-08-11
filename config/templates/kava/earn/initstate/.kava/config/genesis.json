@@ -471,8 +471,13 @@
           "coins": [
             {
               "amount": "10000000000000000",
+              "denom": "bkava-kavavaloper1ak4pa9z2aty94ze2cs06wsdnkg9hsvfkvr4tha"
+            },
+            {
+              "amount": "10000000000000000",
               "denom": "bnb"
             },
+            
             {
               "amount": "10000000000000000",
               "denom": "btcb"
@@ -629,6 +634,10 @@
         {
           "denom": "xrpb",
           "amount": "20000000000000000"
+        },
+        {
+          "denom": "bkava-kavavaloper1ak4pa9z2aty94ze2cs06wsdnkg9hsvfkvr4tha",
+          "amount": "10000000000000000"
         }
       ],
       "denom_metadata": []
@@ -1250,6 +1259,10 @@
           {
             "denom": "ukava",
             "strategies": ["STRATEGY_TYPE_SAVINGS"]
+          },
+          {
+            "denom": "bkava",
+            "strategies": ["STRATEGY_TYPE_SAVINGS"]
           }
         ]
       }
@@ -1332,7 +1345,8 @@
           "usdx",
           "ukava",
           "hard",
-          "swp"
+          "swp",
+          "bkava-kavavaloper1ak4pa9z2aty94ze2cs06wsdnkg9hsvfkvr4tha"
         ]
       }
     },
