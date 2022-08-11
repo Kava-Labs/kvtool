@@ -116,3 +116,18 @@ func GenerateGoRelayerConfig(generatedConfigDir string) error {
 	err := copy.Copy(filepath.Join(ConfigTemplatesDir, "relayer"), filepath.Join(generatedConfigDir, "relayer"))
 	return err
 }
+
+func GenerateAxelarConfig(generatedConfigDir string) error {
+	// copy templates into generated config folder
+	err := copy.Copy(filepath.Join(ConfigTemplatesDir, "axelar/v0.19.4"), filepath.Join(generatedConfigDir, "axelar"))
+	if err != nil {
+		return err
+	}
+
+	// put together final compose file
+	err = overwriteMergeYAML(
+		filepath.Join(ConfigTemplatesDir, "axelar/v0.19.4", "docker-compose.yaml"),
+		filepath.Join(generatedConfigDir, "docker-compose.yaml"),
+	)
+	return err
+}

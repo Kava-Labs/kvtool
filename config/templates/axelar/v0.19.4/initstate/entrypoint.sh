@@ -7,11 +7,23 @@ rm /root/.tofnd/export
 
 # start axelar in background (must be running for vald)
 echo starting axelar daemon
-axelard start 2>&1 > axelard.log &
+axelard start > axelard.log 2>&1 &
 
 # wait for API: https://stackoverflow.com/a/21189440/5852777
-echo -n 'waiting for API'
+echo -n 'waiting for Axelar API'
 until $(curl --output /dev/null --silent --head --fail http://localhost:26657/status); do
+    printf '.'
+    sleep 5
+done
+echo success!
+echo -n 'waiting for Kava EVM'
+until $(curl --head --fail http://kavanode:8545); do
+    printf '.'
+    sleep 5
+done
+echo success!
+echo -n 'waiting for Ethereum EVM'
+until $(curl --head --fail http://gethnode:8545); do
     printf '.'
     sleep 5
 done
