@@ -2222,6 +2222,7 @@
       },
       "previous_block_time": "1970-01-01T00:00:01Z"
     },
+    "liquid": {"params": {}},
     "mint": {
       "minter": {
         "inflation": "0.130000000000000000",
