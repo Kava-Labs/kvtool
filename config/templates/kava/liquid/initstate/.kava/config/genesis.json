@@ -1384,7 +1384,51 @@
           "signatures": [
             "jyQiRFovK1+T6ekHXmSpZOk+C5QRgqSndQMcozTw+9x5iiF2sXvMVgfMVvHBz+jofIzHkundW4KBUsfX8BYiCQA="
           ]
-        }
+        },
+        {
+          "body": {
+              "messages": [
+                  {
+                      "@type": "/cosmos.staking.v1beta1.MsgDelegate",
+                      "delegator_address": "kava1vlpsrmdyuywvaqrv7rx6xga224sqfwz3fyfhwq",
+                      "validator_address": "kavavaloper1ak4pa9z2aty94ze2cs06wsdnkg9hsvfkvr4tha",
+                      "amount": {
+                          "denom": "ukava",
+                          "amount": "1000000000"
+                      }
+                  }
+              ],
+              "memo": "",
+              "timeout_height": "0",
+              "extension_options": [],
+              "non_critical_extension_options": []
+          },
+          "auth_info": {
+              "signer_infos": [
+                  {
+                      "public_key": {
+                          "@type": "/cosmos.crypto.secp256k1.PubKey",
+                          "key": "AsAbWjsqD1ntOiVZCNRdAm1nrSP8rwZoNNin85jPaeaY"
+                      },
+                      "mode_info": {
+                          "single": {
+                              "mode": "SIGN_MODE_DIRECT"
+                          }
+                      },
+                      "sequence": "0"
+                  }
+              ],
+              "fee": {
+                  "amount": [],
+                  "gas_limit": "200000",
+                  "payer": "",
+                  "granter": ""
+              }
+          },
+          "signatures": [
+              "nrHXRGDZTmFsDYGUfCKaS/LUT5kwKoyjp/ODOT7wrxNLHf8Si6PKj46SPmHesvzikeI6Rk0j7XFB8nM+qf+K4A=="
+          ]
+      }
       ]
     },
     "gov": {
