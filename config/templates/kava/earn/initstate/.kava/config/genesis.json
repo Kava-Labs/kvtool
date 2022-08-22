@@ -1004,18 +1004,6 @@
       },
       "starting_cdp_id": "1"
     },
-    "earn": {
-      "params": {
-        "allowed_vaults": [
-          {
-            "denom": "usdx",
-            "vault_strategy": 1
-          }
-        ]
-      },
-      "vault_records": [],
-      "vault_share_records": []
-    },
     "committee": {
       "committees": [
         {
@@ -1281,7 +1269,9 @@
             "strategies": ["STRATEGY_TYPE_SAVINGS"]
           }
         ]
-      }
+      },
+      "vault_records": [],
+      "vault_share_records": []
     },
     "evidence": {
       "evidence": []
