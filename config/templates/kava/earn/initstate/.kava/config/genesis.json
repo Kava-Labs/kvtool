@@ -1484,7 +1484,7 @@
             "msg_value_type_name": "MsgValueEarnWithdraw",
             "value_types": [
               {
-                "name": "depositor",
+                "name": "from",
                 "type": "string"
               },
               {
