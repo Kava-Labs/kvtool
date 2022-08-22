@@ -1460,6 +1460,42 @@
                 "type": "Coin"
               }
             ]
+          },
+          {
+            "msg_type_url": "/kava.earn.v1beta1.MsgDeposit",
+            "msg_value_type_name": "MsgValueEarnDeposit",
+            "value_types": [
+              {
+                "name": "depositor",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "Coin"
+              },
+              {
+                "name": "strategy",
+                "type": "int32"
+              }
+            ]
+          },
+          {
+            "msg_type_url": "/kava.earn.v1beta1.MsgWithdraw",
+            "msg_value_type_name": "MsgValueEarnWithdraw",
+            "value_types": [
+              {
+                "name": "depositor",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "Coin"
+              },
+              {
+                "name": "strategy",
+                "type": "int32"
+              }
+            ]
           }
         ]
       }
