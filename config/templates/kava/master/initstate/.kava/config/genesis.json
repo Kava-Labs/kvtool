@@ -14,9 +14,7 @@
       "max_bytes": "1048576"
     },
     "validator": {
-      "pub_key_types": [
-        "ed25519"
-      ]
+      "pub_key_types": ["ed25519"]
     },
     "version": {}
   },
@@ -164,9 +162,7 @@
             "sequence": "0"
           },
           "name": "kavadist",
-          "permissions": [
-            "minter"
-          ]
+          "permissions": ["minter"]
         },
         {
           "@type": "/cosmos.auth.v1beta1.ModuleAccount",
@@ -280,6 +276,36 @@
             "sequence": "1"
           },
           "code_hash": "0xd51cf04c1b78bc48b348e8455c4181539ab0b7ff84bb081fed109cd5feafaede"
+        },
+        {
+          "@type": "/ethermint.types.v1.EthAccount",
+          "base_account": {
+            "account_number": "1",
+            "address": "kava1adkm6svtzjsxxvg7g6rshg6kj9qwej8gwqadqd",
+            "pub_key": null,
+            "sequence": "0"
+          },
+          "code_hash": "0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470"
+        },
+        {
+          "@type": "/ethermint.types.v1.EthAccount",
+          "base_account": {
+            "account_number": "23",
+            "address": "kava1afcspmdzlqzn2c53krj4mt2yskv6wtrds2jqht",
+            "pub_key": null,
+            "sequence": "1"
+          },
+          "code_hash": "0xb9fd70e24d284c530cb322c71fd7939a0d7b4bde5983141a13a0c9b6193cf56d"
+        },
+        {
+          "@type": "/ethermint.types.v1.EthAccount",
+          "base_account": {
+            "account_number": "0",
+            "address": "kava1ffv7nhd3z6sych2qpqkk03ec6hzkmufy0r2s4c",
+            "pub_key": null,
+            "sequence": "1"
+          },
+          "code_hash": "0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470"
         }
       ]
     },
@@ -734,6 +760,10 @@
           {
             "kava_erc20_address": "0x404F9466d758eA33eA84CeBE9E444b06533b369e",
             "denom": "erc20/weth"
+          },
+          {
+            "kava_erc20_address": "0xeA7100edA2f805356291B0E55DaD448599a72C6d",
+            "denom": "erc20/usdc"
           }
         ]
       },
@@ -972,6 +1002,23 @@
             "spot_market_id": "btc:usd",
             "liquidation_market_id": "btc:usd:30",
             "conversion_factor": "8"
+          },
+          {
+            "denom": "erc20/usdc",
+            "type": "usdc-a",
+            "liquidation_ratio": "1.010000000000000000",
+            "debt_limit": {
+              "denom": "usdx",
+              "amount": "3000000000000"
+            },
+            "stability_fee": "1.000000000000000000",
+            "auction_size": "1000000000000",
+            "liquidation_penalty": "0.075000000000000000",
+            "check_collateralization_index_count": "10",
+            "keeper_reward_percentage": "0.01",
+            "spot_market_id": "usdx:usd",
+            "liquidation_market_id": "usdx:usd:30",
+            "conversion_factor": "6"
           }
         ],
         "debt_auction_lot": "10000000000",
@@ -983,13 +1030,25 @@
           "reference_asset": "usd"
         },
         "global_debt_limit": {
-          "amount": "53000000000000",
+          "amount": "103000000000000",
           "denom": "usdx"
         },
         "surplus_auction_lot": "10000000000",
         "surplus_auction_threshold": "500000000000"
       },
       "starting_cdp_id": "1"
+    },
+    "earn": {
+      "params": {
+        "allowed_vaults": [
+          {
+            "denom": "usdx",
+            "vault_strategy": 1
+          }
+        ]
+      },
+      "vault_records": [],
+      "vault_share_records": []
     },
     "committee": {
       "committees": [
@@ -998,9 +1057,7 @@
           "base_committee": {
             "id": "1",
             "description": "Kava Stability Committee",
-            "members": [
-              "kava1n96qpdfcz2m7y364ewk8srv9zuq6ucwduyjaag"
-            ],
+            "members": ["kava1n96qpdfcz2m7y364ewk8srv9zuq6ucwduyjaag"],
             "permissions": [
               {
                 "@type": "/kava.committee.v1beta1.TextPermission"
@@ -1093,9 +1150,7 @@
           "base_committee": {
             "id": "2",
             "description": "Kava Safety Committee",
-            "members": [
-              "kava1n96qpdfcz2m7y364ewk8srv9zuq6ucwduyjaag"
-            ],
+            "members": ["kava1n96qpdfcz2m7y364ewk8srv9zuq6ucwduyjaag"],
             "permissions": [
               {
                 "@type": "/kava.committee.v1beta1.SoftwareUpgradePermission"
@@ -1111,9 +1166,7 @@
           "base_committee": {
             "id": "3",
             "description": "Kava God Committee (testing only)",
-            "members": [
-              "kava1n96qpdfcz2m7y364ewk8srv9zuq6ucwduyjaag"
-            ],
+            "members": ["kava1n96qpdfcz2m7y364ewk8srv9zuq6ucwduyjaag"],
             "permissions": [
               {
                 "@type": "/kava.committee.v1beta1.GodPermission"
@@ -1129,9 +1182,7 @@
           "base_committee": {
             "id": "4",
             "description": "HARD Governance Committee",
-            "members": [
-              "kava1n96qpdfcz2m7y364ewk8srv9zuq6ucwduyjaag"
-            ],
+            "members": ["kava1n96qpdfcz2m7y364ewk8srv9zuq6ucwduyjaag"],
             "permissions": [
               {
                 "@type": "/kava.committee.v1beta1.TextPermission"
@@ -1174,9 +1225,7 @@
           "base_committee": {
             "id": "5",
             "description": "SWP Governance Committee",
-            "members": [
-              "kava1n96qpdfcz2m7y364ewk8srv9zuq6ucwduyjaag"
-            ],
+            "members": ["kava1n96qpdfcz2m7y364ewk8srv9zuq6ucwduyjaag"],
             "permissions": [
               {
                 "@type": "/kava.committee.v1beta1.TextPermission"
@@ -1247,8 +1296,33 @@
       "accounts": [
         {
           "address": "0xeA7100edA2f805356291B0E55DaD448599a72C6d",
-          "code": "608060405234801561001057600080fd5b50600436106100885760003560e01c806372425d9d1161005b57806372425d9d1461012a57806386d516e814610148578063a8b0574e14610166578063ee82ac5e1461018457610088565b80630f28c97d1461008d578063252dba42146100ab57806327e86d6e146100dc5780634d2301cc146100fa575b600080fd5b6100956101b4565b6040516100a29190610381565b60405180910390f35b6100c560048036038101906100c091906106b0565b6101bc565b6040516100d3929190610843565b60405180910390f35b6100e461030f565b6040516100f1919061088c565b60405180910390f35b610114600480360381019061010f91906108a7565b610324565b6040516101219190610381565b60405180910390f35b610132610345565b60405161013f9190610381565b60405180910390f35b61015061034d565b60405161015d9190610381565b60405180910390f35b61016e610355565b60405161017b91906108e3565b60405180910390f35b61019e6004803603810190610199919061092a565b61035d565b6040516101ab919061088c565b60405180910390f35b600042905090565b60006060439150825167ffffffffffffffff8111156101de576101dd6103c6565b5b60405190808252806020026020018201604052801561021157816020015b60608152602001906001900390816101fc5790505b50905060005b83518110156103095760008085838151811061023657610235610957565b5b60200260200101516000015173ffffffffffffffffffffffffffffffffffffffff1686848151811061026b5761026a610957565b5b60200260200101516020015160405161028491906109c2565b6000604051808303816000865af19150503d80600081146102c1576040519150601f19603f3d011682016040523d82523d6000602084013e6102c6565b606091505b5091509150816102d557600080fd5b808484815181106102e9576102e8610957565b5b60200260200101819052505050808061030190610a08565b915050610217565b50915091565b600060014361031e9190610a51565b40905090565b60008173ffffffffffffffffffffffffffffffffffffffff16319050919050565b600044905090565b600045905090565b600041905090565b600081409050919050565b6000819050919050565b61037b81610368565b82525050565b60006020820190506103966000830184610372565b92915050565b6000604051905090565b600080fd5b600080fd5b600080fd5b6000601f19601f8301169050919050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052604160045260246000fd5b6103fe826103b5565b810181811067ffffffffffffffff8211171561041d5761041c6103c6565b5b80604052505050565b600061043061039c565b905061043c82826103f5565b919050565b600067ffffffffffffffff82111561045c5761045b6103c6565b5b602082029050602081019050919050565b600080fd5b600080fd5b600080fd5b600073ffffffffffffffffffffffffffffffffffffffff82169050919050565b60006104a78261047c565b9050919050565b6104b78161049c565b81146104c257600080fd5b50565b6000813590506104d4816104ae565b92915050565b600080fd5b600067ffffffffffffffff8211156104fa576104f96103c6565b5b610503826103b5565b9050602081019050919050565b82818337600083830152505050565b600061053261052d846104df565b610426565b90508281526020810184848401111561054e5761054d6104da565b5b610559848285610510565b509392505050565b600082601f830112610576576105756103b0565b5b813561058684826020860161051f565b91505092915050565b6000604082840312156105a5576105a4610472565b5b6105af6040610426565b905060006105bf848285016104c5565b600083015250602082013567ffffffffffffffff8111156105e3576105e2610477565b5b6105ef84828501610561565b60208301525092915050565b600061060e61060984610441565b610426565b905080838252602082019050602084028301858111156106315761063061046d565b5b835b8181101561067857803567ffffffffffffffff811115610656576106556103b0565b5b808601610663898261058f565b85526020850194505050602081019050610633565b5050509392505050565b600082601f830112610697576106966103b0565b5b81356106a78482602086016105fb565b91505092915050565b6000602082840312156106c6576106c56103a6565b5b600082013567ffffffffffffffff8111156106e4576106e36103ab565b5b6106f084828501610682565b91505092915050565b600081519050919050565b600082825260208201905092915050565b6000819050602082019050919050565b600081519050919050565b600082825260208201905092915050565b60005b8381101561075f578082015181840152602081019050610744565b8381111561076e576000848401525b50505050565b600061077f82610725565b6107898185610730565b9350610799818560208601610741565b6107a2816103b5565b840191505092915050565b60006107b98383610774565b905092915050565b6000602082019050919050565b60006107d9826106f9565b6107e38185610704565b9350836020820285016107f585610715565b8060005b85811015610831578484038952815161081285826107ad565b945061081d836107c1565b925060208a019950506001810190506107f9565b50829750879550505050505092915050565b60006040820190506108586000830185610372565b818103602083015261086a81846107ce565b90509392505050565b6000819050919050565b61088681610873565b82525050565b60006020820190506108a1600083018461087d565b92915050565b6000602082840312156108bd576108bc6103a6565b5b60006108cb848285016104c5565b91505092915050565b6108dd8161049c565b82525050565b60006020820190506108f860008301846108d4565b92915050565b61090781610368565b811461091257600080fd5b50565b600081359050610924816108fe565b92915050565b6000602082840312156109405761093f6103a6565b5b600061094e84828501610915565b91505092915050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052603260045260246000fd5b600081905092915050565b600061099c82610725565b6109a68185610986565b93506109b6818560208601610741565b80840191505092915050565b60006109ce8284610991565b915081905092915050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fd5b6000610a1382610368565b91507fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff821415610a4657610a456109d9565b5b600182019050919050565b6000610a5c82610368565b9150610a6783610368565b925082821015610a7a57610a796109d9565b5b82820390509291505056fea2646970667358221220bcbfee4fd7a7c7b0329ee9342e54104e21b7586f931c591ec19433806f8a803864736f6c63430008090033",
-          "storage": []
+          "code": "608060405234801561001057600080fd5b50600436106101005760003560e01c806395d89b4111610097578063a457c2d711610066578063a457c2d714610351578063a9059cbb1461038a578063aa271e1a146103c3578063dd62ed3e146103f657610100565b806395d89b41146102ef57806397304ced146102f7578063983b2d5614610316578063986502751461034957610100565b8063313ce567116100d3578063313ce5671461022c578063395093511461024a57806340c10f191461028357806370a08231146102bc57610100565b806306fdde0314610105578063095ea7b31461018257806318160ddd146101cf57806323b872dd146101e9575b600080fd5b61010d610431565b6040805160208082528351818301528351919283929083019185019080838360005b8381101561014757818101518382015260200161012f565b50505050905090810190601f1680156101745780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b6101bb6004803603604081101561019857600080fd5b5073ffffffffffffffffffffffffffffffffffffffff81351690602001356104e5565b604080519115158252519081900360200190f35b6101d7610502565b60408051918252519081900360200190f35b6101bb600480360360608110156101ff57600080fd5b5073ffffffffffffffffffffffffffffffffffffffff813581169160208101359091169060400135610508565b6102346105af565b6040805160ff9092168252519081900360200190f35b6101bb6004803603604081101561026057600080fd5b5073ffffffffffffffffffffffffffffffffffffffff81351690602001356105b8565b6101bb6004803603604081101561029957600080fd5b5073ffffffffffffffffffffffffffffffffffffffff8135169060200135610619565b6101d7600480360360208110156102d257600080fd5b503573ffffffffffffffffffffffffffffffffffffffff1661068a565b61010d6106b2565b6103146004803603602081101561030d57600080fd5b5035610730565b005b6103146004803603602081101561032c57600080fd5b503573ffffffffffffffffffffffffffffffffffffffff1661073d565b6103146107a6565b6101bb6004803603604081101561036757600080fd5b5073ffffffffffffffffffffffffffffffffffffffff81351690602001356107b8565b6101bb600480360360408110156103a057600080fd5b5073ffffffffffffffffffffffffffffffffffffffff8135169060200135610833565b6101bb600480360360208110156103d957600080fd5b503573ffffffffffffffffffffffffffffffffffffffff16610847565b6101d76004803603604081101561040c57600080fd5b5073ffffffffffffffffffffffffffffffffffffffff81358116916020013516610860565b60008054604080516020601f60027fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff6101006001881615020190951694909404938401819004810282018101909252828152606093909290918301828280156104db5780601f106104b0576101008083540402835291602001916104db565b820191906000526020600020905b8154815290600101906020018083116104be57829003601f168201915b5050505050905090565b60006104f96104f2610898565b848461089c565b50600192915050565b60055490565b60006105158484846109e3565b6105a584610521610898565b6105a0856040518060600160405280602881526020016111896028913973ffffffffffffffffffffffffffffffffffffffff8a1660009081526004602052604081209061056c610898565b73ffffffffffffffffffffffffffffffffffffffff168152602081019190915260400160002054919063ffffffff610bb616565b61089c565b5060019392505050565b60025460ff1690565b60006104f96105c5610898565b846105a085600460006105d6610898565b73ffffffffffffffffffffffffffffffffffffffff908116825260208083019390935260409182016000908120918c16815292529020549063ffffffff610c6716565b600061062b610626610898565b610847565b610680576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260308152602001806111386030913960400191505060405180910390fd5b6104f98383610ce2565b73ffffffffffffffffffffffffffffffffffffffff1660009081526003602052604090205490565b60018054604080516020601f60027fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff61010087891615020190951694909404938401819004810282018101909252828152606093909290918301828280156104db5780601f106104b0576101008083540402835291602001916104db565b61073a3382610ce2565b50565b610748610626610898565b61079d576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260308152602001806111386030913960400191505060405180910390fd5b61073a81610e15565b6107b66107b1610898565b610e6a565b565b60006104f96107c5610898565b846105a08560405180606001604052806025815260200161121c60259139600460006107ef610898565b73ffffffffffffffffffffffffffffffffffffffff908116825260208083019390935260409182016000908120918d1681529252902054919063ffffffff610bb616565b60006104f9610840610898565b84846109e3565b600061085a60068363ffffffff610ebf16565b92915050565b73ffffffffffffffffffffffffffffffffffffffff918216600090815260046020908152604080832093909416825291909152205490565b3390565b73ffffffffffffffffffffffffffffffffffffffff8316610908576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260248152602001806111f86024913960400191505060405180910390fd5b73ffffffffffffffffffffffffffffffffffffffff8216610974576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260228152602001806110f06022913960400191505060405180910390fd5b73ffffffffffffffffffffffffffffffffffffffff808416600081815260046020908152604080832094871680845294825291829020859055815185815291517f8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b9259281900390910190a3505050565b73ffffffffffffffffffffffffffffffffffffffff8316610a4f576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260258152602001806111d36025913960400191505060405180910390fd5b73ffffffffffffffffffffffffffffffffffffffff8216610abb576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260238152602001806110cd6023913960400191505060405180910390fd5b610b0b816040518060600160405280602681526020016111126026913973ffffffffffffffffffffffffffffffffffffffff8616600090815260036020526040902054919063ffffffff610bb616565b73ffffffffffffffffffffffffffffffffffffffff8085166000908152600360205260408082209390935590841681522054610b4d908263ffffffff610c6716565b73ffffffffffffffffffffffffffffffffffffffff80841660008181526003602090815260409182902094909455805185815290519193928716927fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef92918290030190a3505050565b60008184841115610c5f576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825283818151815260200191508051906020019080838360005b83811015610c24578181015183820152602001610c0c565b50505050905090810190601f168015610c515780820380516001836020036101000a031916815260200191505b509250505060405180910390fd5b505050900390565b600082820183811015610cdb57604080517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601b60248201527f536166654d6174683a206164646974696f6e206f766572666c6f770000000000604482015290519081900360640190fd5b9392505050565b73ffffffffffffffffffffffffffffffffffffffff8216610d6457604080517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601f60248201527f45524332303a206d696e7420746f20746865207a65726f206164647265737300604482015290519081900360640190fd5b600554610d77908263ffffffff610c6716565b60055573ffffffffffffffffffffffffffffffffffffffff8216600090815260036020526040902054610db0908263ffffffff610c6716565b73ffffffffffffffffffffffffffffffffffffffff831660008181526003602090815260408083209490945583518581529351929391927fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef9281900390910190a35050565b610e2660068263ffffffff610f5a16565b60405173ffffffffffffffffffffffffffffffffffffffff8216907f6ae172837ea30b801fbfcdd4108aa1d5bf8ff775444fd70256b44e6bf3dfc3f690600090a250565b610e7b60068263ffffffff61102016565b60405173ffffffffffffffffffffffffffffffffffffffff8216907fe94479a9f7e1952cc78f2d6baab678adc1b772d936c6583def489e524cb6669290600090a250565b600073ffffffffffffffffffffffffffffffffffffffff8216610f2d576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260228152602001806111b16022913960400191505060405180910390fd5b5073ffffffffffffffffffffffffffffffffffffffff166000908152602091909152604090205460ff1690565b610f648282610ebf565b15610fd057604080517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601f60248201527f526f6c65733a206163636f756e7420616c72656164792068617320726f6c6500604482015290519081900360640190fd5b73ffffffffffffffffffffffffffffffffffffffff1660009081526020919091526040902080547fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00166001179055565b61102a8282610ebf565b61107f576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260218152602001806111686021913960400191505060405180910390fd5b73ffffffffffffffffffffffffffffffffffffffff1660009081526020919091526040902080547fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0016905556fe45524332303a207472616e7366657220746f20746865207a65726f206164647265737345524332303a20617070726f766520746f20746865207a65726f206164647265737345524332303a207472616e7366657220616d6f756e7420657863656564732062616c616e63654d696e746572526f6c653a2063616c6c657220646f6573206e6f74206861766520746865204d696e74657220726f6c65526f6c65733a206163636f756e7420646f6573206e6f74206861766520726f6c6545524332303a207472616e7366657220616d6f756e74206578636565647320616c6c6f77616e6365526f6c65733a206163636f756e7420697320746865207a65726f206164647265737345524332303a207472616e736665722066726f6d20746865207a65726f206164647265737345524332303a20617070726f76652066726f6d20746865207a65726f206164647265737345524332303a2064656372656173656420616c6c6f77616e63652062656c6f77207a65726fa265627a7a72315820ea9c92c4d63223983c19b405f3f7cf51f9f9847cdb73156fa153ff17549cb61f64736f6c63430005100032",
+          "storage": [
+            {
+              "key": "0x0000000000000000000000000000000000000000000000000000000000000000",
+              "value": "0x5553444300000000000000000000000000000000000000000000000000000008"
+            },
+            {
+              "key": "0x0000000000000000000000000000000000000000000000000000000000000001",
+              "value": "0x5553444300000000000000000000000000000000000000000000000000000008"
+            },
+            {
+              "key": "0x0000000000000000000000000000000000000000000000000000000000000002",
+              "value": "0x0000000000000000000000000000000000000000000000000000000000000006"
+            },
+            {
+              "key": "0x0000000000000000000000000000000000000000000000000000000000000005",
+              "value": "0x000000000000000000000000000000000000000000000000000000003B9ACA00"
+            },
+            {
+              "key": "0x660e8e733fe8b3a0eb87549a96f0b91757d9b2c231b23839b0ac8eb5fbed02aa",
+              "value": "0x0000000000000000000000000000000000000000000000000000000000000001"
+            },
+            {
+              "key": "0xbd9822646fe648d12397e5191607328cb0ed0ed1ba0616f4052b6271e96d9e46",
+              "value": "0x000000000000000000000000000000000000000000000000000000003B9ACA00"
+            }
+          ]
         },
         {
           "address": "0x62d2f38dAA1153b381c6ed2A48e7f4673303ac9A",
@@ -1296,7 +1370,85 @@
           "london_block": null,
           "arrow_glacier_block": null,
           "merge_fork_block": null
-        }
+        },
+        "eip712_allowed_msgs": [
+          {
+            "msg_type_url": "/kava.evmutil.v1beta1.MsgConvertERC20ToCoin",
+            "msg_value_type_name": "MsgValueEVMConvertERC20ToCoin",
+            "value_types": [
+              {
+                "name": "initiator",
+                "type": "string"
+              },
+              {
+                "name": "receiver",
+                "type": "string"
+              },
+              {
+                "name": "kava_erc20_address",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "string"
+              }
+            ]
+          },
+          {
+            "msg_type_url": "/kava.evmutil.v1beta1.MsgConvertCoinToERC20",
+            "msg_value_type_name": "MsgValueEVMConvertCoinToERC20",
+            "value_types": [
+              {
+                "name": "initiator",
+                "type": "string"
+              },
+              {
+                "name": "receiver",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "Coin"
+              }
+            ]
+          },
+          {
+            "msg_type_url": "/kava.earn.v1beta1.MsgDeposit",
+            "msg_value_type_name": "MsgValueEarnDeposit",
+            "value_types": [
+              {
+                "name": "depositor",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "Coin"
+              },
+              {
+                "name": "strategy",
+                "type": "number"
+              }
+            ]
+          },
+          {
+            "msg_type_url": "/kava.earn.v1beta1.MsgWithdraw",
+            "msg_value_type_name": "MsgValueHardWithdraw",
+            "value_types": [
+              {
+                "name": "from",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "Coin"
+              },
+              {
+                "name": "strategy",
+                "type": "number"
+              }
+            ]
+          }
+        ]
       }
     },
     "feemarket": {
@@ -1310,16 +1462,19 @@
       "block_gas": "0"
     },
     "evmutil": {
-      "accounts": []
+      "accounts": [],
+      "params": {
+        "enabled_conversion_pairs": [
+          {
+            "kava_erc20_address": "0xeA7100edA2f805356291B0E55DaD448599a72C6d",
+            "denom": "erc20/usdc"
+          }
+        ]
+      }
     },
     "savings": {
       "params": {
-        "supported_denoms": [
-          "usdx",
-          "ukava",
-          "hard",
-          "swp"
-        ]
+        "supported_denoms": ["usdx", "ukava", "hard", "swp"]
       }
     },
     "genutil": {
@@ -1417,7 +1572,7 @@
             "denom": "usdx",
             "borrow_limit": {
               "has_max_limit": false,
-              "maximum_limit": "20000000",
+              "maximum_limit": "100000000000",
               "loan_to_value": "0.80"
             },
             "spot_market_id": "usdx:usd",
@@ -1591,10 +1746,7 @@
         "clients_consensus": [],
         "clients_metadata": [],
         "params": {
-          "allowed_clients": [
-            "06-solomachine",
-            "07-tendermint"
-          ]
+          "allowed_clients": ["06-solomachine", "07-tendermint"]
         },
         "create_localhost": false,
         "next_client_sequence": "0"
@@ -2244,376 +2396,326 @@
             "active": true,
             "base_asset": "bnb",
             "market_id": "bnb:usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "bnb",
             "market_id": "bnb:usd:30",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "btc",
             "market_id": "btc:usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "btc",
             "market_id": "btc:usd:30",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "xrp",
             "market_id": "xrp:usd:30",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "xrp",
             "market_id": "xrp:usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "busd",
             "market_id": "busd:usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "busd",
             "market_id": "busd:usd:30",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "kava",
             "market_id": "kava:usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "kava",
             "market_id": "kava:usd:30",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "hard",
             "market_id": "hard:usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "hard",
             "market_id": "hard:usd:30",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "atom",
             "market_id": "atom:usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "atom",
             "market_id": "atom:usd:30",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "osmo",
             "market_id": "osmo:usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "osmo",
             "market_id": "osmo:usd:30",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "akt",
             "market_id": "akt:usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "akt",
             "market_id": "akt:usd:30",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "luna",
             "market_id": "luna:usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "luna",
             "market_id": "luna:usd:30",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "usdx",
             "market_id": "usdx:usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "usdx",
             "market_id": "usdx:usd:30",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "usdx",
             "market_id": "usdx:usd:720",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "swp",
             "market_id": "swp:usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "swp",
             "market_id": "swp:usd:30",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "quote_asset": "usd"
           }
         ]
       },
       "posted_prices": [
         {
-          "expiry": "2022-07-20T00:00:00Z",
+          "expiry": "2023-07-20T00:00:00Z",
           "market_id": "bnb:usd",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
           "price": "215.962650000000001782"
         },
         {
-          "expiry": "2022-07-20T00:00:00Z",
+          "expiry": "2023-07-20T00:00:00Z",
           "market_id": "bnb:usd:30",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
           "price": "217.962650000000001782"
         },
         {
-          "expiry": "2022-07-20T00:00:00Z",
+          "expiry": "2023-07-20T00:00:00Z",
           "market_id": "btc:usd",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
           "price": "29500.962650000000001782"
         },
         {
-          "expiry": "2022-07-20T00:00:00Z",
+          "expiry": "2023-07-20T00:00:00Z",
           "market_id": "btc:usd:30",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
           "price": "28500.962650000000001782"
         },
         {
-          "expiry": "2022-07-20T00:00:00Z",
+          "expiry": "2023-07-20T00:00:00Z",
           "market_id": "akt:usd",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
           "price": "1.962650000000001782"
         },
         {
-          "expiry": "2022-07-20T00:00:00Z",
+          "expiry": "2023-07-20T00:00:00Z",
           "market_id": "akt:usd:30",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
           "price": "1.962650000000001782"
         },
         {
-          "expiry": "2022-07-20T00:00:00Z",
+          "expiry": "2023-07-20T00:00:00Z",
           "market_id": "osmo:usd",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
           "price": "4.962650000000001782"
         },
         {
-          "expiry": "2022-07-20T00:00:00Z",
+          "expiry": "2023-07-20T00:00:00Z",
           "market_id": "osmo:usd:30",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
           "price": "4.962650000000001782"
         },
         {
-          "expiry": "2022-07-20T00:00:00Z",
+          "expiry": "2023-07-20T00:00:00Z",
           "market_id": "luna:usd",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
           "price": "92.962650000000001782"
         },
         {
-          "expiry": "2022-07-20T00:00:00Z",
+          "expiry": "2023-07-20T00:00:00Z",
           "market_id": "luna:usd:30",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
           "price": "92.962650000000001782"
         },
         {
-          "expiry": "2022-07-20T00:00:00Z",
+          "expiry": "2023-07-20T00:00:00Z",
           "market_id": "atom:usd",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
           "price": "24.962650000000001782"
         },
         {
-          "expiry": "2022-07-20T00:00:00Z",
+          "expiry": "2023-07-20T00:00:00Z",
           "market_id": "atom:usd:30",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
           "price": "24.962650000000001782"
         },
         {
-          "expiry": "2022-07-20T00:00:00Z",
+          "expiry": "2023-07-20T00:00:00Z",
           "market_id": "xrp:usd",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
           "price": "0.552650000000001782"
         },
         {
-          "expiry": "2022-07-20T00:00:00Z",
+          "expiry": "2023-07-20T00:00:00Z",
           "market_id": "xrp:usd:30",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
           "price": "0.552650000000001782"
         },
         {
-          "expiry": "2022-07-20T00:00:00Z",
+          "expiry": "2023-07-20T00:00:00Z",
           "market_id": "busd:usd",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
           "price": "1.000000000000000000"
         },
         {
-          "expiry": "2022-07-20T00:00:00Z",
+          "expiry": "2023-07-20T00:00:00Z",
           "market_id": "busd:usd:30",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
           "price": "1.000000000000000000"
         },
         {
-          "expiry": "2022-07-20T00:00:00Z",
+          "expiry": "2023-07-20T00:00:00Z",
           "market_id": "usdx:usd",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
           "price": "1.000000000000000000"
         },
         {
-          "expiry": "2022-07-20T00:00:00Z",
+          "expiry": "2023-07-20T00:00:00Z",
           "market_id": "usdx:usd:30",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
           "price": "1.000000000000000000"
         },
         {
-          "expiry": "2022-07-20T00:00:00Z",
+          "expiry": "2023-07-20T00:00:00Z",
           "market_id": "usdx:usd:720",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
           "price": "1.000000000000000000"
         },
         {
-          "expiry": "2022-07-20T00:00:00Z",
+          "expiry": "2023-07-20T00:00:00Z",
           "market_id": "kava:usd",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
           "price": "3.000000000000000000"
         },
         {
-          "expiry": "2022-07-20T00:00:00Z",
+          "expiry": "2023-07-20T00:00:00Z",
           "market_id": "kava:usd:30",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
           "price": "3.000000000000000000"
         },
         {
-          "expiry": "2022-07-20T00:00:00Z",
+          "expiry": "2023-07-20T00:00:00Z",
           "market_id": "hard:usd",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
           "price": "0.500000000000000000"
         },
         {
-          "expiry": "2022-07-20T00:00:00Z",
+          "expiry": "2023-07-20T00:00:00Z",
           "market_id": "hard:usd:30",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
           "price": "0.500000000000000000"
         },
         {
-          "expiry": "2022-07-20T00:00:00Z",
+          "expiry": "2023-07-20T00:00:00Z",
           "market_id": "swp:usd",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
           "price": "2.150000000000000000"
         },
         {
-          "expiry": "2022-07-20T00:00:00Z",
+          "expiry": "2023-07-20T00:00:00Z",
           "market_id": "swp:usd:30",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
           "price": "2.150000000000000000"
