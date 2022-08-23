@@ -1572,7 +1572,7 @@
             "denom": "usdx",
             "borrow_limit": {
               "has_max_limit": false,
-              "maximum_limit": "100000000000",
+              "maximum_limit": "20000000",
               "loan_to_value": "0.80"
             },
             "spot_market_id": "usdx:usd",
