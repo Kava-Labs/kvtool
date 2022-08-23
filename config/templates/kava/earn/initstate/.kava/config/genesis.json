@@ -1496,6 +1496,42 @@
                 "type": "number"
               }
             ]
+          },
+          {
+            "msg_type_url": "/kava.liquid.v1beta1.MsgMintDerivative",
+            "msg_value_type_name": "MsgValueMintDerivative",
+            "value_types": [
+              {
+                "name": "sender",
+                "type": "string"
+              },
+              {
+                "name": "validator",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "Coin"
+              }
+            ]
+          },
+          {
+            "msg_type_url": "/kava.liquid.v1beta1.MsgBurnDerivative",
+            "msg_value_type_name": "MsgValueBurnDerivative",
+            "value_types": [
+              {
+                "name": "sender",
+                "type": "string"
+              },
+              {
+                "name": "validator",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "Coin"
+              }
+            ]
           }
         ]
       }
@@ -2431,6 +2467,9 @@
         "periods": []
       },
       "previous_block_time": "1970-01-01T00:00:01Z"
+    },
+    "liquid": {
+      "params": {}
     },
     "mint": {
       "minter": {
