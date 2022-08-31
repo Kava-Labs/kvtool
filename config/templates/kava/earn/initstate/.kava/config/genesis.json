@@ -1543,7 +1543,7 @@
         "enabled_conversion_pairs": [
           {
             "kava_erc20_address": "0xeA7100edA2f805356291B0E55DaD448599a72C6d",
-            "denom": "erc20/usdc"
+            "denom": "erc20/multichain/usdc"
           }
         ]
       }
