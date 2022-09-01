@@ -176,6 +176,17 @@
           "permissions": null
         },
         {
+          "@type": "/cosmos.auth.v1beta1.ModuleAccount",
+          "base_account": {
+            "account_number": "40",
+            "address": "kava1w9vxuke5dz6hyza2j932qgmxltnfxwl78u920k",
+            "pub_key": null,
+            "sequence": "0"
+          },
+          "name": "evmutil",
+          "permissions": ["minter", "burner"]
+        },
+        {
           "@type": "/cosmos.vesting.v1beta1.PeriodicVestingAccount",
           "base_vesting_account": {
             "base_account": {
@@ -1243,6 +1254,10 @@
           },
           {
             "denom": "bkava",
+            "strategies": ["STRATEGY_TYPE_SAVINGS"]
+          },
+          {
+            "denom": "erc20/multichain/usdc",
             "strategies": ["STRATEGY_TYPE_SAVINGS"]
           }
         ]
