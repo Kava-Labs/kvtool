@@ -1528,7 +1528,7 @@
               },
               {
                 "name": "strategy",
-                "type": "number"
+                "type": "uint256"
               }
             ]
           },
@@ -1546,7 +1546,7 @@
               },
               {
                 "name": "strategy",
-                "type": "number"
+                "type": "uint256"
               }
             ]
           },
