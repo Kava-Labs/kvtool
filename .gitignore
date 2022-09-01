@@ -4,3 +4,9 @@ evm/artifacts
 evm/cache
 evm/node_modules
 scratch/
+
+# macOS files
+.DS_Store
+
+# editor files
+.vscode
