@@ -2714,6 +2714,20 @@
             "market_id": "swp:usd:30",
             "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "quote_asset": "usd"
+          },
+          {
+            "active": true,
+            "base_asset": "erc20/multichain/usdc",
+            "market_id": "erc20/multichain/usdc:usd",
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
+            "quote_asset": "usd"
+          },
+          {
+            "active": true,
+            "base_asset": "erc20/multichain/usdc",
+            "market_id": "erc20/multichain/usdc:usd:30",
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
+            "quote_asset": "usd"
           }
         ]
       },
@@ -2867,6 +2881,18 @@
           "market_id": "swp:usd:30",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
           "price": "2.150000000000000000"
+        },
+        {
+          "expiry": "2023-07-20T00:00:00Z",
+          "market_id": "erc20/multichain/usdc:usd",
+          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
+          "price": "1.000000000000000000"
+        },
+        {
+          "expiry": "2023-07-20T00:00:00Z",
+          "market_id": "erc20/multichain/usdc:usd:30",
+          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
+          "price": "1.000000000000000000"
         }
       ]
     },
