@@ -2399,6 +2399,56 @@
             ]
           }
         ],
+        "earn_reward_periods": [
+          {
+            "active": true,
+            "collateral_type": "ukava",
+            "start": "2021-12-08T14:00:00Z",
+            "end": "2024-01-01T00:00:00Z",
+            "rewards_per_second": [
+              {
+                "amount": "3168",
+                "denom": "ukava"
+              }
+            ]
+          },
+          {
+            "active": true,
+            "collateral_type": "usdx",
+            "start": "2021-12-08T14:00:00Z",
+            "end": "2024-01-01T00:00:00Z",
+            "rewards_per_second": [
+              {
+                "amount": "316880",
+                "denom": "ukava"
+              }
+            ]
+          },
+          {
+            "active": true,
+            "collateral_type": "bkava",
+            "start": "2021-12-08T14:00:00Z",
+            "end": "2024-01-01T00:00:00Z",
+            "rewards_per_second": [
+              {
+                "amount": "316880",
+                "denom": "ukava"
+              }
+            ]
+          },
+          {
+            "active": true,
+            "collateral_type": "erc20/multichain/usdc",
+            "start": "2021-12-08T14:00:00Z",
+            "end": "2024-01-01T00:00:00Z",
+            "rewards_per_second": [
+              {
+                "amount": "316880",
+                "denom": "ukava"
+              }
+            ]
+          }
+        ],
         "claim_multipliers": [
           {
             "denom": "hard",
@@ -2444,6 +2494,17 @@
                 "factor": "1.0"
               }
             ]
+          },
+          {
+            "denom": "ukava",
+            "module_name": "earn",
+            "multipliers": [
+              {
+                "name": "MULTIPLIER_NAME_LARGE",
+                "months_lockup": "0",
+                "factor": "1.0"
+              }
+            ]
           }
         ],
         "claim_end": "2025-01-01T00:00:00Z"
@@ -2465,6 +2526,10 @@
         "multi_reward_indexes": []
       },
       "usdx_reward_state": {
+        "accumulation_times": [],
+        "multi_reward_indexes": []
+      },
+      "earn_reward_state": {
         "accumulation_times": [],
         "multi_reward_indexes": []
       },
@@ -2504,7 +2569,8 @@
             }
           ]
         }
-      ]
+      ],
+      "earn_claims": []
     },
     "issuance": {
       "params": {
