@@ -1925,7 +1925,7 @@
               "denom": "ukava"
             },
             "collateral_type": "bnb-a",
-            "start": "2021-12-08T14:00:00Z",
+            "start": "2022-09-21T14:00:00Z",
             "end": "2024-10-16T14:00:00Z"
           },
           {
@@ -1935,7 +1935,7 @@
               "denom": "ukava"
             },
             "collateral_type": "luna-a",
-            "start": "2021-12-08T14:00:00Z",
+            "start": "2022-09-21T14:00:00Z",
             "end": "2024-10-16T14:00:00Z"
           },
           {
@@ -1945,7 +1945,7 @@
               "denom": "ukava"
             },
             "collateral_type": "btcb-a",
-            "start": "2021-12-08T14:00:00Z",
+            "start": "2022-09-21T14:00:00Z",
             "end": "2024-10-16T14:00:00Z"
           },
           {
@@ -1955,7 +1955,7 @@
               "denom": "ukava"
             },
             "collateral_type": "busd-a",
-            "start": "2021-12-08T14:00:00Z",
+            "start": "2022-09-21T14:00:00Z",
             "end": "2024-10-16T14:00:00Z"
           },
           {
@@ -1965,7 +1965,7 @@
               "denom": "ukava"
             },
             "collateral_type": "xrpb-a",
-            "start": "2021-12-08T14:00:00Z",
+            "start": "2022-09-21T14:00:00Z",
             "end": "2024-10-16T14:00:00Z"
           },
           {
@@ -1975,7 +1975,7 @@
               "denom": "ukava"
             },
             "collateral_type": "ukava-a",
-            "start": "2021-12-08T14:00:00Z",
+            "start": "2022-09-21T14:00:00Z",
             "end": "2024-10-16T14:00:00Z"
           },
           {
@@ -1985,7 +1985,7 @@
               "denom": "ukava"
             },
             "collateral_type": "hard-a",
-            "start": "2021-12-08T14:00:00Z",
+            "start": "2022-09-21T14:00:00Z",
             "end": "2024-10-16T14:00:00Z"
           }
         ],
@@ -1993,7 +1993,7 @@
           {
             "active": true,
             "collateral_type": "bnb",
-            "start": "2021-12-08T14:00:00Z",
+            "start": "2022-09-21T14:00:00Z",
             "end": "2024-01-01T00:00:00Z",
             "rewards_per_second": [
               {
@@ -2005,7 +2005,7 @@
           {
             "active": true,
             "collateral_type": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
-            "start": "2021-12-08T14:00:00Z",
+            "start": "2022-09-21T14:00:00Z",
             "end": "2024-01-01T00:00:00Z",
             "rewards_per_second": [
               {
@@ -2017,7 +2017,7 @@
           {
             "active": true,
             "collateral_type": "ibc/4129EB76C01ED14052054BB975DE0C6C5010E12FFD9253C20C58BCD828BEE9A5",
-            "start": "2021-12-08T14:00:00Z",
+            "start": "2022-09-21T14:00:00Z",
             "end": "2024-01-01T00:00:00Z",
             "rewards_per_second": [
               {
@@ -2029,7 +2029,7 @@
           {
             "active": true,
             "collateral_type": "ibc/C72DE26FFF16DE62BE2784E12229BDF5F4465CE8B10530426D6DB53255FF01B2",
-            "start": "2021-12-08T14:00:00Z",
+            "start": "2022-09-21T14:00:00Z",
             "end": "2024-01-01T00:00:00Z",
             "rewards_per_second": [
               {
@@ -2041,7 +2041,7 @@
           {
             "active": true,
             "collateral_type": "ibc/ED07A3391A112B175915CD8FAF43A2DA8E4790EDE12566649D0C2F97716B8518",
-            "start": "2021-12-08T14:00:00Z",
+            "start": "2022-09-21T14:00:00Z",
             "end": "2024-01-01T00:00:00Z",
             "rewards_per_second": [
               {
@@ -2053,7 +2053,7 @@
           {
             "active": true,
             "collateral_type": "btcb",
-            "start": "2021-12-08T14:00:00Z",
+            "start": "2022-09-21T14:00:00Z",
             "end": "2024-01-01T00:00:00Z",
             "rewards_per_second": [
               {
@@ -2069,7 +2069,7 @@
           {
             "active": true,
             "collateral_type": "xrpb",
-            "start": "2021-12-08T14:00:00Z",
+            "start": "2022-09-21T14:00:00Z",
             "end": "2024-01-01T00:00:00Z",
             "rewards_per_second": [
               {
@@ -2085,7 +2085,7 @@
           {
             "active": true,
             "collateral_type": "usdx",
-            "start": "2021-12-08T14:00:00Z",
+            "start": "2022-09-21T14:00:00Z",
             "end": "2024-01-01T00:00:00Z",
             "rewards_per_second": [
               {
@@ -2101,7 +2101,7 @@
           {
             "active": true,
             "collateral_type": "busd",
-            "start": "2021-12-08T14:00:00Z",
+            "start": "2022-09-21T14:00:00Z",
             "end": "2024-01-01T00:00:00Z",
             "rewards_per_second": [
               {
@@ -2117,7 +2117,7 @@
           {
             "active": true,
             "collateral_type": "ukava",
-            "start": "2021-12-08T14:00:00Z",
+            "start": "2022-09-21T14:00:00Z",
             "end": "2024-01-01T00:00:00Z",
             "rewards_per_second": [
               {
@@ -2129,7 +2129,7 @@
           {
             "active": true,
             "collateral_type": "hard",
-            "start": "2021-12-08T14:00:00Z",
+            "start": "2022-09-21T14:00:00Z",
             "end": "2024-01-01T00:00:00Z",
             "rewards_per_second": [
               {
@@ -2143,7 +2143,7 @@
           {
             "active": true,
             "collateral_type": "bnb",
-            "start": "2021-12-08T14:00:00Z",
+            "start": "2022-09-21T14:00:00Z",
             "end": "2024-01-01T00:00:00Z",
             "rewards_per_second": [
               {
@@ -2155,7 +2155,7 @@
           {
             "active": true,
             "collateral_type": "busd",
-            "start": "2021-12-08T14:00:00Z",
+            "start": "2022-09-21T14:00:00Z",
             "end": "2024-01-01T00:00:00Z",
             "rewards_per_second": [
               {
@@ -2167,7 +2167,7 @@
           {
             "active": true,
             "collateral_type": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
-            "start": "2021-12-08T14:00:00Z",
+            "start": "2022-09-21T14:00:00Z",
             "end": "2024-01-01T00:00:00Z",
             "rewards_per_second": [
               {
@@ -2179,7 +2179,7 @@
           {
             "active": true,
             "collateral_type": "ibc/4129EB76C01ED14052054BB975DE0C6C5010E12FFD9253C20C58BCD828BEE9A5",
-            "start": "2021-12-08T14:00:00Z",
+            "start": "2022-09-21T14:00:00Z",
             "end": "2024-01-01T00:00:00Z",
             "rewards_per_second": [
               {
@@ -2191,7 +2191,7 @@
           {
             "active": true,
             "collateral_type": "ibc/C72DE26FFF16DE62BE2784E12229BDF5F4465CE8B10530426D6DB53255FF01B2",
-            "start": "2021-12-08T14:00:00Z",
+            "start": "2022-09-21T14:00:00Z",
             "end": "2024-01-01T00:00:00Z",
             "rewards_per_second": [
               {
@@ -2203,7 +2203,7 @@
           {
             "active": true,
             "collateral_type": "ibc/ED07A3391A112B175915CD8FAF43A2DA8E4790EDE12566649D0C2F97716B8518",
-            "start": "2021-12-08T14:00:00Z",
+            "start": "2022-09-21T14:00:00Z",
             "end": "2024-01-01T00:00:00Z",
             "rewards_per_second": [
               {
@@ -2215,7 +2215,7 @@
           {
             "active": true,
             "collateral_type": "ukava",
-            "start": "2021-12-08T14:00:00Z",
+            "start": "2022-09-21T14:00:00Z",
             "end": "2024-01-01T00:00:00Z",
             "rewards_per_second": [
               {
@@ -2227,7 +2227,7 @@
           {
             "active": true,
             "collateral_type": "xrpb",
-            "start": "2021-12-08T14:00:00Z",
+            "start": "2022-09-21T14:00:00Z",
             "end": "2024-01-01T00:00:00Z",
             "rewards_per_second": [
               {
@@ -2239,7 +2239,7 @@
           {
             "active": true,
             "collateral_type": "btcb",
-            "start": "2021-12-08T14:00:00Z",
+            "start": "2022-09-21T14:00:00Z",
             "end": "2024-01-01T00:00:00Z",
             "rewards_per_second": [
               {
@@ -2253,7 +2253,7 @@
           {
             "active": true,
             "collateral_type": "ukava",
-            "start": "2021-12-08T14:00:00Z",
+            "start": "2022-09-21T14:00:00Z",
             "end": "2024-01-01T00:00:00Z",
             "rewards_per_second": [
               {
@@ -2297,7 +2297,7 @@
           {
             "active": true,
             "collateral_type": "ukava:usdx",
-            "start": "2021-12-08T14:00:00Z",
+            "start": "2022-09-21T14:00:00Z",
             "end": "2024-01-01T00:00:00Z",
             "rewards_per_second": [
               {
@@ -2313,7 +2313,7 @@
           {
             "active": true,
             "collateral_type": "swp:usdx",
-            "start": "2021-12-08T14:00:00Z",
+            "start": "2022-09-21T14:00:00Z",
             "end": "2024-01-01T00:00:00Z",
             "rewards_per_second": [
               {
@@ -2329,7 +2329,7 @@
           {
             "active": true,
             "collateral_type": "hard:usdx",
-            "start": "2021-12-08T14:00:00Z",
+            "start": "2022-09-21T14:00:00Z",
             "end": "2024-01-01T00:00:00Z",
             "rewards_per_second": [
               {
@@ -2341,7 +2341,7 @@
           {
             "active": true,
             "collateral_type": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2:usdx",
-            "start": "2021-12-08T14:00:00Z",
+            "start": "2022-09-21T14:00:00Z",
             "end": "2024-01-01T00:00:00Z",
             "rewards_per_second": [
               {
@@ -2353,7 +2353,7 @@
           {
             "active": true,
             "collateral_type": "ibc/4129EB76C01ED14052054BB975DE0C6C5010E12FFD9253C20C58BCD828BEE9A5:usdx",
-            "start": "2021-12-08T14:00:00Z",
+            "start": "2022-09-21T14:00:00Z",
             "end": "2024-01-01T00:00:00Z",
             "rewards_per_second": [
               {
@@ -2365,7 +2365,7 @@
           {
             "active": true,
             "collateral_type": "ibc/C72DE26FFF16DE62BE2784E12229BDF5F4465CE8B10530426D6DB53255FF01B2:usdx",
-            "start": "2021-12-08T14:00:00Z",
+            "start": "2022-09-21T14:00:00Z",
             "end": "2024-01-01T00:00:00Z",
             "rewards_per_second": [
               {
@@ -2377,7 +2377,7 @@
           {
             "active": true,
             "collateral_type": "ibc/ED07A3391A112B175915CD8FAF43A2DA8E4790EDE12566649D0C2F97716B8518:usdx",
-            "start": "2021-12-08T14:00:00Z",
+            "start": "2022-09-21T14:00:00Z",
             "end": "2024-01-01T00:00:00Z",
             "rewards_per_second": [
               {
@@ -2389,7 +2389,7 @@
           {
             "active": true,
             "collateral_type": "busd:usdx",
-            "start": "2021-12-08T14:00:00Z",
+            "start": "2022-09-21T14:00:00Z",
             "end": "2024-01-01T00:00:00Z",
             "rewards_per_second": [
               {
@@ -2403,7 +2403,7 @@
           {
             "active": true,
             "collateral_type": "ukava",
-            "start": "2021-12-08T14:00:00Z",
+            "start": "2022-09-21T14:00:00Z",
             "end": "2024-01-01T00:00:00Z",
             "rewards_per_second": [
               {
@@ -2415,7 +2415,7 @@
           {
             "active": true,
             "collateral_type": "usdx",
-            "start": "2021-12-08T14:00:00Z",
+            "start": "2022-09-21T14:00:00Z",
             "end": "2024-01-01T00:00:00Z",
             "rewards_per_second": [
               {
@@ -2427,7 +2427,7 @@
           {
             "active": true,
             "collateral_type": "bkava",
-            "start": "2021-12-08T14:00:00Z",
+            "start": "2022-09-21T14:00:00Z",
             "end": "2024-01-01T00:00:00Z",
             "rewards_per_second": [
               {
@@ -2439,7 +2439,7 @@
           {
             "active": true,
             "collateral_type": "erc20/multichain/usdc",
-            "start": "2021-12-08T14:00:00Z",
+            "start": "2022-09-21T14:00:00Z",
             "end": "2024-01-01T00:00:00Z",
             "rewards_per_second": [
               {
@@ -2590,14 +2590,14 @@
     },
     "mint": {
       "minter": {
-        "inflation": "0.130000000000000000",
+        "inflation": "0.000000000000000000",
         "annual_provisions": "0.000000000000000000"
       },
       "params": {
         "mint_denom": "ukava",
-        "inflation_rate_change": "0.130000000000000000",
+        "inflation_rate_change": "0.000000000000000000",
         "inflation_max": "0.200000000000000000",
-        "inflation_min": "0.070000000000000000",
+        "inflation_min": "0.000000000000000000",
         "goal_bonded": "0.670000000000000000",
         "blocks_per_year": "6311520"
       }
