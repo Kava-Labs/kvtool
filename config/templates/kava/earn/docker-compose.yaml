@@ -1,7 +1,7 @@
 version: '3'
 services:
     kavanode:
-        image: "kava/kava:earn-eip712-liquid-54c0b62"
+        image: "kava/kava:earn-eip712-liquid-ac946ba"
         ports:
             # open default kava rpc port
             - "26657:26657"
