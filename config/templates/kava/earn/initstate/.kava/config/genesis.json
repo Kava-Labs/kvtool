@@ -2454,13 +2454,8 @@
             "denom": "hard",
             "multipliers": [
               {
-                "name": "MULTIPLIER_NAME_SMALL",
-                "months_lockup": "1",
-                "factor": "0.2"
-              },
-              {
-                "name": "MULTIPLIER_NAME_LARGE",
-                "months_lockup": "12",
+                "name": "large",
+                "months_lockup": "0",
                 "factor": "1.0"
               }
             ]
@@ -2469,13 +2464,8 @@
             "denom": "swp",
             "multipliers": [
               {
-                "name": "MULTIPLIER_NAME_SMALL",
-                "months_lockup": "1",
-                "factor": "0.1"
-              },
-              {
-                "name": "MULTIPLIER_NAME_LARGE",
-                "months_lockup": "12",
+                "name": "large",
+                "months_lockup": "0",
                 "factor": "1.0"
               }
             ]
@@ -2484,13 +2474,8 @@
             "denom": "ukava",
             "multipliers": [
               {
-                "name": "MULTIPLIER_NAME_SMALL",
-                "months_lockup": "1",
-                "factor": "0.2"
-              },
-              {
-                "name": "MULTIPLIER_NAME_LARGE",
-                "months_lockup": "12",
+                "name": "large",
+                "months_lockup": "0",
                 "factor": "1.0"
               }
             ]
@@ -2500,7 +2485,7 @@
             "module_name": "earn",
             "multipliers": [
               {
-                "name": "MULTIPLIER_NAME_LARGE",
+                "name": "large",
                 "months_lockup": "0",
                 "factor": "1.0"
               }
