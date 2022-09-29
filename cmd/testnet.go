@@ -122,6 +122,7 @@ available services: %s
 	}
 	genConfigCmd.Flags().StringVar(&kavaConfigTemplate, "kava.configTemplate", "master", "the directory name of the template used to generating the kava config")
 	genConfigCmd.Flags().BoolVar(&ibcFlag, "ibc", false, "flag for if ibc is enabled")
+	genConfigCmd.Flags().BoolVar(&gethFlag, "geth", false, "flag for if geth node is enabled")
 	rootCmd.AddCommand(genConfigCmd)
 
 	var runDetachedFlag bool
