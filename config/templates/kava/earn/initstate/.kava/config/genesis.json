@@ -2479,17 +2479,6 @@
                 "factor": "1.0"
               }
             ]
-          },
-          {
-            "denom": "ukava",
-            "module_name": "earn",
-            "multipliers": [
-              {
-                "name": "large",
-                "months_lockup": "0",
-                "factor": "1.0"
-              }
-            ]
           }
         ],
         "claim_end": "2025-01-01T00:00:00Z"
