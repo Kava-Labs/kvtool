@@ -1,7 +1,5 @@
 package main
 
-// curl -s http://localhost:1317/cosmos/staking/v1beta1/validators | jq '[{allocations: .validators}]' | go run issue-and-stake.go
-
 import (
 	"bufio"
 	"encoding/json"
@@ -10,8 +8,7 @@ import (
 	"os"
 	"sync"
 
-	"github.com/caarlos0/env/v6"
-	"github.com/joho/godotenv"
+	"github.com/kava-labs/kvtool/contrib/issue-stake-liquify/config"
 
 	"github.com/cosmos/cosmos-sdk/crypto/hd"
 	"github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1"
@@ -28,40 +25,10 @@ import (
 	liquidtypes "github.com/kava-labs/kava/x/liquid/types"
 )
 
-type Allocation struct {
-	OperatorAddress sdk.ValAddress `json:"operator_address"`
-}
-
-type AccountAllocations struct {
-	Allocations []Allocation `json:"allocations"`
-}
-
-type Config struct {
-	ChainID                   string `env:"CHAIN_ID"`
-	KavaGrpcEndpoint          string `env:"KAVA_GRPC_ENDPOINT"`
-	DelegatorAccountsMnemonic string `env:"DELEGATOR_ACCOUNTS_MNEMONIC"`
-	DevWalletMnemonic         string `env:"DEV_WALLET_MNEMONIC"`
-}
-
-func getConfig() (Config, error) {
-	if err := godotenv.Load(); err != nil {
-		log.Println(".env file not found, attempting to proceed with available env variables")
-	} else {
-		log.Println("loaded config from .env")
-	}
-
-	var cfg Config
-	if err := env.Parse(&cfg); err != nil {
-		return Config{}, err
-	}
-
-	return cfg, nil
-}
-
 func main() {
 	app.SetSDKConfig()
 
-	cfg, err := getConfig()
+	cfg, err := config.LoadConfig()
 	if err != nil {
 		log.Fatalf("failed to load config: %s", err)
 	}
@@ -77,18 +44,37 @@ func main() {
 	}
 
 	// parse the allocations
-	var accountAllocations []AccountAllocations
-	if err := json.Unmarshal(jsonContent, &accountAllocations); err != nil {
+	var allocations config.Allocations
+	if err := json.Unmarshal(jsonContent, &allocations); err != nil {
 		log.Fatalf("failed to unmarshal json: %s", err)
+	}
+
+	// no delegation distributions falls back to default - DefaultBaseAmount to all validators
+	if len(allocations.Delegations) == 0 {
+		log.Printf("no delegations specified. defaulting to equal distribution of %s ukava\n", config.DefaultBaseAmount)
+		allocations.Delegations = []*config.DelegationDistribution{
+			config.DefaultDistribution(),
+		}
 	}
 
 	makeSigner := SignerFactory(cfg.ChainID, cfg.KavaGrpcEndpoint)
 
-	// create a signer for each account
+	delegationGas := int64(550_000)
+
+	// create a signer for each account and determine total delegation
 	// accounts are generated from the same mnemonic, using different address indices in the hd path
-	signerByIdx := make(map[int]*signing.Signer, len(accountAllocations))
-	for addressIdx := range accountAllocations {
+	signerByIdx := make(map[int]*signing.Signer, len(allocations.Delegations))
+	totalByIdx := make(map[int]sdk.Int, len(allocations.Delegations))
+	for addressIdx, delegation := range allocations.Delegations {
+		// create signer for delegator
 		signerByIdx[addressIdx] = makeSigner(cfg.DelegatorAccountsMnemonic, addressIdx)
+		// process distributions
+		total, err := delegation.Process(allocations.Validators)
+		if err != nil {
+			log.Fatalf("failed to process delegation for account %d: %s", addressIdx, err)
+		}
+		// include gas monies in issuance
+		totalByIdx[addressIdx] = total.AddRaw(delegationGas)
 	}
 
 	// make dev wallet signer to issue tokens to each address
@@ -105,12 +91,11 @@ func main() {
 	go ReportOnResults(wg, devWalletResponses, "issuing KAVA from dev wallet")
 
 	// issue kava to all accounts
-	for _, acc := range signerByIdx {
+	for idx, acc := range signerByIdx {
 		wg.Add(1)
-		// TODO amount based on allocations
 		issueTokensMsg := issuancetypes.NewMsgIssueTokens(
 			devWalletSigner.Address().String(),
-			sdk.NewCoin("ukava", sdk.NewInt(1_000_000)),
+			sdk.NewCoin("ukava", totalByIdx[idx]),
 			acc.Address().String(),
 		)
 
@@ -125,7 +110,7 @@ func main() {
 
 	wg.Wait()
 
-	for idx, acc := range accountAllocations {
+	for idx, delegation := range allocations.Delegations {
 		wg.Add(1)
 		// start the signer for the account
 		signer := signerByIdx[idx]
@@ -138,31 +123,35 @@ func main() {
 		// watch and report on
 		go ReportOnResults(wg, accResponses, fmt.Sprintf("delegation, mint, & deposit from account %d", idx))
 
-		amount := sdk.NewInt(900_000)
+		// baseAmount was validated during Process()
+		baseAmount, _ := sdk.NewIntFromString(delegation.BaseAmount)
 
-		for _, allocation := range acc.Allocations {
-			liquidDenom := liquidtypes.GetLiquidStakingTokenDenom("bkava", allocation.OperatorAddress)
+		for i, validator := range allocations.Validators {
+			amount := baseAmount.MulRaw(delegation.Weights[i])
 			stakingDelegation := stakingtypes.NewMsgDelegate(
 				signer.Address(),
-				allocation.OperatorAddress,
+				validator.OperatorAddress,
 				sdk.NewCoin("ukava", amount),
 			)
 			liquidMinting := liquidtypes.NewMsgMintDerivative(
 				signer.Address(),
-				allocation.OperatorAddress,
+				validator.OperatorAddress,
 				sdk.NewCoin("ukava", amount),
 			)
 			earnDeposit := earntypes.NewMsgDeposit(
 				signer.Address().String(),
-				sdk.NewCoin(liquidDenom, amount),
+				sdk.NewCoin(
+					liquidtypes.GetLiquidStakingTokenDenom("bkava", validator.OperatorAddress),
+					amount,
+				),
 				earntypes.STRATEGY_TYPE_SAVINGS,
 			)
 			accRequests <- signing.MsgRequest{
 				Msgs:      []sdk.Msg{stakingDelegation, &liquidMinting, earnDeposit},
-				GasLimit:  550000,
+				GasLimit:  uint64(delegationGas),
 				FeeAmount: sdk.NewCoins(sdk.NewCoin("ukava", sdk.NewInt(10000))),
 				Memo:      "staking my kava!",
-				Data:      allocation.OperatorAddress.String(),
+				Data:      validator.OperatorAddress.String(),
 			}
 		}
 	}
