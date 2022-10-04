@@ -2562,7 +2562,20 @@
     },
     "issuance": {
       "params": {
-        "assets": []
+        "assets": [
+          {
+            "owner": "kava1vlpsrmdyuywvaqrv7rx6xga224sqfwz3fyfhwq",
+            "denom": "ukava",
+            "blocked_addresses": [],
+            "paused": false,
+            "blockable": false,
+            "rate_limit": {
+              "active": false,
+              "limit": "0",
+              "time_period": "0s"
+            }
+          }
+        ]
       },
       "supplies": []
     },
