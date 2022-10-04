@@ -4,3 +4,5 @@ evm/artifacts
 evm/cache
 evm/node_modules
 scratch/
+
+.env
