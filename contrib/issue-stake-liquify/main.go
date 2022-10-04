@@ -1,11 +1,8 @@
 package main
 
 import (
-	"bufio"
-	"encoding/json"
 	"fmt"
 	"log"
-	"os"
 	"sync"
 
 	"github.com/kava-labs/kvtool/contrib/issue-stake-liquify/config"
@@ -19,47 +16,45 @@ import (
 
 	"github.com/kava-labs/go-tools/grpc"
 	"github.com/kava-labs/go-tools/signing"
+
 	"github.com/kava-labs/kava/app"
 	earntypes "github.com/kava-labs/kava/x/earn/types"
 	issuancetypes "github.com/kava-labs/kava/x/issuance/types"
 	liquidtypes "github.com/kava-labs/kava/x/liquid/types"
 )
 
+const (
+	delegationGas = int64(550_000)
+)
+
 func main() {
 	app.SetSDKConfig()
 
+	// load config from env
 	cfg, err := config.LoadConfig()
 	if err != nil {
 		log.Fatalf("failed to load config: %s", err)
 	}
 
-	// read stdin for json of validator allocation info
-	var jsonContent []byte
-	scanner := bufio.NewScanner(os.Stdin)
-	for scanner.Scan() {
-		jsonContent = append(jsonContent, scanner.Bytes()...)
-	}
-	if err := scanner.Err(); err != nil {
-		log.Fatalf("error reading standard input: %s", err)
+	// get allocations input
+	allocations := config.ReadAllocationsInput()
+
+	err = ProcessDelegationAllocations(cfg, allocations)
+	if err != nil {
+		log.Fatalf("failed to process delegations: %s", err)
 	}
 
-	// parse the allocations
-	var allocations config.Allocations
-	if err := json.Unmarshal(jsonContent, &allocations); err != nil {
-		log.Fatalf("failed to unmarshal json: %s", err)
-	}
+	fmt.Println("success")
+}
 
-	// no delegation distributions falls back to default - DefaultBaseAmount to all validators
-	if len(allocations.Delegations) == 0 {
-		log.Printf("no delegations specified. defaulting to equal distribution of %s ukava\n", config.DefaultBaseAmount)
-		allocations.Delegations = []*config.DelegationDistribution{
-			config.DefaultDistribution(),
-		}
-	}
-
+// ProcessDelegationAllocations performs the following actions:
+// - fund each delegator account with the required amount of Kava (via dev-wallet issuing)
+// - stake the kava by designated weights to validators
+// - mint the bkava derivative token for all delegations
+// - deposit the liquid bonded kava into the earn module
+func ProcessDelegationAllocations(cfg config.Config, allocations config.Allocations) error {
+	// create factory for generating account signers
 	makeSigner := SignerFactory(cfg.ChainID, cfg.KavaGrpcEndpoint)
-
-	delegationGas := int64(550_000)
 
 	// create a signer for each account and determine total delegation
 	// accounts are generated from the same mnemonic, using different address indices in the hd path
@@ -109,6 +104,7 @@ func main() {
 	}
 
 	wg.Wait()
+	log.Println("all accounts funded with newly issued tokens.")
 
 	for idx, delegation := range allocations.Delegations {
 		wg.Add(1)
@@ -158,7 +154,7 @@ func main() {
 
 	wg.Wait()
 
-	fmt.Println("success")
+	return nil
 }
 
 // SignerFactory returns a function of mnemonic & address index that creates a signer for that account

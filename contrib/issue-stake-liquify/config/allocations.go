@@ -1,7 +1,11 @@
 package config
 
 import (
+	"bufio"
+	"encoding/json"
 	"fmt"
+	"log"
+	"os"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )
@@ -63,4 +67,33 @@ func DefaultDistribution() *DelegationDistribution {
 		Distribution: EQUAL_DISTRIBUTION,
 		BaseAmount:   DefaultBaseAmount,
 	}
+}
+
+// ReadAllocationsInput reads in JSON from stdin for the delegation allocations desired
+func ReadAllocationsInput() Allocations {
+	// read stdin for json of validator allocation info
+	var jsonContent []byte
+	scanner := bufio.NewScanner(os.Stdin)
+	for scanner.Scan() {
+		jsonContent = append(jsonContent, scanner.Bytes()...)
+	}
+	if err := scanner.Err(); err != nil {
+		log.Fatalf("error reading standard input: %s", err)
+	}
+
+	// parse the allocations
+	var allocations Allocations
+	if err := json.Unmarshal(jsonContent, &allocations); err != nil {
+		log.Fatalf("failed to unmarshal json: %s", err)
+	}
+
+	// absence of distributions falls back to default - DefaultBaseAmount delegated to all validators
+	if len(allocations.Delegations) == 0 {
+		log.Printf("no delegations specified. defaulting to equal distribution of %s ukava\n", DefaultBaseAmount)
+		allocations.Delegations = []*DelegationDistribution{
+			DefaultDistribution(),
+		}
+	}
+
+	return allocations
 }
