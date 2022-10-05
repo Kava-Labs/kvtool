@@ -76,7 +76,7 @@ func ProcessDelegationAllocations(cfg config.Config, allocations config.Allocati
 	devWalletSigner := makeSigner(cfg.DevWalletMnemonic, 0)
 
 	wg := &sync.WaitGroup{}
-	devWalletRequests := make(chan signing.MsgRequest)
+	devWalletRequests := make(chan signing.MsgRequest, 100)
 	devWalletResponses, err := devWalletSigner.Run(devWalletRequests)
 	if err != nil {
 		log.Fatalf("failed to start signer for dev wallet: %s", err)
@@ -87,6 +87,7 @@ func ProcessDelegationAllocations(cfg config.Config, allocations config.Allocati
 
 	// issue kava to all accounts
 	for idx, acc := range signerByIdx {
+		fmt.Println("dev wallet send: adding 1")
 		wg.Add(1)
 		issueTokensMsg := issuancetypes.NewMsgIssueTokens(
 			devWalletSigner.Address().String(),
@@ -103,14 +104,14 @@ func ProcessDelegationAllocations(cfg config.Config, allocations config.Allocati
 		}
 	}
 
+	log.Println("waiting for all accounts to be issued funds.")
 	wg.Wait()
 	log.Println("all accounts funded with newly issued tokens.")
 
 	for idx, delegation := range allocations.Delegations {
-		wg.Add(1)
 		// start the signer for the account
 		signer := signerByIdx[idx]
-		accRequests := make(chan signing.MsgRequest)
+		accRequests := make(chan signing.MsgRequest, 100)
 		accResponses, err := signer.Run(accRequests)
 		if err != nil {
 			log.Fatalf("failed to start signer for account %d: %s", idx, err)
@@ -123,6 +124,7 @@ func ProcessDelegationAllocations(cfg config.Config, allocations config.Allocati
 		baseAmount, _ := sdk.NewIntFromString(delegation.BaseAmount)
 
 		for i, validator := range allocations.Validators {
+			wg.Add(1)
 			amount := baseAmount.MulRaw(delegation.Weights[i])
 			stakingDelegation := stakingtypes.NewMsgDelegate(
 				signer.Address(),
