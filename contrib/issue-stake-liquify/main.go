@@ -87,7 +87,6 @@ func ProcessDelegationAllocations(cfg config.Config, allocations config.Allocati
 
 	// issue kava to all accounts
 	for idx, acc := range signerByIdx {
-		fmt.Println("dev wallet send: adding 1")
 		wg.Add(1)
 		issueTokensMsg := issuancetypes.NewMsgIssueTokens(
 			devWalletSigner.Address().String(),
@@ -201,7 +200,7 @@ func ReportOnResults(
 		if res.Err != nil {
 			log.Fatalf("%s failed: %#v", msg, res)
 		}
-		fmt.Printf(
+		log.Printf(
 			"successful broadcast of %s to %s (%s)\n",
 			msg,
 			res.Request.Data.(string),

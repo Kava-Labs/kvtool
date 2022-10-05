@@ -4,7 +4,7 @@ go 1.17
 
 require (
 	github.com/cosmos/cosmos-sdk v0.45.4
-	github.com/kava-labs/go-tools v0.0.0-20220514170726-7241b64450a7
+	github.com/kava-labs/go-tools v0.0.0-20221005173922-f83a05d33945
 	github.com/kava-labs/kava v0.17.2-0.20221003233729-4c879bc4fbb7
 	github.com/tendermint/tendermint v0.34.21
 )
@@ -158,7 +158,6 @@ replace (
 	github.com/gin-gonic/gin => github.com/gin-gonic/gin v1.7.0
 	// Use the cosmos modified protobufs
 	github.com/gogo/protobuf => github.com/regen-network/protobuf v1.3.3-alpha.regen.1
-	github.com/kava-labs/go-tools => /Users/pirtle/projects/kava/go-tools
 	// Use rocksdb 7.1.2
 	github.com/tendermint/tm-db => github.com/kava-labs/tm-db v0.6.7-kava.1
 	// Use ethermint fork that respects min-gas-price with NoBaseFee true and london enabled

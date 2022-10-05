@@ -675,6 +675,12 @@ github.com/karalabe/usb v0.0.0-20190919080040-51dc0efba356/go.mod h1:Od972xHfMJo
 github.com/karalabe/usb v0.0.2/go.mod h1:Od972xHfMJowv7NGVDiWVxk2zxnWgjLlJzE+F4F7AGU=
 github.com/kava-labs/cosmos-sdk v0.45.4-kava.4 h1:zAxlDE8VtAPnVjC4hwMqEzFA0H18o+pQlP4aviLKOYc=
 github.com/kava-labs/cosmos-sdk v0.45.4-kava.4/go.mod h1:WOqtDxN3eCCmnYLVla10xG7lEXkFjpTaqm2a2WasgCc=
+github.com/kava-labs/go-tools v0.0.0-20220514170726-7241b64450a7 h1:W7890fDM6fEfKgnqi9UGDfTMfHFBmq01yAWx2rmIDnk=
+github.com/kava-labs/go-tools v0.0.0-20220514170726-7241b64450a7/go.mod h1:jignPuIhdrfAf71cn0hJXA89BhAkUZnu01i/H1bZDGM=
+github.com/kava-labs/go-tools v0.0.0-20221005165250-b4c4f9f7e390 h1:N/BhW7nlt/zkTyTTgUEXOGZf3OsV7TJdNinmMkM1nhs=
+github.com/kava-labs/go-tools v0.0.0-20221005165250-b4c4f9f7e390/go.mod h1:jignPuIhdrfAf71cn0hJXA89BhAkUZnu01i/H1bZDGM=
+github.com/kava-labs/go-tools v0.0.0-20221005173922-f83a05d33945 h1:Jgo+fVMV9G35uewFaZLqSub8MQX3rVTaBVNY+TCvR1A=
+github.com/kava-labs/go-tools v0.0.0-20221005173922-f83a05d33945/go.mod h1:jignPuIhdrfAf71cn0hJXA89BhAkUZnu01i/H1bZDGM=
 github.com/kava-labs/kava v0.17.2-0.20221003233729-4c879bc4fbb7 h1:EGGbqaLAPsVqIQdYGJUDrud1fR/fAmWlknDey/GkzmY=
 github.com/kava-labs/kava v0.17.2-0.20221003233729-4c879bc4fbb7/go.mod h1:McC/WNEHCz7Ylho0L22ilcCovCFfEyVJtKZtyffvePA=
 github.com/kava-labs/tm-db v0.6.7-kava.1 h1:7cVYlvWx1yP+gGdaAWcfm6NwMLzf4z6DxXguWn3+O3w=
