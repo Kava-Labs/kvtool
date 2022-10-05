@@ -78,6 +78,8 @@ When not defined, it defaults to the following:
 `distribution` - the delegation distribution strategy. either `"equal"` or `"custom"` (see below).
 `base_amount` - the amount in ukava of each delegation
 
+When no `delegations` object is defined, it will use an `"equal"` distribution with a `base_amount` set to the `DEFAULT_BASE_AMOUNT` environment variable (which falls back to 1,000 KAVA if undefined).
+
 The above delegates a total of 2,000 KAVA, 1,000 KAVA to each validator.
 
 **example: Equal delegation, custom amount**
@@ -92,6 +94,8 @@ curl -s https://api.testnet.kava.io/cosmos/staking/v1beta1/validators |
   }' |
   go run main.go
 ```
+
+Another option is to change the `DEFAULT_BASE_AMOUNT` in the `.env`.
 
 **example: Equal delegation from multiple accounts**
 Each item in `delegations` defines how a different delegator accounts will delegate KAVA to the validators.

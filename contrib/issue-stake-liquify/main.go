@@ -37,7 +37,7 @@ func main() {
 	}
 
 	// get allocations input
-	allocations := config.ReadAllocationsInput()
+	allocations := config.ReadAllocationsInput(cfg)
 
 	err = ProcessDelegationAllocations(cfg, allocations)
 	if err != nil {

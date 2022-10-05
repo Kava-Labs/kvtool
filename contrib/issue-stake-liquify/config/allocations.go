@@ -13,8 +13,6 @@ import (
 const (
 	EQUAL_DISTRIBUTION  = "equal"
 	CUSTOM_DISTRIBUTION = "custom"
-
-	DefaultBaseAmount = "1_000_000_000"
 )
 
 type Allocations struct {
@@ -65,15 +63,15 @@ func (d *DelegationDistribution) Process(validators []Validator) (sdk.Int, error
 	return total, err
 }
 
-func DefaultDistribution() *DelegationDistribution {
+func DefaultDistribution(amount string) *DelegationDistribution {
 	return &DelegationDistribution{
 		Distribution: EQUAL_DISTRIBUTION,
-		BaseAmount:   DefaultBaseAmount,
+		BaseAmount:   amount,
 	}
 }
 
 // ReadAllocationsInput reads in JSON from stdin for the delegation allocations desired
-func ReadAllocationsInput() Allocations {
+func ReadAllocationsInput(cfg Config) Allocations {
 	// read stdin for json of validator allocation info
 	var jsonContent []byte
 	scanner := bufio.NewScanner(os.Stdin)
@@ -92,9 +90,9 @@ func ReadAllocationsInput() Allocations {
 
 	// absence of distributions falls back to default - DefaultBaseAmount delegated to all validators
 	if len(allocations.Delegations) == 0 {
-		log.Printf("no delegations specified. defaulting to equal distribution of %s ukava\n", DefaultBaseAmount)
+		log.Printf("no delegations specified. defaulting to equal distribution of %s ukava\n", cfg.DefaultBaseAmount)
 		allocations.Delegations = []*DelegationDistribution{
-			DefaultDistribution(),
+			DefaultDistribution(cfg.DefaultBaseAmount),
 		}
 	}
 
