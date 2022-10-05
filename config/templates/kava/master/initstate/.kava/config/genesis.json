@@ -204,20 +204,20 @@
             },
             "delegated_free": [],
             "delegated_vesting": [],
-            "end_time": "1664632800",
+            "end_time": "1696540229",
             "original_vesting": [
               {
-                "amount": "560159828",
+                "amount": "5000000000",
                 "denom": "ukava"
               }
             ]
           },
-          "start_time": "1633096800",
+          "start_time": "1665004229",
           "vesting_periods": [
             {
               "amount": [
                 {
-                  "amount": "560159828",
+                  "amount": "5000000000",
                   "denom": "ukava"
                 }
               ],
@@ -478,7 +478,7 @@
           "address": "kava1fwfwmt6vupf3m9uvpdsuuc4dga8p5dtl4npcqz",
           "coins": [
             {
-              "amount": "565077579",
+              "amount": "10000000000",
               "denom": "ukava"
             }
           ]
@@ -610,44 +610,7 @@
           ]
         }
       ],
-      "supply": [
-        {
-          "denom": "bkava-kavavaloper1ak4pa9z2aty94ze2cs06wsdnkg9hsvfkvr4tha",
-          "amount": "20000000000000000"
-        },
-        {
-          "denom": "bnb",
-          "amount": "20000200000000000"
-        },
-        {
-          "denom": "btcb",
-          "amount": "20000000200000000"
-        },
-        {
-          "denom": "busd",
-          "amount": "20000000000000000"
-        },
-        {
-          "denom": "hard",
-          "amount": "2000001001000000000"
-        },
-        {
-          "denom": "swp",
-          "amount": "2000001005000000000"
-        },
-        {
-          "denom": "ukava",
-          "amount": "20015010565077579"
-        },
-        {
-          "denom": "usdx",
-          "amount": "20000103000000000"
-        },
-        {
-          "denom": "xrpb",
-          "amount": "20000000000000000"
-        }
-      ],
+      "supply": [],
       "denom_metadata": []
     },
     "bep3": {
