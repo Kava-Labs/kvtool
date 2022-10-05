@@ -123,6 +123,20 @@ func ProcessDelegationAllocations(cfg config.Config, allocations config.Allocati
 		baseAmount, _ := sdk.NewIntFromString(delegation.BaseAmount)
 
 		for i, validator := range allocations.Validators {
+			// handle a smaller weights array than number of validators
+			if len(delegation.Weights) < (i + 1) {
+				log.Printf(
+					"delegator %d has no weights for remaining validators (%d+), breaking delegation loop\n",
+					idx, i,
+				)
+				break
+			}
+			// skip sending 0 KAVA
+			if delegation.Weights[i] == 0 {
+				log.Printf("delegator %d has 0 weight for validator %d, skipping\n", idx, i)
+				continue
+			}
+
 			wg.Add(1)
 			amount := baseAmount.MulRaw(delegation.Weights[i])
 			stakingDelegation := stakingtypes.NewMsgDelegate(

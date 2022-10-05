@@ -140,6 +140,20 @@ The above delegates 1M KAVA:
 * 900k KAVA to Validator 0
 * 100k KAVA to Validator 1
 
+**example: Custom delegation, only top `n` validators**
+The configuration input will ignore any missing or extra `weights` provided to `"custom"` distributions. This means that you can delegate only a top `n` validators of a set, even if that many validators are not provided:
+```bash
+curl -s https://api.testnet.kava.io/cosmos/staking/v1beta1/validators |
+  jq '{
+    validators: .validators,
+    delegations: [{
+      distribution: "custom",
+      base_amount: "1_000_000_000_000",
+      weights: [1, 1, 1]
+    }]}' | go run main.go
+```
+
+The above makes a delegation of 3M KAVA; 1M to each of the first THREE validators (assuming they exist), and no delegation to any others.
 
 ### Arbitrary Complexity!
 

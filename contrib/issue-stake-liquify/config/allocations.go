@@ -34,7 +34,7 @@ type DelegationDistribution struct {
 
 // Process sets the weights of equal distributions & returns the total delegation amount
 func (d *DelegationDistribution) Process(validators []Validator) (sdk.Int, error) {
-	var total sdk.Int
+	total := sdk.NewInt(0)
 	var err error
 	baseAmount, ok := sdk.NewIntFromString(d.BaseAmount)
 	if !ok {
@@ -48,8 +48,11 @@ func (d *DelegationDistribution) Process(validators []Validator) (sdk.Int, error
 		}
 		total = baseAmount.MulRaw(int64(len(validators)))
 	case CUSTOM_DISTRIBUTION:
-		if len(validators) != len(d.Weights) {
-			err = fmt.Errorf("incorrect number of weights for validators")
+		if len(d.Weights) == 0 {
+			err = fmt.Errorf("must include non-empty weights for custom distribution")
+		}
+		if len(d.Weights) > len(validators) {
+			fmt.Printf("warning: more weights than validators provided. ignoring extra weights.")
 		}
 		for _, weight := range d.Weights {
 			total = total.Add(baseAmount.MulRaw(weight))
