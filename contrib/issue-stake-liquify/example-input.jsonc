@@ -1,0 +1,27 @@
+{
+  "validators": [
+    {
+      "operator_address": "kavavaloper1xcgtffvv2yeqmgs3yz4gv29kgjrj8usxrnrlwp"
+    },
+    {
+      "operator_address": "kavavaloper1w66m9hdzwgd6uc8g93zqkcumgwzrpcw958sh3s"
+    }
+  ],
+  // each item in delegations is an account that will delegate to above validators
+  // if empty or undefined, defaults to 1 account with equal distribution
+  "delegations": [
+    {
+      // "equal" distribution delegates base_amount to each validator
+      // example delegates 2,000 KAVA total, 1,000 KAVA to each validator (default if no `delegations`)
+      "distribution": "equal",
+      "base_amount": "1_000_000_000"
+    },
+    {
+      // "custom" distribution delegates weight * base_amount to the corresponding validator
+      // example delegates 1,000 KAVA total, 900 to validator 0, and 100 to validator 1
+      "distribution": "custom",
+      "base_amount": "100_000_000",
+      "weights": [9, 1]
+    }
+  ]
+}
