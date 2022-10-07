@@ -83,9 +83,26 @@ func ProcessDelegationAllocations(cfg config.Config, allocations config.Allocati
 	}
 
 	// watch for all responses from dev wallet txs
-	go ReportOnResults(wg, devWalletResponses, "issuing KAVA from dev wallet")
+	// after being issued tokens, we want to perform the delegations from the newly-funded account
+	go func() {
+		for {
+			res := <-devWalletResponses
+			data := res.Request.Data.(Data)
+			if res.Err != nil {
+				log.Fatalf("dev wallet token issuance to account %d failed: %#v", data.AddressIdx, res)
+			}
+			log.Printf("successfully broadcast issuance to account %d (%s)", data.AddressIdx, res.Result.TxHash)
 
-	// issue kava to all accounts
+			signer := signerByIdx[data.AddressIdx]
+			delegation := allocations.Delegations[data.AddressIdx]
+
+			DelegateByWeightedDistribution(cfg, signer, data.AddressIdx, allocations.Validators, delegation)
+
+			wg.Done()
+		}
+	}()
+
+	// issue kava to all accounts. response will manage further txs from funded account.
 	for idx, acc := range signerByIdx {
 		wg.Add(1)
 		issueTokensMsg := issuancetypes.NewMsgIssueTokens(
@@ -99,77 +116,21 @@ func ProcessDelegationAllocations(cfg config.Config, allocations config.Allocati
 			GasLimit:  200000,
 			FeeAmount: sdk.NewCoins(sdk.NewCoin("ukava", sdk.NewInt(55000))),
 			Memo:      "happy delegating!",
-			Data:      acc.Address().String(),
-		}
-	}
-
-	log.Println("waiting for all accounts to be issued funds.")
-	wg.Wait()
-	log.Println("all accounts funded with newly issued tokens.")
-
-	for idx, delegation := range allocations.Delegations {
-		// start the signer for the account
-		signer := signerByIdx[idx]
-		accRequests := make(chan signing.MsgRequest, 100)
-		accResponses, err := signer.Run(accRequests)
-		if err != nil {
-			log.Fatalf("failed to start signer for account %d: %s", idx, err)
-		}
-
-		// watch and report on
-		go ReportOnResults(wg, accResponses, fmt.Sprintf("delegation, mint, & deposit from account %d", idx))
-
-		// baseAmount was validated during Process()
-		baseAmount, _ := sdk.NewIntFromString(delegation.BaseAmount)
-
-		for i, validator := range allocations.Validators {
-			// handle a smaller weights array than number of validators
-			if len(delegation.Weights) < (i + 1) {
-				log.Printf(
-					"delegator %d has no weights for remaining validators (%d+), breaking delegation loop\n",
-					idx, i,
-				)
-				break
-			}
-			// skip sending 0 KAVA
-			if delegation.Weights[i] == 0 {
-				log.Printf("delegator %d has 0 weight for validator %d, skipping\n", idx, i)
-				continue
-			}
-
-			wg.Add(1)
-			amount := baseAmount.MulRaw(delegation.Weights[i])
-			stakingDelegation := stakingtypes.NewMsgDelegate(
-				signer.Address(),
-				validator.OperatorAddress,
-				sdk.NewCoin("ukava", amount),
-			)
-			liquidMinting := liquidtypes.NewMsgMintDerivative(
-				signer.Address(),
-				validator.OperatorAddress,
-				sdk.NewCoin("ukava", amount),
-			)
-			earnDeposit := earntypes.NewMsgDeposit(
-				signer.Address().String(),
-				sdk.NewCoin(
-					liquidtypes.GetLiquidStakingTokenDenom("bkava", validator.OperatorAddress),
-					amount,
-				),
-				earntypes.STRATEGY_TYPE_SAVINGS,
-			)
-			accRequests <- signing.MsgRequest{
-				Msgs:      []sdk.Msg{stakingDelegation, &liquidMinting, earnDeposit},
-				GasLimit:  uint64(delegationGas),
-				FeeAmount: sdk.NewCoins(sdk.NewCoin("ukava", sdk.NewInt(10000))),
-				Memo:      "staking my kava!",
-				Data:      validator.OperatorAddress.String(),
-			}
+			Data: Data{
+				Address:    acc.Address().String(),
+				AddressIdx: idx,
+			},
 		}
 	}
 
 	wg.Wait()
 
 	return nil
+}
+
+type Data struct {
+	Address    string
+	AddressIdx int
 }
 
 // SignerFactory returns a function of mnemonic & address index that creates a signer for that account
@@ -203,7 +164,6 @@ func SignerFactory(chainID, grpcEndpoint string) func(string, int) *signing.Sign
 }
 
 // ReportOnResults pulls responses off the channel and reports on tx success.
-// Assumes the `Data` of the tx is a string of a relevant address
 func ReportOnResults(
 	wg *sync.WaitGroup,
 	responses <-chan signing.MsgResponse,
@@ -217,9 +177,99 @@ func ReportOnResults(
 		log.Printf(
 			"successful broadcast of %s to %s (%s)\n",
 			msg,
-			res.Request.Data.(string),
+			res.Request.Data.(Data).Address,
 			res.Result.TxHash,
 		)
 		wg.Done()
+	}
+}
+
+func DelegateByWeightedDistribution(
+	cfg config.Config,
+	signer *signing.Signer,
+	addressIdx int,
+	validators []config.Validator,
+	distribution *config.DelegationDistribution,
+) {
+	accWg := &sync.WaitGroup{}
+	accRequests := make(chan signing.MsgRequest, 100)
+	accResponses, err := signer.Run(accRequests)
+	if err != nil {
+		log.Fatalf("failed to start signer for account %d: %s", addressIdx, err)
+	}
+
+	// watch and report on responses
+	go ReportOnResults(
+		accWg, accResponses,
+		fmt.Sprintf("delegation, mint, & deposit from account %d", addressIdx),
+	)
+
+	// baseAmount was validated during Process()
+	baseAmount, _ := sdk.NewIntFromString(distribution.BaseAmount)
+
+	for i, validator := range validators {
+		// handle a smaller weights array than number of validators
+		if len(distribution.Weights) < (i + 1) {
+			log.Printf(
+				"delegator %d has no weights for remaining validators (%d+), breaking distribution loop\n",
+				addressIdx, i,
+			)
+			break
+		}
+		// skip sending 0 KAVA
+		if distribution.Weights[i] == 0 {
+			log.Printf("delegator %d has 0 weight for validator %d, skipping\n", addressIdx, i)
+			continue
+		}
+
+		accWg.Add(1)
+		amount := baseAmount.MulRaw(distribution.Weights[i])
+
+		accRequests <- BuildDelegationRequest(cfg, amount, signer.Address(), validator.OperatorAddress, addressIdx)
+	}
+
+	accWg.Wait()
+}
+
+func BuildDelegationRequest(
+	cfg config.Config,
+	amount sdk.Int,
+	signerAddress sdk.AccAddress,
+	validatorAddress sdk.ValAddress,
+	addressIdx int,
+) signing.MsgRequest {
+	msgs := make([]sdk.Msg, 0, 3)
+
+	stakingDelegation := stakingtypes.NewMsgDelegate(
+		signerAddress,
+		validatorAddress,
+		sdk.NewCoin("ukava", amount),
+	)
+	msgs = append(msgs, stakingDelegation)
+	liquidMinting := liquidtypes.NewMsgMintDerivative(
+		signerAddress,
+		validatorAddress,
+		sdk.NewCoin("ukava", amount),
+	)
+	msgs = append(msgs, &liquidMinting)
+	earnDeposit := earntypes.NewMsgDeposit(
+		signerAddress.String(),
+		sdk.NewCoin(
+			liquidtypes.GetLiquidStakingTokenDenom("bkava", validatorAddress),
+			amount,
+		),
+		earntypes.STRATEGY_TYPE_SAVINGS,
+	)
+	msgs = append(msgs, earnDeposit)
+
+	return signing.MsgRequest{
+		Msgs:      msgs,
+		GasLimit:  uint64(delegationGas),
+		FeeAmount: sdk.NewCoins(sdk.NewCoin("ukava", sdk.NewInt(10000))),
+		Memo:      "staking my kava!",
+		Data: Data{
+			Address:    validatorAddress.String(),
+			AddressIdx: addressIdx,
+		},
 	}
 }
