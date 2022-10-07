@@ -27,6 +27,7 @@ import (
 var ugvKeysDir string
 var ugvKeyPrefix string
 var ugvOutFile string
+var ugvChainID string
 
 var updateGenesisValidatorsCmd = &cobra.Command{
 	Use:   "update-genesis-validators",
@@ -44,6 +45,11 @@ func Execute() {
 }
 
 func init() {
+	updateGenesisValidatorsCmd.Flags().StringVar(
+		&ugvChainID,
+		"chain-id", "updated-genesis.json",
+		"Chain id of modified output genesis file.",
+	)
 	updateGenesisValidatorsCmd.Flags().StringVarP(
 		&ugvKeysDir,
 		"keys-dir", "d", "keys/",
@@ -82,6 +88,17 @@ func updateGenesisValidators(cmd *cobra.Command, args []string) error {
 	}
 
 	log.Printf("found %d validator keys\n", len(valKeys))
+
+	// update chain id or warn
+	if ugvChainID == "" || ugvChainID == doc.ChainID {
+		log.Printf("%s%s\n",
+			"WARNING: the output will have the same chain id.",
+			" This can put the new chain at risk of replay attacks.",
+		)
+		log.Println("Consider changing the chain id with the --chain-id flag.")
+	} else {
+		doc.ChainID = ugvChainID
+	}
 
 	// perform necessary updates
 	if err = UpdateGenesisFileWithNewValidators(doc, valKeys); err != nil {
