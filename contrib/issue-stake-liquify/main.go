@@ -56,20 +56,22 @@ func ProcessDelegationAllocations(cfg config.Config, allocations config.Allocati
 	// create factory for generating account signers
 	makeSigner := SignerFactory(cfg.ChainID, cfg.KavaGrpcEndpoint)
 
+	numAccounts := allocations.GetNumAccounts()
+
 	// create a signer for each account and determine total delegation
 	// accounts are generated from the same mnemonic, using different address indices in the hd path
 	signerByIdx := make(map[int]*signing.Signer, len(allocations.Delegations))
 	totalByIdx := make(map[int]sdk.Int, len(allocations.Delegations))
-	for addressIdx, delegation := range allocations.Delegations {
+	for addressIdx := 0; addressIdx < numAccounts; addressIdx++ {
 		// create signer for delegator
 		signerByIdx[addressIdx] = makeSigner(cfg.DelegatorAccountsMnemonic, addressIdx)
 		// process distributions
-		total, err := delegation.Process(allocations.Validators)
+		total, err := allocations.GetTotalForAccount(addressIdx)
 		if err != nil {
 			log.Fatalf("failed to process delegation for account %d: %s", addressIdx, err)
 		}
-		// include gas monies in issuance
-		totalByIdx[addressIdx] = total.AddRaw(delegationGas)
+		// total to issue the account, not including gas money!
+		totalByIdx[addressIdx] = total
 	}
 
 	// make dev wallet signer to issue tokens to each address
@@ -88,15 +90,19 @@ func ProcessDelegationAllocations(cfg config.Config, allocations config.Allocati
 		for {
 			res := <-devWalletResponses
 			data := res.Request.Data.(Data)
+			idx := data.AddressIdx
 			if res.Err != nil {
-				log.Fatalf("dev wallet token issuance to account %d failed: %#v", data.AddressIdx, res)
+				log.Fatalf("dev wallet token issuance to account %d failed: %#v", idx, res)
 			}
-			log.Printf("successfully broadcast issuance to account %d (%s)", data.AddressIdx, res.Result.TxHash)
+			log.Printf("successfully broadcast issuance to account %d (%s)", idx, res.Result.TxHash)
 
-			signer := signerByIdx[data.AddressIdx]
-			delegation := allocations.Delegations[data.AddressIdx]
+			signer := signerByIdx[idx]
 
-			DelegateByWeightedDistribution(cfg, signer, data.AddressIdx, allocations.Validators, delegation)
+			if allocations.SpamDelegations != nil {
+				DelegateBySpamParams(cfg, signer, idx, allocations.Validators, totalByIdx[idx])
+			} else {
+				DelegateByWeightedDistribution(cfg, signer, idx, allocations.Validators, allocations.Delegations[idx])
+			}
 
 			wg.Done()
 		}
@@ -105,9 +111,10 @@ func ProcessDelegationAllocations(cfg config.Config, allocations config.Allocati
 	// issue kava to all accounts. response will manage further txs from funded account.
 	for idx, acc := range signerByIdx {
 		wg.Add(1)
+		total := sdk.NewIntFromBigInt(totalByIdx[idx].BigInt()).AddRaw(delegationGas)
 		issueTokensMsg := issuancetypes.NewMsgIssueTokens(
 			devWalletSigner.Address().String(),
-			sdk.NewCoin("ukava", totalByIdx[idx]),
+			sdk.NewCoin("ukava", total),
 			acc.Address().String(),
 		)
 
@@ -227,6 +234,37 @@ func DelegateByWeightedDistribution(
 
 		accRequests <- BuildDelegationRequest(cfg, amount, signer.Address(), validator.OperatorAddress, addressIdx)
 	}
+
+	accWg.Wait()
+}
+
+func DelegateBySpamParams(
+	cfg config.Config,
+	signer *signing.Signer,
+	addressIdx int,
+	validators []config.Validator,
+	amount sdk.Int,
+) {
+	accWg := &sync.WaitGroup{}
+	accRequests := make(chan signing.MsgRequest, 1)
+	accResponses, err := signer.Run(accRequests)
+	if err != nil {
+		log.Fatalf("failed to start signer for account %d: %s", addressIdx, err)
+	}
+
+	// watch and report on responses
+	go ReportOnResults(
+		accWg, accResponses,
+		fmt.Sprintf("spam delegation of %s ukava from account %d", amount.String(), addressIdx),
+	)
+
+	accWg.Add(1)
+
+	// choose validator by cycling through each one
+	validator := validators[addressIdx%len(validators)]
+
+	// get random amount to delegate
+	accRequests <- BuildDelegationRequest(cfg, amount, signer.Address(), validator.OperatorAddress, addressIdx)
 
 	accWg.Wait()
 }

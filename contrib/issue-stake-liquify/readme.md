@@ -182,3 +182,34 @@ Mix and match to you heart's content:
 The above creates the following delegations:
 * Account 0 delegates 2,000 KAVA total; 1,000 KAVA to each validator
 * Account 1 delegates 1M KAVA total; 800k to validator 0 and 200k to validator 1
+
+### Spam Delegations
+
+If you don't need an explicit delegation distribution and just want a bunch of state created, you can define a `spam_delegations` object that will be used to create the delegations.
+```json
+{
+  "validators": [
+    { "operator_address": "kavavaloper1xcgtffvv2yeqmgs3yz4gv29kgjrj8usxrnrlwp" },
+    { "operator_address": "kavavaloper1w66m9hdzwgd6uc8g93zqkcumgwzrpcw958sh3s" }
+  ],
+  "spam_delegations": {
+    "count": 100,
+    "min_amount": "100_000_000",
+    "max_amount": "1_000_000_000_000"
+  }
+}
+```
+
+The above creates 100 delegations from 100 different accounts. The delegations will be of random amounts between 100 KAVA and 1M KAVA. Each account's delegation cycles through the validators, so in the above, 50 delegations will be to validator 0 and 50 will be to validator 1.
+
+**example: spam all validators with 10,000 delegations between 100 & 1M KAVA**
+```bash
+curl -s https://api.testnet.kava.io/cosmos/staking/v1beta1/validators |
+  jq '{
+    validators: .validators,
+    spam_delegations: [{
+      count: 10000,
+      min_amount: "100_000_000",
+      max_amount: "1_000_000_000_000",
+    }]}' | go run main.go
+```
