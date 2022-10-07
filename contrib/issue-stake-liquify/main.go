@@ -24,7 +24,8 @@ import (
 )
 
 const (
-	delegationGas = int64(550_000)
+	delegationGasWithLiquid = int64(550_000)
+	delegationGasNoLiquid   = int64(200_000)
 )
 
 func main() {
@@ -111,7 +112,7 @@ func ProcessDelegationAllocations(cfg config.Config, allocations config.Allocati
 	// issue kava to all accounts. response will manage further txs from funded account.
 	for idx, acc := range signerByIdx {
 		wg.Add(1)
-		total := sdk.NewIntFromBigInt(totalByIdx[idx].BigInt()).AddRaw(delegationGas)
+		total := sdk.NewIntFromBigInt(totalByIdx[idx].BigInt()).AddRaw(cfg.DelegationGas)
 		issueTokensMsg := issuancetypes.NewMsgIssueTokens(
 			devWalletSigner.Address().String(),
 			sdk.NewCoin("ukava", total),
@@ -284,25 +285,27 @@ func BuildDelegationRequest(
 		sdk.NewCoin("ukava", amount),
 	)
 	msgs = append(msgs, stakingDelegation)
-	liquidMinting := liquidtypes.NewMsgMintDerivative(
-		signerAddress,
-		validatorAddress,
-		sdk.NewCoin("ukava", amount),
-	)
-	msgs = append(msgs, &liquidMinting)
-	earnDeposit := earntypes.NewMsgDeposit(
-		signerAddress.String(),
-		sdk.NewCoin(
-			liquidtypes.GetLiquidStakingTokenDenom("bkava", validatorAddress),
-			amount,
-		),
-		earntypes.STRATEGY_TYPE_SAVINGS,
-	)
-	msgs = append(msgs, earnDeposit)
+	if !cfg.SkipLiquify {
+		liquidMinting := liquidtypes.NewMsgMintDerivative(
+			signerAddress,
+			validatorAddress,
+			sdk.NewCoin("ukava", amount),
+		)
+		msgs = append(msgs, &liquidMinting)
+		earnDeposit := earntypes.NewMsgDeposit(
+			signerAddress.String(),
+			sdk.NewCoin(
+				liquidtypes.GetLiquidStakingTokenDenom("bkava", validatorAddress),
+				amount,
+			),
+			earntypes.STRATEGY_TYPE_SAVINGS,
+		)
+		msgs = append(msgs, earnDeposit)
+	}
 
 	return signing.MsgRequest{
 		Msgs:      msgs,
-		GasLimit:  uint64(delegationGas),
+		GasLimit:  uint64(cfg.DelegationGas),
 		FeeAmount: sdk.NewCoins(sdk.NewCoin("ukava", sdk.NewInt(10000))),
 		Memo:      "staking my kava!",
 		Data: Data{
