@@ -24,8 +24,8 @@ import (
 )
 
 const (
-	delegationGasWithLiquid = int64(550_000)
-	delegationGasNoLiquid   = int64(200_000)
+	devWalletBatchSize = 50
+	gasPrice           = 500000
 )
 
 func main() {
@@ -90,19 +90,23 @@ func ProcessDelegationAllocations(cfg config.Config, allocations config.Allocati
 	go func() {
 		for {
 			res := <-devWalletResponses
-			data := res.Request.Data.(Data)
-			idx := data.AddressIdx
+			idxs := res.Request.Data.([]int)
 			if res.Err != nil {
-				log.Fatalf("dev wallet token issuance to account %d failed: %#v", idx, res)
+				fmt.Printf("dev wallet token issuance to account(s) %v failed: %#v", idxs, res)
+				continue
 			}
-			log.Printf("successfully broadcast issuance to account %d (%s)", idx, res.Result.TxHash)
 
-			signer := signerByIdx[idx]
+			log.Printf("successfully broadcast issuance to account(s) %v (%s)", idxs, res.Result.TxHash)
+			for _, idx := range idxs {
 
-			if allocations.SpamDelegations != nil {
-				DelegateBySpamParams(cfg, signer, idx, allocations.Validators, totalByIdx[idx])
-			} else {
-				DelegateByWeightedDistribution(cfg, signer, idx, allocations.Validators, allocations.Delegations[idx])
+				signer := signerByIdx[idx]
+				wg.Add(1)
+
+				if allocations.SpamDelegations != nil {
+					go DelegateBySpamParams(wg, cfg, signer, idx, allocations.Validators, totalByIdx[idx])
+				} else {
+					go DelegateByWeightedDistribution(wg, cfg, signer, idx, allocations.Validators, allocations.Delegations[idx])
+				}
 			}
 
 			wg.Done()
@@ -110,24 +114,31 @@ func ProcessDelegationAllocations(cfg config.Config, allocations config.Allocati
 	}()
 
 	// issue kava to all accounts. response will manage further txs from funded account.
-	for idx, acc := range signerByIdx {
-		wg.Add(1)
-		total := sdk.NewIntFromBigInt(totalByIdx[idx].BigInt()).AddRaw(cfg.DelegationGas)
+	msgs := make([]sdk.Msg, 0, devWalletBatchSize)
+	idxs := make([]int, 0, devWalletBatchSize)
+	for idx := 0; idx < numAccounts; idx++ {
+		total := sdk.NewIntFromBigInt(totalByIdx[idx].BigInt()).AddRaw(gasPrice)
 		issueTokensMsg := issuancetypes.NewMsgIssueTokens(
 			devWalletSigner.Address().String(),
 			sdk.NewCoin("ukava", total),
-			acc.Address().String(),
+			signerByIdx[idx].Address().String(),
 		)
+		msgs = append(msgs, issueTokensMsg)
+		idxs = append(idxs, idx)
 
-		devWalletRequests <- signing.MsgRequest{
-			Msgs:      []sdk.Msg{issueTokensMsg},
-			GasLimit:  200000,
-			FeeAmount: sdk.NewCoins(sdk.NewCoin("ukava", sdk.NewInt(55000))),
-			Memo:      "happy delegating!",
-			Data: Data{
-				Address:    acc.Address().String(),
-				AddressIdx: idx,
-			},
+		// send tx batch when size is reached, or when on last account
+		if len(msgs) == devWalletBatchSize || idx == (numAccounts-1) {
+			wg.Add(1)
+			fmt.Printf("issuing tokens to account(s) %v\n", idxs)
+			devWalletRequests <- signing.MsgRequest{
+				Msgs:      msgs,
+				GasLimit:  2000000,
+				FeeAmount: sdk.NewCoins(sdk.NewCoin("ukava", sdk.NewInt(gasPrice))),
+				Memo:      "happy delegating!",
+				Data:      idxs,
+			}
+			msgs = make([]sdk.Msg, 0, devWalletBatchSize)
+			idxs = make([]int, 0, devWalletBatchSize)
 		}
 	}
 
@@ -180,25 +191,29 @@ func ReportOnResults(
 	for {
 		res := <-responses
 		if res.Err != nil {
-			log.Fatalf("%s failed: %#v", msg, res)
+			fmt.Printf("ERROR! FAILED TX: %s failed: %#v", msg, res)
+		} else {
+			log.Printf(
+				"successful broadcast of %s to %s (%s)\n",
+				msg,
+				res.Request.Data.(Data).Address,
+				res.Result.TxHash,
+			)
 		}
-		log.Printf(
-			"successful broadcast of %s to %s (%s)\n",
-			msg,
-			res.Request.Data.(Data).Address,
-			res.Result.TxHash,
-		)
 		wg.Done()
 	}
 }
 
 func DelegateByWeightedDistribution(
+	wg *sync.WaitGroup,
 	cfg config.Config,
 	signer *signing.Signer,
 	addressIdx int,
 	validators []config.Validator,
 	distribution *config.DelegationDistribution,
 ) {
+	defer wg.Done()
+
 	accWg := &sync.WaitGroup{}
 	accRequests := make(chan signing.MsgRequest, 100)
 	accResponses, err := signer.Run(accRequests)
@@ -240,12 +255,15 @@ func DelegateByWeightedDistribution(
 }
 
 func DelegateBySpamParams(
+	wg *sync.WaitGroup,
 	cfg config.Config,
 	signer *signing.Signer,
 	addressIdx int,
 	validators []config.Validator,
 	amount sdk.Int,
 ) {
+	defer wg.Done()
+
 	accWg := &sync.WaitGroup{}
 	accRequests := make(chan signing.MsgRequest, 1)
 	accResponses, err := signer.Run(accRequests)
@@ -306,7 +324,7 @@ func BuildDelegationRequest(
 	return signing.MsgRequest{
 		Msgs:      msgs,
 		GasLimit:  uint64(cfg.DelegationGas),
-		FeeAmount: sdk.NewCoins(sdk.NewCoin("ukava", sdk.NewInt(10000))),
+		FeeAmount: sdk.NewCoins(sdk.NewCoin("ukava", sdk.NewInt(gasPrice))),
 		Memo:      "staking my kava!",
 		Data: Data{
 			Address:    validatorAddress.String(),

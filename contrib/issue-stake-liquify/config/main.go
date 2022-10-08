@@ -8,7 +8,7 @@ import (
 )
 
 const (
-	delegationGasWithLiquid = int64(550_000)
+	delegationGasWithLiquid = int64(650_000)
 	delegationGasNoLiquid   = int64(200_000)
 )
 
