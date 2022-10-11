@@ -142,7 +142,8 @@ func loadValidatorKeys(dir string, prefix string) ([]pvtypes.FilePVKey, error) {
 	}
 
 	if len(valKeys) == 0 {
-		return valKeys, fmt.Errorf("no json files with prefix %s found in directory %s", prefix, dir)
+		log.Printf("WARN: no json files with prefix %s found in directory %s. continuing anyway.\n", ugvKeyPrefix, ugvKeysDir)
+		return valKeys, nil
 	}
 
 	return valKeys, nil
