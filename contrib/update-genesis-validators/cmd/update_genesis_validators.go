@@ -206,7 +206,7 @@ func UpdateGenesisFileWithNewValidators(
 		orig := sdk.ConsAddress(doc.Validators[i].Address)
 		replacements[orig.String()] = valKeys[i]
 
-		fmt.Printf("replacing %s -> %s\n", orig, sdk.ConsAddress(valKeys[i].Address))
+		fmt.Printf("replacing \"%s\"\n  %s -> %s\n", doc.Validators[i].Name, orig, sdk.ConsAddress(valKeys[i].Address))
 
 		// replace pub key in `.validators` array
 		doc.Validators[i].PubKey = valKeys[i].PubKey
