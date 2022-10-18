@@ -65,7 +65,8 @@ func init() {
 	updateGenesisValidatorsCmd.Flags().Float64Var(
 		&ugvMinimumPowerPercent,
 		"min-power", 0,
-		"Optional, minimum percentage of total power given to replaced validators.",
+		`Optional, minimum percentage of total power given to replaced validators.
+Note that any power adjustments will be reverted after the first block is committed.`,
 	)
 	updateGenesisValidatorsCmd.Flags().StringVarP(
 		&ugvKeysDir,
