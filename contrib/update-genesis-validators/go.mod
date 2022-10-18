@@ -2,7 +2,12 @@ module github.com/kava-labs/kvtool/contrib/update-genesis-validators
 
 go 1.17
 
-require github.com/tendermint/tendermint v0.34.21
+require (
+	github.com/cosmos/cosmos-sdk v0.45.4
+	github.com/kava-labs/kava v0.17.2-0.20221003233729-4c879bc4fbb7
+	github.com/spf13/cobra v1.5.0
+	github.com/tendermint/tendermint v0.34.21
+)
 
 require (
 	filippo.io/edwards25519 v1.0.0-beta.2 // indirect
@@ -21,7 +26,6 @@ require (
 	github.com/confio/ics23/go v0.7.0 // indirect
 	github.com/cosmos/btcutil v1.0.4 // indirect
 	github.com/cosmos/cosmos-proto v1.0.0-alpha6 // indirect
-	github.com/cosmos/cosmos-sdk v0.45.4 // indirect
 	github.com/cosmos/go-bip39 v1.0.0 // indirect
 	github.com/cosmos/iavl v0.17.3 // indirect
 	github.com/cosmos/ibc-go/v3 v3.0.0 // indirect
@@ -72,7 +76,6 @@ require (
 	github.com/inconshreveable/mousetrap v1.0.0 // indirect
 	github.com/jackpal/go-nat-pmp v1.0.2 // indirect
 	github.com/jmhodges/levigo v1.0.0 // indirect
-	github.com/kava-labs/kava v0.17.2-0.20221003233729-4c879bc4fbb7 // indirect
 	github.com/keybase/go-keychain v0.0.0-20190712205309-48d3d31d256d // indirect
 	github.com/klauspost/compress v1.15.9 // indirect
 	github.com/libp2p/go-buffer-pool v0.1.0 // indirect
@@ -103,7 +106,6 @@ require (
 	github.com/shirou/gopsutil v3.21.4-0.20210419000835-c7a38de76ee5+incompatible // indirect
 	github.com/spf13/afero v1.8.2 // indirect
 	github.com/spf13/cast v1.5.0 // indirect
-	github.com/spf13/cobra v1.5.0 // indirect
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/spf13/viper v1.12.0 // indirect
