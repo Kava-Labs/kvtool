@@ -15,7 +15,7 @@
 proxy_app = "tcp://127.0.0.1:26658"
 
 # A custom human readable name for this node
-moniker = "val2"
+moniker = "val8"
 
 # If this node is many blocks behind the tip of the chain, FastSync
 # allows them to catchup quickly by downloading blocks in parallel
@@ -212,7 +212,7 @@ external_address = ""
 seeds = ""
 
 # Comma separated list of nodes to keep persistent connections to
-persistent_peers = "bfb78e666c1d48f00797c234ba93cac777ab3502@kava-1:26656,258783bf1abff312032863ef6e8e390d612c0c6a@kava-3:26656,d861956d6c6238d6fb629d6bbb020ea6683f7247@kava-4:26656,38e6d1982813b2c599f1ff9419c1a4c7491d0f25@kava-5:26656,f1e778c7000321d86eaf088a1f726e5d2135d268@kava-6:26656,24d12f24c76b3f65e6de5af5e08a78320f9479ba@kava-7:26656,74ae6a66cfe1be4a8d6cbe48e453200519578ce9@kava-8:26656,797926a874cf005dc3e7b33f9c0939991688bdde@kava-9:26656,23e960246da5f2430897635a4653d586fd4ce68e@kava-10:26656"
+persistent_peers = "bfb78e666c1d48f00797c234ba93cac777ab3502@kava-1:26656,3bba57d752e8f0565486ec1de178e205bbeeb804@kava-2:26656,258783bf1abff312032863ef6e8e390d612c0c6a@kava-3:26656,d861956d6c6238d6fb629d6bbb020ea6683f7247@kava-4:26656,38e6d1982813b2c599f1ff9419c1a4c7491d0f25@kava-5:26656,f1e778c7000321d86eaf088a1f726e5d2135d268@kava-6:26656,24d12f24c76b3f65e6de5af5e08a78320f9479ba@kava-7:26656,797926a874cf005dc3e7b33f9c0939991688bdde@kava-9:26656,23e960246da5f2430897635a4653d586fd4ce68e@kava-10:26656"
 
 # UPNP port forwarding
 upnp = false
@@ -272,6 +272,11 @@ dial_timeout = "3s"
 #######################################################
 [mempool]
 
+# Mempool version to use:
+#   1) "v0" - (default) FIFO mempool.
+#   2) "v1" - prioritized mempool.
+version = "v0"
+
 recheck = true
 broadcast = true
 wal_dir = ""
@@ -300,6 +305,22 @@ max_tx_bytes = 1048576
 # Including space needed by encoding (one varint per transaction).
 # XXX: Unused due to https://github.com/tendermint/tendermint/issues/5796
 max_batch_bytes = 0
+
+# ttl-duration, if non-zero, defines the maximum amount of time a transaction
+# can exist for in the mempool.
+#
+# Note, if ttl-num-blocks is also defined, a transaction will be removed if it
+# has existed in the mempool at least ttl-num-blocks number of blocks or if it's
+# insertion time into the mempool is beyond ttl-duration.
+ttl-duration = "0s"
+
+# ttl-num-blocks, if non-zero, defines the maximum number of blocks a transaction
+# can exist for in the mempool.
+#
+# Note, if ttl-duration is also defined, a transaction will be removed if it
+# has existed in the mempool at least ttl-num-blocks number of blocks or if
+# it's insertion time into the mempool is beyond ttl-duration.
+ttl-num-blocks = 0
 
 #######################################################
 ###         State Sync Configuration Options        ###
@@ -390,6 +411,16 @@ peer_gossip_sleep_duration = "100ms"
 peer_query_maj23_sleep_duration = "2s"
 
 #######################################################
+###         Storage Configuration Options           ###
+#######################################################
+
+# Set to true to discard ABCI responses from the state store, which can save a
+# considerable amount of disk space. Set to false to ensure ABCI responses are
+# persisted. ABCI responses are required for /block_results RPC queries, and to
+# reindex events in the command-line tool.
+discard_abci_responses = false
+
+#######################################################
 ###   Transaction Indexer Configuration Options     ###
 #######################################################
 [tx_index]
@@ -403,7 +434,13 @@ peer_query_maj23_sleep_duration = "2s"
 #   1) "null"
 #   2) "kv" (default) - the simplest possible indexer, backed by key-value storage (defaults to levelDB; see DBBackend).
 # 		- When "kv" is chosen "tx.height" and "tx.hash" will always be indexed.
+#   3) "psql" - the indexer services backed by PostgreSQL.
+# When "kv" or "psql" is chosen "tx.height" and "tx.hash" will always be indexed.
 indexer = "kv"
+
+# The PostgreSQL connection configuration, the connection format:
+#   postgresql://<user>:<password>@<host>:<port>/<db>?<opts>
+psql-conn = ""
 
 #######################################################
 ###       Instrumentation Configuration Options     ###
