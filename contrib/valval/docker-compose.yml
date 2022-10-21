@@ -24,22 +24,89 @@ services:
       - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657"
   kava-2:
     image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
-    # ports for 2nd node are same as above + 100
-    ports:
-      # open default kava rpc port
-      - "26757:26657"
-      # open rest port
-      - "1417:1317"
-      # open grpc port
-      - "9190:9090"
-      # open grpc-web port
-      - "9191:9091"
-      # open EVM JSON-RPC port
-      - "8645:8545"
-      # open Eth websocket port
-      - "8646:8546"
     volumes:
       - "./kava-2/config:/root/.kava/config"
+    # start the blockchain, and set rpc to listen to connections from outside the container
+    command:
+      - "sh"
+      - "-c"
+      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657"
+  kava-3:
+    image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
+    volumes:
+      - "./kava-3/config:/root/.kava/config"
+    # start the blockchain, and set rpc to listen to connections from outside the container
+    command:
+      - "sh"
+      - "-c"
+      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657"
+  kava-4:
+    image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
+    volumes:
+      - "./kava-4/config:/root/.kava/config"
+    # start the blockchain, and set rpc to listen to connections from outside the container
+    command:
+      - "sh"
+      - "-c"
+      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657"
+  kava-4:
+    image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
+    volumes:
+      - "./kava-4/config:/root/.kava/config"
+    # start the blockchain, and set rpc to listen to connections from outside the container
+    command:
+      - "sh"
+      - "-c"
+      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657"
+  kava-5:
+    image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
+    volumes:
+      - "./kava-5/config:/root/.kava/config"
+    # start the blockchain, and set rpc to listen to connections from outside the container
+    command:
+      - "sh"
+      - "-c"
+      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657"
+  kava-6:
+    image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
+    volumes:
+      - "./kava-6/config:/root/.kava/config"
+    # start the blockchain, and set rpc to listen to connections from outside the container
+    command:
+      - "sh"
+      - "-c"
+      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657"
+  kava-7:
+    image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
+    volumes:
+      - "./kava-7/config:/root/.kava/config"
+    # start the blockchain, and set rpc to listen to connections from outside the container
+    command:
+      - "sh"
+      - "-c"
+      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657"
+  kava-8:
+    image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
+    volumes:
+      - "./kava-8/config:/root/.kava/config"
+    # start the blockchain, and set rpc to listen to connections from outside the container
+    command:
+      - "sh"
+      - "-c"
+      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657"
+  kava-9:
+    image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
+    volumes:
+      - "./kava-9/config:/root/.kava/config"
+    # start the blockchain, and set rpc to listen to connections from outside the container
+    command:
+      - "sh"
+      - "-c"
+      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657"
+  kava-10:
+    image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
+    volumes:
+      - "./kava-10/config:/root/.kava/config"
     # start the blockchain, and set rpc to listen to connections from outside the container
     command:
       - "sh"
