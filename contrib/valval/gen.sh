@@ -4,7 +4,7 @@
 
 mkdir -p keys
 
-for i in {2..10}
+for i in {1..10}
 do
   home=kava-$i
 
