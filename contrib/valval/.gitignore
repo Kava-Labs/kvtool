@@ -1,6 +1,7 @@
 genesis.json
 updated-genesis.json
 
+write-file-atomic-*
 addrbook.json
 
 keys/
