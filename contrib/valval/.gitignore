@@ -1,5 +1,7 @@
 genesis.json
 updated-genesis.json
+export-*.json
+export-*.json.gz
 
 write-file-atomic-*
 addrbook.json
