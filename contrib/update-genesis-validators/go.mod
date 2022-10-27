@@ -1,10 +1,10 @@
 module github.com/kava-labs/kvtool/contrib/update-genesis-validators
 
-go 1.17
+go 1.18
 
 require (
-	github.com/cosmos/cosmos-sdk v0.45.4
-	github.com/kava-labs/kava v0.17.2-0.20221003233729-4c879bc4fbb7
+	github.com/cosmos/cosmos-sdk v0.45.9
+	github.com/kava-labs/kava v0.18.2
 	github.com/spf13/cobra v1.5.0
 	github.com/tendermint/tendermint v0.34.21
 )
@@ -27,7 +27,7 @@ require (
 	github.com/cosmos/btcutil v1.0.4 // indirect
 	github.com/cosmos/cosmos-proto v1.0.0-alpha6 // indirect
 	github.com/cosmos/go-bip39 v1.0.0 // indirect
-	github.com/cosmos/iavl v0.17.3 // indirect
+	github.com/cosmos/iavl v0.19.3 // indirect
 	github.com/cosmos/ibc-go/v3 v3.0.0 // indirect
 	github.com/cosmos/ledger-cosmos-go v0.11.1 // indirect
 	github.com/cosmos/ledger-go v0.9.2 // indirect
@@ -76,6 +76,7 @@ require (
 	github.com/inconshreveable/mousetrap v1.0.0 // indirect
 	github.com/jackpal/go-nat-pmp v1.0.2 // indirect
 	github.com/jmhodges/levigo v1.0.0 // indirect
+	github.com/kava-labs/kava-bridge v0.2.0 // indirect
 	github.com/keybase/go-keychain v0.0.0-20190712205309-48d3d31d256d // indirect
 	github.com/klauspost/compress v1.15.9 // indirect
 	github.com/libp2p/go-buffer-pool v0.1.0 // indirect
@@ -125,6 +126,7 @@ require (
 	go.etcd.io/bbolt v1.3.6 // indirect
 	go.opencensus.io v0.23.0 // indirect
 	golang.org/x/crypto v0.0.0-20220525230936-793ad666bf5e // indirect
+	golang.org/x/exp v0.0.0-20220722155223-a9213eeb770e // indirect
 	golang.org/x/net v0.0.0-20220726230323-06994584191e // indirect
 	golang.org/x/sync v0.0.0-20220722155255-886fb9371eb4 // indirect
 	golang.org/x/sys v0.0.0-20220727055044-e65921a090b8 // indirect
@@ -143,16 +145,18 @@ require (
 replace (
 	// Use the cosmos keyring code
 	github.com/99designs/keyring => github.com/cosmos/keyring v1.1.7-0.20210622111912-ef00f8ac3d76
-	// Use cosmos-sdk fork with backported fix for unsafe-reset-all
-	github.com/cosmos/cosmos-sdk => github.com/kava-labs/cosmos-sdk v0.45.4-kava.4
+	// Required replace for dragonberry security patch
+	github.com/confio/ics23/go => github.com/cosmos/cosmos-sdk/ics23/go v0.8.0
+	// Use cosmos-sdk fork with backported fix for unsafe-reset-all, newProto method w/ height parameter
+	github.com/cosmos/cosmos-sdk => github.com/kava-labs/cosmos-sdk v0.45.9-kava.1
 	// See https://github.com/cosmos/cosmos-sdk/pull/10401, https://github.com/cosmos/cosmos-sdk/commit/0592ba6158cd0bf49d894be1cef4faeec59e8320
 	github.com/gin-gonic/gin => github.com/gin-gonic/gin v1.7.0
 	// Use the cosmos modified protobufs
 	github.com/gogo/protobuf => github.com/regen-network/protobuf v1.3.3-alpha.regen.1
 	// Use rocksdb 7.1.2
 	github.com/tendermint/tm-db => github.com/kava-labs/tm-db v0.6.7-kava.1
-	// Use ethermint fork that respects min-gas-price with NoBaseFee true and london enabled
-	github.com/tharsis/ethermint => github.com/Kava-Labs/ethermint v0.14.0-kava-v17.5
+	// Use ethermint fork that respects min-gas-price with NoBaseFee true and london enabled, newProto w/ height parameter
+	github.com/tharsis/ethermint => github.com/Kava-Labs/ethermint v0.14.0-kava-v18.2
 	// Make sure that we use grpc compatible with cosmos
 	google.golang.org/grpc => google.golang.org/grpc v1.33.2
 )

@@ -64,6 +64,10 @@ index-events = []
 # Default cache size is 50mb.
 iavl-cache-size = 781250
 
+# IAVLDisableFastNode enables or disables the fast node feature of IAVL. 
+# Default is true.
+iavl-disable-fastnode = true
+
 ###############################################################################
 ###                         Telemetry Configuration                         ###
 ###############################################################################
