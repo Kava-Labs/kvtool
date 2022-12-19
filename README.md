@@ -121,7 +121,7 @@ dkava status
 dkava q cdp params
 ```
 
-To send transactions you'll need to recover a user account in the dockerized environment. Valid mnemonics for the blockchains be found in the `config/common/addresses.yaml` file.
+To send transactions you'll need to recover a user account in the dockerized environment. Valid mnemonics for the blockchains be found in the `config/common/addresses.json` file.
 
 ```bash
 # Recover user account
@@ -151,3 +151,12 @@ When you're done make sure to shut down the kvtool testnet. Always shut down the
 ```bash
 kvtool testnet down
 ```
+
+# Updating kava genesis
+
+When new versions of kava are released, they often involve changes to genesis.
+The kava `master` template includes a genesis.json that is generated from a pure state:
+* Ensure the desired version of `kava` is in your path as `kava`
+* Run `make generate-kava-genesis`
+* The script will create a genesis with desired accounts & validator
+* Updates to the genesis should be made in [`update-kava-genesis.sh`](./config/generate/genesis/generate-kava-genesis.sh)

@@ -1,0 +1,72 @@
+[
+  {
+    "@type": "/ethermint.types.v1.EthAccount",
+    "base_account": {
+      "address": "kava1ak4pa9z2aty94ze2cs06wsdnkg9hsvfkp40r02",
+      "pub_key": null,
+      "account_number": "0",
+      "sequence": "0"
+    },
+    "code_hash": "0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470"
+  },
+  {
+    "@type": "/ethermint.types.v1.EthAccount",
+    "base_account": {
+      "address": "kava123fxg0l602etulhhcdm0vt7l57qya5wjcrwhzz",
+      "pub_key": null,
+      "account_number": "0",
+      "sequence": "0"
+    },
+    "code_hash": "0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470"
+  },
+  {
+    "@type": "/ethermint.types.v1.EthAccount",
+    "base_account": {
+      "address": "kava10wlnqzyss4accfqmyxwx5jy5x9nfkwh6qm7n4t",
+      "pub_key": null,
+      "account_number": "0",
+      "sequence": "3"
+    },
+    "code_hash": "0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470"
+  },
+  {
+    "@type": "/ethermint.types.v1.EthAccount",
+    "base_account": {
+      "address": "kava15tmj37vh7ch504px9fcfglmvx6y9m70646ev8t",
+      "pub_key": null,
+      "account_number": "0",
+      "sequence": "0"
+    },
+    "code_hash": "0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470"
+  },
+  {
+    "@type": "/ethermint.types.v1.EthAccount",
+    "base_account": {
+      "account_number": "41",
+      "address": "kava1afcspmdzlqzn2c53krj4mt2yskv6wtrds2jqht",
+      "pub_key": null,
+      "sequence": "1"
+    },
+    "code_hash": "0x45d85d503e0143ffd2bb95d7bcb4dadfc1c05ff005fc7c26e63eb47f496fdafc"
+  },
+  {
+    "@type": "/ethermint.types.v1.EthAccount",
+    "base_account": {
+      "account_number": "0",
+      "address": "kava1vtf08rd2z9fm8qwxa54y3el5vues8ty64qcdyr",
+      "pub_key": null,
+      "sequence": "1"
+    },
+    "code_hash": "0xefe54230c8a74092194afdcb21c230b4cc4e07d0e6cd22bf0d3721f518df8ef2"
+  },
+  {
+    "@type": "/ethermint.types.v1.EthAccount",
+    "base_account": {
+      "account_number": "0",
+      "address": "kava1wrrekcy2h0zs9shkruuwqsvsldq8hm70yad4ke",
+      "pub_key": null,
+      "sequence": "1"
+    },
+    "code_hash": "0xd51cf04c1b78bc48b348e8455c4181539ab0b7ff84bb081fed109cd5feafaede"
+  }
+]
