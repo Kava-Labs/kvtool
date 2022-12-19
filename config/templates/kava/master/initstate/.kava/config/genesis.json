@@ -1,5 +1,5 @@
 {
-  "genesis_time": "2022-12-19T21:02:21.173387Z",
+  "genesis_time": "2022-12-19T21:16:15.923957Z",
   "chain_id": "kavalocalnet_8888-1",
   "initial_height": "1",
   "consensus_params": {
@@ -24,7 +24,7 @@
       "next_auction_id": "1",
       "params": {
         "max_auction_duration": "172800s",
-        "forward_bid_duration": "86400s",
+        "forward_bid_duration": "28800s",
         "reverse_bid_duration": "3600s",
         "increment_surplus": "0.050000000000000000",
         "increment_debt": "0.050000000000000000",

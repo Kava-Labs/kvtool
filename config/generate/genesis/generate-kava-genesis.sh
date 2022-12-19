@@ -224,7 +224,10 @@ sed -i '' 's/stake/ukava/g' $DATA/config/genesis.json
 sed -i '' 's/aphoton/akava/g' $DATA/config/genesis.json
 
 # Zero out the total supply so it gets recalculated during InitGenesis
-jq '.app_state.bank.supply = []' $DATA/config/genesis.json|sponge $DATA/config/genesis.json
+jq '.app_state.bank.supply = []' $DATA/config/genesis.json | sponge $DATA/config/genesis.json
+
+# x/auction: shorten bid duration
+jq '.app_state.auction.params.forward_bid_duration = "28800s"' $DATA/config/genesis.json | sponge $DATA/config/genesis.json
 
 # x/bep3 assets
 set-app-state bep3.params.asset_params
