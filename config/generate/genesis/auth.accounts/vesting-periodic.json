@@ -1,0 +1,32 @@
+{
+  "@type": "/cosmos.vesting.v1beta1.PeriodicVestingAccount",
+  "base_vesting_account": {
+    "base_account": {
+      "account_number": "0",
+      "address": "$vesting_periodic",
+      "pub_key": null,
+      "sequence": "0"
+    },
+    "delegated_free": [],
+    "delegated_vesting": [],
+    "end_time": "1696540229",
+    "original_vesting": [
+      {
+        "amount": "5000000000",
+        "denom": "ukava"
+      }
+    ]
+  },
+  "start_time": "1665004229",
+  "vesting_periods": [
+    {
+      "amount": [
+        {
+          "amount": "5000000000",
+          "denom": "ukava"
+        }
+      ],
+      "length": "31536000"
+    }
+  ]
+}

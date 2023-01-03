@@ -1,0 +1,116 @@
+[
+  {
+    "@type": "/kava.committee.v1beta1.MemberCommittee",
+    "base_committee": {
+      "id": "1",
+      "description": "Kava Stability Committee",
+      "members": ["$committee"],
+      "permissions": [
+        { "@type": "/kava.committee.v1beta1.TextPermission" },
+        {
+          "@type": "/kava.committee.v1beta1.ParamsChangePermission",
+          "allowed_params_changes": [
+            { "subspace": "auction", "key": "BidDuration" },
+            { "subspace": "auction", "key": "IncrementSurplus" },
+            { "subspace": "auction", "key": "IncrementDebt" },
+            { "subspace": "auction", "key": "IncrementCollateral" },
+            { "subspace": "bep3", "key": "AssetParams" },
+            { "subspace": "cdp", "key": "GlobalDebtLimit" },
+            { "subspace": "cdp", "key": "SurplusThreshold" },
+            { "subspace": "cdp", "key": "SurplusLot" },
+            { "subspace": "cdp", "key": "DebtThreshold" },
+            { "subspace": "cdp", "key": "DebtLot" },
+            { "subspace": "cdp", "key": "DistributionFrequency" },
+            { "subspace": "cdp", "key": "CollateralParams" },
+            { "subspace": "cdp", "key": "DebtParam" },
+            { "subspace": "incentive", "key": "Active" },
+            { "subspace": "kavadist", "key": "Active" },
+            { "subspace": "pricefeed", "key": "Markets" },
+            { "subspace": "hard", "key": "MoneyMarkets" },
+            { "subspace": "hard", "key": "MinimumBorrowUSDValue" }
+          ]
+        }
+      ],
+      "vote_threshold": "0.667000000000000000",
+      "proposal_duration": "604800s",
+      "tally_option": "TALLY_OPTION_FIRST_PAST_THE_POST"
+    }
+  },
+  {
+    "@type": "/kava.committee.v1beta1.MemberCommittee",
+    "base_committee": {
+      "id": "2",
+      "description": "Kava Safety Committee",
+      "members": ["$committee"],
+      "permissions": [
+        { "@type": "/kava.committee.v1beta1.SoftwareUpgradePermission" }
+      ],
+      "vote_threshold": "0.667000000000000000",
+      "proposal_duration": "604800s",
+      "tally_option": "TALLY_OPTION_FIRST_PAST_THE_POST"
+    }
+  },
+  {
+    "@type": "/kava.committee.v1beta1.MemberCommittee",
+    "base_committee": {
+      "id": "3",
+      "description": "Kava God Committee (testing only)",
+      "members": ["$committee"],
+      "permissions": [{ "@type": "/kava.committee.v1beta1.GodPermission" }],
+      "vote_threshold": "0.667000000000000000",
+      "proposal_duration": "604800s",
+      "tally_option": "TALLY_OPTION_FIRST_PAST_THE_POST"
+    }
+  },
+  {
+    "@type": "/kava.committee.v1beta1.TokenCommittee",
+    "base_committee": {
+      "id": "4",
+      "description": "HARD Governance Committee",
+      "members": ["$committee"],
+      "permissions": [
+        { "@type": "/kava.committee.v1beta1.TextPermission" },
+        {
+          "@type": "/kava.committee.v1beta1.ParamsChangePermission",
+          "allowed_params_changes": [
+            { "subspace": "hard", "key": "MoneyMarkets" },
+            { "subspace": "hard", "key": "MinimumBorrowUSDValue" },
+            { "subspace": "incentive", "key": "HardSupplyRewardPeriods" },
+            { "subspace": "incentive", "key": "HardBorrowRewardPeriods" },
+            { "subspace": "incentive", "key": "HardDelegatorRewardPeriods" }
+          ]
+        }
+      ],
+      "vote_threshold": "0.667000000000000000",
+      "proposal_duration": "604800s",
+      "tally_option": "TALLY_OPTION_DEADLINE"
+    },
+    "quorum": "0.330000000000000000",
+    "tally_denom": "hard"
+  },
+  {
+    "@type": "/kava.committee.v1beta1.TokenCommittee",
+    "base_committee": {
+      "id": "5",
+      "description": "SWP Governance Committee",
+      "members": ["$committee"],
+      "permissions": [
+        { "@type": "/kava.committee.v1beta1.TextPermission" },
+        {
+          "@type": "/kava.committee.v1beta1.ParamsChangePermission",
+          "allowed_params_changes": [
+            { "subspace": "swap", "key": "AllowedPools" },
+            { "subspace": "swap", "key": "SwapFee" },
+            { "subspace": "incentive", "key": "DelegatorRewardPeriods" },
+            { "subspace": "incentive", "key": "SwapRewardPeriods" }
+          ]
+        }
+      ],
+      "vote_threshold": "0.667000000000000000",
+      "proposal_duration": "604800s",
+      "tally_option": "TALLY_OPTION_DEADLINE"
+    },
+    "quorum": "0.330000000000000000",
+    "tally_denom": "swp"
+  }
+]

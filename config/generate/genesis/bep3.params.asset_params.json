@@ -1,0 +1,70 @@
+[
+  {
+    "denom": "btcb",
+    "coin_id": "0",
+    "supply_limit": {
+      "limit": "100000000000",
+      "time_limited": false,
+      "time_period": "0",
+      "time_based_limit": "0"
+    },
+    "active": true,
+    "deputy_address": "$btcb_deputy",
+    "fixed_fee": "2",
+    "min_swap_amount": "3",
+    "max_swap_amount": "2000000000",
+    "min_block_lock": "24686",
+    "max_block_lock": "86400"
+  },
+  {
+    "denom": "xrpb",
+    "coin_id": "144",
+    "supply_limit": {
+      "limit": "2000000000000000",
+      "time_limited": false,
+      "time_period": "0",
+      "time_based_limit": "0"
+    },
+    "active": true,
+    "deputy_address": "$xrpb_deputy",
+    "fixed_fee": "100000",
+    "min_swap_amount": "100001",
+    "max_swap_amount": "250000000000000",
+    "min_block_lock": "24686",
+    "max_block_lock": "86400"
+  },
+  {
+    "denom": "bnb",
+    "coin_id": "714",
+    "supply_limit": {
+      "limit": "100000000000000",
+      "time_limited": false,
+      "time_period": "0",
+      "time_based_limit": "0"
+    },
+    "active": true,
+    "deputy_address": "$bnb_deputy",
+    "fixed_fee": "1000",
+    "min_swap_amount": "1001",
+    "max_swap_amount": "500000000000",
+    "min_block_lock": "24686",
+    "max_block_lock": "86400"
+  },
+  {
+    "denom": "busd",
+    "coin_id": "727",
+    "supply_limit": {
+      "limit": "2000000000000000",
+      "time_limited": false,
+      "time_period": "0",
+      "time_based_limit": "0"
+    },
+    "active": true,
+    "deputy_address": "$busd_deputy",
+    "fixed_fee": "20000",
+    "min_swap_amount": "20001",
+    "max_swap_amount": "100000000000000",
+    "min_block_lock": "24686",
+    "max_block_lock": "86400"
+  }
+]

@@ -1,0 +1,6 @@
+[
+  { "denom": "usdx", "strategies": ["STRATEGY_TYPE_HARD"] },
+  { "denom": "ukava", "strategies": ["STRATEGY_TYPE_SAVINGS"] },
+  { "denom": "bkava", "strategies": ["STRATEGY_TYPE_SAVINGS"] },
+  { "denom": "erc20/multichain/usdc", "strategies": ["STRATEGY_TYPE_SAVINGS"] }
+]

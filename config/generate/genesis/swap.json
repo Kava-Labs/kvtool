@@ -1,0 +1,102 @@
+{
+  "params": {
+    "allowed_pools": [
+      { "token_a": "ukava", "token_b": "usdx" },
+      { "token_a": "hard", "token_b": "usdx" },
+      {
+        "token_a": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
+        "token_b": "usdx"
+      },
+      {
+        "token_a": "ibc/4129EB76C01ED14052054BB975DE0C6C5010E12FFD9253C20C58BCD828BEE9A5",
+        "token_b": "usdx"
+      },
+      {
+        "token_a": "ibc/C72DE26FFF16DE62BE2784E12229BDF5F4465CE8B10530426D6DB53255FF01B2",
+        "token_b": "usdx"
+      },
+      {
+        "token_a": "ibc/ED07A3391A112B175915CD8FAF43A2DA8E4790EDE12566649D0C2F97716B8518",
+        "token_b": "usdx"
+      },
+      { "token_a": "swp", "token_b": "usdx" },
+      { "token_a": "bnb", "token_b": "usdx" },
+      { "token_a": "btcb", "token_b": "usdx" },
+      { "token_a": "busd", "token_b": "usdx" },
+      { "token_a": "usdx", "token_b": "xrpb" }
+    ],
+    "swap_fee": "0.001500000000000000"
+  },
+  "pool_records": [
+    {
+      "pool_id": "btcb:usdx",
+      "reserves_a": {
+        "amount": "200000000",
+        "denom": "btcb"
+      },
+      "reserves_b": {
+        "amount": "100000000000",
+        "denom": "usdx"
+      },
+      "total_shares": "4472135954"
+    },
+    {
+      "pool_id": "hard:usdx",
+      "reserves_a": {
+        "amount": "1000000000",
+        "denom": "hard"
+      },
+      "reserves_b": {
+        "amount": "1000000000",
+        "denom": "usdx"
+      },
+      "total_shares": "1000000000"
+    },
+    {
+      "pool_id": "swp:usdx",
+      "reserves_a": {
+        "amount": "5000000000",
+        "denom": "swp"
+      },
+      "reserves_b": {
+        "amount": "1000000000",
+        "denom": "usdx"
+      },
+      "total_shares": "2236067977"
+    },
+    {
+      "pool_id": "ukava:usdx",
+      "reserves_a": {
+        "amount": "5000000000",
+        "denom": "ukava"
+      },
+      "reserves_b": {
+        "amount": "1000000000",
+        "denom": "usdx"
+      },
+      "total_shares": "2236067977"
+    }
+  ],
+  "share_records": [
+    {
+      "depositor": "$whale",
+      "pool_id": "btcb:usdx",
+      "shares_owned": "4472135954"
+    },
+    {
+      "depositor": "$whale",
+      "pool_id": "hard:usdx",
+      "shares_owned": "1000000000"
+    },
+    {
+      "depositor": "$whale",
+      "pool_id": "swp:usdx",
+      "shares_owned": "2236067977"
+    },
+    {
+      "depositor": "$whale",
+      "pool_id": "ukava:usdx",
+      "shares_owned": "2236067977"
+    }
+  ]
+}
