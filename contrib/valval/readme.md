@@ -12,13 +12,11 @@ mainnet export and giving them a controlling share of the power.
 
 Unfortunately it's not that simple. At the end of a block being committed, power is reassessed based
 on the underlying delegations to the validators. This means that the two validators will only have
-enough power to create a block once, and then they will revert back to their original power.
+enough power to create a block once (if given a controlling share with `--min-power`), and then they
+will revert back to their original power.
 
-It's worth keeping here because you can still run two validators in a docker container. However,
-the current capabilities of `update-genesis-validators` is insufficient for the mirrornet use case.
-If it were updated to also update the underlying token delegations for the replaced validators it
-would work better. For now, if the original top two validators don't have a controlling network share,
-the `--min-power` flag will only allow it to create one block before the power is reassessed.
+Though originally configured with 2 validators, the repo has been updated to run 10 validators.
+This is the number required for a controlling power share of mainnet data.
 
 # Instructions
 
@@ -38,16 +36,17 @@ This example uses the following, but the instructions should work for any genesi
 * new chain id: `kavamirror_2221-1`
 
 ## configure genesis to use our validators
-Replace top two validators with our nodes. Collectively give them at least 90% of the network power.
+Replace top ten validators with our nodes:
 ```sh
+# setup keys file for update-genesis-validators
 mkdir keys
-cp kava-1/config/priv_validator_key.json keys/priv_validator_key_0.json
-cp kava-2/config/priv_validator_key.json keys/priv_validator_key_1.json
+./copy-keys.sh
 
-update-genesis-validators example-genesis.json --chain-id kavamirror_2221-1 --min-power .9
+# replace validators in original genesis
+update-genesis-validators example-genesis.json --chain-id kavamirror_2221-10
 
-cp updated-genesis.json kava-1/config/genesis.json
-cp updated-genesis.json kava-2/config/genesis.json
+# copy updated genesis to all validator config directories
+./copy-gen.sh
 ```
 
 ## run the networks
