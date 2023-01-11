@@ -38,8 +38,7 @@ This example uses the following, but the instructions should work for any genesi
 Replace top ten validators with our nodes:
 ```sh
 # setup keys file for update-genesis-validators
-mkdir keys
-./copy-keys.sh
+./gen.sh
 
 # replace validators in original genesis
 update-genesis-validators example-genesis.json --chain-id kavamirror_2221-10
@@ -76,7 +75,7 @@ the top validators in mainnet data to do things like test upgrade migrations on 
 That means that if more validators are needed to run with >66.7% of consensus power, more validators
 may need to be added here. This is how:
 
-1. update all the shell scripts in this directory (`gen.sh`, `clean.sh`, `copy-gen.sh`, `copy-keys.sh`) to iterate counting to the new number
+1. update all the shell scripts in this directory (`gen.sh`, `clean.sh`, `copy-gen.sh`) to iterate counting to the new number
 example: changing from 10 -> 11 validators
 ```diff
 --- gen.sh
@@ -85,13 +84,13 @@ example: changing from 10 -> 11 validators
 +for i in {1..11}
 ```
 
-2. run `./gen.sh`. this generates the correct number of data directories
+1. run `./gen.sh`. this generates the correct number of data directories
 
-3. the above command outputs the list of all peer node ids and addresses. we need to update the new node to have all the other nodes as a peer and we need to add the new node as a peer to all existing nodes:
+2. the above command outputs the list of all peer node ids and addresses. we need to update the new node to have all the other nodes as a peer and we need to add the new node as a peer to all existing nodes:
    * copy all the peers. remove the new node from the string. open `kava-<new_node_index>/config/config.yml` and set `persistent_peers` to all other nodes
    * add the new node id & address to the `persistent_peers` of all the already-existing node configs
 
-4. add another node to the docker compose (replace `11` in the name and `volumes` below with the new node index):
+3. add another node to the docker compose (replace `11` in the name and `volumes` below with the new node index):
 ```yaml
   kava-11:
     image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
@@ -104,4 +103,4 @@ example: changing from 10 -> 11 validators
       - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657"
 ```
 
-5. resume your regularly scheduled meganode running
+1. resume your regularly scheduled meganode running
