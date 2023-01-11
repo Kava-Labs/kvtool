@@ -87,7 +87,7 @@ example: changing from 10 -> 11 validators
 1. run `./gen.sh`. this generates the correct number of data directories
 
 2. the above command outputs the list of all peer node ids and addresses. we need to update the new node to have all the other nodes as a peer and we need to add the new node as a peer to all existing nodes:
-   * copy all the peers. remove the new node from the string. open `kava-<new_node_index>/config/config.yml` and set `persistent_peers` to all other nodes
+   * copy all the peers. remove the new node from the string. open `kava-<new_node_index>/config/config.toml` and set `persistent_peers` to all other nodes
    * add the new node id & address to the `persistent_peers` of all the already-existing node configs
 
 3. add another node to the docker compose (replace `11` in the name and `volumes` below with the new node index):
