@@ -40,7 +40,7 @@ var (
 )
 
 var updateGenesisValidatorsCmd = &cobra.Command{
-	Use:   "update-genesis-validators",
+	Use:   "update-genesis-validators path/to/source-genesis.json",
 	Short: "Updates the validators of a non-zero height genesis.json",
 	Long: `Takes a non-zero height genesis.json and a directory of indexed priv_validator_keys and replaces the validators of the genesis file with ones corresponding to the keys.
 

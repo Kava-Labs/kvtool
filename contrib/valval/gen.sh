@@ -1,10 +1,9 @@
 #!/bin/bash
 
-#peers=()
+peers=()
 
 mkdir -p keys
-
-for i in {1..10}
+for i in {1..11}
 do
   home=kava-$i
 
@@ -19,9 +18,7 @@ do
   fi
 
   cp $home/config/priv_validator_key.json keys/priv_validator_key_$(($i-1)).json
-
-  #peers+=($(kava tendermint show-node-id --home $home)@$home:26656)
+  peers+=($(kava tendermint show-node-id --home $home)@$home:26656)
 done
 
-
-
+echo $(printf ",%s" "${peers[@]}")
