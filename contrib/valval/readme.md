@@ -66,8 +66,10 @@ cd -
 
 Then run this with the new tag:
 ```sh
-KAVA_IMAGE_TAG=local docker-compose up
+KAVA_IMAGE_TAG=local docker-compose up --force-recreate
 ```
+
+Note that `--force-recreate` is necessary if run previously. It will force the image tag from the environment to be picked up even if the containers have already been created.
 
 ## how to add a validator
 The intention of this code is to use it to run enough validators to get consensus after replacing
