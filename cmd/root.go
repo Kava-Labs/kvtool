@@ -26,5 +26,7 @@ func Execute() error {
 	rootCmd.AddCommand(SubscribeCmd(cdc))
 	rootCmd.AddCommand(SwapIDCmd(cdc))
 	rootCmd.AddCommand(NodeKeysCmd(cdc))
+	rootCmd.AddCommand(MaccAddrCmd())
+
 	return rootCmd.Execute()
 }
