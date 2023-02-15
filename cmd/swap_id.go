@@ -30,7 +30,7 @@ var (
 )
 
 // SwapIDCmd returns a command to calculate a bep3 swap ID for binance and kava chains.
-func SwapIDCmd(cdc *codec.Codec) *cobra.Command {
+func SwapIDCmd(cdc *codec.LegacyAmino) *cobra.Command {
 
 	kavaDeputies := map[string]sdk.AccAddress{}
 	for k, v := range kavaDeputiesStrings {
@@ -47,7 +47,7 @@ func SwapIDCmd(cdc *codec.Codec) *cobra.Command {
 		Long: fmt.Sprintf(`A swap's ID is: hash(swap.RandomNumberHash, swap.Sender, swap.SenderOtherChain)
 One of the senders is always the deputy's address, the other is the user who initiated the first swap (the original sender).
 Corresponding swaps on each chain have the same RandomNumberHash, but switched address order.
-		
+
 The deputy can be one of %v to automatically use the mainnet deputy addresses, or an arbitrary address.
 The original sender and deputy address cannot be from the same chain.
 `, getKeys(kavaDeputiesStrings)),
