@@ -20,13 +20,15 @@ type InflationResult struct {
 
 func (ir InflationResult) String() string {
 	blockDiff := ir.End - ir.Start
+	avgBlockTime := ir.SecondsPassed / float64(blockDiff)
 	return fmt.Sprintf(`realized & average inflation in APR & APY
 start block: %d
 end block: %d
-total seconds passed: %f
+total seconds passed: %fs
+avg block time: %fs
 inflation apr (%d block avg): %s
 inflation apy (%d block avg): %s`,
-		ir.Start, ir.End, ir.SecondsPassed, blockDiff, ir.InflationApr, blockDiff, ir.InflationApy)
+		ir.Start, ir.End, ir.SecondsPassed, avgBlockTime, blockDiff, ir.InflationApr, blockDiff, ir.InflationApy)
 }
 
 // InflationOverBlocks calculates average inflation by taking the inflation over a block range and
