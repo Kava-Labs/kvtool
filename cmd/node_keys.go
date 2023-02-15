@@ -12,7 +12,7 @@ import (
 	"github.com/tendermint/tendermint/p2p"
 )
 
-func NodeKeysCmd(cdc *codec.Codec) *cobra.Command {
+func NodeKeysCmd(cdc *codec.LegacyAmino) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:     "node-keys number_of_keys",
 		Short:   "Generate n node_key.json files",
@@ -29,7 +29,7 @@ func NodeKeysCmd(cdc *codec.Codec) *cobra.Command {
 				nodeKey := &p2p.NodeKey{
 					PrivKey: privKey,
 				}
-				jsonBytes, err := cdc.MarshalJSON(nodeKey)
+				jsonBytes, err := codec.MarshalJSONIndent(cdc, nodeKey)
 				if err != nil {
 					return err
 				}

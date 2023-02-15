@@ -1,5 +1,5 @@
 {
-  "genesis_time": "2022-12-19T21:16:15.923957Z",
+  "genesis_time": "2023-02-15T18:28:01.981711Z",
   "chain_id": "kavalocalnet_8888-1",
   "initial_height": "1",
   "consensus_params": {
@@ -14,7 +14,9 @@
       "max_bytes": "1048576"
     },
     "validator": {
-      "pub_key_types": ["ed25519"]
+      "pub_key_types": [
+        "ed25519"
+      ]
     },
     "version": {}
   },
@@ -911,7 +913,9 @@
           "base_committee": {
             "id": "1",
             "description": "Kava Stability Committee",
-            "members": ["kava1n96qpdfcz2m7y364ewk8srv9zuq6ucwduyjaag"],
+            "members": [
+              "kava1n96qpdfcz2m7y364ewk8srv9zuq6ucwduyjaag"
+            ],
             "permissions": [
               {
                 "@type": "/kava.committee.v1beta1.TextPermission"
@@ -1004,7 +1008,9 @@
           "base_committee": {
             "id": "2",
             "description": "Kava Safety Committee",
-            "members": ["kava1n96qpdfcz2m7y364ewk8srv9zuq6ucwduyjaag"],
+            "members": [
+              "kava1n96qpdfcz2m7y364ewk8srv9zuq6ucwduyjaag"
+            ],
             "permissions": [
               {
                 "@type": "/kava.committee.v1beta1.SoftwareUpgradePermission"
@@ -1020,7 +1026,9 @@
           "base_committee": {
             "id": "3",
             "description": "Kava God Committee (testing only)",
-            "members": ["kava1n96qpdfcz2m7y364ewk8srv9zuq6ucwduyjaag"],
+            "members": [
+              "kava1n96qpdfcz2m7y364ewk8srv9zuq6ucwduyjaag"
+            ],
             "permissions": [
               {
                 "@type": "/kava.committee.v1beta1.GodPermission"
@@ -1036,7 +1044,9 @@
           "base_committee": {
             "id": "4",
             "description": "HARD Governance Committee",
-            "members": ["kava1n96qpdfcz2m7y364ewk8srv9zuq6ucwduyjaag"],
+            "members": [
+              "kava1n96qpdfcz2m7y364ewk8srv9zuq6ucwduyjaag"
+            ],
             "permissions": [
               {
                 "@type": "/kava.committee.v1beta1.TextPermission"
@@ -1079,7 +1089,9 @@
           "base_committee": {
             "id": "5",
             "description": "SWP Governance Committee",
-            "members": ["kava1n96qpdfcz2m7y364ewk8srv9zuq6ucwduyjaag"],
+            "members": [
+              "kava1n96qpdfcz2m7y364ewk8srv9zuq6ucwduyjaag"
+            ],
             "permissions": [
               {
                 "@type": "/kava.committee.v1beta1.TextPermission"
@@ -1148,19 +1160,27 @@
         "allowed_vaults": [
           {
             "denom": "usdx",
-            "strategies": ["STRATEGY_TYPE_HARD"]
+            "strategies": [
+              "STRATEGY_TYPE_HARD"
+            ]
           },
           {
             "denom": "ukava",
-            "strategies": ["STRATEGY_TYPE_SAVINGS"]
+            "strategies": [
+              "STRATEGY_TYPE_SAVINGS"
+            ]
           },
           {
             "denom": "bkava",
-            "strategies": ["STRATEGY_TYPE_SAVINGS"]
+            "strategies": [
+              "STRATEGY_TYPE_SAVINGS"
+            ]
           },
           {
             "denom": "erc20/multichain/usdc",
-            "strategies": ["STRATEGY_TYPE_SAVINGS"]
+            "strategies": [
+              "STRATEGY_TYPE_SAVINGS"
+            ]
           }
         ]
       },
@@ -1578,7 +1598,10 @@
         "clients_consensus": [],
         "clients_metadata": [],
         "params": {
-          "allowed_clients": ["06-solomachine", "07-tendermint"]
+          "allowed_clients": [
+            "06-solomachine",
+            "07-tendermint"
+          ]
         },
         "create_localhost": false,
         "next_client_sequence": "0"
@@ -2203,10 +2226,7 @@
         "accumulation_times": [],
         "multi_reward_indexes": []
       },
-      "earn_claims": [],
-      "claims": [],
-      "accrual_times": [],
-      "reward_indexes": []
+      "earn_claims": []
     },
     "issuance": {
       "params": {
@@ -2347,14 +2367,21 @@
       },
       "previous_block_time": "1970-01-01T00:00:01Z"
     },
-    "kavamint": {
-      "params": {
-        "community_pool_inflation": "0.150000000000000000",
-        "staking_rewards_apy": "0.200000000000000000"
-      },
-      "previous_block_time": "0001-01-01T00:00:00Z"
-    },
     "liquid": {},
+    "mint": {
+      "minter": {
+        "inflation": "0.130000000000000000",
+        "annual_provisions": "0.000000000000000000"
+      },
+      "params": {
+        "mint_denom": "ukava",
+        "inflation_rate_change": "0.130000000000000000",
+        "inflation_max": "0.750000000000000000",
+        "inflation_min": "0.750000000000000000",
+        "goal_bonded": "0.670000000000000000",
+        "blocks_per_year": "6311520"
+      }
+    },
     "params": null,
     "pricefeed": {
       "params": {
@@ -2363,189 +2390,243 @@
             "active": true,
             "base_asset": "bnb",
             "market_id": "bnb:usd",
-            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "bnb",
             "market_id": "bnb:usd:30",
-            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "btc",
             "market_id": "btc:usd",
-            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "btc",
             "market_id": "btc:usd:30",
-            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "xrp",
             "market_id": "xrp:usd:30",
-            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "xrp",
             "market_id": "xrp:usd",
-            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "busd",
             "market_id": "busd:usd",
-            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "busd",
             "market_id": "busd:usd:30",
-            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "kava",
             "market_id": "kava:usd",
-            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "kava",
             "market_id": "kava:usd:30",
-            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "hard",
             "market_id": "hard:usd",
-            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "hard",
             "market_id": "hard:usd:30",
-            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "atom",
             "market_id": "atom:usd",
-            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "atom",
             "market_id": "atom:usd:30",
-            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "osmo",
             "market_id": "osmo:usd",
-            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "osmo",
             "market_id": "osmo:usd:30",
-            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "akt",
             "market_id": "akt:usd",
-            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "akt",
             "market_id": "akt:usd:30",
-            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "luna",
             "market_id": "luna:usd",
-            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "luna",
             "market_id": "luna:usd:30",
-            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "usdx",
             "market_id": "usdx:usd",
-            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "usdx",
             "market_id": "usdx:usd:30",
-            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "usdx",
             "market_id": "usdx:usd:720",
-            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "swp",
             "market_id": "swp:usd",
-            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "swp",
             "market_id": "swp:usd:30",
-            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "erc20/multichain/usdc",
             "market_id": "erc20/multichain/usdc:usd",
-            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
             "quote_asset": "usd"
           },
           {
             "active": true,
             "base_asset": "erc20/multichain/usdc",
             "market_id": "erc20/multichain/usdc:usd:30",
-            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
             "quote_asset": "usd"
           }
         ]

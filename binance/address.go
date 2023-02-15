@@ -4,7 +4,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/tendermint/tendermint/libs/bech32"
+	"github.com/tendermint/classic/libs/bech32"
 )
 
 const Prefix = "bnb"

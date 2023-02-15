@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/kava-labs/kava/app"
 	"github.com/spf13/cobra"
@@ -18,15 +19,12 @@ func Execute() error {
 	app.SetBip44CoinType(config)
 	config.Seal()
 
-	cdc := app.MakeCodec()
+	var cdc *codec.LegacyAmino = app.MakeEncodingConfig().Amino
 
-	rootCmd.AddCommand(TestnetCmd())
-	rootCmd.AddCommand(MonikersCmd(cdc))
-	rootCmd.AddCommand(LaunchBlameCmd(cdc))
-	rootCmd.AddCommand(SubscribeCmd(cdc))
-	rootCmd.AddCommand(SwapIDCmd(cdc))
-	rootCmd.AddCommand(NodeKeysCmd(cdc))
 	rootCmd.AddCommand(MaccAddrCmd())
+	rootCmd.AddCommand(NodeKeysCmd(cdc))
+	rootCmd.AddCommand(SwapIDCmd(cdc))
+	rootCmd.AddCommand(TestnetCmd())
 
 	return rootCmd.Execute()
 }
