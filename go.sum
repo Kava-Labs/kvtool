@@ -522,6 +522,8 @@ github.com/kava-labs/cosmos-sdk v0.45.9-kava.4 h1:nOsUMvY9qWvPyORBSV3k7G7D7Lc5Jj
 github.com/kava-labs/cosmos-sdk v0.45.9-kava.4/go.mod h1:Z5M4TX7PsHNHlF/1XanI2DIpORQ+Q/st7oaeufEjnvU=
 github.com/kava-labs/ethermint v0.14.0-kava-v20.1 h1:4ZM/SFPU7RLmioHICs9j+c4hzDZ9Rxb/b+Hs/guAyN4=
 github.com/kava-labs/ethermint v0.14.0-kava-v20.1/go.mod h1:+/TXGhi6XwF9B8h2NrYZCKrrv0+pC3RkpM0950lYyJg=
+github.com/kava-labs/go-tools v0.0.0-20221224222255-39c4be283202 h1:rmq2BLsVQm+k5pj/yv2+sh6vewDkWY0KmS865PpFigM=
+github.com/kava-labs/go-tools v0.0.0-20221224222255-39c4be283202/go.mod h1:jignPuIhdrfAf71cn0hJXA89BhAkUZnu01i/H1bZDGM=
 github.com/kava-labs/kava v0.21.0 h1:2KBVdSeSMfAdDyRuZq0nI9fBc2cr9bMSNAwbCuzJ2FI=
 github.com/kava-labs/kava v0.21.0/go.mod h1:3adeVmSpm8xejhI+v0qKZsLA8LNdMpkZSns1kXG9YiA=
 github.com/keybase/go-keychain v0.0.0-20190712205309-48d3d31d256d h1:Z+RDyXzjKE0i2sTjZ/b1uxiGtPhFy34Ou/Tk0qwN0kM=
