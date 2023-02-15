@@ -21,6 +21,7 @@ func Execute() error {
 
 	var cdc *codec.LegacyAmino = app.MakeEncodingConfig().Amino
 
+	rootCmd.AddCommand(InflationRootCmd())
 	rootCmd.AddCommand(MaccAddrCmd())
 	rootCmd.AddCommand(NodeKeysCmd(cdc))
 	rootCmd.AddCommand(SwapIDCmd(cdc))
