@@ -13,11 +13,25 @@ const (
 type InflationResult struct {
 	Start         int64
 	End           int64
-	Inflation     *sdk.Dec
+	InflationApr  *sdk.Dec
+	InflationApy  *sdk.Dec
 	SecondsPassed float64
 }
 
-func (c *Client) InflationApyOverBlocks(start, end int64) (InflationResult, error) {
+func (ir InflationResult) String() string {
+	blockDiff := ir.End - ir.Start
+	return fmt.Sprintf(`realized & average inflation in APR & APY
+start block: %d
+end block: %d
+total seconds passed: %f
+inflation apr (%d block avg): %s
+inflation apy (%d block avg): %s`,
+		ir.Start, ir.End, ir.SecondsPassed, blockDiff, ir.InflationApr, blockDiff, ir.InflationApy)
+}
+
+// InflationOverBlocks calculates average inflation by taking the inflation over a block range and
+// extrapolating it to a rate.
+func (c *Client) InflationOverBlocks(start, end int64) (InflationResult, error) {
 	result := InflationResult{
 		Start: start,
 		End:   end,
@@ -48,12 +62,10 @@ func (c *Client) InflationApyOverBlocks(start, end int64) (InflationResult, erro
 	}
 
 	// calculate inflation
-	result.Inflation, err = calculateInflationApy(supplyBefore.Amount, supplyAfter.Amount, result.SecondsPassed)
-	if err != nil {
-		return result, err
-	}
+	result.InflationApr = calculateInflationApr(supplyBefore.Amount, supplyAfter.Amount, result.SecondsPassed)
+	result.InflationApy, err = calculateInflationApy(supplyBefore.Amount, supplyAfter.Amount, result.SecondsPassed)
 
-	return result, nil
+	return result, err
 }
 
 func calculateInflationApy(beforeAmount, afterAmount sdk.Int, secondsPassed float64) (*sdk.Dec, error) {
@@ -64,4 +76,10 @@ func calculateInflationApy(beforeAmount, afterAmount sdk.Int, secondsPassed floa
 	pow := sdk.NewDec(SecondsPerYear).Quo(sdk.MustNewDecFromStr(fmt.Sprintf("%f", secondsPassed))).RoundInt()
 	inflation := diff.Quo(avg).Add(sdk.OneDec()).Power(pow.Uint64()).Sub(sdk.OneDec())
 	return &inflation, nil
+}
+
+func calculateInflationApr(beforeAmount, afterAmount sdk.Int, secondsPassed float64) *sdk.Dec {
+	diff := afterAmount.Sub(beforeAmount).ToDec()
+	inflation := diff.Quo(sdk.MustNewDecFromStr(fmt.Sprintf("%f", secondsPassed))).QuoInt(beforeAmount).MulInt64(SecondsPerYear)
+	return &inflation
 }
