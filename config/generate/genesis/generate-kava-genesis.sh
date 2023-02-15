@@ -287,9 +287,10 @@ set-app-state issuance.params.assets '
     }
 }]'
 
-# x/kavamint: set kavamint inflation params
-jq '.app_state.kavamint.params.community_pool_inflation = "0.150000000000000000"' $DATA/config/genesis.json | sponge $DATA/config/genesis.json
-jq '.app_state.kavamint.params.staking_rewards_apy = "0.200000000000000000"' $DATA/config/genesis.json | sponge $DATA/config/genesis.json
+# x/mint
+# jq '.app_state.mint.params.mint_denom = "ukava"' $DATA/config/genesis.json | sponge $DATA/config/genesis.json
+jq '.app_state.mint.params.inflation_min = "0.750000000000000000"' $DATA/config/genesis.json | sponge $DATA/config/genesis.json
+jq '.app_state.mint.params.inflation_max = "0.750000000000000000"' $DATA/config/genesis.json | sponge $DATA/config/genesis.json
 
 # x/pricefeed (uses $oracle)
 set-app-state pricefeed
