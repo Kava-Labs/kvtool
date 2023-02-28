@@ -107,6 +107,7 @@ function add-genesis-account {
   # NOTE: this successfully sets the account's initial funds.
   # however, the `auth.accounts` item added is always an EthAccount.
   # THIS SCRIPT OVERRIDES ALL `auth.accounts` AFTER ALL add-genesis-account calls are made
+  # The different account overrides can be see in ./auth.accounts/*.json
   $BINARY add-genesis-account "$account_name_or_addr" "$initial_funds"
 }
 # add-genesis-account-key initiates an account with funds & adds the user's mnemonic to the keyring
@@ -118,6 +119,17 @@ function add-genesis-account-key {
   mnemonic=$(jq -r "$mnemonic_path.mnemonic" $ADDRESSES)
 
   echo "$mnemonic" | $BINARY keys add "$account_name" --recover
+  add-genesis-account "$account_name" "$initial_funds"
+}
+# same as above, but use --eth (for coin type 60 & ethermint's ethsecp256k1 signing algorithm)
+function add-eth-genesis-account-key {
+  account_name=$1
+  mnemonic_path=$2
+  initial_funds=$3
+
+  mnemonic=$(jq -r "$mnemonic_path.mnemonic" $ADDRESSES)
+
+  echo "$mnemonic" | $BINARY keys add "$account_name" --eth --recover
   add-genesis-account "$account_name" "$initial_funds"
 }
 function get-address {
@@ -181,10 +193,18 @@ vesting_periodic=$(get-address .kava.users.vesting_periodic)
 export vesting_periodic
 add-genesis-account-key vesting-periodic '.kava.users.vesting_periodic' 10000000000ukava
 
+
+whalefunds=1000000000000ukava,10000000000000000bkava-"$valoper",10000000000000000bnb,10000000000000000btcb,10000000000000000busd,1000000000000000000hard,1000000000000000000swp,10000000000000000usdx,10000000000000000xrpb
+# whale account
 whale=$(get-address '.kava.users.whale')
 export whale
-whalefunds=1000000000000ukava,10000000000000000bkava-"$valoper",10000000000000000bnb,10000000000000000btcb,10000000000000000busd,1000000000000000000hard,1000000000000000000swp,10000000000000000usdx,10000000000000000xrpb
 add-genesis-account-key whale '.kava.users.whale' "$whalefunds"
+
+# another whale, but setup as EthAccount
+whale2=$(get-address '.kava.users.whale2')
+export whale2
+add-eth-genesis-account-key whale2 '.kava.users.whale2' "$whalefunds"
+
 # dev-wallet! key is in 1pass.
 devwallet=$(jq -r '.kava.users.dev_wallet.address' $ADDRESSES)
 export devwallet
