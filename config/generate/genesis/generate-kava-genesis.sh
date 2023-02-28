@@ -74,6 +74,9 @@ trace = true' $DATA/config/app.toml
 # Enable unsafe CORs
 sed -i '' 's/enabled-unsafe-cors = false/enabled-unsafe-cors = true/g' $DATA/config/app.toml
 
+# Set the min gas fee
+sed -i '' 's/minimum-gas-prices = "0ukava"/minimum-gas-prices = "0.001ukava;1000000000akava"/g' $DATA/config/app.toml
+
 #######################
 ##### CLIENT.TOML #####
 #######################
