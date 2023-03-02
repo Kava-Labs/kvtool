@@ -4,12 +4,21 @@
 # NOTE: many values here were just copied directly. there are much better ways
 #  that they could be abstracted and reduced down to simple to modify lists of values.
 
+# you can use this to generate different chains.
+# by default it generates the files in the kava master template.
+# env controls:
+# DEST - destination dir. ex: ./config/templates/kava/master/initstate/.kava
+# DENOM - sets the primary denom
+#         this is respected in the validator setup and then a final find&replace for ukava -> $DENOM
+# SKIP_INCENTIVES - ignore setting genesis.app_state.incentive.params
+
 set -e
 
 mkdir -p scratch
 
 DATA=./scratch/.kava
-DEST=./config/templates/kava/master/initstate/.kava
+DEST=${DEST:-./config/templates/kava/master/initstate/.kava}
+DENOM=${DENOM:-ukava}
 ADDRESSES=./config/common/addresses.json
 
 BINARY="kava --home $DATA"
@@ -148,9 +157,9 @@ validator=$(get-address '.kava.validators[0]')
 export validator
 valoper=$(jq -r '.kava.validators[0].val_address' $ADDRESSES)
 export valoper
-add-genesis-account-key validator '.kava.validators[0]' 2000000000ukava
+add-genesis-account-key validator '.kava.validators[0]' 2000000000"$DENOM"
 
-$BINARY gentx validator 1000000000ukava \
+$BINARY gentx validator 1000000000"$DENOM" \
 --chain-id="$chainID" \
 --moniker="validator"
 
@@ -312,7 +321,9 @@ jq '.app_state.feemarket.params.no_base_fee = true' $DATA/config/genesis.json|sp
 set-app-state hard.params.money_markets
 
 # x/incentive params
-set-app-state incentive.params
+if [ "$SKIP_INCENTIVES" != true ]; then
+  set-app-state incentive.params
+fi
 
 # # TODO: are nonempty swap claims important?
 
@@ -346,6 +357,16 @@ jq '.app_state.savings.params.supported_denoms =
 
 # x/swap (uses $whale)
 set-app-state swap
+
+########################
+##### CHANGE DENOM #####
+########################
+if [ "$DENOM" != "ukava" ]; then
+  # Replace ukava with $DENOM in genesis
+  sed -i '' 's/ukava/'"$DENOM"'/g' $DATA/config/genesis.json
+  # Replace ukava with $DENOM in app.toml
+  sed -i '' 's/ukava/'"$DENOM"'/g' $DATA/config/app.toml
+fi
 
 ############################
 ##### MOVE FILE ASSETS #####

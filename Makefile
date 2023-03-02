@@ -3,3 +3,6 @@ install:
 
 generate-kava-genesis:
 	bash ./config/generate/genesis/generate-kava-genesis.sh
+
+generate-ibc-genesis:
+	DEST=./config/templates/ibcchain/master/initstate/.kava DENOM=uatom SKIP_INCENTIVES=true bash ./config/generate/genesis/generate-kava-genesis.sh
