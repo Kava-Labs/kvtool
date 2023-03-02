@@ -2,12 +2,10 @@ package cmd
 
 import (
 	"fmt"
-	"io/ioutil"
 	"strconv"
 
 	"github.com/cosmos/cosmos-sdk/codec"
 	"github.com/spf13/cobra"
-
 	"github.com/tendermint/tendermint/crypto/ed25519"
 	"github.com/tendermint/tendermint/p2p"
 )
@@ -29,12 +27,8 @@ func NodeKeysCmd(cdc *codec.LegacyAmino) *cobra.Command {
 				nodeKey := &p2p.NodeKey{
 					PrivKey: privKey,
 				}
-				jsonBytes, err := codec.MarshalJSONIndent(cdc, nodeKey)
-				if err != nil {
-					return err
-				}
 				fileName := fmt.Sprintf("node_key_%d.json", i)
-				err = ioutil.WriteFile(fileName, jsonBytes, 0600)
+				err = nodeKey.SaveAs(fileName)
 				if err != nil {
 					return err
 				}
