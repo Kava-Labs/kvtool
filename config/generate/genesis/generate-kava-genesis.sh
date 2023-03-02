@@ -7,6 +7,7 @@
 # you can use this to generate different chains.
 # by default it generates the files in the kava master template.
 # env controls:
+# CHAIN_ID - the chain id. default: kavalocalnet_8888-1
 # DEST - destination dir. ex: ./config/templates/kava/master/initstate/.kava
 # DENOM - sets the primary denom
 #         this is respected in the validator setup and then a final find&replace for ukava -> $DENOM
@@ -60,7 +61,7 @@ function set-app-state {
 rm -rf $DATA
 
 # Create new data directory, overwriting any that alread existed
-chainID="kavalocalnet_8888-1"
+chainID=${CHAIN_ID:-kavalocalnet_8888-1}
 $BINARY init validator --chain-id $chainID
 
 # Copy over original validator keys

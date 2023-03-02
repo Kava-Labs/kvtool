@@ -1,6 +1,6 @@
 {
-  "genesis_time": "2023-03-02T23:05:00.596061Z",
-  "chain_id": "kavalocalnet_8888-1",
+  "genesis_time": "2023-03-02T23:32:38.985254Z",
+  "chain_id": "kavalocalnet_8889-2",
   "initial_height": "1",
   "consensus_params": {
     "block": {
@@ -1440,7 +1440,7 @@
             }
           },
           "signatures": [
-            "pXwMGXiukR3vIWEZ/46eof59kFCoG9rTqVnAywkTDrFUGy5FdSZpv3V2+1PNZc1kHY1b/anMwwTJkvq5HG5Xmw=="
+            "A/G3TAValTx0KtuHgdPZk8r5aIzCnIUagmtfVWJYJ240tbFFg2TJ1WBjH1KmpSXpZUq06eff9jU/DsOtYwMJxA=="
           ]
         }
       ]
