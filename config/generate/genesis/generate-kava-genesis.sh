@@ -84,7 +84,7 @@ sed -i '' 's/pruning = "default"/pruning = "nothing"/g' $DATA/config/app.toml
 ##### CLIENT.TOML #####
 #######################
 # Set client chain id
-sed -i '' 's/chain-id = ""/chain-id = "kavalocalnet_8888-1"/g' $DATA/config/client.toml
+sed -i '' 's/chain-id = ""/chain-id = "'"$chainID"'"/g' $DATA/config/client.toml
 
 #######################
 ##### CONFIG.TOML #####
@@ -148,7 +148,7 @@ validator=$(get-address '.kava.validators[0]')
 export validator
 valoper=$(jq -r '.kava.validators[0].val_address' $ADDRESSES)
 export valoper
-add-genesis-account-key validator '.kava.validators[0]' 1000000000ukava
+add-genesis-account-key validator '.kava.validators[0]' 2000000000ukava
 
 $BINARY gentx validator 1000000000ukava \
 --chain-id="$chainID" \
