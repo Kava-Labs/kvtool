@@ -33,7 +33,7 @@ function set-app-state {
 
   # apply manipulation to contents if present, otherwise, use file contents.
   if [ -z "$manipulation" ]; then
-    contents=$(cat $file)
+    contents=$(cat "$file")
   else
     contents=$(jq "$manipulation" "$file")
   fi
@@ -74,6 +74,12 @@ trace = true' $DATA/config/app.toml
 # Enable unsafe CORs
 sed -i '' 's/enabled-unsafe-cors = false/enabled-unsafe-cors = true/g' $DATA/config/app.toml
 
+# Set the min gas fee
+sed -i '' 's/minimum-gas-prices = "0ukava"/minimum-gas-prices = "0.001ukava;1000000000akava"/g' $DATA/config/app.toml
+
+# Disable pruning
+sed -i '' 's/pruning = "default"/pruning = "nothing"/g' $DATA/config/app.toml
+
 #######################
 ##### CLIENT.TOML #####
 #######################
@@ -107,7 +113,8 @@ function add-genesis-account {
   # NOTE: this successfully sets the account's initial funds.
   # however, the `auth.accounts` item added is always an EthAccount.
   # THIS SCRIPT OVERRIDES ALL `auth.accounts` AFTER ALL add-genesis-account calls are made
-  $BINARY add-genesis-account $account_name_or_addr $initial_funds
+  # The different account overrides can be see in ./auth.accounts/*.json
+  $BINARY add-genesis-account "$account_name_or_addr" "$initial_funds"
 }
 # add-genesis-account-key initiates an account with funds & adds the user's mnemonic to the keyring
 function add-genesis-account-key {
@@ -117,17 +124,30 @@ function add-genesis-account-key {
 
   mnemonic=$(jq -r "$mnemonic_path.mnemonic" $ADDRESSES)
 
-  echo "$mnemonic" | $BINARY keys add $account_name --recover
-  add-genesis-account $account_name $initial_funds
+  echo "$mnemonic" | $BINARY keys add "$account_name" --recover
+  add-genesis-account "$account_name" "$initial_funds"
+}
+# same as above, but use --eth (for coin type 60 & ethermint's ethsecp256k1 signing algorithm)
+function add-eth-genesis-account-key {
+  account_name=$1
+  mnemonic_path=$2
+  initial_funds=$3
+
+  mnemonic=$(jq -r "$mnemonic_path.mnemonic" $ADDRESSES)
+
+  echo "$mnemonic" | $BINARY keys add "$account_name" --eth --recover
+  add-genesis-account "$account_name" "$initial_funds"
 }
 function get-address {
   path=$1
-  echo $(jq -r "$path.address" $ADDRESSES)
+  jq -r "$path.address" $ADDRESSES
 }
 
 # Setup Validator
-export validator=$(get-address '.kava.validators[0]')
-export valoper=$(jq -r '.kava.validators[0].val_address' $ADDRESSES)
+validator=$(get-address '.kava.validators[0]')
+export validator
+valoper=$(jq -r '.kava.validators[0].val_address' $ADDRESSES)
+export valoper
 add-genesis-account-key validator '.kava.validators[0]' 1000000000ukava
 
 $BINARY gentx validator 1000000000ukava \
@@ -137,47 +157,71 @@ $BINARY gentx validator 1000000000ukava \
 $BINARY collect-gentxs
 
 # Bep3 Deputies
-export bnb_cold=$(get-address '.kava.deputys.bnb.cold_wallet')
+bnb_cold=$(get-address '.kava.deputys.bnb.cold_wallet')
+export bnb_cold
 add-genesis-account-key deputy-bnb-cold '.kava.deputys.bnb.cold_wallet' 1000000000000ukava
-export bnb_deputy=$(get-address '.kava.deputys.bnb.hot_wallet')
+bnb_deputy=$(get-address '.kava.deputys.bnb.hot_wallet')
+export bnb_deputy
 add-genesis-account-key deputy-bnb-hot '.kava.deputys.bnb.hot_wallet' 1000000000000ukava
 
-export btcb_cold=$(get-address '.kava.deputys.btcb.cold_wallet')
+btcb_cold=$(get-address '.kava.deputys.btcb.cold_wallet')
+export btcb_cold
 add-genesis-account-key deputy-btcb-cold '.kava.deputys.btcb.cold_wallet' 1000000000000ukava
-export btcb_deputy=$(get-address '.kava.deputys.btcb.hot_wallet')
+btcb_deputy=$(get-address '.kava.deputys.btcb.hot_wallet')
+export btcb_deputy
 add-genesis-account-key deputy-btcb-hot '.kava.deputys.btcb.hot_wallet' 1000000000000ukava
 
-export xrpb_cold=$(get-address '.kava.deputys.xrpb.cold_wallet')
+xrpb_cold=$(get-address '.kava.deputys.xrpb.cold_wallet')
+export xrpb_cold
 add-genesis-account-key deputy-xrpb-cold '.kava.deputys.xrpb.cold_wallet' 1000000000000ukava
-export xrpb_deputy=$(get-address '.kava.deputys.xrpb.hot_wallet')
+xrpb_deputy=$(get-address '.kava.deputys.xrpb.hot_wallet')
+export xrpb_deputy
 add-genesis-account-key deputy-xrpb-hot '.kava.deputys.xrpb.hot_wallet' 1000000000000ukava
 
-export busd_cold=$(get-address '.kava.deputys.busd.cold_wallet')
+busd_cold=$(get-address '.kava.deputys.busd.cold_wallet')
+export busd_cold
 add-genesis-account-key deputy-busd-cold '.kava.deputys.busd.cold_wallet' 1000000000000ukava
-export busd_deputy=$(get-address '.kava.deputys.busd.hot_wallet')
+busd_deputy=$(get-address '.kava.deputys.busd.hot_wallet')
+export busd_deputy
 add-genesis-account-key deputy-busd-hot '.kava.deputys.busd.hot_wallet' 1000000000000ukava
 
 # Users
-export generic_0=$(get-address .kava.users.generic_0)
+generic_0=$(get-address .kava.users.generic_0)
+export generic_0
 add-genesis-account-key generic-0 '.kava.users.generic_0' 1000000000000ukava
-export generic_1=$(get-address .kava.users.generic_1)
+generic_1=$(get-address .kava.users.generic_1)
+export generic_1
 add-genesis-account-key generic-1 '.kava.users.generic_1' 1000000000000ukava
-export generic_2=$(get-address .kava.users.generic_2)
+generic_2=$(get-address .kava.users.generic_2)
+export generic_2
 add-genesis-account-key generic-2 '.kava.users.generic_2' 1000000000000ukava
-export vesting_periodic=$(get-address .kava.users.vesting_periodic)
+vesting_periodic=$(get-address .kava.users.vesting_periodic)
+export vesting_periodic
 add-genesis-account-key vesting-periodic '.kava.users.vesting_periodic' 10000000000ukava
 
-export whale=$(get-address '.kava.users.whale')
+
 whalefunds=1000000000000ukava,10000000000000000bkava-"$valoper",10000000000000000bnb,10000000000000000btcb,10000000000000000busd,1000000000000000000hard,1000000000000000000swp,10000000000000000usdx,10000000000000000xrpb
-add-genesis-account-key whale '.kava.users.whale' $whalefunds
+# whale account
+whale=$(get-address '.kava.users.whale')
+export whale
+add-genesis-account-key whale '.kava.users.whale' "$whalefunds"
+
+# another whale, but setup as EthAccount
+whale2=$(get-address '.kava.users.whale2')
+export whale2
+add-eth-genesis-account-key whale2 '.kava.users.whale2' "$whalefunds"
+
 # dev-wallet! key is in 1pass.
-export devwallet=$(jq -r '.kava.users.dev_wallet.address' $ADDRESSES)
-add-genesis-account $devwallet $whalefunds
+devwallet=$(jq -r '.kava.users.dev_wallet.address' $ADDRESSES)
+export devwallet
+add-genesis-account "$devwallet" "$whalefunds"
 
 # Misc
-export oracle=$(get-address '.kava.oracles[0]')
+oracle=$(get-address '.kava.oracles[0]')
+export oracle
 add-genesis-account-key oracle '.kava.oracles[0]' 1000000000000ukava
-export committee=$(get-address '.kava.committee_members[0]')
+committee=$(get-address '.kava.committee_members[0]')
+export committee
 add-genesis-account-key committee '.kava.committee_members[0]' 1000000000000ukava
 
 # Accounts without keys
@@ -275,7 +319,7 @@ set-app-state incentive.params
 # x/issuance assets
 set-app-state issuance.params.assets '
   [.[] | {
-    owner: "'$devwallet'",
+    owner: "'"$devwallet"'",
     denom: .,
     blocked_addresses: [],
     paused: false,
@@ -297,7 +341,7 @@ set-app-state pricefeed
 
 # x/savings supported denoms
 jq '.app_state.savings.params.supported_denoms =
-  [ "bkava-'$valoper'", "usdx", "ukava", "hard", "swp", "bkava", "erc20/multichain/usdc" ]' \
+  [ "bkava-'"$valoper"'", "usdx", "ukava", "hard", "swp", "bkava", "erc20/multichain/usdc" ]' \
   $DATA/config/genesis.json | sponge $DATA/config/genesis.json
 
 # x/swap (uses $whale)
