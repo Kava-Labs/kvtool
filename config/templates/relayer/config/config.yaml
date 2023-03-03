@@ -9,7 +9,7 @@ chains:
     value:
       key: testkey
       chain-id: kavalocalnet_8889-2
-      rpc-addr: http://ibcnode:26658
+      rpc-addr: http://ibcnode:26657
       account-prefix: kava
       keyring-backend: test
       gas-adjustment: 1.2

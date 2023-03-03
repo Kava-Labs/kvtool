@@ -49,9 +49,9 @@ trust_threshold = { numerator = '1', denominator = '3' }
 
 [[chains]]
 id = 'kavalocalnet_8889-2'
-rpc_addr = 'http://ibcnode:26658'
-grpc_addr = 'http://ibcnode:9092'
-websocket_addr = 'ws://ibcnode:26658/websocket'
+rpc_addr = 'http://ibcnode:26657'
+grpc_addr = 'http://ibcnode:9090'
+websocket_addr = 'ws://ibcnode:26657/websocket'
 rpc_timeout = '10s'
 account_prefix = 'kava'
 key_name = 'testkey'
