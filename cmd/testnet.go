@@ -21,7 +21,6 @@ const (
 	binanceServiceName = "binance"
 	deputyServiceName  = "deputy"
 
-	// hermesImageTag  = "informalsystems/hermes:1.3.0"
 	hermesImageTag  = "kava/hermes:latest"
 	relayerImageTag = "kava/relayer:v2.2.0"
 
