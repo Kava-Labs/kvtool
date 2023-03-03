@@ -48,7 +48,7 @@ trusting_period = '30min'
 trust_threshold = { numerator = '1', denominator = '3' }
 
 [[chains]]
-id = 'kava-localnet-2'
+id = 'kavalocalnet_8889-2'
 rpc_addr = 'http://ibcnode:26658'
 grpc_addr = 'http://ibcnode:9092'
 websocket_addr = 'ws://ibcnode:26658/websocket'

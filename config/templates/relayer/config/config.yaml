@@ -1,20 +1,39 @@
 global:
   api-listen-addr: :5183
   timeout: 10s
+  memo: ""
   light-cache-size: 20
 chains:
-- key: testkey
-  chain-id: kavalocalnet_8888-1
-  rpc-addr: 'http://kavanode:26657'
-  account-prefix: kava
-  gas-adjustment: 1.5
-  gas-prices: 0.001ukava
-  trusting-period: 30m
-- key: testkey
-  chain-id: kava-localnet-2
-  rpc-addr: 'http://ibcnode:26658'
-  account-prefix: kava
-  gas-adjustment: 1.5
-  gas-prices: 0.001uatom
-  trusting-period: 30m
+  ibcchain:
+    type: cosmos
+    value:
+      key: testkey
+      chain-id: kavalocalnet_8889-2
+      rpc-addr: http://ibcnode:26658
+      account-prefix: kava
+      keyring-backend: test
+      gas-adjustment: 1.2
+      gas-prices: 0.001uatom
+      min-gas-amount: 0
+      debug: false
+      timeout: 20s
+      output-format: json
+      sign-mode: direct
+      extra-codecs: []
+  kava:
+    type: cosmos
+    value:
+      key: testkey
+      chain-id: kavalocalnet_8888-1
+      rpc-addr: http://kavanode:26657
+      account-prefix: kava
+      keyring-backend: test
+      gas-adjustment: 1.5
+      gas-prices: 0.001ukava
+      min-gas-amount: 0
+      debug: false
+      timeout: 20s
+      output-format: json
+      sign-mode: direct
+      extra-codecs: []
 paths: {}
