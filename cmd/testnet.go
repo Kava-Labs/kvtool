@@ -20,6 +20,12 @@ const (
 	kavaServiceName    = "kava"
 	binanceServiceName = "binance"
 	deputyServiceName  = "deputy"
+
+	hermesImageTag  = "kava/hermes:latest"
+	relayerImageTag = "kava/relayer:v2.2.0"
+
+	kavaChainId = "kavalocalnet_8888-1"
+	ibcChainId  = "kavalocalnet_8889-2"
 )
 
 var (
@@ -215,29 +221,33 @@ available services: %s
 			if ibcFlag {
 				fmt.Printf("Starting ibc connection between chains...\n")
 				time.Sleep(time.Second * 7)
-				restoreKeys1Cmd := exec.Command("docker", "run", "-v", fmt.Sprintf("%s:%s", filepath.Join(generatedConfigDir, "hermes"), "/home/hermes/.hermes"), "kava/hermes:latest", "keys", "restore", "kavalocalnet_8888-1", "-n", "testkey", "-m", "very health column only surface project output absent outdoor siren reject era legend legal twelve setup roast lion rare tunnel devote style random food", "--hd-path", "m/44'/459'/0'/0/0")
+				restoreKeys1Cmd := exec.Command("docker", "run", "-v", fmt.Sprintf("%s:%s", filepath.Join(generatedConfigDir, "hermes"), "/home/hermes/.hermes"), hermesImageTag, "keys", "restore", kavaChainId, "-n", "testkey", "-m", "very health column only surface project output absent outdoor siren reject era legend legal twelve setup roast lion rare tunnel devote style random food", "--hd-path", "m/44'/459'/0'/0/0")
 				restoreKeys1Cmd.Stdout = os.Stdout
 				restoreKeys1Cmd.Stderr = os.Stderr
 				if err := restoreKeys1Cmd.Run(); err != nil {
 					fmt.Println(err.Error())
+					return fmt.Errorf("[hermes] failed to restore keys on main chain")
 				}
-				restoreKeys2Cmd := exec.Command("docker", "run", "-v", fmt.Sprintf("%s:%s", filepath.Join(generatedConfigDir, "hermes"), "/home/hermes/.hermes"), "kava/hermes:latest", "keys", "restore", "kava-localnet-2", "-n", "testkey", "-m", "very health column only surface project output absent outdoor siren reject era legend legal twelve setup roast lion rare tunnel devote style random food", "--hd-path", "m/44'/459'/0'/0/0")
+				restoreKeys2Cmd := exec.Command("docker", "run", "-v", fmt.Sprintf("%s:%s", filepath.Join(generatedConfigDir, "hermes"), "/home/hermes/.hermes"), hermesImageTag, "keys", "restore", ibcChainId, "-n", "testkey", "-m", "very health column only surface project output absent outdoor siren reject era legend legal twelve setup roast lion rare tunnel devote style random food", "--hd-path", "m/44'/459'/0'/0/0")
 				restoreKeys2Cmd.Stdout = os.Stdout
 				restoreKeys2Cmd.Stderr = os.Stderr
 				if err := restoreKeys2Cmd.Run(); err != nil {
 					fmt.Println(err.Error())
+					return fmt.Errorf("[hermes] failed to restore keys on ibc chain")
 				}
-				generatePathCmd := exec.Command("docker", "run", "-v", fmt.Sprintf("%s:%s", filepath.Join(generatedConfigDir, "relayer"), "/relayer/.relayer"), "--network", "generated_default", "kava/relayer:v1.0.0", "paths", "generate", "kava-localnet-2", "kavalocalnet_8888-1", "transfer", "--port", "transfer")
-				generatePathCmd.Stdout = os.Stdout
-				generatePathCmd.Stderr = os.Stderr
-				if err := generatePathCmd.Run(); err != nil {
+				setupIbcPathCmd := exec.Command("docker", "run", "-v", fmt.Sprintf("%s:%s", filepath.Join(generatedConfigDir, "relayer"), "/home/relayer/.relayer"), "--network", "generated_default", relayerImageTag, "rly", "paths", "new", kavaChainId, ibcChainId, "transfer")
+				setupIbcPathCmd.Stdout = os.Stdout
+				setupIbcPathCmd.Stderr = os.Stderr
+				if err := setupIbcPathCmd.Run(); err != nil {
 					fmt.Println(err.Error())
+					return fmt.Errorf("[hermes] failed to setup ibc path")
 				}
-				openConnectionCmd := exec.Command("docker", "run", "-v", fmt.Sprintf("%s:%s", filepath.Join(generatedConfigDir, "relayer"), "/relayer/.relayer"), "--network", "generated_default", "kava/relayer:v1.0.0", "tx", "link", "transfer", "-d", "-o", "3s")
+				openConnectionCmd := exec.Command("docker", "run", "-v", fmt.Sprintf("%s:%s", filepath.Join(generatedConfigDir, "relayer"), "/home/relayer/.relayer"), "--network", "generated_default", relayerImageTag, "rly", "transact", "link", "transfer")
 				openConnectionCmd.Stdout = os.Stdout
 				openConnectionCmd.Stderr = os.Stderr
 				if err := openConnectionCmd.Run(); err != nil {
 					fmt.Println(err.Error())
+					return fmt.Errorf("[relayer] failed to open ibc connection")
 				}
 				fmt.Printf("IBC connection complete, starting relayer process...\n")
 				time.Sleep(time.Second * 5)

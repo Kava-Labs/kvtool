@@ -2,18 +2,28 @@ version: '3'
 
 services:
     ibcnode:
-        image: "kava/kava:v0.16.1"
+        image: "kava/kava:master"
+        # use the default ports, but shift them when exposing to host so they dont conflict.
         ports:
             # open rpc port
-            - "26658:26658"
+            - "26658:26657"
             # open rest port
-            - "1318:1318"
+            - "1318:1317"
             # open grpc port
-            - "9092:9092"
+            - "9092:9090"
             # open grpc-web port
-            - "9093:9093"
+            - "9093:9091"
+            # evm json-rpc
+            - "8547:8545"
+            # evm websocket json-rpc
+            - "8548:8546"
         volumes:
             - "./ibcchain/initstate/.kava/config:/root/.kava/config"
             - "./ibcchain/initstate/.kava/keyring-test/:/root/.kava/keyring-test"
         # start the blockchain, and set rpc to listen to connections from outside the container
-        command: ["sh", "-c", "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26658"]
+        command:
+            [
+                "sh",
+                "-c",
+                "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657"
+            ]
