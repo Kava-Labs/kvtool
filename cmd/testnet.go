@@ -221,20 +221,6 @@ available services: %s
 			if ibcFlag {
 				fmt.Printf("Starting ibc connection between chains...\n")
 				time.Sleep(time.Second * 7)
-				restoreKeys1Cmd := exec.Command("docker", "run", "-v", fmt.Sprintf("%s:%s", filepath.Join(generatedConfigDir, "hermes"), "/home/hermes/.hermes"), hermesImageTag, "keys", "restore", kavaChainId, "-n", "testkey", "-m", "very health column only surface project output absent outdoor siren reject era legend legal twelve setup roast lion rare tunnel devote style random food", "--hd-path", "m/44'/459'/0'/0/0")
-				restoreKeys1Cmd.Stdout = os.Stdout
-				restoreKeys1Cmd.Stderr = os.Stderr
-				if err := restoreKeys1Cmd.Run(); err != nil {
-					fmt.Println(err.Error())
-					return fmt.Errorf("[hermes] failed to restore keys on main chain")
-				}
-				restoreKeys2Cmd := exec.Command("docker", "run", "-v", fmt.Sprintf("%s:%s", filepath.Join(generatedConfigDir, "hermes"), "/home/hermes/.hermes"), hermesImageTag, "keys", "restore", ibcChainId, "-n", "testkey", "-m", "very health column only surface project output absent outdoor siren reject era legend legal twelve setup roast lion rare tunnel devote style random food", "--hd-path", "m/44'/459'/0'/0/0")
-				restoreKeys2Cmd.Stdout = os.Stdout
-				restoreKeys2Cmd.Stderr = os.Stderr
-				if err := restoreKeys2Cmd.Run(); err != nil {
-					fmt.Println(err.Error())
-					return fmt.Errorf("[hermes] failed to restore keys on ibc chain")
-				}
 				setupIbcPathCmd := exec.Command("docker", "run", "-v", fmt.Sprintf("%s:%s", filepath.Join(generatedConfigDir, "relayer"), "/home/relayer/.relayer"), "--network", "generated_default", relayerImageTag, "rly", "paths", "new", kavaChainId, ibcChainId, "transfer")
 				setupIbcPathCmd.Stdout = os.Stdout
 				setupIbcPathCmd.Stderr = os.Stderr
@@ -258,7 +244,6 @@ available services: %s
 				restartCmd := exec.Command("docker-compose", "--file", filepath.Join(generatedConfigDir, "docker-compose.yaml"), "up", "-d", "hermes-relayer")
 				restartCmd.Stdout = os.Stdout
 				restartCmd.Stderr = os.Stderr
-
 				err = restartCmd.Run()
 				if err != nil {
 					return err

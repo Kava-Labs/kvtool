@@ -1,0 +1,27 @@
+{
+  "public_key": "xpub6Go7odPf4c8YXBW13aBGVaE5VEFgLQGFBSq4An6QFu9MrdskyTixhVrpgi6gBnpXGejeySeoKnPoBnuZmsTuEC4vh8xY6xErc1VoaBSdtLx",
+  "private_key": "xprvA3omQ7rmEEaFJhRXwYeG8SHLwCRBvwYPpDuTNPgnhZcNyqYcRvQi9hYLqTijnJXFYwkw6MZZWfHisbBLE8o96nPALVjfriwki9DG4PNHAFS",
+  "account": "kava1ypjp0m04pyp73hwgtc0dgkx0e9rrydecm054da",
+  "address": [
+    32,
+    100,
+    23,
+    237,
+    245,
+    9,
+    3,
+    232,
+    221,
+    200,
+    94,
+    30,
+    212,
+    88,
+    207,
+    201,
+    70,
+    50,
+    55,
+    56
+  ]
+}
