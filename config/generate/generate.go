@@ -1,6 +1,7 @@
 package generate
 
 import (
+	"os"
 	"path/filepath"
 
 	"github.com/otiai10/copy"
@@ -102,6 +103,11 @@ func GenerateGethConfig(generatedConfigDir string) error {
 
 func GenerateHermesRelayerConfig(generatedConfigDir string) error {
 	err := copy.Copy(filepath.Join(ConfigTemplatesDir, "hermes"), filepath.Join(generatedConfigDir, "hermes"))
+	if err != nil {
+		return err
+	}
+	// config.toml must be writable
+	err = os.Chmod(filepath.Join(generatedConfigDir, "hermes", "config.toml"), 0666)
 	return err
 }
 
