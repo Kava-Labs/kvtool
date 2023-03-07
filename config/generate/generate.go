@@ -119,11 +119,10 @@ func AddHermesRelayerToNetwork(generatedConfigDir string) error {
 }
 
 func GenerateGoRelayerConfig(generatedConfigDir string) error {
-	err := copy.Copy(filepath.Join(ConfigTemplatesDir, "relayer"), filepath.Join(generatedConfigDir, "relayer"))
-	if err != nil {
-		return err
-	}
-	// config.yaml must be writable
-	err = os.Chmod(filepath.Join(generatedConfigDir, "relayer", "config", "config.yaml"), 0666)
+	err := copy.Copy(
+		filepath.Join(ConfigTemplatesDir, "relayer"),
+		filepath.Join(generatedConfigDir, "relayer"),
+		copy.Options{AddPermission: 0666},
+	)
 	return err
 }
