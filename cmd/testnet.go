@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"errors"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -88,7 +87,7 @@ available services: %s
 `, supportedServices),
 		Example:   "gen-config kava binance deputy --kava.configTemplate v0.10",
 		ValidArgs: supportedServices,
-		Args:      Minimum1ValidArgs,
+		Args:      cobra.MatchAll(cobra.MinimumNArgs(1), cobra.OnlyValidArgs),
 		RunE: func(_ *cobra.Command, args []string) error {
 
 			// 1) clear out generated config folder
@@ -391,14 +390,6 @@ available services: %s
 	rootCmd.AddCommand(exportCmd)
 
 	return rootCmd
-}
-
-// Minimum1ValidArgs checks if the input command has valid args
-func Minimum1ValidArgs(cmd *cobra.Command, args []string) error {
-	if len(args) < 1 {
-		return errors.New("must specify at least one argument")
-	}
-	return cobra.OnlyValidArgs(cmd, args)
 }
 
 func replaceCurrentProcess(command ...string) error {
