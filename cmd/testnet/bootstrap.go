@@ -28,6 +28,10 @@ $ KAVA_TAG=v0.21 kvtool testnet bootstrap
 `,
 		Args: cobra.NoArgs,
 		RunE: func(_ *cobra.Command, _ []string) error {
+			if err := validateBootstrapFlags(); err != nil {
+				return err
+			}
+
 			dockerComposeConfig := generatedPath("docker-compose.yaml")
 			// shutdown existing networks if a docker-compose.yaml already exists.
 			if _, err := os.Stat(dockerComposeConfig); err == nil {
@@ -81,6 +85,13 @@ $ KAVA_TAG=v0.21 kvtool testnet bootstrap
 				}
 			}
 
+			// validation of all necessary data for an automated chain upgrade is performed in validateBootstrapFlags()
+			if chainUpgradeName != "" {
+				if err := runChainUpgrade(); err != nil {
+					return err
+				}
+			}
+
 			return nil
 		},
 	}
@@ -89,7 +100,27 @@ $ KAVA_TAG=v0.21 kvtool testnet bootstrap
 	bootstrapCmd.Flags().BoolVar(&ibcFlag, "ibc", false, "flag for if ibc is enabled")
 	bootstrapCmd.Flags().BoolVar(&gethFlag, "geth", false, "flag for if geth is enabled")
 
+	bootstrapCmd.Flags().StringVar(&chainUpgradeName, "upgrade-name", "", "name of automated chain upgrade to run, if desired. the upgrade must be defined in the running kava container.")
+	bootstrapCmd.Flags().Int64Var(&chainUpgradeHeight, "upgrade-height", 0, "height of automated chain upgrade to run.")
+	bootstrapCmd.Flags().StringVar(&chainUpgradeBaseImageTag, "upgrade-base-image-tag", "", "the kava docker image tag that will be upgraded. the chain is initialized from this tag and then upgraded to the new image.\nthe binary must be compatible with the kava.configTemplate genesis.")
+
 	return bootstrapCmd
+}
+
+func validateBootstrapFlags() error {
+	hasUpgradeName := chainUpgradeName != ""
+	hasUpgradeBaseImageTag := chainUpgradeBaseImageTag != ""
+	// the upgrade flags are all or nothing. both the upgrade name and the image tag are required for
+	// an automated chain upgrade
+	if (hasUpgradeName && !hasUpgradeBaseImageTag) || (hasUpgradeBaseImageTag && !hasUpgradeName) {
+		return fmt.Errorf("automated chain upgrades require both --upgrade-name and --upgrade-base-image-tag to be defined")
+	}
+	// if running an automate chain upgrade, there must be a sufficiently high upgrade height.
+	if hasUpgradeName && chainUpgradeHeight < 10 {
+		// TODO: is 10 a sufficient height for an upgrade to occur with proposal & voting? probs not..
+		return fmt.Errorf("upgrade height must be > 10, found %d", chainUpgradeHeight)
+	}
+	return nil
 }
 
 func setupIbcChannelAndRelayer(dockerComposeConfig string) error {
@@ -129,5 +160,11 @@ func setupIbcChannelAndRelayer(dockerComposeConfig string) error {
 		return err
 	}
 	fmt.Printf("IBC relayer ready!\n")
+	return nil
+}
+
+func runChainUpgrade() error {
+	fmt.Println("would run chain upgrade!")
+	fmt.Printf("upgrade name: %s\nupgrade height: %d\nstarting tag: %s\n", chainUpgradeName, chainUpgradeHeight, chainUpgradeBaseImageTag)
 	return nil
 }

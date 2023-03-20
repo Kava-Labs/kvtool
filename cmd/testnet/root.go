@@ -28,6 +28,10 @@ var (
 	gethFlag           bool
 	kavaConfigTemplate string
 
+	chainUpgradeName         string
+	chainUpgradeHeight       int64
+	chainUpgradeBaseImageTag string
+
 	generatedConfigDir        string
 	defaultGeneratedConfigDir string = filepath.Join(generate.ConfigTemplatesDir, "../..", "full_configs", "generated")
 
