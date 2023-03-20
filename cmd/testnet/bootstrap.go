@@ -193,8 +193,13 @@ func runChainUpgrade(dockerComposeConfig string) error {
 	cmd := fmt.Sprintf("tx committee submit-proposal 3 %s --gas auto --gas-adjustment 1.2 --gas-prices 0.05ukava --from committee -y",
 		upgradeJson,
 	)
-	err = runKavaCli(dockerComposeConfig, strings.Split(cmd, " ")...)
-	if err != nil {
+	if err := runKavaCli(dockerComposeConfig, strings.Split(cmd, " ")...); err != nil {
+		return err
+	}
+
+	// vote on the committee proposal
+	cmd = "tx committee vote 1 yes --from committee --gas auto --gas-adjustment 1.2 --gas-prices 0.01ukava -y"
+	if err := runKavaCli(dockerComposeConfig, strings.Split(cmd, " ")...); err != nil {
 		return err
 	}
 
@@ -223,7 +228,6 @@ func runKavaCli(dockerComposeConfig string, args ...string) error {
 	pieces[0] = "exec"
 	pieces[1] = "-T"
 	pieces[2] = "kavanode"
-	// pieces[3] = "--"
 	pieces[3] = "kava"
 	pieces = append(pieces, args...)
 	return runDockerCompose(dockerComposeConfig, pieces...)
