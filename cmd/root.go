@@ -5,6 +5,8 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/kava-labs/kava/app"
 	"github.com/spf13/cobra"
+
+	"github.com/kava-labs/kvtool/cmd/testnet"
 )
 
 var rootCmd = &cobra.Command{
@@ -25,7 +27,7 @@ func Execute() error {
 	rootCmd.AddCommand(MaccAddrCmd())
 	rootCmd.AddCommand(NodeKeysCmd(cdc))
 	rootCmd.AddCommand(SwapIDCmd(cdc))
-	rootCmd.AddCommand(TestnetCmd())
+	rootCmd.AddCommand(testnet.Cmd())
 
 	return rootCmd.Execute()
 }
