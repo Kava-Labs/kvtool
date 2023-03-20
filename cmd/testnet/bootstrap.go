@@ -10,6 +10,10 @@ import (
 	"github.com/spf13/cobra"
 )
 
+// this env variable is used in supported kava templates to allow override of the image tag
+// automated chain upgrades make use of it to switch between binary versions.
+const kavaTagEnv = "KAVA_TAG"
+
 func BootstrapCmd() *cobra.Command {
 	bootstrapCmd := &cobra.Command{
 		Use:   "bootstrap",
@@ -75,6 +79,13 @@ $ KAVA_TAG=v0.21 kvtool testnet bootstrap
 			upCmd := exec.Command("docker-compose", "--file", dockerComposeConfig, "up", "-d")
 			upCmd.Stdout = os.Stdout
 			upCmd.Stderr = os.Stderr
+			// when doing automated chain upgrade, ensure the node starts with the desired image tag
+			// if this is empty, the docker-compose should default to intended image tag
+			if chainUpgradeBaseImageTag != "" {
+				upCmd.Env = os.Environ()
+				upCmd.Env = append(upCmd.Env, fmt.Sprintf("%s=%s", kavaTagEnv, chainUpgradeBaseImageTag))
+				fmt.Printf("starting chain with image tag %s\n", chainUpgradeBaseImageTag)
+			}
 			if err := upCmd.Run(); err != nil {
 				fmt.Println(err.Error())
 			}
@@ -100,6 +111,7 @@ $ KAVA_TAG=v0.21 kvtool testnet bootstrap
 	bootstrapCmd.Flags().BoolVar(&ibcFlag, "ibc", false, "flag for if ibc is enabled")
 	bootstrapCmd.Flags().BoolVar(&gethFlag, "geth", false, "flag for if geth is enabled")
 
+	// optional data for running an automated chain upgrade
 	bootstrapCmd.Flags().StringVar(&chainUpgradeName, "upgrade-name", "", "name of automated chain upgrade to run, if desired. the upgrade must be defined in the running kava container.")
 	bootstrapCmd.Flags().Int64Var(&chainUpgradeHeight, "upgrade-height", 0, "height of automated chain upgrade to run.")
 	bootstrapCmd.Flags().StringVar(&chainUpgradeBaseImageTag, "upgrade-base-image-tag", "", "the kava docker image tag that will be upgraded. the chain is initialized from this tag and then upgraded to the new image.\nthe binary must be compatible with the kava.configTemplate genesis.")
@@ -166,5 +178,6 @@ func setupIbcChannelAndRelayer(dockerComposeConfig string) error {
 func runChainUpgrade() error {
 	fmt.Println("would run chain upgrade!")
 	fmt.Printf("upgrade name: %s\nupgrade height: %d\nstarting tag: %s\n", chainUpgradeName, chainUpgradeHeight, chainUpgradeBaseImageTag)
+
 	return nil
 }
