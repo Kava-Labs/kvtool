@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
-	"path/filepath"
 	"time"
 
 	"github.com/kava-labs/kvtool/config/generate"
@@ -18,11 +17,11 @@ func BootstrapCmd() *cobra.Command {
 		Example: "bootstrap --kava.configTemplate v0.12",
 		Args:    cobra.NoArgs,
 		RunE: func(_ *cobra.Command, _ []string) error {
-			cmd := exec.Command("docker-compose", "--file", filepath.Join(generatedConfigDir, "docker-compose.yaml"), "down")
+			cmd := exec.Command("docker-compose", "--file", generatedPath("docker-compose.yaml"), "down")
 			cmd.Stdout = os.Stdout
 			cmd.Stderr = os.Stderr
 			// check that dockerfile exists before calling 'docker-compose down down'
-			if _, err := os.Stat(filepath.Join(generatedConfigDir, "docker-compose.yaml")); err == nil {
+			if _, err := os.Stat(generatedPath("docker-compose.yaml")); err == nil {
 				if err2 := cmd.Run(); err2 != nil {
 					return err2
 				}
@@ -50,14 +49,14 @@ func BootstrapCmd() *cobra.Command {
 				}
 			}
 
-			cmd = exec.Command("docker-compose", "--file", filepath.Join(generatedConfigDir, "docker-compose.yaml"), "pull")
+			cmd = exec.Command("docker-compose", "--file", generatedPath("docker-compose.yaml"), "pull")
 			cmd.Stdout = os.Stdout
 			cmd.Stderr = os.Stderr
 			if err := cmd.Run(); err != nil {
 				fmt.Println(err.Error())
 			}
 
-			upCmd := exec.Command("docker-compose", "--file", filepath.Join(generatedConfigDir, "docker-compose.yaml"), "up", "-d")
+			upCmd := exec.Command("docker-compose", "--file", generatedPath("docker-compose.yaml"), "up", "-d")
 			upCmd.Stdout = os.Stdout
 			upCmd.Stderr = os.Stderr
 			if err := upCmd.Run(); err != nil {
@@ -66,14 +65,14 @@ func BootstrapCmd() *cobra.Command {
 			if ibcFlag {
 				fmt.Printf("Starting ibc connection between chains...\n")
 				time.Sleep(time.Second * 7)
-				setupIbcPathCmd := exec.Command("docker", "run", "-v", fmt.Sprintf("%s:%s", filepath.Join(generatedConfigDir, "relayer"), "/home/relayer/.relayer"), "--network", "generated_default", relayerImageTag, "rly", "paths", "new", kavaChainId, ibcChainId, "transfer")
+				setupIbcPathCmd := exec.Command("docker", "run", "-v", fmt.Sprintf("%s:%s", generatedPath("relayer"), "/home/relayer/.relayer"), "--network", "generated_default", relayerImageTag, "rly", "paths", "new", kavaChainId, ibcChainId, "transfer")
 				setupIbcPathCmd.Stdout = os.Stdout
 				setupIbcPathCmd.Stderr = os.Stderr
 				if err := setupIbcPathCmd.Run(); err != nil {
 					fmt.Println(err.Error())
 					return fmt.Errorf("[hermes] failed to setup ibc path")
 				}
-				openConnectionCmd := exec.Command("docker", "run", "-v", fmt.Sprintf("%s:%s", filepath.Join(generatedConfigDir, "relayer"), "/home/relayer/.relayer"), "--network", "generated_default", relayerImageTag, "rly", "transact", "link", "transfer")
+				openConnectionCmd := exec.Command("docker", "run", "-v", fmt.Sprintf("%s:%s", generatedPath("relayer"), "/home/relayer/.relayer"), "--network", "generated_default", relayerImageTag, "rly", "transact", "link", "transfer")
 				openConnectionCmd.Stdout = os.Stdout
 				openConnectionCmd.Stderr = os.Stderr
 				if err := openConnectionCmd.Run(); err != nil {
@@ -86,7 +85,7 @@ func BootstrapCmd() *cobra.Command {
 				if err != nil {
 					return err
 				}
-				restartCmd := exec.Command("docker-compose", "--file", filepath.Join(generatedConfigDir, "docker-compose.yaml"), "up", "-d", "hermes-relayer")
+				restartCmd := exec.Command("docker-compose", "--file", generatedPath("docker-compose.yaml"), "up", "-d", "hermes-relayer")
 				restartCmd.Stdout = os.Stdout
 				restartCmd.Stderr = os.Stderr
 				err = restartCmd.Run()

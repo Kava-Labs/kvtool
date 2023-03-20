@@ -3,8 +3,17 @@ package testnet
 import (
 	"os"
 	"os/exec"
+	"path/filepath"
 	"syscall"
 )
+
+// generatedPath is a utility that calls filepath.Join with generatedConfigDir as the base directory
+func generatedPath(elem ...string) string {
+	pieces := make([]string, 1, len(elem)+1)
+	pieces[0] = generatedConfigDir
+	pieces = append(pieces, elem...)
+	return filepath.Join(pieces...)
+}
 
 func replaceCurrentProcess(command ...string) error {
 	if len(command) < 1 {

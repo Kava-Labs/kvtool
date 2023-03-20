@@ -5,7 +5,6 @@ import (
 	"io/ioutil"
 	"os"
 	"os/exec"
-	"path/filepath"
 	"strings"
 	"time"
 
@@ -19,7 +18,7 @@ func ExportCmd() *cobra.Command {
 		Example: "export",
 		Args:    cobra.NoArgs,
 		RunE: func(_ *cobra.Command, _ []string) error {
-			cmd := exec.Command("docker-compose", "--file", filepath.Join(generatedConfigDir, "docker-compose.yaml"), "stop")
+			cmd := exec.Command("docker-compose", "--file", generatedPath("docker-compose.yaml"), "stop")
 			cmd.Stdout = os.Stdout
 			cmd.Stderr = os.Stderr
 
@@ -53,8 +52,8 @@ func ExportCmd() *cobra.Command {
 				return err
 			}
 
-			localKavaMountPath := filepath.Join(generatedConfigDir, "kava", "initstate", ".kava", "config")
-			localIbcMountPath := filepath.Join(generatedConfigDir, "ibcchain", "initstate", ".kava", "config")
+			localKavaMountPath := generatedPath("kava", "initstate", ".kava", "config")
+			localIbcMountPath := generatedPath("ibcchain", "initstate", ".kava", "config")
 
 			kavaExportCmd := exec.Command(
 				"docker", "run",
@@ -125,7 +124,7 @@ func ExportCmd() *cobra.Command {
 			}
 
 			fmt.Printf("Restarting testnet...")
-			restartCmd := exec.Command("docker-compose", "--file", filepath.Join(generatedConfigDir, "docker-compose.yaml"), "start")
+			restartCmd := exec.Command("docker-compose", "--file", generatedPath("docker-compose.yaml"), "start")
 			restartCmd.Stdout = os.Stdout
 			restartCmd.Stderr = os.Stderr
 

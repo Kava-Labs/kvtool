@@ -62,7 +62,7 @@ func Cmd() *cobra.Command {
 			}
 
 			// 3) run docker-compose up
-			cmd := []string{"docker-compose", "--file", filepath.Join(generatedConfigDir, "docker-compose.yaml"), "up"}
+			cmd := []string{"docker-compose", "--file", generatedPath("docker-compose.yaml"), "up"}
 			fmt.Println("running:", strings.Join(cmd, " "))
 			if err := replaceCurrentProcess(cmd...); err != nil {
 				return fmt.Errorf("could not run command: %v", err)
