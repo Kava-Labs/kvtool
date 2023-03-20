@@ -181,8 +181,10 @@ func setupIbcChannelAndRelayer() error {
 }
 
 func runChainUpgrade() error {
-	fmt.Println("would run chain upgrade!")
-	fmt.Printf("upgrade name: %s\nupgrade height: %d\nstarting tag: %s\n", chainUpgradeName, chainUpgradeHeight, chainUpgradeBaseImageTag)
+	fmt.Printf(
+		"configured for automated chain upgrade\n\tupgrade name: %s\n\tupgrade height: %d\n\tstarting tag: %s\n",
+		chainUpgradeName, chainUpgradeHeight, chainUpgradeBaseImageTag,
+	)
 
 	// write upgrade proposal to json file
 	upgradeJson, err := writeUpgradeProposal()
@@ -257,6 +259,7 @@ func blockGTE(n int64) backoff.Operation {
 			return err
 		}
 		if height < n {
+			fmt.Printf("waiting for chain to reach height %d, currently @ %d\n", n, height)
 			return fmt.Errorf("waiting for height %d, found %d", n, height)
 		}
 		return nil
