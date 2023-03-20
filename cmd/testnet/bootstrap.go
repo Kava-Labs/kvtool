@@ -202,13 +202,13 @@ func runChainUpgrade() error {
 	cmd := fmt.Sprintf("tx committee submit-proposal 3 %s --gas auto --gas-adjustment 1.2 --gas-prices 0.05ukava --from committee -y",
 		upgradeJson,
 	)
-	if err := runKavaCli(dockerComposeConfig, strings.Split(cmd, " ")...); err != nil {
+	if err := runKavaCli(strings.Split(cmd, " ")...); err != nil {
 		return err
 	}
 
 	// vote on the committee proposal
 	cmd = "tx committee vote 1 yes --from committee --gas auto --gas-adjustment 1.2 --gas-prices 0.01ukava -y"
-	if err := runKavaCli(dockerComposeConfig, strings.Split(cmd, " ")...); err != nil {
+	if err := runKavaCli(strings.Split(cmd, " ")...); err != nil {
 		return err
 	}
 
@@ -217,6 +217,13 @@ func runChainUpgrade() error {
 		return err
 	}
 	fmt.Printf("chain has reached upgrade height (%d) and halted!\n", chainUpgradeHeight)
+
+	fmt.Println("restarting chain with upgraded image")
+	// this runs with the desired image because KAVA_TAG will be correctly set, or if that is unset,
+	// the docker-compose files supporting upgrades default to the desired template version.
+	if err := runDockerCompose("up", "--force-recreate", "-d", "kavanode"); err != nil {
+		return err
+	}
 
 	return nil
 }
@@ -267,17 +274,17 @@ func blockGTE(n int64) backoff.Operation {
 }
 
 // runKavaCli execs into the kava container and runs `kava args...`
-func runKavaCli(dockerComposeConfig string, args ...string) error {
+func runKavaCli(args ...string) error {
 	pieces := make([]string, 4, len(args)+4)
 	pieces[0] = "exec"
 	pieces[1] = "-T"
 	pieces[2] = "kavanode"
 	pieces[3] = "kava"
 	pieces = append(pieces, args...)
-	return runDockerCompose(dockerComposeConfig, pieces...)
+	return runDockerCompose(pieces...)
 }
 
-func runDockerCompose(dockerComposeConfig string, args ...string) error {
+func runDockerCompose(args ...string) error {
 	pieces := make([]string, 2, len(args)+2)
 	pieces[0] = "--file"
 	pieces[1] = dockerComposeConfig
@@ -285,5 +292,6 @@ func runDockerCompose(dockerComposeConfig string, args ...string) error {
 	cmd := exec.Command("docker-compose", pieces...)
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
+	fmt.Println(cmd.String())
 	return cmd.Run()
 }
