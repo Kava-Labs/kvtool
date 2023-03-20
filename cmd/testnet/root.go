@@ -74,9 +74,12 @@ func Cmd() *cobra.Command {
 	testnetCmd.PersistentFlags().StringVar(&generatedConfigDir, "generated-dir", defaultGeneratedConfigDir, "output directory for the generated config")
 
 	testnetCmd.AddCommand(GenConfigCmd())
+	testnetCmd.AddCommand(BootstrapCmd())
+	testnetCmd.AddCommand(DcCmd())
+
+	// kept for convenience/legacy reasons.
 	testnetCmd.AddCommand(UpCmd())
 	testnetCmd.AddCommand(DownCmd())
-	testnetCmd.AddCommand(BootstrapCmd())
 
 	return testnetCmd
 }
