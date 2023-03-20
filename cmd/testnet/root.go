@@ -75,6 +75,7 @@ func Cmd() *cobra.Command {
 
 	testnetCmd.AddCommand(GenConfigCmd())
 	testnetCmd.AddCommand(BootstrapCmd())
+	testnetCmd.AddCommand(ExportCmd())
 	testnetCmd.AddCommand(DcCmd())
 
 	// kept for convenience/legacy reasons.
