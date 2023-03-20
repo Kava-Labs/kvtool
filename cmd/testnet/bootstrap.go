@@ -4,9 +4,11 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
+	"strconv"
 	"strings"
 	"time"
 
+	"github.com/cenkalti/backoff/v4"
 	"github.com/kava-labs/kvtool/config/generate"
 	"github.com/spf13/cobra"
 )
@@ -14,6 +16,8 @@ import (
 // this env variable is used in supported kava templates to allow override of the image tag
 // automated chain upgrades make use of it to switch between binary versions.
 const kavaTagEnv = "KAVA_TAG"
+
+var dockerComposeConfig string
 
 func BootstrapCmd() *cobra.Command {
 	bootstrapCmd := &cobra.Command{
@@ -37,7 +41,7 @@ $ KAVA_TAG=v0.21 kvtool testnet bootstrap
 				return err
 			}
 
-			dockerComposeConfig := generatedPath("docker-compose.yaml")
+			dockerComposeConfig = generatedPath("docker-compose.yaml")
 			// shutdown existing networks if a docker-compose.yaml already exists.
 			if _, err := os.Stat(dockerComposeConfig); err == nil {
 				downCmd := exec.Command("docker-compose", "--file", dockerComposeConfig, "down")
@@ -92,14 +96,14 @@ $ KAVA_TAG=v0.21 kvtool testnet bootstrap
 			}
 
 			if ibcFlag {
-				if err := setupIbcChannelAndRelayer(dockerComposeConfig); err != nil {
+				if err := setupIbcChannelAndRelayer(); err != nil {
 					return err
 				}
 			}
 
 			// validation of all necessary data for an automated chain upgrade is performed in validateBootstrapFlags()
 			if chainUpgradeName != "" {
-				if err := runChainUpgrade(dockerComposeConfig); err != nil {
+				if err := runChainUpgrade(); err != nil {
 					return err
 				}
 			}
@@ -136,7 +140,7 @@ func validateBootstrapFlags() error {
 	return nil
 }
 
-func setupIbcChannelAndRelayer(dockerComposeConfig string) error {
+func setupIbcChannelAndRelayer() error {
 	fmt.Printf("Starting ibc connection between chains...\n")
 	setupIbcPathCmd := exec.Command("docker", "run", "-v", fmt.Sprintf("%s:%s", generatedPath("relayer"), "/home/relayer/.relayer"), "--network", "generated_default", relayerImageTag, "rly", "paths", "new", kavaChainId, ibcChainId, "transfer")
 	setupIbcPathCmd.Stdout = os.Stdout
@@ -176,7 +180,7 @@ func setupIbcChannelAndRelayer(dockerComposeConfig string) error {
 	return nil
 }
 
-func runChainUpgrade(dockerComposeConfig string) error {
+func runChainUpgrade() error {
 	fmt.Println("would run chain upgrade!")
 	fmt.Printf("upgrade name: %s\nupgrade height: %d\nstarting tag: %s\n", chainUpgradeName, chainUpgradeHeight, chainUpgradeBaseImageTag)
 
@@ -186,7 +190,10 @@ func runChainUpgrade(dockerComposeConfig string) error {
 		return err
 	}
 
-	time.Sleep(5 * time.Second)
+	// wait for chain to start producing blocks
+	if err := waitForBlock(1, 5*time.Second); err != nil {
+		return err
+	}
 
 	// submit upgrade proposal via God Committee (committee 3)
 	fmt.Println("submitting upgrade proposal")
@@ -202,6 +209,12 @@ func runChainUpgrade(dockerComposeConfig string) error {
 	if err := runKavaCli(dockerComposeConfig, strings.Split(cmd, " ")...); err != nil {
 		return err
 	}
+
+	// wait for chain halt at upgrade height
+	if err := waitForBlock(chainUpgradeHeight, time.Duration(chainUpgradeHeight)*4*time.Second); err != nil {
+		return err
+	}
+	fmt.Printf("chain has reached upgrade height (%d) and halted!\n", chainUpgradeHeight)
 
 	return nil
 }
@@ -220,6 +233,34 @@ func writeUpgradeProposal() (string, error) {
 		[]byte(content),
 		0644,
 	)
+}
+
+func waitForBlock(n int64, timeout time.Duration) error {
+	b := backoff.NewExponentialBackOff()
+	b.MaxInterval = 2 * time.Second
+	b.MaxElapsedTime = timeout
+	return backoff.Retry(blockGTE(n), b)
+}
+
+// blockGTE is a backoff operation that uses kava's CLI to query the chain for the current block number
+// the operation fails in the following cases:
+// 1. the chain cannot be reached, 2. result cannot be parsed, 3. current height is less than desired height `n`
+func blockGTE(n int64) backoff.Operation {
+	return func() error {
+		cmd := "kava status | jq -r .sync_info.latest_block_height"
+		out, err := exec.Command("docker-compose", "-f", dockerComposeConfig, "exec", "-T", "kavanode", "bash", "-c", cmd).Output()
+		if err != nil {
+			return err
+		}
+		height, err := strconv.ParseInt(strings.TrimSpace(string(out)), 10, 64)
+		if err != nil {
+			return err
+		}
+		if height < n {
+			return fmt.Errorf("waiting for height %d, found %d", n, height)
+		}
+		return nil
+	}
 }
 
 // runKavaCli execs into the kava container and runs `kava args...`

@@ -4,6 +4,7 @@ go 1.18
 
 require (
 	github.com/Jeffail/gabs/v2 v2.6.0
+	github.com/cenkalti/backoff/v4 v4.1.1
 	github.com/cosmos/cosmos-sdk v0.45.10
 	github.com/kava-labs/go-tools v0.0.0-20221224222255-39c4be283202
 	github.com/kava-labs/kava v0.21.0
