@@ -15,7 +15,11 @@ func DcCmd() *cobra.Command {
 $ kvtool testnet dc -- logs -f
 
 Get a shell in the kava node container:
-$ kvtool testnet dc exec kavanode /bin/bash`,
+$ kvtool testnet dc exec kavanode /bin/bash
+
+Run some kava cli commands:
+$ kvtool testnet dc exec kavanode kava keys add magic-account
+$ kvtool testnet dc exec kavanode -- kava tx bank send whale <address> 1000000000ukava --gas-prices 1000ukava -y`,
 		Args: cobra.ArbitraryArgs,
 		RunE: func(_ *cobra.Command, args []string) error {
 			cmd := []string{"docker-compose", "--file", generatedPath("docker-compose.yaml")}
