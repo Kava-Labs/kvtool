@@ -12,10 +12,21 @@ import (
 
 func BootstrapCmd() *cobra.Command {
 	bootstrapCmd := &cobra.Command{
-		Use:     "bootstrap",
-		Short:   "A convenience command that creates a kava testnet with the input configTemplate (defaults to master)",
-		Example: "bootstrap --kava.configTemplate v0.12",
-		Args:    cobra.NoArgs,
+		Use:   "bootstrap",
+		Short: "A convenience command that creates a kava testnet with the input configTemplate (defaults to master)",
+		Example: `Run kava node with particular template:
+$ kvtool testnet bootstrap --kava.configTemplate v0.12
+
+Run kava & another chain with open IBC channel & relayer:
+$ kvtool testnet bootstrap --ibc
+
+Run kava & an ethereum node:
+$ kvtool testnet bootstrap --geth
+
+The master template supports dynamic override of the Kava node's container image:
+$ KAVA_TAG=v0.21 kvtool testnet bootstrap
+`,
+		Args: cobra.NoArgs,
 		RunE: func(_ *cobra.Command, _ []string) error {
 			cmd := exec.Command("docker-compose", "--file", generatedPath("docker-compose.yaml"), "down")
 			cmd.Stdout = os.Stdout
