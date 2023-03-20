@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
+	"strings"
 	"time"
 
 	"github.com/kava-labs/kvtool/config/generate"
@@ -98,7 +99,7 @@ $ KAVA_TAG=v0.21 kvtool testnet bootstrap
 
 			// validation of all necessary data for an automated chain upgrade is performed in validateBootstrapFlags()
 			if chainUpgradeName != "" {
-				if err := runChainUpgrade(); err != nil {
+				if err := runChainUpgrade(dockerComposeConfig); err != nil {
 					return err
 				}
 			}
@@ -175,9 +176,66 @@ func setupIbcChannelAndRelayer(dockerComposeConfig string) error {
 	return nil
 }
 
-func runChainUpgrade() error {
+func runChainUpgrade(dockerComposeConfig string) error {
 	fmt.Println("would run chain upgrade!")
 	fmt.Printf("upgrade name: %s\nupgrade height: %d\nstarting tag: %s\n", chainUpgradeName, chainUpgradeHeight, chainUpgradeBaseImageTag)
 
+	// write upgrade proposal to json file
+	upgradeJson, err := writeUpgradeProposal()
+	if err != nil {
+		return err
+	}
+
+	time.Sleep(5 * time.Second)
+
+	// submit upgrade proposal via God Committee (committee 3)
+	fmt.Println("submitting upgrade proposal")
+	cmd := fmt.Sprintf("tx committee submit-proposal 3 %s --gas auto --gas-adjustment 1.2 --gas-prices 0.05ukava --from committee -y",
+		upgradeJson,
+	)
+	err = runKavaCli(dockerComposeConfig, strings.Split(cmd, " ")...)
+	if err != nil {
+		return err
+	}
+
 	return nil
+}
+
+// writeUpgradeProposal writes a proposal json to a file in the kavanode container and returns the path
+func writeUpgradeProposal() (string, error) {
+	content := fmt.Sprintf(`{
+		"@type": "/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal",
+		"title": "Automated Chain Upgrade",
+		"description": "An auto-magical chain upgrade performed by kvtool.",
+		"plan": { "name": "%s", "height": "%d" }
+	}`, chainUpgradeName, chainUpgradeHeight)
+	// write the file to a location inside the container
+	return "/root/.kava/config/upgrade-proposal.json", os.WriteFile(
+		generatedPath("kava", "initstate", ".kava", "config", "upgrade-proposal.json"),
+		[]byte(content),
+		0644,
+	)
+}
+
+// runKavaCli execs into the kava container and runs `kava args...`
+func runKavaCli(dockerComposeConfig string, args ...string) error {
+	pieces := make([]string, 4, len(args)+4)
+	pieces[0] = "exec"
+	pieces[1] = "-T"
+	pieces[2] = "kavanode"
+	// pieces[3] = "--"
+	pieces[3] = "kava"
+	pieces = append(pieces, args...)
+	return runDockerCompose(dockerComposeConfig, pieces...)
+}
+
+func runDockerCompose(dockerComposeConfig string, args ...string) error {
+	pieces := make([]string, 2, len(args)+2)
+	pieces[0] = "--file"
+	pieces[1] = dockerComposeConfig
+	pieces = append(pieces, args...)
+	cmd := exec.Command("docker-compose", pieces...)
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+	return cmd.Run()
 }
