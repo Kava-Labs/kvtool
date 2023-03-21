@@ -17,8 +17,6 @@ import (
 // automated chain upgrades make use of it to switch between binary versions.
 const kavaTagEnv = "KAVA_TAG"
 
-var dockerComposeConfig string
-
 func BootstrapCmd() *cobra.Command {
 	bootstrapCmd := &cobra.Command{
 		Use:   "bootstrap",
@@ -85,13 +83,9 @@ $ KAVA_TAG=v0.21.0 kvtool testnet bootstrap --upgrade-name v0.21.0 --upgrade-hei
 				return err
 			}
 
-			dockerComposeConfig = generatedPath("docker-compose.yaml")
 			// shutdown existing networks if a docker-compose.yaml already exists.
-			if _, err := os.Stat(dockerComposeConfig); err == nil {
-				downCmd := exec.Command("docker-compose", "--file", dockerComposeConfig, "down")
-				downCmd.Stdout = os.Stdout
-				downCmd.Stderr = os.Stderr
-				if err2 := downCmd.Run(); err2 != nil {
+			if _, err := os.Stat(generatedPath("docker-compose.yaml")); err == nil {
+				if err2 := dockerComposeCmd("down").Run(); err2 != nil {
 					return err2
 				}
 			}
@@ -118,16 +112,11 @@ $ KAVA_TAG=v0.21.0 kvtool testnet bootstrap --upgrade-name v0.21.0 --upgrade-hei
 				}
 			}
 
-			pullContainersCmd := exec.Command("docker-compose", "--file", dockerComposeConfig, "pull")
-			pullContainersCmd.Stdout = os.Stdout
-			pullContainersCmd.Stderr = os.Stderr
-			if err := pullContainersCmd.Run(); err != nil {
+			if err := dockerComposeCmd("pull").Run(); err != nil {
 				fmt.Println(err.Error())
 			}
 
-			upCmd := exec.Command("docker-compose", "--file", dockerComposeConfig, "up", "-d")
-			upCmd.Stdout = os.Stdout
-			upCmd.Stderr = os.Stderr
+			upCmd := dockerComposeCmd("up", "-d")
 			// when doing automated chain upgrade, ensure the node starts with the desired image tag
 			// if this is empty, the docker-compose should default to intended image tag
 			if chainUpgradeBaseImageTag != "" {
@@ -206,11 +195,7 @@ func setupIbcChannelAndRelayer() error {
 	if err != nil {
 		return err
 	}
-	restartCmd := exec.Command("docker-compose", "--file", dockerComposeConfig, "up", "-d", "hermes-relayer")
-	restartCmd.Stdout = os.Stdout
-	restartCmd.Stderr = os.Stderr
-	err = restartCmd.Run()
-	if err != nil {
+	if err := dockerComposeCmd("up", "-d", "hermes-relayer").Run(); err != nil {
 		return err
 	}
 	pruneCmd := exec.Command("docker", "container", "prune", "-f")
@@ -265,7 +250,7 @@ func runChainUpgrade() error {
 	fmt.Println("restarting chain with upgraded image")
 	// this runs with the desired image because KAVA_TAG will be correctly set, or if that is unset,
 	// the docker-compose files supporting upgrades default to the desired template version.
-	if err := runDockerCompose("up", "--force-recreate", "-d", "kavanode"); err != nil {
+	if err := dockerComposeCmd("up", "--force-recreate", "-d", "kavanode").Run(); err != nil {
 		return err
 	}
 
@@ -301,7 +286,7 @@ func waitForBlock(n int64, timeout time.Duration) error {
 func blockGTE(n int64) backoff.Operation {
 	return func() error {
 		cmd := "kava status | jq -r .sync_info.latest_block_height"
-		out, err := exec.Command("docker-compose", "-f", dockerComposeConfig, "exec", "-T", "kavanode", "bash", "-c", cmd).Output()
+		out, err := exec.Command("docker-compose", "-f", generatedPath("docker-compose.yaml"), "exec", "-T", "kavanode", "bash", "-c", cmd).Output()
 		if err != nil {
 			return err
 		}
@@ -325,17 +310,16 @@ func runKavaCli(args ...string) error {
 	pieces[2] = "kavanode"
 	pieces[3] = "kava"
 	pieces = append(pieces, args...)
-	return runDockerCompose(pieces...)
+	return dockerComposeCmd(pieces...).Run()
 }
 
-func runDockerCompose(args ...string) error {
+func dockerComposeCmd(args ...string) *exec.Cmd {
 	pieces := make([]string, 2, len(args)+2)
 	pieces[0] = "--file"
-	pieces[1] = dockerComposeConfig
+	pieces[1] = generatedPath("docker-compose.yaml")
 	pieces = append(pieces, args...)
 	cmd := exec.Command("docker-compose", pieces...)
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
-	fmt.Println(cmd.String())
-	return cmd.Run()
+	return cmd
 }
