@@ -71,21 +71,6 @@ func GenerateDeputyConfig(generatedConfigDir string) error {
 	return err
 }
 
-func GenerateIbcChainConfig(generatedConfigDir string) error {
-	// copy templates into generated config folder
-	err := copy.Copy(filepath.Join(ConfigTemplatesDir, "ibcchain", "master"), filepath.Join(generatedConfigDir, "ibcchain"))
-	if err != nil {
-		return err
-	}
-
-	// put together final compose file
-	err = overwriteMergeYAML(
-		filepath.Join(ConfigTemplatesDir, "ibcchain", "master", "docker-compose.yaml"),
-		filepath.Join(generatedConfigDir, "docker-compose.yaml"),
-	)
-	return err
-}
-
 func GenerateGethConfig(generatedConfigDir string) error {
 	// copy templates into generated config folder
 	err := copy.Copy(filepath.Join(ConfigTemplatesDir, "geth"), filepath.Join(generatedConfigDir, "geth"))
@@ -96,6 +81,32 @@ func GenerateGethConfig(generatedConfigDir string) error {
 	// put together final compose file
 	err = overwriteMergeYAML(
 		filepath.Join(ConfigTemplatesDir, "geth", "docker-compose.yaml"),
+		filepath.Join(generatedConfigDir, "docker-compose.yaml"),
+	)
+	return err
+}
+
+// GenerateIbcConfigs calls all necessary generation funcs for setting up the ibcchain & relayer
+func GenerateIbcConfigs(generatedConfigDir string) error {
+	if err := GenerateIbcChainConfig(generatedConfigDir); err != nil {
+		return err
+	}
+	if err := GenerateHermesRelayerConfig(generatedConfigDir); err != nil {
+		return err
+	}
+	return GenerateGoRelayerConfig(generatedConfigDir)
+}
+
+func GenerateIbcChainConfig(generatedConfigDir string) error {
+	// copy templates into generated config folder
+	err := copy.Copy(filepath.Join(ConfigTemplatesDir, "ibcchain", "master"), filepath.Join(generatedConfigDir, "ibcchain"))
+	if err != nil {
+		return err
+	}
+
+	// put together final compose file
+	err = overwriteMergeYAML(
+		filepath.Join(ConfigTemplatesDir, "ibcchain", "master", "docker-compose.yaml"),
 		filepath.Join(generatedConfigDir, "docker-compose.yaml"),
 	)
 	return err
