@@ -23,6 +23,47 @@ func BootstrapCmd() *cobra.Command {
 	bootstrapCmd := &cobra.Command{
 		Use:   "bootstrap",
 		Short: "A convenience command that creates a kava testnet with the input configTemplate (defaults to master)",
+		Long: `Generate a kava testnet and optionally run/integrate various other resources.
+
+# General Overview
+This command runs local networks by performing the following three steps:
+1. Configure the desired resources with templates that are combined into a primary docker-compose configuration.
+2. Standup the docker-compose containers and network.
+3. Perform various modifications, restarts, configurations to the live networks based on the desired topology.
+
+# Templates
+The building blocks of the bootstrap command's services are templates which are defined in the
+directory kvtool/config/templates. As of right now, the template you run Kava with is configurable
+at runtime via the 'kava.configTemplate' flag. The Kava templates contain kava config directories
+(including a genesis.json) that are supported with the corresponding kava docker image tag.
+
+Some templates, like "master", support overriding the image tag via the KAVA_TAG env variable.
+
+# IBC
+The bootstrap command supports running a secondary chain and opening an IBC channel between the
+primary Kava node and the secondary chain. To set this up, simply use the --ibc flag.
+
+Once the two chains are started, the necessary txs are run to open a channel between the two chains
+and a relayer is started to relay transactions between them. The primary denom of the secondary chain
+is "uatom" and it runs under the docker container named "ibcchain".
+
+# Automated Chain Upgrades
+The bootstrap command supports running a chain that is then upgraded via an upgrade handler. The following
+flags are all required to run an automated software upgrade:
+
+--upgrade-name           - the name of the registered upgrade handler to be run.
+--upgrade-height         - the height at which the upgrade should occur.
+--upgrade-base-image-tag - the docker image tag of Kava that with which the chain is started.
+
+Note that the upgrade height must be high enough to facilitate the submission of an upgrade proposal,
+and the voting on it. If used with --ibc, note that the upgrade is initiated _after_ the IBC channel
+is opened, which can take 70+ blocks.
+
+When these flags are defined, the chain is initially started with the --upgrade-base-image-tag tag.
+As soon as the chain is configured & producing blocks, a committee proposal is submitted to update
+the chain. The committee uses First-Pass-the-Post voting so passes as soon as it gets consensus.
+The committee member account votes on the proposal and then we wait for the upgrade height to be
+reached. At that point, the chain halts and is restarted with the updated image tag.`,
 		Example: `Run kava node with particular template:
 $ kvtool testnet bootstrap --kava.configTemplate v0.12
 
@@ -33,7 +74,10 @@ Run kava & an ethereum node:
 $ kvtool testnet bootstrap --geth
 
 The master template supports dynamic override of the Kava node's container image:
-$ KAVA_TAG=v0.21 kvtool testnet bootstrap
+$ KAVA_TAG=v0.21.0 kvtool testnet bootstrap
+
+Test a chain upgrade from v0.19.2 -> v0.21.0:
+$ KAVA_TAG=v0.21.0 kvtool testnet bootstrap --upgrade-name v0.21.0 --upgrade-height 15 --upgrade-base-image-tag v0.19.2
 `,
 		Args: cobra.NoArgs,
 		RunE: func(_ *cobra.Command, _ []string) error {
@@ -117,9 +161,9 @@ $ KAVA_TAG=v0.21 kvtool testnet bootstrap
 	bootstrapCmd.Flags().BoolVar(&gethFlag, "geth", false, "flag for if geth is enabled")
 
 	// optional data for running an automated chain upgrade
-	bootstrapCmd.Flags().StringVar(&chainUpgradeName, "upgrade-name", "", "name of automated chain upgrade to run, if desired. the upgrade must be defined in the running kava container.")
+	bootstrapCmd.Flags().StringVar(&chainUpgradeName, "upgrade-name", "", "name of automated chain upgrade to run, if desired. the upgrade must be defined in the kava image container.")
 	bootstrapCmd.Flags().Int64Var(&chainUpgradeHeight, "upgrade-height", 0, "height of automated chain upgrade to run.")
-	bootstrapCmd.Flags().StringVar(&chainUpgradeBaseImageTag, "upgrade-base-image-tag", "", "the kava docker image tag that will be upgraded. the chain is initialized from this tag and then upgraded to the new image.\nthe binary must be compatible with the kava.configTemplate genesis.")
+	bootstrapCmd.Flags().StringVar(&chainUpgradeBaseImageTag, "upgrade-base-image-tag", "", "the kava docker image tag that will be upgraded.\nthe chain is initialized from this tag and then upgraded to the new image.\nthe binary must be compatible with the kava.configTemplate genesis.json.")
 
 	return bootstrapCmd
 }
