@@ -293,8 +293,8 @@ set-app-state cdp.params.collateral_params
 # x/committee (uses $committee)
 set-app-state committee.committees
 
-# x/distribution: disable community tax
-jq '.app_state.distribution.params.community_tax = "0.000000000000000000"' $DATA/config/genesis.json | sponge $DATA/config/genesis.json
+# x/distribution: set community tax
+jq '.app_state.distribution.params.community_tax = "0.750000000000000000"' $DATA/config/genesis.json | sponge $DATA/config/genesis.json
 
 # x/earn
 set-app-state earn.params.allowed_vaults

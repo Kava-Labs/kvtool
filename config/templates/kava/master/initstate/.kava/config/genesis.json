@@ -1,5 +1,5 @@
 {
-  "genesis_time": "2023-03-20T21:01:58.794829Z",
+  "genesis_time": "2023-03-22T22:37:32.48236Z",
   "chain_id": "kavalocalnet_8888-1",
   "initial_height": "1",
   "consensus_params": {
@@ -1189,7 +1189,7 @@
     },
     "distribution": {
       "params": {
-        "community_tax": "0.000000000000000000",
+        "community_tax": "0.750000000000000000",
         "base_proposer_reward": "0.010000000000000000",
         "bonus_proposer_reward": "0.040000000000000000",
         "withdraw_addr_enabled": true
