@@ -2,7 +2,7 @@ version: "3"
 
 services:
   kavanode:
-    image: "kava/kava:v0.14.1"
+    image: "kava/kava:${KAVA_TAG:-v0.14.1}"
     ports:
       # open default kava rpc port
       - "26657:26657"
@@ -14,10 +14,10 @@ services:
       [
         "sh",
         "-c",
-        "/root/.kvd/config/init-data-directory.sh && kvd start --pruning=nothing --rpc.laddr=tcp://0.0.0.0:26657",
+        "/root/.kvd/config/init-data-directory.sh && kvd start --pruning=nothing --rpc.laddr=tcp://0.0.0.0:26657"
       ]
   kavarest:
-    image: "kava/kava:v0.14.1"
+    image: "kava/kava:${KAVA_TAG:-v0.14.0}"
     ports:
       # open default rest port
       - "1317:1317"
@@ -28,5 +28,5 @@ services:
         "--node=tcp://kavanode:26657",
         "--trust-node",
         "--laddr=tcp://0.0.0.0:1317",
-        "--unsafe-cors",
+        "--unsafe-cors"
       ]
