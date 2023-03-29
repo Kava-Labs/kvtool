@@ -2,6 +2,8 @@
 
 Assorted dev tools for working with the kava blockchain.
 
+To get started with running a local kava network, check out our docs on [Getting Started](https://docs.kava.io/docs/cosmos/getting-started).
+
 ## Installation
 
 ```bash
@@ -10,21 +12,27 @@ make install
 
 ## Initialization: kvtool testnet
 
-Note: The current mainnet version of kava is `v0.16.0`. To start a local testnet
-with the current mainnet version use `--kava.configTemplate v0.16`. To start a
-local testnet with the latest unreleased version, use
-`--kava configTemplate master`
+Note that the most accurate documentation lives in the CLI itself. It's recommended you read through `kvtool testnet bootstrap --help`.
 
 Option 1:
 
 The `kvtool testnet bootstrap` command starts a local Kava blockchain as a
-background docker container called `generated_kavanode_1`. The bootstrap command
+background docker container called `generated-kavanode-1`. The bootstrap command
 only starts the Kava blockchain and Kava REST server services.
 
 ```bash
 # Start new testnet
 kvtool testnet bootstrap --kava.configTemplate master
 ```
+
+The endpoints are exposed to localhost:
+
+* RPC: http://localhost:26657
+* REST: http://localhost:1317
+* GRPC: http://localhost:9090
+* GRPC Websocket: http://localhost:9091
+* EVM JSON-RPC: http://localhost:8545
+* EVM Websocket: http://localhost:8546
 
 Option 2:
 
@@ -49,7 +57,7 @@ kvtool testnet down
 Additional flags can be added when initializing a testnet to add additional
 services:
 
-`--ibc`: Run Kava testnet with an additional IBC chain
+`--ibc`: Run Kava testnet with an additional IBC chain. The IBC chain runs in the container named `ibcnode`. It has primary denom `ukava`.
 
 Example:
 
@@ -92,6 +100,25 @@ To connect to the associated Ethereum wallet with Metamask, setup a new network 
 Finally, connect the mining account by importing the JSON config in [this directory](config/templates/geth/initstate/.geth/keystore)
 with [this password](config/templates/geth/initstate/eth-password).
 
+## Automated Chain Upgrade
+
+Kvtool supports running upgrades on a chain. To do this requires the kava final docker image to have a registered upgrade handler.
+The upgrade will start a chain with the docker container tag from `--upgrade-base-image-tag`. Once it reaches height `--upgrade-height`, it halts the chain for an upgrade named `--upgrade-name`. At that point, the container is restated with the desired container: `KAVA_TAG` if defined, of if not defined, the default tag for the config template.
+
+**Example**:
+Test a chain upgrade from v0.19.2 -> v0.21.0 at height 15.
+
+Using an overridden docker image tag:
+```
+$ KAVA_TAG=v0.21.0 kvtool testnet bootstrap --upgrade-name v0.21.0 --upgrade-height 15 --upgrade-base-image-tag v0.19.2
+```
+
+Using a config template:
+```
+Test a chain upgrade from v0.19.2 -> v0.21.0:
+$ kvtool testnet bootstrap --kava.configTemplate v0.21 --upgrade-name v0.21.0 --upgrade-height 15 --upgrade-base-image-tag v0.19.2
+```
+
 ## Usage: kvtool testnet
 
 REST APIs for both blockchains are exposed on localhost:
@@ -113,6 +140,8 @@ alias kava
 # For versions before v0.16.x
 alias dkvcli='docker exec -it generated_kavanode_1 kvcli'
 ```
+
+Note that for some architectures or docker versions, the containers are generated with hyphens (`-`) instead of underscores (`_`).
 
 You can test the set up and alias by executing a sample query:
 
