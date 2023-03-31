@@ -13,7 +13,7 @@ chains:
       account-prefix: kava
       keyring-backend: test
       gas-adjustment: 1.2
-      gas-prices: 0.001uatom
+      gas-prices: 0.01uatom
       min-gas-amount: 0
       debug: false
       timeout: 20s
@@ -28,8 +28,8 @@ chains:
       rpc-addr: http://kavanode:26657
       account-prefix: kava
       keyring-backend: test
-      gas-adjustment: 1.5
-      gas-prices: 0.001ukava
+      gas-adjustment: 1.2
+      gas-prices: 0.01ukava
       min-gas-amount: 0
       debug: false
       timeout: 20s

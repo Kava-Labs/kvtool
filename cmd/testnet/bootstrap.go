@@ -174,6 +174,11 @@ func validateBootstrapFlags() error {
 }
 
 func setupIbcChannelAndRelayer() error {
+	// wait for chain to be up and running before setting up ibc
+	if err := waitForBlock(1, 5*time.Second); err != nil {
+		return err
+	}
+
 	fmt.Printf("Starting ibc connection between chains...\n")
 	setupIbcPathCmd := exec.Command("docker", "run", "-v", fmt.Sprintf("%s:%s", generatedPath("relayer"), "/home/relayer/.relayer"), "--network", "generated_default", relayerImageTag, "rly", "paths", "new", kavaChainId, ibcChainId, "transfer")
 	setupIbcPathCmd.Stdout = os.Stdout
