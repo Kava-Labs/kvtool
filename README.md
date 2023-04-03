@@ -150,28 +150,50 @@ dkava status
 dkava q cdp params
 ```
 
-To send transactions you'll need to recover a user account in the dockerized environment. Valid mnemonics for the blockchains be found in the `config/common/addresses.json` file.
+The chain has several accounts that are funded from genesis. A list of the account names can be found [here](config/common/addresses.json).
 
+The binary is pre-configured to have these keys in its keyring so you should be able to use them directly.
 ```bash
-# Recover user account
-dkava keys add user --recover
-# Enter mnemonic
-arrive guide way exit polar print kitchen hair series custom siege afraid shrug crew fashion mind script divorce pattern trust project regular robust safe
-```
-
-Test transaction sending by transferring some coins to yourself.
-
-```bash
-# Query the recovered account's address
-dkava keys show user -a
-# Send yourself some coins by creating a send transaction with your address as both sender and receiver
-dkava tx bank send [user-address] [user-address] 1000000ukava --from user
-# Enter 'y' to confirm the transaction
-confirm transaction before signing and broadcasting [y/N]:
+# Example sending funds from `whale` to another account
+dkava tx bank send whale [kava-address-to-fund] 1000000ukava --gas-prices 0.001ukava -y
 
 # Check transaction result by tx hash
 dkava q tx [tx-hash]
 ```
+### A note about eth accounts
+
+Account keys can be created with two different algorithms in Kava: `secp256k1` and `eth_secp256k1`.
+Which algorithm is used is dictate by the presence of the `--eth` flag on key creation.
+
+Eth accounts can be exported for use in ethereum wallets like Metamask. A list of of the pre-funded eth accounts can be found [here](config/generate/genesis/auth.accounts/eth-accounts.json).
+Notable, `whale2` is an eth account. These keys can be easily imported into a wallet via their private keys:
+```bash
+# DANGEROUS EXPORT OF PRIVATE KEY BELOW! BE CAREFUL WITH YOUR PRIVATE KEYS FOR MAINNET ACCOUNTS.
+dkava keys unsafe-export-eth-key whale2
+```
+The above will output the hex-encoded ethereum private key that can be directly imported to Metamask or another EVM-supporting wallet.
+
+You can always import or generate new eth accounts as well:
+```bash
+# generate new account
+dkava keys add new-eth-account --eth
+
+# recover an eth account from a mnemonic
+dkava keys add new-eth-account2 --eth --recover
+eth flag specified: using coin-type 60 and signing algorithm eth_secp256k1
+> Enter your bip39 mnemonic
+# enter your mnemonic here
+
+# import an eth account from a hex-encoded ethereum private key
+kava keys unsafe-import-eth-key new-eth-account3 [priv-key]
+```
+
+### ERC20 token
+
+The master template includes a pre-deployed ERC20 token with the name "USD Coin". The token is configured to be converted to an sdk coin of the denom `erc20/multichain/usdc`.
+
+Token Address: `0xeA7100edA2f805356291B0E55DaD448599a72C6d`
+Funded Account: `whale2` - `0x03db6b11F47d074a532b9eb8a98aB7AdA5845087` (1000 USDC)
 
 ## Shut down: kvtool testnet
 
