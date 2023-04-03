@@ -188,6 +188,13 @@ eth flag specified: using coin-type 60 and signing algorithm eth_secp256k1
 kava keys unsafe-import-eth-key new-eth-account3 [priv-key]
 ```
 
+### ERC20 token
+
+The master template includes a pre-deployed ERC20 token with the name "USD Coin". The token is configured to be converted to an sdk coin of the denom `erc20/multichain/usdc`.
+
+Token Address: `0xeA7100edA2f805356291B0E55DaD448599a72C6d`
+Funded Account: `whale2` - `0x03db6b11F47d074a532b9eb8a98aB7AdA5845087` (1000 USDC)
+
 ## Shut down: kvtool testnet
 
 When you're done make sure to shut down the kvtool testnet. Always shut down the kvtool testnets before pulling the latest image from docker, otherwise you may experience errors.
