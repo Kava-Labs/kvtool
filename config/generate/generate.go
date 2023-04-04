@@ -1,7 +1,6 @@
 package generate
 
 import (
-	"os"
 	"path/filepath"
 
 	"github.com/otiai10/copy"
@@ -91,10 +90,7 @@ func GenerateIbcConfigs(generatedConfigDir string) error {
 	if err := GenerateIbcChainConfig(generatedConfigDir); err != nil {
 		return err
 	}
-	if err := GenerateHermesRelayerConfig(generatedConfigDir); err != nil {
-		return err
-	}
-	return GenerateGoRelayerConfig(generatedConfigDir)
+	return GenerateRelayerConfig(generatedConfigDir)
 }
 
 func GenerateIbcChainConfig(generatedConfigDir string) error {
@@ -112,24 +108,14 @@ func GenerateIbcChainConfig(generatedConfigDir string) error {
 	return err
 }
 
-func GenerateHermesRelayerConfig(generatedConfigDir string) error {
-	err := copy.Copy(filepath.Join(ConfigTemplatesDir, "hermes"), filepath.Join(generatedConfigDir, "hermes"))
-	if err != nil {
-		return err
-	}
-	// config.toml must be writable
-	err = os.Chmod(filepath.Join(generatedConfigDir, "hermes", "config.toml"), 0666)
-	return err
-}
-
-func AddHermesRelayerToNetwork(generatedConfigDir string) error {
+func AddRelayerToNetwork(generatedConfigDir string) error {
 	return overwriteMergeYAML(
-		filepath.Join(ConfigTemplatesDir, "hermes", "docker-compose.yaml"),
+		filepath.Join(ConfigTemplatesDir, "relayer", "docker-compose.yaml"),
 		filepath.Join(generatedConfigDir, "docker-compose.yaml"),
 	)
 }
 
-func GenerateGoRelayerConfig(generatedConfigDir string) error {
+func GenerateRelayerConfig(generatedConfigDir string) error {
 	err := copy.Copy(
 		filepath.Join(ConfigTemplatesDir, "relayer"),
 		filepath.Join(generatedConfigDir, "relayer"),

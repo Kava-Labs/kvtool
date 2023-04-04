@@ -180,13 +180,15 @@ func setupIbcChannelAndRelayer() error {
 	}
 
 	fmt.Printf("Starting ibc connection between chains...\n")
+	// add new channel to relayer config
 	setupIbcPathCmd := exec.Command("docker", "run", "-v", fmt.Sprintf("%s:%s", generatedPath("relayer"), "/home/relayer/.relayer"), "--network", "generated_default", relayerImageTag, "rly", "paths", "new", kavaChainId, ibcChainId, "transfer")
 	setupIbcPathCmd.Stdout = os.Stdout
 	setupIbcPathCmd.Stderr = os.Stderr
 	if err := setupIbcPathCmd.Run(); err != nil {
 		fmt.Println(err.Error())
-		return fmt.Errorf("[hermes] failed to setup ibc path")
+		return fmt.Errorf("[relayer] failed to setup ibc path")
 	}
+	// open the channel between kava and ibcnode
 	openConnectionCmd := exec.Command("docker", "run", "-v", fmt.Sprintf("%s:%s", generatedPath("relayer"), "/home/relayer/.relayer"), "--network", "generated_default", relayerImageTag, "rly", "transact", "link", "transfer")
 	openConnectionCmd.Stdout = os.Stdout
 	openConnectionCmd.Stderr = os.Stderr
@@ -195,22 +197,21 @@ func setupIbcChannelAndRelayer() error {
 		return fmt.Errorf("[relayer] failed to open ibc connection")
 	}
 	fmt.Printf("IBC connection complete, starting relayer process...\n")
-	time.Sleep(time.Second * 5)
-	err := generate.AddHermesRelayerToNetwork(generatedConfigDir)
-	if err != nil {
+	// setup and run the relayer
+	if err := generate.AddRelayerToNetwork(generatedConfigDir); err != nil {
 		return err
 	}
-	if err := dockerComposeCmd("up", "-d", "hermes-relayer").Run(); err != nil {
+	if err := dockerComposeCmd("up", "-d", "relayer").Run(); err != nil {
 		return err
 	}
+	// prune temp containers used to initialize ibc channel
 	pruneCmd := exec.Command("docker", "container", "prune", "-f")
 	pruneCmd.Stdout = os.Stdout
 	pruneCmd.Stderr = os.Stderr
-	err = pruneCmd.Run()
-	if err != nil {
+	if err := pruneCmd.Run(); err != nil {
 		return err
 	}
-	fmt.Printf("IBC relayer ready!\n")
+	fmt.Println("IBC relayer ready!")
 	return nil
 }
 
