@@ -300,10 +300,13 @@ jq '.app_state.distribution.params.community_tax = "0.750000000000000000"' $DATA
 set-app-state earn.params.allowed_vaults
 
 # x/evm
-# disable london fork
+# disable all post-london forks
 jq '.app_state.evm.params.chain_config.london_block = null' $DATA/config/genesis.json | sponge $DATA/config/genesis.json
 jq '.app_state.evm.params.chain_config.arrow_glacier_block = null' $DATA/config/genesis.json | sponge $DATA/config/genesis.json
-jq '.app_state.evm.params.chain_config.merge_fork_block = null' $DATA/config/genesis.json | sponge $DATA/config/genesis.json
+jq '.app_state.evm.params.chain_config.gray_glacier_block = null' $DATA/config/genesis.json | sponge $DATA/config/genesis.json
+jq '.app_state.evm.params.chain_config.merge_netsplit_block = null' $DATA/config/genesis.json | sponge $DATA/config/genesis.json
+jq '.app_state.evm.params.chain_config.shanghai_block = null' $DATA/config/genesis.json | sponge $DATA/config/genesis.json
+jq '.app_state.evm.params.chain_config.cancun_block = null' $DATA/config/genesis.json | sponge $DATA/config/genesis.json
 # setup accounts
 set-app-state evm.accounts
 
