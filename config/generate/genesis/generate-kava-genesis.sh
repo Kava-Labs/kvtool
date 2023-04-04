@@ -90,6 +90,10 @@ sed -i '' 's/minimum-gas-prices = "0ukava"/minimum-gas-prices = "0.001ukava;1000
 # Disable pruning
 sed -i '' 's/pruning = "default"/pruning = "nothing"/g' $DATA/config/app.toml
 
+# Set EVM JSON-RPC starting IP addresses
+sed -i '' 's/address = "127.0.0.1:8545"/address = "0.0.0.0:8545"/g' $DATA/config/app.toml
+sed -i '' 's/ws-address = "127.0.0.1:8546"/ws-address = "0.0.0.0:8546"/g' $DATA/config/app.toml
+
 #######################
 ##### CLIENT.TOML #####
 #######################
