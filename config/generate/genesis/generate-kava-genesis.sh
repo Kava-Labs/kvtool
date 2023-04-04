@@ -90,6 +90,10 @@ sed -i '' 's/minimum-gas-prices = "0ukava"/minimum-gas-prices = "0.001ukava;1000
 # Disable pruning
 sed -i '' 's/pruning = "default"/pruning = "nothing"/g' $DATA/config/app.toml
 
+# Set EVM JSON-RPC starting IP addresses
+sed -i '' 's/address = "127.0.0.1:8545"/address = "0.0.0.0:8545"/g' $DATA/config/app.toml
+sed -i '' 's/ws-address = "127.0.0.1:8546"/ws-address = "0.0.0.0:8546"/g' $DATA/config/app.toml
+
 #######################
 ##### CLIENT.TOML #####
 #######################
@@ -102,7 +106,6 @@ sed -i '' 's/chain-id = ""/chain-id = "'"$chainID"'"/g' $DATA/config/client.toml
 # lower default commit timeout
 sed -i '' 's/timeout_commit = "5s"/timeout_commit = "1s"/g' $DATA/config/config.toml
 
-
 #########################
 ##### CONFIGURATION #####
 #########################
@@ -111,6 +114,12 @@ $BINARY config keyring-backend test
 
 # set broadcast-mode to block
 $BINARY config broadcast-mode block
+
+############################
+##### CONSENSUS PARAMS #####
+############################
+# set maximum gas allowed per block
+jq '.consensus_params.block.max_gas = "2000000"' $DATA/config/genesis.json | sponge $DATA/config/genesis.json
 
 ###########################
 ##### SETUP ADDRESSES #####

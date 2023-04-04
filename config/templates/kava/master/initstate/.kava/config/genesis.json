@@ -1,11 +1,11 @@
 {
-  "genesis_time": "2023-04-04T18:34:39.584381Z",
+  "genesis_time": "2023-04-04T20:33:24.509589Z",
   "chain_id": "kavalocalnet_8888-1",
   "initial_height": "1",
   "consensus_params": {
     "block": {
       "max_bytes": "22020096",
-      "max_gas": "-1",
+      "max_gas": "2000000",
       "time_iota_ms": "1000"
     },
     "evidence": {
