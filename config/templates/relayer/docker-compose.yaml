@@ -1,0 +1,7 @@
+version: "3"
+services:
+  relayer:
+    image: kava/relayer:v2.2.0
+    volumes:
+      - "./relayer:/home/relayer/.relayer"
+    command: [ "rly", "start" ]
