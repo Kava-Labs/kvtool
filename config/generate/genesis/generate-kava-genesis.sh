@@ -318,6 +318,8 @@ jq '.app_state.evm.params.chain_config.shanghai_block = null' $DATA/config/genes
 jq '.app_state.evm.params.chain_config.cancun_block = null' $DATA/config/genesis.json | sponge $DATA/config/genesis.json
 # setup accounts
 set-app-state evm.accounts
+# setup eip712 allowed messages
+set-app-state evm.params.eip712_allowed_msgs
 
 # x/evmutil: enable conversion pairs
 jq '.app_state.evmutil.params.enabled_conversion_pairs = [
