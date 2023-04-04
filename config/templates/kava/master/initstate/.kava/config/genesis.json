@@ -1,5 +1,5 @@
 {
-  "genesis_time": "2023-03-22T22:37:32.48236Z",
+  "genesis_time": "2023-04-04T18:34:39.584381Z",
   "chain_id": "kavalocalnet_8888-1",
   "initial_height": "1",
   "consensus_params": {
@@ -1358,9 +1358,13 @@
           "berlin_block": "0",
           "london_block": null,
           "arrow_glacier_block": null,
-          "merge_fork_block": null
+          "gray_glacier_block": null,
+          "merge_netsplit_block": null,
+          "shanghai_block": null,
+          "cancun_block": null
         },
-        "eip712_allowed_msgs": []
+        "eip712_allowed_msgs": [],
+        "allow_unprotected_txs": false
       }
     },
     "evmutil": {
@@ -1380,7 +1384,9 @@
         "base_fee_change_denominator": 8,
         "elasticity_multiplier": 2,
         "enable_height": "0",
-        "base_fee": "1000000000"
+        "base_fee": "1000000000",
+        "min_gas_price": "0.000000000000000000",
+        "min_gas_multiplier": "0.500000000000000000"
       },
       "block_gas": "0"
     },
@@ -1441,7 +1447,8 @@
               "gas_limit": "200000",
               "payer": "",
               "granter": ""
-            }
+            },
+            "tip": null
           },
           "signatures": [
             "8GL82mywb+hHGgFcm+2lDnbw/837kmFjNZCirCgKQwlmLhjL480yckaEzoWy3f7JQ0MDLPu9XijLR/0Juyz/1w=="
@@ -2883,7 +2890,8 @@
         "max_validators": 100,
         "max_entries": 7,
         "historical_entries": 10000,
-        "bond_denom": "ukava"
+        "bond_denom": "ukava",
+        "min_commission_rate": "0.000000000000000000"
       },
       "last_total_power": "0",
       "last_validator_powers": [],
