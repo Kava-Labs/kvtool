@@ -1,5 +1,5 @@
 {
-  "genesis_time": "2023-04-04T20:33:24.509589Z",
+  "genesis_time": "2023-04-05T19:42:48.940937Z",
   "chain_id": "kavalocalnet_8888-1",
   "initial_height": "1",
   "consensus_params": {
@@ -1363,7 +1363,491 @@
           "shanghai_block": null,
           "cancun_block": null
         },
-        "eip712_allowed_msgs": [],
+        "eip712_allowed_msgs": [
+          {
+            "msg_type_url": "/kava.evmutil.v1beta1.MsgConvertERC20ToCoin",
+            "msg_value_type_name": "MsgValueEVMConvertERC20ToCoin",
+            "value_types": [
+              {
+                "name": "initiator",
+                "type": "string"
+              },
+              {
+                "name": "receiver",
+                "type": "string"
+              },
+              {
+                "name": "kava_erc20_address",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "string"
+              }
+            ],
+            "nested_types": []
+          },
+          {
+            "msg_type_url": "/kava.evmutil.v1beta1.MsgConvertCoinToERC20",
+            "msg_value_type_name": "MsgValueEVMConvertCoinToERC20",
+            "value_types": [
+              {
+                "name": "initiator",
+                "type": "string"
+              },
+              {
+                "name": "receiver",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "Coin"
+              }
+            ],
+            "nested_types": []
+          },
+          {
+            "msg_type_url": "/kava.earn.v1beta1.MsgDeposit",
+            "msg_value_type_name": "MsgValueEarnDeposit",
+            "value_types": [
+              {
+                "name": "depositor",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "Coin"
+              },
+              {
+                "name": "strategy",
+                "type": "int32"
+              }
+            ],
+            "nested_types": []
+          },
+          {
+            "msg_type_url": "/kava.earn.v1beta1.MsgWithdraw",
+            "msg_value_type_name": "MsgValueEarnWithdraw",
+            "value_types": [
+              {
+                "name": "from",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "Coin"
+              },
+              {
+                "name": "strategy",
+                "type": "int32"
+              }
+            ],
+            "nested_types": []
+          },
+          {
+            "msg_type_url": "/cosmos.staking.v1beta1.MsgDelegate",
+            "msg_value_type_name": "MsgValueStakingDelegate",
+            "value_types": [
+              {
+                "name": "delegator_address",
+                "type": "string"
+              },
+              {
+                "name": "validator_address",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "Coin"
+              }
+            ],
+            "nested_types": []
+          },
+          {
+            "msg_type_url": "/cosmos.staking.v1beta1.MsgUndelegate",
+            "msg_value_type_name": "MsgValueStakingUndelegate",
+            "value_types": [
+              {
+                "name": "delegator_address",
+                "type": "string"
+              },
+              {
+                "name": "validator_address",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "Coin"
+              }
+            ],
+            "nested_types": []
+          },
+          {
+            "msg_type_url": "/cosmos.staking.v1beta1.MsgBeginRedelegate",
+            "msg_value_type_name": "MsgValueStakingBeginRedelegate",
+            "value_types": [
+              {
+                "name": "delegator_address",
+                "type": "string"
+              },
+              {
+                "name": "validator_src_address",
+                "type": "string"
+              },
+              {
+                "name": "validator_dst_address",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "Coin"
+              }
+            ],
+            "nested_types": []
+          },
+          {
+            "msg_type_url": "/kava.incentive.v1beta1.MsgClaimUSDXMintingReward",
+            "msg_value_type_name": "MsgValueIncentiveClaimUSDXMintingReward",
+            "value_types": [
+              {
+                "name": "sender",
+                "type": "string"
+              },
+              {
+                "name": "multiplier_name",
+                "type": "string"
+              }
+            ],
+            "nested_types": []
+          },
+          {
+            "msg_type_url": "/kava.incentive.v1beta1.MsgClaimHardReward",
+            "msg_value_type_name": "MsgValueIncentiveClaimHardReward",
+            "value_types": [
+              {
+                "name": "sender",
+                "type": "string"
+              },
+              {
+                "name": "denoms_to_claim",
+                "type": "IncentiveSelection[]"
+              }
+            ],
+            "nested_types": [
+              {
+                "name": "IncentiveSelection",
+                "attrs": [
+                  {
+                    "name": "denom",
+                    "type": "string"
+                  },
+                  {
+                    "name": "multiplier_name",
+                    "type": "string"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "msg_type_url": "/kava.incentive.v1beta1.MsgClaimDelegatorReward",
+            "msg_value_type_name": "MsgValueIncentiveClaimDelegatorReward",
+            "value_types": [
+              {
+                "name": "sender",
+                "type": "string"
+              },
+              {
+                "name": "denoms_to_claim",
+                "type": "IncentiveSelection[]"
+              }
+            ],
+            "nested_types": [
+              {
+                "name": "IncentiveSelection",
+                "attrs": [
+                  {
+                    "name": "denom",
+                    "type": "string"
+                  },
+                  {
+                    "name": "multiplier_name",
+                    "type": "string"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "msg_type_url": "/kava.incentive.v1beta1.MsgClaimSwapReward",
+            "msg_value_type_name": "MsgValueIncentiveClaimSwapReward",
+            "value_types": [
+              {
+                "name": "sender",
+                "type": "string"
+              },
+              {
+                "name": "denoms_to_claim",
+                "type": "IncentiveSelection[]"
+              }
+            ],
+            "nested_types": [
+              {
+                "name": "IncentiveSelection",
+                "attrs": [
+                  {
+                    "name": "denom",
+                    "type": "string"
+                  },
+                  {
+                    "name": "multiplier_name",
+                    "type": "string"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "msg_type_url": "/kava.incentive.v1beta1.MsgClaimSavingsReward",
+            "msg_value_type_name": "MsgValueIncentiveClaimSavingsReward",
+            "value_types": [
+              {
+                "name": "sender",
+                "type": "string"
+              },
+              {
+                "name": "denoms_to_claim",
+                "type": "IncentiveSelection[]"
+              }
+            ],
+            "nested_types": [
+              {
+                "name": "IncentiveSelection",
+                "attrs": [
+                  {
+                    "name": "denom",
+                    "type": "string"
+                  },
+                  {
+                    "name": "multiplier_name",
+                    "type": "string"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "msg_type_url": "/kava.incentive.v1beta1.MsgClaimEarnReward",
+            "msg_value_type_name": "MsgValueIncentiveClaimEarnReward",
+            "value_types": [
+              {
+                "name": "sender",
+                "type": "string"
+              },
+              {
+                "name": "denoms_to_claim",
+                "type": "IncentiveSelection[]"
+              }
+            ],
+            "nested_types": [
+              {
+                "name": "IncentiveSelection",
+                "attrs": [
+                  {
+                    "name": "denom",
+                    "type": "string"
+                  },
+                  {
+                    "name": "multiplier_name",
+                    "type": "string"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "msg_type_url": "/kava.router.v1beta1.MsgMintDeposit",
+            "msg_value_type_name": "MsgValueRouterMintDeposit",
+            "value_types": [
+              {
+                "name": "depositor",
+                "type": "string"
+              },
+              {
+                "name": "validator",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "Coin"
+              }
+            ],
+            "nested_types": []
+          },
+          {
+            "msg_type_url": "/kava.router.v1beta1.MsgDelegateMintDeposit",
+            "msg_value_type_name": "MsgValueRouterDelegateMintDeposit",
+            "value_types": [
+              {
+                "name": "depositor",
+                "type": "string"
+              },
+              {
+                "name": "validator",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "Coin"
+              }
+            ],
+            "nested_types": []
+          },
+          {
+            "msg_type_url": "/kava.router.v1beta1.MsgWithdrawBurn",
+            "msg_value_type_name": "MsgValueRouterWithdrawBurn",
+            "value_types": [
+              {
+                "name": "from",
+                "type": "string"
+              },
+              {
+                "name": "validator",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "Coin"
+              }
+            ],
+            "nested_types": []
+          },
+          {
+            "msg_type_url": "/kava.router.v1beta1.MsgWithdrawBurnUndelegate",
+            "msg_value_type_name": "MsgValueRouterWithdrawBurnUndelegate",
+            "value_types": [
+              {
+                "name": "from",
+                "type": "string"
+              },
+              {
+                "name": "validator",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "Coin"
+              }
+            ],
+            "nested_types": []
+          },
+          {
+            "msg_type_url": "/cosmos.gov.v1beta1.MsgVote",
+            "msg_value_type_name": "MsgValueGovVote",
+            "value_types": [
+              {
+                "name": "proposal_id",
+                "type": "uint64"
+              },
+              {
+                "name": "voter",
+                "type": "string"
+              },
+              {
+                "name": "option",
+                "type": "int32"
+              }
+            ],
+            "nested_types": []
+          },
+          {
+            "msg_type_url": "/cosmos.bank.v1beta1.MsgSend",
+            "msg_value_type_name": "MsgValueBankSend",
+            "value_types": [
+              {
+                "name": "from_address",
+                "type": "string"
+              },
+              {
+                "name": "to_address",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "Coin[]"
+              }
+            ],
+            "nested_types": []
+          },
+          {
+            "msg_type_url": "/kava.liquid.v1beta1.MsgMintDerivative",
+            "msg_value_type_name": "MsgValueMintDerivative",
+            "value_types": [
+              {
+                "name": "sender",
+                "type": "string"
+              },
+              {
+                "name": "validator",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "Coin"
+              }
+            ],
+            "nested_types": []
+          },
+          {
+            "msg_type_url": "/kava.liquid.v1beta1.MsgBurnDerivative",
+            "msg_value_type_name": "MsgValueBurnDerivative",
+            "value_types": [
+              {
+                "name": "sender",
+                "type": "string"
+              },
+              {
+                "name": "validator",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "Coin"
+              }
+            ],
+            "nested_types": []
+          },
+          {
+            "msg_type_url": "/kava.hard.v1beta1.MsgWithdraw",
+            "msg_value_type_name": "MsgValueHardWithdraw",
+            "value_types": [
+              {
+                "name": "depositor",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "Coin[]"
+              }
+            ],
+            "nested_types": []
+          },
+          {
+            "msg_type_url": "/kava.hard.v1beta1.MsgDeposit",
+            "msg_value_type_name": "MsgValueHardDeposit",
+            "value_types": [
+              {
+                "name": "depositor",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "Coin[]"
+              }
+            ],
+            "nested_types": []
+          }
+        ],
         "allow_unprotected_txs": false
       }
     },
