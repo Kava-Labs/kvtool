@@ -241,7 +241,7 @@ export oracle
 add-genesis-account-key oracle '.kava.oracles[0]' 1000000000000ukava
 committee=$(get-address '.kava.committee_members[0]')
 export committee
-add-genesis-account-key committee '.kava.committee_members[0]' 1000000000000ukava
+add-eth-genesis-account-key committee '.kava.committee_members[0]' 1000000000000ukava
 
 # Accounts without keys
 # issuance module
