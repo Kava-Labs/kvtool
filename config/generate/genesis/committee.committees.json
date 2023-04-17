@@ -8,7 +8,7 @@
       "permissions": [
         { "@type": "/kava.committee.v1beta1.TextPermission" },
         {
-          "@type": "/kava.committee.v1beta1.CommunityPoolLendWithdrawalPermission"
+          "@type": "/kava.committee.v1beta1.CommunityPoolLendWithdrawPermission"
         },
         {
           "@type": "/kava.committee.v1beta1.ParamsChangePermission",

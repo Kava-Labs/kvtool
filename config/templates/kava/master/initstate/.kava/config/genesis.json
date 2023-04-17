@@ -1,5 +1,5 @@
 {
-  "genesis_time": "2023-04-17T18:38:06.369971Z",
+  "genesis_time": "2023-04-17T23:07:22.595372Z",
   "chain_id": "kavalocalnet_8888-1",
   "initial_height": "1",
   "consensus_params": {
@@ -975,7 +975,7 @@
                 "@type": "/kava.committee.v1beta1.TextPermission"
               },
               {
-                "@type": "/kava.committee.v1beta1.CommunityPoolLendWithdrawalPermission"
+                "@type": "/kava.committee.v1beta1.CommunityPoolLendWithdrawPermission"
               },
               {
                 "@type": "/kava.committee.v1beta1.ParamsChangePermission",
