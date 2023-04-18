@@ -12,7 +12,7 @@
   {
     "@type": "/ethermint.types.v1.EthAccount",
     "base_account": {
-      "address": "kava1ak4pa9z2aty94ze2cs06wsdnkg9hsvfkp40r02",
+      "address": "$committee",
       "pub_key": null,
       "account_number": "0",
       "sequence": "0"
@@ -22,17 +22,7 @@
   {
     "@type": "/ethermint.types.v1.EthAccount",
     "base_account": {
-      "address": "kava123fxg0l602etulhhcdm0vt7l57qya5wjcrwhzz",
-      "pub_key": null,
-      "account_number": "0",
-      "sequence": "0"
-    },
-    "code_hash": "0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470"
-  },
-  {
-    "@type": "/ethermint.types.v1.EthAccount",
-    "base_account": {
-      "address": "kava10wlnqzyss4accfqmyxwx5jy5x9nfkwh6qm7n4t",
+      "address": "$user",
       "pub_key": null,
       "account_number": "0",
       "sequence": "3"
@@ -42,7 +32,7 @@
   {
     "@type": "/ethermint.types.v1.EthAccount",
     "base_account": {
-      "address": "kava15tmj37vh7ch504px9fcfglmvx6y9m70646ev8t",
+      "address": "$bridge_relayer",
       "pub_key": null,
       "account_number": "0",
       "sequence": "0"

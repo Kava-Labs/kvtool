@@ -4,14 +4,16 @@
 # NOTE: many values here were just copied directly. there are much better ways
 #  that they could be abstracted and reduced down to simple to modify lists of values.
 
-# you can use this to generate different chains.
-# by default it generates the files in the kava master template.
-# env controls:
-# CHAIN_ID - the chain id. default: kavalocalnet_8888-1
-# DEST - destination dir. ex: ./config/templates/kava/master/initstate/.kava
-# DENOM - sets the primary denom
-#         this is respected in the validator setup and then a final find&replace for ukava -> $DENOM
-# SKIP_INCENTIVES - ignore setting genesis.app_state.incentive.params
+# you can use this script to generate different chains.
+# by default, it generates the files in the kava master template.
+# Environment variables:
+# - CHAIN_ID: The chain ID. Default: kavalocalnet_8888-1
+# - DEST: Destination directory. Example: ./config/templates/kava/master/initstate/.kava
+# - DENOM: Sets the primary denomination. This is respected in the validator setup
+#          and then a final find&replace for ukava -> $DENOM
+# - REPLACE_ACCOUNT_KEYS: Removes and replaces the account keys in the template.
+#                         This will always result in a diff because creation time is baked into the keyfiles.
+# - SKIP_INCENTIVES: Ignore setting genesis.app_state.incentive.params
 
 set -e
 
@@ -217,6 +219,9 @@ add-genesis-account-key generic-2 '.kava.users.generic_2' 1000000000000ukava
 vesting_periodic=$(get-address .kava.users.vesting_periodic)
 export vesting_periodic
 add-genesis-account-key vesting-periodic '.kava.users.vesting_periodic' 10000000000ukava
+user=$(get-address .kava.users.user)
+export user
+add-eth-genesis-account-key user '.kava.users.user' 1000000000ukava
 
 
 whalefunds=1000000000000ukava,10000000000000000bkava-"$valoper",10000000000000000bnb,10000000000000000btcb,10000000000000000busd,1000000000000000000hard,1000000000000000000swp,10000000000000000usdx,10000000000000000xrpb
@@ -241,20 +246,17 @@ export oracle
 add-genesis-account-key oracle '.kava.oracles[0]' 1000000000000ukava
 committee=$(get-address '.kava.committee_members[0]')
 export committee
-add-genesis-account-key committee '.kava.committee_members[0]' 1000000000000ukava
+add-eth-genesis-account-key committee '.kava.committee_members[0]' 1000000000000ukava
+bridge_relayer=$(get-address '.kava.users.bridge_relayer')
+export bridge_relayer
+add-eth-genesis-account-key bridge_relayer '.kava.users.bridge_relayer' 1000000000000ukava
+
 
 # Accounts without keys
 # issuance module
 add-genesis-account kava1cj7njkw2g9fqx4e768zc75dp9sks8u9znxrf0w 1000000000000ukava,1000000000000swp,1000000000000hard
 # swap module
 add-genesis-account kava1mfru9azs5nua2wxcd4sq64g5nt7nn4n8s2w8cu 5000000000ukava,200000000btcb,1000000000hard,5000000000swp,103000000000usdx
-
-# ???
-# idk what these accounts are, but they were funded in genesis before this was automated.
-add-genesis-account kava123fxg0l602etulhhcdm0vt7l57qya5wjcrwhzz 100000000000bnb,1000000000ukava
-add-genesis-account kava1ak4pa9z2aty94ze2cs06wsdnkg9hsvfkp40r02 100000000000bnb,2000000000ukava
-add-genesis-account kava10wlnqzyss4accfqmyxwx5jy5x9nfkwh6qm7n4t 1000000000ukava
-add-genesis-account kava15tmj37vh7ch504px9fcfglmvx6y9m70646ev8t 1000000000ukava
 
 # override `auth.accounts` array.
 # DO NOT CALL `add-genesis-account` AFTER HERE UNLESS IT IS AN EthAccount
@@ -398,6 +400,12 @@ cp $DATA/config/genesis.json $DEST/config/genesis.json
 
 rm -fr $DEST/config/gentx
 cp -r $DATA/config/gentx $DEST/config/gentx
+
+if [ "$REPLACE_ACCOUNT_KEYS" == "true" ]; then
+  echo replacing existing account keys
+  rm -fr $DEST/keyring-test
+  mv $DATA/keyring-test $DEST/keyring-test
+fi
 
 ###################
 ##### CLEANUP #####

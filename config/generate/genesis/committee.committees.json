@@ -8,6 +8,9 @@
       "permissions": [
         { "@type": "/kava.committee.v1beta1.TextPermission" },
         {
+          "@type": "/kava.committee.v1beta1.CommunityPoolLendWithdrawPermission"
+        },
+        {
           "@type": "/kava.committee.v1beta1.ParamsChangePermission",
           "allowed_params_changes": [
             { "subspace": "auction", "key": "BidDuration" },

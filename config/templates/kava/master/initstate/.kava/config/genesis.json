@@ -1,5 +1,5 @@
 {
-  "genesis_time": "2023-04-05T19:42:48.940937Z",
+  "genesis_time": "2023-04-18T18:16:30.956866Z",
   "chain_id": "kavalocalnet_8888-1",
   "initial_height": "1",
   "consensus_params": {
@@ -123,13 +123,6 @@
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
           "account_number": "0",
-          "address": "kava1n96qpdfcz2m7y364ewk8srv9zuq6ucwduyjaag",
-          "pub_key": null,
-          "sequence": "0"
-        },
-        {
-          "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "account_number": "0",
           "address": "kava1sw54s6gq76acm35ls6m5c0kr93dstgrh6eftld",
           "pub_key": null,
           "sequence": "0"
@@ -200,17 +193,7 @@
         {
           "@type": "/ethermint.types.v1.EthAccount",
           "base_account": {
-            "address": "kava1ak4pa9z2aty94ze2cs06wsdnkg9hsvfkp40r02",
-            "pub_key": null,
-            "account_number": "0",
-            "sequence": "0"
-          },
-          "code_hash": "0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470"
-        },
-        {
-          "@type": "/ethermint.types.v1.EthAccount",
-          "base_account": {
-            "address": "kava123fxg0l602etulhhcdm0vt7l57qya5wjcrwhzz",
+            "address": "kava1r3emvfrc242jcfr9f9ygc34ztpp58xxu6spvdq",
             "pub_key": null,
             "account_number": "0",
             "sequence": "0"
@@ -329,6 +312,15 @@
           ]
         },
         {
+          "address": "kava1r3emvfrc242jcfr9f9ygc34ztpp58xxu6spvdq",
+          "coins": [
+            {
+              "denom": "ukava",
+              "amount": "1000000000000"
+            }
+          ]
+        },
+        {
           "address": "kava1ypjp0m04pyp73hwgtc0dgkx0e9rrydecm054da",
           "coins": [
             {
@@ -361,19 +353,6 @@
             {
               "denom": "ukava",
               "amount": "10000000000"
-            }
-          ]
-        },
-        {
-          "address": "kava123fxg0l602etulhhcdm0vt7l57qya5wjcrwhzz",
-          "coins": [
-            {
-              "denom": "bnb",
-              "amount": "100000000000"
-            },
-            {
-              "denom": "ukava",
-              "amount": "1000000000"
             }
           ]
         },
@@ -464,20 +443,11 @@
           ]
         },
         {
-          "address": "kava1n96qpdfcz2m7y364ewk8srv9zuq6ucwduyjaag",
-          "coins": [
-            {
-              "denom": "ukava",
-              "amount": "1000000000000"
-            }
-          ]
-        },
-        {
           "address": "kava15tmj37vh7ch504px9fcfglmvx6y9m70646ev8t",
           "coins": [
             {
               "denom": "ukava",
-              "amount": "1000000000"
+              "amount": "1000000000000"
             }
           ]
         },
@@ -556,19 +526,6 @@
             {
               "denom": "ukava",
               "amount": "1000000000000"
-            }
-          ]
-        },
-        {
-          "address": "kava1ak4pa9z2aty94ze2cs06wsdnkg9hsvfkp40r02",
-          "coins": [
-            {
-              "denom": "bnb",
-              "amount": "100000000000"
-            },
-            {
-              "denom": "ukava",
-              "amount": "2000000000"
             }
           ]
         },
@@ -965,11 +922,14 @@
             "id": "1",
             "description": "Kava Stability Committee",
             "members": [
-              "kava1n96qpdfcz2m7y364ewk8srv9zuq6ucwduyjaag"
+              "kava1r3emvfrc242jcfr9f9ygc34ztpp58xxu6spvdq"
             ],
             "permissions": [
               {
                 "@type": "/kava.committee.v1beta1.TextPermission"
+              },
+              {
+                "@type": "/kava.committee.v1beta1.CommunityPoolLendWithdrawPermission"
               },
               {
                 "@type": "/kava.committee.v1beta1.ParamsChangePermission",
@@ -1060,7 +1020,7 @@
             "id": "2",
             "description": "Kava Safety Committee",
             "members": [
-              "kava1n96qpdfcz2m7y364ewk8srv9zuq6ucwduyjaag"
+              "kava1r3emvfrc242jcfr9f9ygc34ztpp58xxu6spvdq"
             ],
             "permissions": [
               {
@@ -1078,7 +1038,7 @@
             "id": "3",
             "description": "Kava God Committee (testing only)",
             "members": [
-              "kava1n96qpdfcz2m7y364ewk8srv9zuq6ucwduyjaag"
+              "kava1r3emvfrc242jcfr9f9ygc34ztpp58xxu6spvdq"
             ],
             "permissions": [
               {
@@ -1096,7 +1056,7 @@
             "id": "4",
             "description": "HARD Governance Committee",
             "members": [
-              "kava1n96qpdfcz2m7y364ewk8srv9zuq6ucwduyjaag"
+              "kava1r3emvfrc242jcfr9f9ygc34ztpp58xxu6spvdq"
             ],
             "permissions": [
               {
@@ -1141,7 +1101,7 @@
             "id": "5",
             "description": "SWP Governance Committee",
             "members": [
-              "kava1n96qpdfcz2m7y364ewk8srv9zuq6ucwduyjaag"
+              "kava1r3emvfrc242jcfr9f9ygc34ztpp58xxu6spvdq"
             ],
             "permissions": [
               {
@@ -1906,7 +1866,7 @@
                 }
               }
             ],
-            "memo": "461d9761df5db0a112407ca8a82f1774ef2dbaa3@10.0.0.3:26656",
+            "memo": "461d9761df5db0a112407ca8a82f1774ef2dbaa3@192.168.0.14:26656",
             "timeout_height": "0",
             "extension_options": [],
             "non_critical_extension_options": []
@@ -1935,7 +1895,7 @@
             "tip": null
           },
           "signatures": [
-            "8GL82mywb+hHGgFcm+2lDnbw/837kmFjNZCirCgKQwlmLhjL480yckaEzoWy3f7JQ0MDLPu9XijLR/0Juyz/1w=="
+            "mdqCmMkaFMt/kCKso3ID+58hfz4rNfqPsmfY55XGP6160KjLv2OLjOzmO4Ulg0Vag4Zb/9/RE+eoT/uutmBsqA=="
           ]
         }
       ]
