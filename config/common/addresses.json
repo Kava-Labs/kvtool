@@ -75,9 +75,9 @@
         "mnemonic": "1pass",
         "address": "kava1vlpsrmdyuywvaqrv7rx6xga224sqfwz3fyfhwq"
       },
-      "relayer": {
-        "mnemonic": "very health column only surface project output absent outdoor siren reject era legend legal twelve setup roast lion rare tunnel devote style random food",
-        "address": "kava1ypjp0m04pyp73hwgtc0dgkx0e9rrydecm054da"
+      "bridge_relayer": {
+        "mnemonic": "never reject sniff east arctic funny twin feed upper series stay shoot vivid adapt defense economy pledge fetch invite approve ceiling admit gloom exit",
+        "address": "kava15tmj37vh7ch504px9fcfglmvx6y9m70646ev8t"
       },
       "vesting_periodic": {
         "mnemonic": "twice brief orbit assist average victory shrimp visit rookie nation sentence obscure all deny immense borrow debate demise gorilla fault session transfer wide because",
@@ -94,6 +94,10 @@
       "generic_2": {
         "mnemonic": "height space double mask panic fashion soon bright rude narrow shuffle pull scale box science plastic plug churn hub donor reason piece learn police",
         "address": "kava1wuzhkn2f8nqe2aprnwt3jkjvvr9m7dlkpumtz2"
+      },
+      "user": {
+        "mnemonic": "news tornado sponsor drastic dolphin awful plastic select true lizard width idle ability pigeon runway lift oppose isolate maple aspect safe jungle author hole",
+        "address": "kava10wlnqzyss4accfqmyxwx5jy5x9nfkwh6qm7n4t"
       }
     }
   },

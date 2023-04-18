@@ -1,5 +1,5 @@
 {
-  "genesis_time": "2023-04-17T23:07:22.595372Z",
+  "genesis_time": "2023-04-18T18:16:30.956866Z",
   "chain_id": "kavalocalnet_8888-1",
   "initial_height": "1",
   "consensus_params": {
@@ -203,26 +203,6 @@
         {
           "@type": "/ethermint.types.v1.EthAccount",
           "base_account": {
-            "address": "kava1ak4pa9z2aty94ze2cs06wsdnkg9hsvfkp40r02",
-            "pub_key": null,
-            "account_number": "0",
-            "sequence": "0"
-          },
-          "code_hash": "0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470"
-        },
-        {
-          "@type": "/ethermint.types.v1.EthAccount",
-          "base_account": {
-            "address": "kava123fxg0l602etulhhcdm0vt7l57qya5wjcrwhzz",
-            "pub_key": null,
-            "account_number": "0",
-            "sequence": "0"
-          },
-          "code_hash": "0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470"
-        },
-        {
-          "@type": "/ethermint.types.v1.EthAccount",
-          "base_account": {
             "address": "kava10wlnqzyss4accfqmyxwx5jy5x9nfkwh6qm7n4t",
             "pub_key": null,
             "account_number": "0",
@@ -377,19 +357,6 @@
           ]
         },
         {
-          "address": "kava123fxg0l602etulhhcdm0vt7l57qya5wjcrwhzz",
-          "coins": [
-            {
-              "denom": "bnb",
-              "amount": "100000000000"
-            },
-            {
-              "denom": "ukava",
-              "amount": "1000000000"
-            }
-          ]
-        },
-        {
           "address": "kava1t4dvu32e309pzhmdn3aqcjlj79h9876plynrfm",
           "coins": [
             {
@@ -480,7 +447,7 @@
           "coins": [
             {
               "denom": "ukava",
-              "amount": "1000000000"
+              "amount": "1000000000000"
             }
           ]
         },
@@ -559,19 +526,6 @@
             {
               "denom": "ukava",
               "amount": "1000000000000"
-            }
-          ]
-        },
-        {
-          "address": "kava1ak4pa9z2aty94ze2cs06wsdnkg9hsvfkp40r02",
-          "coins": [
-            {
-              "denom": "bnb",
-              "amount": "100000000000"
-            },
-            {
-              "denom": "ukava",
-              "amount": "2000000000"
             }
           ]
         },
