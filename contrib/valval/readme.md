@@ -72,6 +72,7 @@ KAVA_IMAGE_TAG=local docker-compose up --force-recreate
 Note that `--force-recreate` is necessary if run previously. It will force the image tag from the environment to be picked up even if the containers have already been created.
 
 ## how to add a validator
+
 The intention of this code is to use it to run enough validators to get consensus after replacing
 the top validators in mainnet data to do things like test upgrade migrations on a mirror of mainnet.
 That means that if more validators are needed to run with >66.7% of consensus power, more validators
@@ -95,14 +96,11 @@ example: changing from 10 -> 11 validators
 3. add another node to the docker compose (replace `11` in the name and `volumes` below with the new node index):
 ```yaml
   kava-11:
-    image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
+    extends:
+      file: docker-compose.template.yml
+      service: kava
     volumes:
       - "./kava-11:/root/.kava"
-    # start the blockchain, and set rpc to listen to connections from outside the container
-    command:
-      - "sh"
-      - "-c"
-      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657"
 ```
 
 1. resume your regularly scheduled meganode running

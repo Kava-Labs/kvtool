@@ -3,7 +3,7 @@
 peers=()
 
 mkdir -p keys
-for i in {1..11}
+for i in {1..13}
 do
   home=kava-$i
 
@@ -15,6 +15,8 @@ do
     rm $home/config/genesis.json
     cp kava-1/config/init-data-directory.sh $home/config/init-data-directory.sh
     cp kava-1/config/priv_validator_state.json.example $home/config/priv_validator_state.json.example
+  else
+    echo "kava-$i already exists"
   fi
 
   cp $home/config/priv_validator_key.json keys/priv_validator_key_$(($i-1)).json
