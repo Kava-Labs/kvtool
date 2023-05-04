@@ -84,10 +84,10 @@ services:
       file: docker-compose.template.yml
       service: kava
     volumes:
-      - "./kava-11:/root/.kava"
+      - "./kava-12:/root/.kava"
   kava-13:
     extends:
       file: docker-compose.template.yml
       service: kava
     volumes:
-      - "./kava-11:/root/.kava"
+      - "./kava-13:/root/.kava"
