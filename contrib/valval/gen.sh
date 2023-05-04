@@ -1,9 +1,10 @@
 #!/bin/bash
 
 peers=()
+numPeers=13
 
 mkdir -p keys
-for i in {1..13}
+for i in $(seq 1 $numPeers)
 do
   home=kava-$i
 
@@ -23,4 +24,22 @@ do
   peers+=($(kava tendermint show-node-id --home $home)@$home:26656)
 done
 
+echo "Updating persistent_peers"
 echo $(printf ",%s" "${peers[@]}")
+
+for i in $(seq 1 $numPeers)
+do
+  home=kava-$i
+
+  peersStr=$(echo ",%s" "${peers[@]}")
+  # Remove self from peers
+  # Filter out own match
+  # Join with commas
+  # Remove trailing comma
+  persistent_peers=$(echo "$peersStr" | grep -oE '[0-9a-f]*@kava-[0-9]+:26656' | grep -v "kava-${i}:"  | tr '\n' ',' | sed 's/,$//')
+
+  # Replace in config file
+  sed -i'' "s/persistent_peers = \".*\"/persistent_peers = \"${persistent_peers}\"/" "${home}/config/config.toml"
+done
+
+echo "Done!"
