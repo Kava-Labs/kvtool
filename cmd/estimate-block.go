@@ -67,7 +67,8 @@ $ kvtool estimate-block-height 2050-05-22T15:00
 				blocksPerSec := float64(numBlocks) / secondsPassed
 				blocksUntilThen := int64(math.Round(blocksPerSec * secondsUntilThen))
 				heightAtTime := currentHeight + blocksUntilThen
-				fmt.Printf("%8d block avg: height = %d (%d blocks @ %f bps, %.1fh avg)\n", numBlocks, heightAtTime, blocksUntilThen, blocksPerSec, secondsPassed/3600)
+				avgBlockTime := secondsPassed / float64(numBlocks)
+				fmt.Printf("%8d block avg: height = %d (%d blocks, %.3fs avg over %.1fh)\n", numBlocks, heightAtTime, blocksUntilThen, avgBlockTime, secondsPassed/3600)
 			}
 
 			return nil
