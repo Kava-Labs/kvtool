@@ -9,8 +9,6 @@ import (
 	"github.com/kava-labs/kvtool/kavaclient"
 )
 
-var kavaGrpcUrl string
-
 func InflationRootCmd() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "inflation [sub-command]",
