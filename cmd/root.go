@@ -9,6 +9,8 @@ import (
 	"github.com/kava-labs/kvtool/cmd/testnet"
 )
 
+var kavaGrpcUrl string
+
 var rootCmd = &cobra.Command{
 	Use:   "kvtool",
 	Short: "Dev tools for working with the kava blockchain.",
@@ -23,6 +25,7 @@ func Execute() error {
 
 	var cdc *codec.LegacyAmino = app.MakeEncodingConfig().Amino
 
+	rootCmd.AddCommand(EstimateBlockHeightCmd())
 	rootCmd.AddCommand(InflationRootCmd())
 	rootCmd.AddCommand(MaccAddrCmd())
 	rootCmd.AddCommand(NodeKeysCmd(cdc))
