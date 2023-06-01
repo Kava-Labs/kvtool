@@ -3,6 +3,7 @@ package kavaclient
 import (
 	"fmt"
 
+	sdkmath "cosmossdk.io/math"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )
 
@@ -70,18 +71,18 @@ func (c *Client) InflationOverBlocks(start, end int64) (InflationResult, error) 
 	return result, err
 }
 
-func calculateInflationApy(beforeAmount, afterAmount sdk.Int, secondsPassed float64) (*sdk.Dec, error) {
+func calculateInflationApy(beforeAmount, afterAmount sdkmath.Int, secondsPassed float64) (*sdk.Dec, error) {
 	// extrapolate kava produced in last block to an APY inflation rate
-	diff := afterAmount.Sub(beforeAmount).ToDec()
-	avg := afterAmount.Add(beforeAmount).ToDec().QuoInt64(2)
+	diff := sdk.NewDecFromInt(afterAmount.Sub(beforeAmount))
+	avg := sdk.NewDecFromInt(afterAmount.Add(beforeAmount)).QuoInt64(2)
 	// doing the math this way to reduce error from a per-second approach
 	pow := sdk.NewDec(SecondsPerYear).Quo(sdk.MustNewDecFromStr(fmt.Sprintf("%f", secondsPassed))).RoundInt()
 	inflation := diff.Quo(avg).Add(sdk.OneDec()).Power(pow.Uint64()).Sub(sdk.OneDec())
 	return &inflation, nil
 }
 
-func calculateInflationApr(beforeAmount, afterAmount sdk.Int, secondsPassed float64) *sdk.Dec {
-	diff := afterAmount.Sub(beforeAmount).ToDec()
+func calculateInflationApr(beforeAmount, afterAmount sdkmath.Int, secondsPassed float64) *sdk.Dec {
+	diff := sdk.NewDecFromInt(afterAmount.Sub(beforeAmount))
 	inflation := diff.Quo(sdk.MustNewDecFromStr(fmt.Sprintf("%f", secondsPassed))).QuoInt(beforeAmount).MulInt64(SecondsPerYear)
 	return &inflation
 }
