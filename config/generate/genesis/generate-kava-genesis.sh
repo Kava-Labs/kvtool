@@ -294,6 +294,9 @@ jq '.app_state.bank.supply = []' $DATA/config/genesis.json | sponge $DATA/config
 # x/auction: shorten bid duration
 jq '.app_state.auction.params.forward_bid_duration = "28800s"' $DATA/config/genesis.json | sponge $DATA/config/genesis.json
 
+# x/authz authorizations for community module
+set-app-state authz.authorization
+
 # x/bep3 assets
 set-app-state bep3.params.asset_params
 
