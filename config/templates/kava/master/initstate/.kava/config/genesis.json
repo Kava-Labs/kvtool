@@ -1,5 +1,5 @@
 {
-  "genesis_time": "2023-06-01T18:47:11.415126Z",
+  "genesis_time": "2023-06-01T21:15:31.276393Z",
   "chain_id": "kavalocalnet_8888-1",
   "initial_height": "1",
   "consensus_params": {
@@ -511,6 +511,10 @@
               "amount": "1000000000000000000"
             },
             {
+              "denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
+              "amount": "10000000000000000"
+            },
+            {
               "denom": "swp",
               "amount": "1000000000000000000"
             },
@@ -613,6 +617,10 @@
             {
               "denom": "hard",
               "amount": "1000000000000000000"
+            },
+            {
+              "denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
+              "amount": "10000000000000000"
             },
             {
               "denom": "swp",
@@ -786,6 +794,10 @@
             {
               "denom": "hard",
               "amount": "1000000000000000000"
+            },
+            {
+              "denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
+              "amount": "10000000000000000"
             },
             {
               "denom": "swp",
@@ -2045,7 +2057,8 @@
             "kava_erc20_address": "0xeA7100edA2f805356291B0E55DaD448599a72C6d",
             "denom": "erc20/multichain/usdc"
           }
-        ]
+        ],
+        "allowed_cosmos_denoms": []
       }
     },
     "feemarket": {

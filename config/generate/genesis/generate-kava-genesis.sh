@@ -224,7 +224,8 @@ export user
 add-eth-genesis-account-key user '.kava.users.user' 1000000000ukava
 
 
-whalefunds=1000000000000ukava,10000000000000000bkava-"$valoper",10000000000000000bnb,10000000000000000btcb,10000000000000000busd,1000000000000000000hard,1000000000000000000swp,10000000000000000usdx,10000000000000000xrpb
+ibcdenom='ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2' # ATOM on mainnet
+whalefunds=1000000000000ukava,10000000000000000bkava-"$valoper",10000000000000000bnb,10000000000000000btcb,10000000000000000busd,1000000000000000000hard,1000000000000000000swp,10000000000000000usdx,10000000000000000xrpb,10000000000000000"$ibcdenom"
 # whale account
 whale=$(get-address '.kava.users.whale')
 export whale
@@ -326,7 +327,7 @@ set-app-state evm.accounts
 # setup eip712 allowed messages
 set-app-state evm.params.eip712_allowed_msgs
 
-# x/evmutil: enable conversion pairs
+# x/evmutil: enable evm -> sdk conversion pair
 jq '.app_state.evmutil.params.enabled_conversion_pairs = [
   {
     "kava_erc20_address": "0xeA7100edA2f805356291B0E55DaD448599a72C6d",
