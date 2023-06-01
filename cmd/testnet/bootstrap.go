@@ -112,8 +112,12 @@ $ KAVA_TAG=v0.21.0 kvtool testnet bootstrap --upgrade-name v0.21.0 --upgrade-hei
 				}
 			}
 
-			if err := dockerComposeCmd("pull").Run(); err != nil {
-				fmt.Println(err.Error())
+			// pull the kava image tag if not overridden to be "local"
+			kavaTagOverride := os.Getenv(kavaTagEnv)
+			if kavaTagOverride != "local" {
+				if err := dockerComposeCmd("pull").Run(); err != nil {
+					fmt.Println(err.Error())
+				}
 			}
 
 			upCmd := dockerComposeCmd("up", "-d")
