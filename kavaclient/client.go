@@ -10,7 +10,6 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	grpctypes "github.com/cosmos/cosmos-sdk/types/grpc"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
-	tmtypes "github.com/tendermint/tendermint/proto/tendermint/types"
 
 	kavagrpc "github.com/kava-labs/go-tools/grpc"
 )
@@ -46,7 +45,7 @@ func (c Client) GetBalance(address string, denom string, maxRetries int) (*sdk.C
 	return res.Balance, nil
 }
 
-func (c Client) Block(height int64, maxRetries int) (*tmtypes.Block, error) {
+func (c Client) Block(height int64, maxRetries int) (*tmservice.Block, error) {
 	res, err := c.tmService.GetBlockByHeight(context.Background(), &tmservice.GetBlockByHeightRequest{
 		Height: height,
 	})
@@ -56,10 +55,10 @@ func (c Client) Block(height int64, maxRetries int) (*tmtypes.Block, error) {
 		}
 		return nil, err
 	}
-	return res.Block, nil
+	return res.SdkBlock, nil
 }
 
-func (c Client) LatestBlock(maxRetries int) (*tmtypes.Block, error) {
+func (c Client) LatestBlock(maxRetries int) (*tmservice.Block, error) {
 	res, err := c.tmService.GetLatestBlock(context.Background(), &tmservice.GetLatestBlockRequest{})
 	if err != nil {
 		if maxRetries != 0 {
@@ -67,7 +66,7 @@ func (c Client) LatestBlock(maxRetries int) (*tmtypes.Block, error) {
 		}
 		return nil, err
 	}
-	return res.Block, nil
+	return res.SdkBlock, nil
 }
 
 func (c Client) Supply(height int64, maxRetries int) (sdk.Coin, error) {
