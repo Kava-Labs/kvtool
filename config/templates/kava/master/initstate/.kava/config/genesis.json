@@ -1,5 +1,5 @@
 {
-  "genesis_time": "2023-06-01T18:47:11.415126Z",
+  "genesis_time": "2023-06-02T20:54:46.166481Z",
   "chain_id": "kavalocalnet_8888-1",
   "initial_height": "1",
   "consensus_params": {
@@ -511,6 +511,10 @@
               "amount": "1000000000000000000"
             },
             {
+              "denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
+              "amount": "10000000000000000"
+            },
+            {
               "denom": "swp",
               "amount": "1000000000000000000"
             },
@@ -613,6 +617,10 @@
             {
               "denom": "hard",
               "amount": "1000000000000000000"
+            },
+            {
+              "denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
+              "amount": "10000000000000000"
             },
             {
               "denom": "swp",
@@ -786,6 +794,10 @@
             {
               "denom": "hard",
               "amount": "1000000000000000000"
+            },
+            {
+              "denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
+              "amount": "10000000000000000"
             },
             {
               "denom": "swp",
@@ -2032,6 +2044,44 @@
               }
             ],
             "nested_types": []
+          },
+          {
+            "msg_type_url": "/kava.evmutil.v1beta1.MsgConvertCosmosCoinToERC20",
+            "msg_value_type_name": "MsgConvertCosmosCoinToERC20",
+            "value_types": [
+              {
+                "name": "initiator",
+                "type": "string"
+              },
+              {
+                "name": "receiver",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "Coin"
+              }
+            ],
+            "nested_types": []
+          },
+          {
+            "msg_type_url": "/kava.evmutil.v1beta1.MsgConvertCosmosCoinFromERC20",
+            "msg_value_type_name": "MsgConvertCosmosCoinFromERC20",
+            "value_types": [
+              {
+                "name": "initiator",
+                "type": "string"
+              },
+              {
+                "name": "receiver",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "Coin"
+              }
+            ],
+            "nested_types": []
           }
         ],
         "allow_unprotected_txs": false
@@ -2044,6 +2094,14 @@
           {
             "kava_erc20_address": "0xeA7100edA2f805356291B0E55DaD448599a72C6d",
             "denom": "erc20/multichain/usdc"
+          }
+        ],
+        "allowed_cosmos_denoms": [
+          {
+            "cosmos_denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
+            "name": "Kava-wrapped ATOM",
+            "symbol": "ATOM",
+            "decimals": 6
           }
         ]
       }

@@ -2,7 +2,6 @@ package testnet
 
 import (
 	"fmt"
-	"io/ioutil"
 	"os"
 	"os/exec"
 	"strings"
@@ -80,11 +79,11 @@ func ExportCmd() *cobra.Command {
 
 			fmt.Printf("Created exports %s and %s\nCleaning up...", kavaFilename, ibcFilename)
 
-			err = ioutil.WriteFile(kavaFilename, kavaExportJSON, 0644)
+			err = os.WriteFile(kavaFilename, kavaExportJSON, 0644)
 			if err != nil {
 				return err
 			}
-			err = ioutil.WriteFile(ibcFilename, ibcExportJSON, 0644)
+			err = os.WriteFile(ibcFilename, ibcExportJSON, 0644)
 			if err != nil {
 				return err
 			}
