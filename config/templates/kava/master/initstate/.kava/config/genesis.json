@@ -1,5 +1,5 @@
 {
-  "genesis_time": "2023-06-01T21:15:31.276393Z",
+  "genesis_time": "2023-06-01T21:29:40.050778Z",
   "chain_id": "kavalocalnet_8888-1",
   "initial_height": "1",
   "consensus_params": {
@@ -2058,7 +2058,14 @@
             "denom": "erc20/multichain/usdc"
           }
         ],
-        "allowed_cosmos_denoms": []
+        "allowed_cosmos_denoms": [
+          {
+            "cosmos_denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
+            "name": "Kava-wrapped ATOM",
+            "symbol": "ATOM",
+            "decimals": 6
+          }
+        ]
       }
     },
     "feemarket": {

@@ -335,6 +335,16 @@ jq '.app_state.evmutil.params.enabled_conversion_pairs = [
   }
 ]' $DATA/config/genesis.json | sponge $DATA/config/genesis.json
 
+# x/evmutil: enable sdk -> evm conversion pair
+jq '.app_state.evmutil.params.allowed_cosmos_denoms = [
+  {
+    "cosmos_denom": "'"$ibcdenom"'",
+    "name": "Kava-wrapped ATOM",
+    "symbol": "ATOM",
+    "decimals": 6
+  }
+]' $DATA/config/genesis.json | sponge $DATA/config/genesis.json
+
 # x/feemarket: Disable fee market
 jq '.app_state.feemarket.params.no_base_fee = true' $DATA/config/genesis.json|sponge $DATA/config/genesis.json
 
