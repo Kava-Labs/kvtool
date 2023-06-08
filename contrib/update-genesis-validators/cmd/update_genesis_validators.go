@@ -3,13 +3,13 @@ package cmd
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"math/big"
 	"os"
 	"path/filepath"
 	"sort"
 	"time"
 
+	sdkmath "cosmossdk.io/math"
 	codectypes "github.com/cosmos/cosmos-sdk/codec/types"
 	"github.com/cosmos/cosmos-sdk/crypto/keys/ed25519"
 	cryptotypes "github.com/cosmos/cosmos-sdk/crypto/types"
@@ -144,7 +144,7 @@ func loadValidatorKeys(dir string, prefix string) ([]pvtypes.FilePVKey, error) {
 	valKeys := []pvtypes.FilePVKey{}
 	for idx := 0; true; idx++ {
 		filename := fmt.Sprintf("%s%d.json", prefix, idx)
-		keyJSONBytes, err := ioutil.ReadFile(filepath.Join(dir, filename))
+		keyJSONBytes, err := os.ReadFile(filepath.Join(dir, filename))
 		if err != nil {
 			// file doesn't exist or is malformed
 			break
@@ -378,10 +378,10 @@ func UpdateGenesisFileWithNewValidators(
 // validators, adjusts the total power such that the replaced validators control at least the
 // desired percentage
 func calcPowerDelta(
-	initialTotalPower sdk.Int,
-	initialValPower sdk.Int,
+	initialTotalPower sdkmath.Int,
+	initialValPower sdkmath.Int,
 	desiredPercent float64,
-) sdk.Int {
+) sdkmath.Int {
 	iTotalPower := new(big.Float).SetInt(initialTotalPower.BigInt())
 	iValPower := new(big.Float).SetInt(initialValPower.BigInt())
 	initialPercent := new(big.Float).Quo(iValPower, iTotalPower)
@@ -390,7 +390,7 @@ func calcPowerDelta(
 	percentAfter := big.NewFloat(desiredPercent)
 	// if we already have enough power, no change is necessary
 	if initialPercent.Cmp(percentAfter) >= 0 {
-		return sdk.NewInt(0)
+		return sdkmath.NewInt(0)
 	}
 
 	// a = (P + Δ) / (T + Δ) => Δ = (a*T - P) / (1 - a)

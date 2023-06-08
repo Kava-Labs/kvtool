@@ -3,6 +3,7 @@ module github.com/kava-labs/kvtool/contrib/update-genesis-validators
 go 1.20
 
 require (
+	cosmossdk.io/math v1.0.0-beta.6.0.20230216172121-959ce49135e4
 	github.com/cosmos/cosmos-sdk v0.46.11
 	github.com/kava-labs/kava v0.23.1
 	github.com/spf13/cobra v1.6.1
@@ -16,7 +17,6 @@ require (
 	cloud.google.com/go/iam v0.8.0 // indirect
 	cloud.google.com/go/storage v1.27.0 // indirect
 	cosmossdk.io/errors v1.0.0-beta.7 // indirect
-	cosmossdk.io/math v1.0.0-beta.6.0.20230216172121-959ce49135e4 // indirect
 	filippo.io/edwards25519 v1.0.0-rc.1 // indirect
 	github.com/99designs/go-keychain v0.0.0-20191008050251-8e49817e8af4 // indirect
 	github.com/99designs/keyring v1.2.1 // indirect
