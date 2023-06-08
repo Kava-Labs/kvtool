@@ -41,8 +41,8 @@ var (
 
 var updateGenesisValidatorsCmd = &cobra.Command{
 	Use:   "update-genesis-validators path/to/source-genesis.json",
-	Short: "Updates the validators of a non-zero height genesis.json",
-	Long: `Takes a non-zero height genesis.json and a directory of indexed priv_validator_keys and replaces the validators of the genesis file with ones corresponding to the keys.
+	Short: "Updates the validators of genesis.json",
+	Long: `Takes genesis.json and a directory of indexed priv_validator_keys and replaces the validators of the genesis file with ones corresponding to the keys.
 
 By default, the new validators replace the old ones from highest power to lowest. Any other validators are left as is.`,
 	Args: cobra.MinimumNArgs(1),
@@ -96,11 +96,6 @@ func updateGenesisValidators(cmd *cobra.Command, args []string) error {
 	doc, err := loadGenesisFile(filename)
 	if err != nil {
 		return err
-	}
-
-	// ensure it's not 0-height
-	if doc.InitialHeight <= 1 {
-		return fmt.Errorf("expected genesis file to be for height > 1. found %d", doc.InitialHeight)
 	}
 
 	// get all priv_validator_keys
