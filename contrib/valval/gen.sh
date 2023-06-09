@@ -21,6 +21,9 @@ for ((i = 1; i <= num_validators; i++)); do
 
   cp $home/config/priv_validator_key.json keys/priv_validator_key_$(($i - 1)).json
   peers+=("$(kava tendermint show-node-id --home $home)@$home:26656")
+
+  # force use of rocksdb
+  sed -i '' -e "s#^db_backend = .*#db_backend = \"rocksdb\"#" $home/config/config.toml
 done
 
 if [ "$there_is_a_new_validator" = true ]; then

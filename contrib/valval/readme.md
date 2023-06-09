@@ -55,12 +55,13 @@ docker-compose up
 ## change the kava version
 By default, this uses the `master` tag of the kava docker image.
 You can override the tag with the `KAVA_IMAGE_TAG` env variable.
+**NOTE: the docker image you use must be setup to run rocksdb.**
 
 To use a local version, first build & tag the kava image:
 ```
 # wherever the Kava-Labs/kava git repo is
 cd ~/kava
-docker build -t kava/kava:local .
+docker build -f Dockerfile-rocksdb -t kava/kava:local .
 cd -
 ```
 
