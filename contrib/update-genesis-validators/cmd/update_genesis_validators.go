@@ -16,6 +16,8 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	distributiontypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
 	genutiltypes "github.com/cosmos/cosmos-sdk/x/genutil/types"
+	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
+	govtypesv1 "github.com/cosmos/cosmos-sdk/x/gov/types/v1"
 	slashingtypes "github.com/cosmos/cosmos-sdk/x/slashing/types"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 	"github.com/kava-labs/kava/app"
@@ -37,6 +39,8 @@ var (
 	ugvKeyPrefix string
 	// path & name of file to save updated genesis to
 	ugvOutFile string
+	// optionally override the governance voting period
+	ugvVotingPeriod int
 )
 
 var updateGenesisValidatorsCmd = &cobra.Command{
@@ -84,6 +88,11 @@ Validators are replaced by in order of highest voting power.`,
 		&ugvOutFile,
 		"out", "o", "updated-genesis.json",
 		"Name of output json file for updated genesis with replaced validators.",
+	)
+	updateGenesisValidatorsCmd.Flags().IntVar(
+		&ugvVotingPeriod,
+		"voting-period", 0,
+		"Optionally adjust the voting period for governance. Input is number of seconds.",
 	)
 }
 
@@ -354,6 +363,31 @@ func UpdateGenesisFileWithNewValidators(
 	appState[distributiontypes.ModuleName], err = codec.MarshalJSON(&distributionState)
 	if err != nil {
 		return fmt.Errorf("failed to marshal updated distribution state: %s", err)
+	}
+
+	//----------------------
+	// GOVERNANCE STATE
+	//----------------------
+
+	// override gov voting period, if desired
+	if ugvVotingPeriod > 0 {
+
+		// unmarshal gov module state
+		governanceState := govtypesv1.GenesisState{}
+		if err = codec.UnmarshalJSON(appState[govtypes.ModuleName], &governanceState); err != nil {
+			return fmt.Errorf("failed to unmarshal app_state.gov: %s", err)
+		}
+
+		// update voting period
+		newVotingPeriod := time.Second * time.Duration(ugvVotingPeriod)
+		governanceState.VotingParams.VotingPeriod = &newVotingPeriod
+		fmt.Printf("updated x/gov voting period to %s\n", newVotingPeriod)
+
+		// remarshal updated state
+		appState[govtypes.ModuleName], err = codec.MarshalJSON(&governanceState)
+		if err != nil {
+			return fmt.Errorf("failed to marshal updated gov state: %s", err)
+		}
 	}
 
 	//----------------------
