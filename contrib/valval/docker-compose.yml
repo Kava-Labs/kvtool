@@ -21,7 +21,7 @@ services:
     command:
       - "sh"
       - "-c"
-      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657"
+      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
   kava-2:
     image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
     volumes:
@@ -30,7 +30,7 @@ services:
     command:
       - "sh"
       - "-c"
-      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657"
+      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
   kava-3:
     image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
     volumes:
@@ -39,7 +39,7 @@ services:
     command:
       - "sh"
       - "-c"
-      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657"
+      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
   kava-4:
     image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
     volumes:
@@ -48,7 +48,7 @@ services:
     command:
       - "sh"
       - "-c"
-      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657"
+      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
   kava-5:
     image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
     volumes:
@@ -57,7 +57,7 @@ services:
     command:
       - "sh"
       - "-c"
-      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657"
+      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
   kava-6:
     image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
     volumes:
@@ -66,7 +66,7 @@ services:
     command:
       - "sh"
       - "-c"
-      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657"
+      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
   kava-7:
     image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
     volumes:
@@ -75,7 +75,7 @@ services:
     command:
       - "sh"
       - "-c"
-      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657"
+      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
   kava-8:
     image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
     volumes:
@@ -84,7 +84,7 @@ services:
     command:
       - "sh"
       - "-c"
-      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657"
+      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
   kava-9:
     image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
     volumes:
@@ -93,7 +93,7 @@ services:
     command:
       - "sh"
       - "-c"
-      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657"
+      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
   kava-10:
     image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
     volumes:
@@ -102,7 +102,7 @@ services:
     command:
       - "sh"
       - "-c"
-      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657"
+      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
   kava-11:
     image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
     volumes:
@@ -111,7 +111,7 @@ services:
     command:
       - "sh"
       - "-c"
-      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657"
+      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
   kava-12:
     image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
     volumes:
@@ -120,7 +120,7 @@ services:
     command:
       - "sh"
       - "-c"
-      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657"
+      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
   kava-13:
     image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
     volumes:
@@ -129,4 +129,4 @@ services:
     command:
       - "sh"
       - "-c"
-      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657"
+      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
