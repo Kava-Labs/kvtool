@@ -23,10 +23,10 @@ for ((i = 1; i <= num_validators; i++)); do
   peers+=("$(kava tendermint show-node-id --home $home)@$home:26656")
 
   # force use of rocksdb
-  sed -i '' -e "s#^db_backend = .*#db_backend = \"rocksdb\"#" $home/config/config.toml
+  sed -i -e "s#^db_backend = .*#db_backend = \"rocksdb\"#" $home/config/config.toml
 
   # update max_num_outbound_peers to be number of other validators
-  sed -i '' -e "s#^max_num_outbound_peers = .*#max_num_outbound_peers = $((num_validators - 1))#" $home/config/config.toml
+  sed -i -e "s#^max_num_outbound_peers = .*#max_num_outbound_peers = $((num_validators - 1))#" $home/config/config.toml
 done
 
 if [ "$there_is_a_new_validator" = true ]; then
