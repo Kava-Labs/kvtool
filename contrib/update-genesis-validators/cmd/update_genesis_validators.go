@@ -9,7 +9,10 @@ import (
 	"sort"
 	"time"
 
+	"github.com/spf13/cobra"
+
 	sdkmath "cosmossdk.io/math"
+	"github.com/cosmos/cosmos-sdk/codec"
 	codectypes "github.com/cosmos/cosmos-sdk/codec/types"
 	"github.com/cosmos/cosmos-sdk/crypto/keys/ed25519"
 	cryptotypes "github.com/cosmos/cosmos-sdk/crypto/types"
@@ -20,11 +23,13 @@ import (
 	govtypesv1 "github.com/cosmos/cosmos-sdk/x/gov/types/v1"
 	slashingtypes "github.com/cosmos/cosmos-sdk/x/slashing/types"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
-	"github.com/kava-labs/kava/app"
-	"github.com/spf13/cobra"
+
 	tmjson "github.com/tendermint/tendermint/libs/json"
 	pvtypes "github.com/tendermint/tendermint/privval"
 	tmtypes "github.com/tendermint/tendermint/types"
+
+	"github.com/kava-labs/kava/app"
+	committeetypes "github.com/kava-labs/kava/x/committee/types"
 )
 
 // flag options for the command
@@ -41,6 +46,8 @@ var (
 	ugvOutFile string
 	// optionally override the governance voting period
 	ugvVotingPeriod int
+	// optionally inject God Committee with this address as a member
+	ugvGodCommitteeMember string
 )
 
 var updateGenesisValidatorsCmd = &cobra.Command{
@@ -94,6 +101,11 @@ Validators are replaced by in order of highest voting power.`,
 		"voting-period", 0,
 		"Optionally adjust the voting period for governance. Input is number of seconds.",
 	)
+	updateGenesisValidatorsCmd.Flags().StringVar(
+		&ugvGodCommitteeMember,
+		"inject-god-committee", "",
+		"Optionally inject a god committee with this address as the only member.\nExpects kava address of sole committee member.\nAssumes next committee id is len(committees) + 1.",
+	)
 }
 
 func updateGenesisValidators(cmd *cobra.Command, args []string) error {
@@ -126,8 +138,9 @@ func updateGenesisValidators(cmd *cobra.Command, args []string) error {
 		doc.ChainID = ugvChainID
 	}
 
+	encodingConfig := app.MakeEncodingConfig()
 	// perform necessary updates
-	if err = UpdateGenesisFileWithNewValidators(doc, valKeys); err != nil {
+	if err = UpdateGenesisFileWithNewValidators(doc, valKeys, encodingConfig.Marshaler); err != nil {
 		return err
 	}
 
@@ -178,6 +191,7 @@ func loadValidatorKeys(dir string, prefix string) ([]pvtypes.FilePVKey, error) {
 func UpdateGenesisFileWithNewValidators(
 	doc *tmtypes.GenesisDoc,
 	valKeys []pvtypes.FilePVKey,
+	cdc codec.Codec,
 ) error {
 	// warn that we aren't using all val keys
 	if len(doc.Validators) < len(valKeys) {
@@ -371,7 +385,6 @@ func UpdateGenesisFileWithNewValidators(
 
 	// override gov voting period, if desired
 	if ugvVotingPeriod > 0 {
-
 		// unmarshal gov module state
 		governanceState := govtypesv1.GenesisState{}
 		if err = codec.UnmarshalJSON(appState[govtypes.ModuleName], &governanceState); err != nil {
@@ -388,6 +401,50 @@ func UpdateGenesisFileWithNewValidators(
 		if err != nil {
 			return fmt.Errorf("failed to marshal updated gov state: %s", err)
 		}
+	}
+
+	//----------------------
+	// COMMITTEE STATE
+	//----------------------
+
+	// inject god committee w/ member, if desired
+	if ugvGodCommitteeMember != "" {
+		// unmarshal gov module state
+		committeeState := committeetypes.GenesisState{}
+		if err = codec.UnmarshalJSON(appState[committeetypes.ModuleName], &committeeState); err != nil {
+			return fmt.Errorf("failed to unmarshal app_state.committee: %s", err)
+		}
+
+		// inject god committee
+		nextCommitteeId := uint64(len(committeeState.Committees) + 1)
+		godCommittee := committeetypes.MustNewMemberCommittee(
+			nextCommitteeId,
+			"Kava God Committee (testing only)",
+			[]sdk.AccAddress{sdk.MustAccAddressFromBech32(ugvGodCommitteeMember)},
+			[]committeetypes.Permission{&committeetypes.GodPermission{}},
+			sdk.MustNewDecFromStr("0.667000000000000000"),
+			604800*time.Second,
+			committeetypes.TALLY_OPTION_FIRST_PAST_THE_POST,
+		)
+
+		// massage member committee to proto.Any for inclusion in genesis state
+		genesisCommittee := committeetypes.Committee(godCommittee)
+		if err = genesisCommittee.UnpackInterfaces(cdc); err != nil {
+			return fmt.Errorf("failed to unpack committee interface: %s", err)
+		}
+		anyCommittee, err := committeetypes.PackCommittee(genesisCommittee)
+		if err != nil {
+			return fmt.Errorf("failed to pack god committee: %s", err)
+		}
+
+		committeeState.Committees = append(committeeState.Committees, anyCommittee)
+
+		// remarshal updated state
+		appState[committeetypes.ModuleName], err = codec.MarshalJSON(&committeeState)
+		if err != nil {
+			return fmt.Errorf("failed to marshal updated committee state: %s", err)
+		}
+		fmt.Printf("added god committee with member %s\n", ugvGodCommitteeMember)
 	}
 
 	//----------------------

@@ -1577,28 +1577,10 @@
           }
         },
         {
-          "@type": "/kava.committee.v1beta1.MemberCommittee",
-          "base_committee": {
-            "description": "Kava God Committee (testing only)",
-            "id": "3",
-            "members": [
-              "kava1n96qpdfcz2m7y364ewk8srv9zuq6ucwduyjaag"
-            ],
-            "permissions": [
-              {
-                "@type": "/kava.committee.v1beta1.GodPermission"
-              }
-            ],
-            "proposal_duration": "604800s",
-            "tally_option": "TALLY_OPTION_FIRST_PAST_THE_POST",
-            "vote_threshold": "0.667000000000000000"
-          }
-        },
-        {
           "@type": "/kava.committee.v1beta1.TokenCommittee",
           "base_committee": {
             "description": "HARD Governance Committee",
-            "id": "4",
+            "id": "3",
             "members": [
               "kava1n96qpdfcz2m7y364ewk8srv9zuq6ucwduyjaag"
             ],
@@ -1653,7 +1635,7 @@
           "@type": "/kava.committee.v1beta1.TokenCommittee",
           "base_committee": {
             "description": "SWP Governance Committee",
-            "id": "5",
+            "id": "4",
             "members": [
               "kava1n96qpdfcz2m7y364ewk8srv9zuq6ucwduyjaag"
             ],
