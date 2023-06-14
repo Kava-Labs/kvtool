@@ -3,26 +3,33 @@ package cmd
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"math/big"
 	"os"
 	"path/filepath"
 	"sort"
 	"time"
 
+	"github.com/spf13/cobra"
+
+	sdkmath "cosmossdk.io/math"
+	"github.com/cosmos/cosmos-sdk/codec"
 	codectypes "github.com/cosmos/cosmos-sdk/codec/types"
 	"github.com/cosmos/cosmos-sdk/crypto/keys/ed25519"
 	cryptotypes "github.com/cosmos/cosmos-sdk/crypto/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	distributiontypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
 	genutiltypes "github.com/cosmos/cosmos-sdk/x/genutil/types"
+	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
+	govtypesv1 "github.com/cosmos/cosmos-sdk/x/gov/types/v1"
 	slashingtypes "github.com/cosmos/cosmos-sdk/x/slashing/types"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
-	"github.com/kava-labs/kava/app"
-	"github.com/spf13/cobra"
+
 	tmjson "github.com/tendermint/tendermint/libs/json"
 	pvtypes "github.com/tendermint/tendermint/privval"
 	tmtypes "github.com/tendermint/tendermint/types"
+
+	"github.com/kava-labs/kava/app"
+	committeetypes "github.com/kava-labs/kava/x/committee/types"
 )
 
 // flag options for the command
@@ -37,12 +44,16 @@ var (
 	ugvKeyPrefix string
 	// path & name of file to save updated genesis to
 	ugvOutFile string
+	// optionally override the governance voting period
+	ugvVotingPeriod int
+	// optionally inject God Committee with this address as a member
+	ugvGodCommitteeMember string
 )
 
 var updateGenesisValidatorsCmd = &cobra.Command{
 	Use:   "update-genesis-validators path/to/source-genesis.json",
-	Short: "Updates the validators of a non-zero height genesis.json",
-	Long: `Takes a non-zero height genesis.json and a directory of indexed priv_validator_keys and replaces the validators of the genesis file with ones corresponding to the keys.
+	Short: "Updates the validators of genesis.json",
+	Long: `Takes genesis.json and a directory of indexed priv_validator_keys and replaces the validators of the genesis file with ones corresponding to the keys.
 
 By default, the new validators replace the old ones from highest power to lowest. Any other validators are left as is.`,
 	Args: cobra.MinimumNArgs(1),
@@ -85,6 +96,16 @@ Validators are replaced by in order of highest voting power.`,
 		"out", "o", "updated-genesis.json",
 		"Name of output json file for updated genesis with replaced validators.",
 	)
+	updateGenesisValidatorsCmd.Flags().IntVar(
+		&ugvVotingPeriod,
+		"voting-period", 0,
+		"Optionally adjust the voting period for governance. Input is number of seconds.",
+	)
+	updateGenesisValidatorsCmd.Flags().StringVar(
+		&ugvGodCommitteeMember,
+		"inject-god-committee", "",
+		"Optionally inject a god committee with this address as the only member.\nExpects kava address of sole committee member.\nAssumes next committee id is len(committees) + 1.",
+	)
 }
 
 func updateGenesisValidators(cmd *cobra.Command, args []string) error {
@@ -96,11 +117,6 @@ func updateGenesisValidators(cmd *cobra.Command, args []string) error {
 	doc, err := loadGenesisFile(filename)
 	if err != nil {
 		return err
-	}
-
-	// ensure it's not 0-height
-	if doc.InitialHeight <= 1 {
-		return fmt.Errorf("expected genesis file to be for height > 1. found %d", doc.InitialHeight)
 	}
 
 	// get all priv_validator_keys
@@ -122,8 +138,9 @@ func updateGenesisValidators(cmd *cobra.Command, args []string) error {
 		doc.ChainID = ugvChainID
 	}
 
+	encodingConfig := app.MakeEncodingConfig()
 	// perform necessary updates
-	if err = UpdateGenesisFileWithNewValidators(doc, valKeys); err != nil {
+	if err = UpdateGenesisFileWithNewValidators(doc, valKeys, encodingConfig.Marshaler); err != nil {
 		return err
 	}
 
@@ -149,7 +166,7 @@ func loadValidatorKeys(dir string, prefix string) ([]pvtypes.FilePVKey, error) {
 	valKeys := []pvtypes.FilePVKey{}
 	for idx := 0; true; idx++ {
 		filename := fmt.Sprintf("%s%d.json", prefix, idx)
-		keyJSONBytes, err := ioutil.ReadFile(filepath.Join(dir, filename))
+		keyJSONBytes, err := os.ReadFile(filepath.Join(dir, filename))
 		if err != nil {
 			// file doesn't exist or is malformed
 			break
@@ -174,6 +191,7 @@ func loadValidatorKeys(dir string, prefix string) ([]pvtypes.FilePVKey, error) {
 func UpdateGenesisFileWithNewValidators(
 	doc *tmtypes.GenesisDoc,
 	valKeys []pvtypes.FilePVKey,
+	cdc codec.Codec,
 ) error {
 	// warn that we aren't using all val keys
 	if len(doc.Validators) < len(valKeys) {
@@ -362,6 +380,74 @@ func UpdateGenesisFileWithNewValidators(
 	}
 
 	//----------------------
+	// GOVERNANCE STATE
+	//----------------------
+
+	// override gov voting period, if desired
+	if ugvVotingPeriod > 0 {
+		// unmarshal gov module state
+		governanceState := govtypesv1.GenesisState{}
+		if err = codec.UnmarshalJSON(appState[govtypes.ModuleName], &governanceState); err != nil {
+			return fmt.Errorf("failed to unmarshal app_state.gov: %s", err)
+		}
+
+		// update voting period
+		newVotingPeriod := time.Second * time.Duration(ugvVotingPeriod)
+		governanceState.VotingParams.VotingPeriod = &newVotingPeriod
+		fmt.Printf("updated x/gov voting period to %s\n", newVotingPeriod)
+
+		// remarshal updated state
+		appState[govtypes.ModuleName], err = codec.MarshalJSON(&governanceState)
+		if err != nil {
+			return fmt.Errorf("failed to marshal updated gov state: %s", err)
+		}
+	}
+
+	//----------------------
+	// COMMITTEE STATE
+	//----------------------
+
+	// inject god committee w/ member, if desired
+	if ugvGodCommitteeMember != "" {
+		// unmarshal gov module state
+		committeeState := committeetypes.GenesisState{}
+		if err = codec.UnmarshalJSON(appState[committeetypes.ModuleName], &committeeState); err != nil {
+			return fmt.Errorf("failed to unmarshal app_state.committee: %s", err)
+		}
+
+		// inject god committee
+		nextCommitteeId := uint64(len(committeeState.Committees) + 1)
+		godCommittee := committeetypes.MustNewMemberCommittee(
+			nextCommitteeId,
+			"Kava God Committee (testing only)",
+			[]sdk.AccAddress{sdk.MustAccAddressFromBech32(ugvGodCommitteeMember)},
+			[]committeetypes.Permission{&committeetypes.GodPermission{}},
+			sdk.MustNewDecFromStr("0.667000000000000000"),
+			604800*time.Second,
+			committeetypes.TALLY_OPTION_FIRST_PAST_THE_POST,
+		)
+
+		// massage member committee to proto.Any for inclusion in genesis state
+		genesisCommittee := committeetypes.Committee(godCommittee)
+		if err = genesisCommittee.UnpackInterfaces(cdc); err != nil {
+			return fmt.Errorf("failed to unpack committee interface: %s", err)
+		}
+		anyCommittee, err := committeetypes.PackCommittee(genesisCommittee)
+		if err != nil {
+			return fmt.Errorf("failed to pack god committee: %s", err)
+		}
+
+		committeeState.Committees = append(committeeState.Committees, anyCommittee)
+
+		// remarshal updated state
+		appState[committeetypes.ModuleName], err = codec.MarshalJSON(&committeeState)
+		if err != nil {
+			return fmt.Errorf("failed to marshal updated committee state: %s", err)
+		}
+		fmt.Printf("added god committee with member %s\n", ugvGodCommitteeMember)
+	}
+
+	//----------------------
 	// FINALIZE APP STATE
 	//----------------------
 	// update the power of `validators` (required staking state read first)
@@ -383,10 +469,10 @@ func UpdateGenesisFileWithNewValidators(
 // validators, adjusts the total power such that the replaced validators control at least the
 // desired percentage
 func calcPowerDelta(
-	initialTotalPower sdk.Int,
-	initialValPower sdk.Int,
+	initialTotalPower sdkmath.Int,
+	initialValPower sdkmath.Int,
 	desiredPercent float64,
-) sdk.Int {
+) sdkmath.Int {
 	iTotalPower := new(big.Float).SetInt(initialTotalPower.BigInt())
 	iValPower := new(big.Float).SetInt(initialValPower.BigInt())
 	initialPercent := new(big.Float).Quo(iValPower, iTotalPower)
@@ -395,7 +481,7 @@ func calcPowerDelta(
 	percentAfter := big.NewFloat(desiredPercent)
 	// if we already have enough power, no change is necessary
 	if initialPercent.Cmp(percentAfter) >= 0 {
-		return sdk.NewInt(0)
+		return sdkmath.NewInt(0)
 	}
 
 	// a = (P + Δ) / (T + Δ) => Δ = (a*T - P) / (1 - a)

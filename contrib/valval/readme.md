@@ -55,12 +55,13 @@ docker-compose up
 ## change the kava version
 By default, this uses the `master` tag of the kava docker image.
 You can override the tag with the `KAVA_IMAGE_TAG` env variable.
+**NOTE: the docker image you use must be setup to run rocksdb.**
 
 To use a local version, first build & tag the kava image:
 ```
 # wherever the Kava-Labs/kava git repo is
 cd ~/kava
-docker build -t kava/kava:local .
+docker build -f Dockerfile-rocksdb -t kava/kava:local .
 cd -
 ```
 
@@ -77,20 +78,9 @@ the top validators in mainnet data to do things like test upgrade migrations on 
 That means that if more validators are needed to run with >66.7% of consensus power, more validators
 may need to be added here. This is how:
 
-1. update all the shell scripts in this directory (`gen.sh`, `clean.sh`, `copy-gen.sh`) to iterate counting to the new number
-example: changing from 10 -> 11 validators
-```diff
---- gen.sh
-+++ gen.sh
--for i in {1..10}
-+for i in {1..11}
-```
+1. update the number stored in [NUM_VALIDATORS](./NUM_VALIDATORS). this is used by the scripts to iterate through the home directories.
 
-1. run `./gen.sh`. this generates the correct number of data directories
-
-2. the above command outputs the list of all peer node ids and addresses. we need to update the new node to have all the other nodes as a peer and we need to add the new node as a peer to all existing nodes:
-   * copy all the peers. remove the new node from the string. open `kava-<new_node_index>/config/config.toml` and set `persistent_peers` to all other nodes
-   * add the new node id & address to the `persistent_peers` of all the already-existing node configs
+2. run `./gen.sh`. this generates the correct number of data directories and updates all the persistent_peers of each one to include every other validator as a peer.
 
 3. add another node to the docker compose (replace `11` in the name and `volumes` below with the new node index):
 ```yaml
@@ -105,4 +95,4 @@ example: changing from 10 -> 11 validators
       - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657"
 ```
 
-1. resume your regularly scheduled meganode running
+4. resume your regularly scheduled meganode running
