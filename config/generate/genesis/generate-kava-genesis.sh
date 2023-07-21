@@ -121,7 +121,7 @@ $BINARY config broadcast-mode block
 ##### CONSENSUS PARAMS #####
 ############################
 # set maximum gas allowed per block
-jq '.consensus_params.block.max_gas = "2000000"' $DATA/config/genesis.json | sponge $DATA/config/genesis.json
+jq '.consensus_params.block.max_gas = "20000000"' $DATA/config/genesis.json | sponge $DATA/config/genesis.json
 
 ###########################
 ##### SETUP ADDRESSES #####

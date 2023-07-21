@@ -59,11 +59,11 @@ inter-block-cache = true
 # ["message.sender", "message.recipient"]
 index-events = []
 
-# IavlCacheSize set the size of the iavl tree cache.
+# IavlCacheSize set the size of the iavl tree cache. 
 # Default cache size is 50mb.
 iavl-cache-size = 781250
 trace = true
-# IavlDisableFastNode enables or disables the fast node feature of IAVL.
+# IavlDisableFastNode enables or disables the fast node feature of IAVL. 
 # Default is false.
 iavl-disable-fastnode = false
 
@@ -241,7 +241,7 @@ keys = ["*", ]
 write_dir = ""
 prefix = ""
 
-# output-metadata specifies if output the metadata file which includes the abci request/responses
+# output-metadata specifies if output the metadata file which includes the abci request/responses 
 # during processing the block.
 output-metadata = "true"
 
@@ -320,7 +320,7 @@ allow-unprotected-txs = false
 max-open-connections = 0
 
 # EnableIndexer enables the custom transaction indexer for the EVM (ethereum transactions).
-enable-indexer = true
+enable-indexer = false
 
 # MetricsAddress defines the EVM Metrics server address to bind to. Pass --metrics in CLI to enable
 # Prometheus metrics path: /debug/metrics/prometheus
