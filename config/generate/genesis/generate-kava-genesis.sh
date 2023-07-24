@@ -331,7 +331,7 @@ set-app-state evm.params.eip712_allowed_msgs
 jq '.app_state.evmutil.params.enabled_conversion_pairs = [
   {
     "kava_erc20_address": "0xeA7100edA2f805356291B0E55DaD448599a72C6d",
-    "denom": "erc20/multichain/usdc"
+    "denom": "erc20/tether/usdt"
   }
 ]' $DATA/config/genesis.json | sponge $DATA/config/genesis.json
 

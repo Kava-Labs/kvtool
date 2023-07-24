@@ -1,5 +1,5 @@
 {
-  "genesis_time": "2023-07-21T20:13:01.871703Z",
+  "genesis_time": "2023-07-21T21:41:26.718292Z",
   "chain_id": "kavalocalnet_8888-1",
   "initial_height": "1",
   "consensus_params": {
@@ -2093,7 +2093,7 @@
         "enabled_conversion_pairs": [
           {
             "kava_erc20_address": "0xeA7100edA2f805356291B0E55DaD448599a72C6d",
-            "denom": "erc20/multichain/usdc"
+            "denom": "erc20/tether/usdt"
           }
         ],
         "allowed_cosmos_denoms": [
