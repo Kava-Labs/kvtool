@@ -2,358 +2,450 @@
   "params": {
     "markets": [
       {
-        "active": true,
-        "base_asset": "bnb",
         "market_id": "bnb:usd",
-        "oracles": ["$oracle"],
-        "quote_asset": "usd"
-      },
-      {
-        "active": true,
         "base_asset": "bnb",
+        "quote_asset": "usd",
+        "oracles": ["$oracle"],
+        "active": true
+      },
+      {
         "market_id": "bnb:usd:30",
+        "base_asset": "bnb",
+        "quote_asset": "usd",
         "oracles": ["$oracle"],
-        "quote_asset": "usd"
+        "active": true
       },
       {
-        "active": true,
-        "base_asset": "btc",
         "market_id": "btc:usd",
-        "oracles": ["$oracle"],
-        "quote_asset": "usd"
-      },
-      {
-        "active": true,
         "base_asset": "btc",
+        "quote_asset": "usd",
+        "oracles": ["$oracle"],
+        "active": true
+      },
+      {
         "market_id": "btc:usd:30",
+        "base_asset": "btc",
+        "quote_asset": "usd",
         "oracles": ["$oracle"],
-        "quote_asset": "usd"
+        "active": true
       },
       {
-        "active": true,
-        "base_asset": "xrp",
-        "market_id": "xrp:usd:30",
-        "oracles": ["$oracle"],
-        "quote_asset": "usd"
-      },
-      {
-        "active": true,
-        "base_asset": "xrp",
         "market_id": "xrp:usd",
+        "base_asset": "xrp",
+        "quote_asset": "usd",
         "oracles": ["$oracle"],
-        "quote_asset": "usd"
+        "active": true
       },
       {
-        "active": true,
-        "base_asset": "busd",
+        "market_id": "xrp:usd:30",
+        "base_asset": "xrp",
+        "quote_asset": "usd",
+        "oracles": ["$oracle"],
+        "active": true
+      },
+      {
         "market_id": "busd:usd",
-        "oracles": ["$oracle"],
-        "quote_asset": "usd"
-      },
-      {
-        "active": true,
         "base_asset": "busd",
+        "quote_asset": "usd",
+        "oracles": ["$oracle"],
+        "active": true
+      },
+      {
         "market_id": "busd:usd:30",
+        "base_asset": "busd",
+        "quote_asset": "usd",
         "oracles": ["$oracle"],
-        "quote_asset": "usd"
+        "active": true
       },
       {
-        "active": true,
-        "base_asset": "kava",
         "market_id": "kava:usd",
-        "oracles": ["$oracle"],
-        "quote_asset": "usd"
-      },
-      {
-        "active": true,
         "base_asset": "kava",
+        "quote_asset": "usd",
+        "oracles": ["$oracle"],
+        "active": true
+      },
+      {
         "market_id": "kava:usd:30",
+        "base_asset": "kava",
+        "quote_asset": "usd",
         "oracles": ["$oracle"],
-        "quote_asset": "usd"
+        "active": true
       },
       {
-        "active": true,
-        "base_asset": "hard",
         "market_id": "hard:usd",
-        "oracles": ["$oracle"],
-        "quote_asset": "usd"
-      },
-      {
-        "active": true,
         "base_asset": "hard",
+        "quote_asset": "usd",
+        "oracles": ["$oracle"],
+        "active": true
+      },
+      {
         "market_id": "hard:usd:30",
+        "base_asset": "hard",
+        "quote_asset": "usd",
         "oracles": ["$oracle"],
-        "quote_asset": "usd"
+        "active": true
       },
       {
-        "active": true,
-        "base_asset": "atom",
-        "market_id": "atom:usd",
-        "oracles": ["$oracle"],
-        "quote_asset": "usd"
-      },
-      {
-        "active": true,
-        "base_asset": "atom",
-        "market_id": "atom:usd:30",
-        "oracles": ["$oracle"],
-        "quote_asset": "usd"
-      },
-      {
-        "active": true,
-        "base_asset": "osmo",
-        "market_id": "osmo:usd",
-        "oracles": ["$oracle"],
-        "quote_asset": "usd"
-      },
-      {
-        "active": true,
-        "base_asset": "osmo",
-        "market_id": "osmo:usd:30",
-        "oracles": ["$oracle"],
-        "quote_asset": "usd"
-      },
-      {
-        "active": true,
-        "base_asset": "akt",
-        "market_id": "akt:usd",
-        "oracles": ["$oracle"],
-        "quote_asset": "usd"
-      },
-      {
-        "active": true,
-        "base_asset": "akt",
-        "market_id": "akt:usd:30",
-        "oracles": ["$oracle"],
-        "quote_asset": "usd"
-      },
-      {
-        "active": true,
-        "base_asset": "luna",
-        "market_id": "luna:usd",
-        "oracles": ["$oracle"],
-        "quote_asset": "usd"
-      },
-      {
-        "active": true,
-        "base_asset": "luna",
-        "market_id": "luna:usd:30",
-        "oracles": ["$oracle"],
-        "quote_asset": "usd"
-      },
-      {
-        "active": true,
-        "base_asset": "usdx",
         "market_id": "usdx:usd",
+        "base_asset": "usdx",
+        "quote_asset": "usd",
         "oracles": ["$oracle"],
-        "quote_asset": "usd"
+        "active": true
       },
       {
-        "active": true,
-        "base_asset": "usdx",
         "market_id": "usdx:usd:30",
-        "oracles": ["$oracle"],
-        "quote_asset": "usd"
-      },
-      {
-        "active": true,
         "base_asset": "usdx",
+        "quote_asset": "usd",
+        "oracles": ["$oracle"],
+        "active": true
+      },
+      {
         "market_id": "usdx:usd:720",
+        "base_asset": "usdx",
+        "quote_asset": "usd",
         "oracles": ["$oracle"],
-        "quote_asset": "usd"
+        "active": true
       },
       {
-        "active": true,
-        "base_asset": "swp",
         "market_id": "swp:usd",
-        "oracles": ["$oracle"],
-        "quote_asset": "usd"
-      },
-      {
-        "active": true,
         "base_asset": "swp",
+        "quote_asset": "usd",
+        "oracles": ["$oracle"],
+        "active": true
+      },
+      {
         "market_id": "swp:usd:30",
+        "base_asset": "swp",
+        "quote_asset": "usd",
         "oracles": ["$oracle"],
-        "quote_asset": "usd"
+        "active": true
       },
       {
-        "active": true,
-        "base_asset": "erc20/multichain/usdc",
-        "market_id": "erc20/multichain/usdc:usd",
+        "market_id": "atom:usd",
+        "base_asset": "atom",
+        "quote_asset": "usd",
         "oracles": ["$oracle"],
-        "quote_asset": "usd"
+        "active": true
       },
       {
-        "active": true,
-        "base_asset": "erc20/multichain/usdc",
-        "market_id": "erc20/multichain/usdc:usd:30",
+        "market_id": "atom:usd:30",
+        "base_asset": "atom",
+        "quote_asset": "usd",
         "oracles": ["$oracle"],
-        "quote_asset": "usd"
+        "active": true
+      },
+      {
+        "market_id": "akt:usd",
+        "base_asset": "akt",
+        "quote_asset": "usd",
+        "oracles": ["$oracle"],
+        "active": true
+      },
+      {
+        "market_id": "akt:usd:30",
+        "base_asset": "akt",
+        "quote_asset": "usd",
+        "oracles": ["$oracle"],
+        "active": true
+      },
+      {
+        "market_id": "luna:usd",
+        "base_asset": "luna",
+        "quote_asset": "usd",
+        "oracles": ["$oracle"],
+        "active": true
+      },
+      {
+        "market_id": "luna:usd:30",
+        "base_asset": "luna",
+        "quote_asset": "usd",
+        "oracles": ["$oracle"],
+        "active": true
+      },
+      {
+        "market_id": "osmo:usd",
+        "base_asset": "osmo",
+        "quote_asset": "usd",
+        "oracles": ["$oracle"],
+        "active": true
+      },
+      {
+        "market_id": "osmo:usd:30",
+        "base_asset": "osmo",
+        "quote_asset": "usd",
+        "oracles": ["$oracle"],
+        "active": true
+      },
+      {
+        "market_id": "ust:usd",
+        "base_asset": "ust",
+        "quote_asset": "usd",
+        "oracles": ["$oracle"],
+        "active": true
+      },
+      {
+        "market_id": "ust:usd:30",
+        "base_asset": "ust",
+        "quote_asset": "usd",
+        "oracles": ["$oracle"],
+        "active": true
+      },
+      {
+        "market_id": "usdc:usd",
+        "base_asset": "usdc",
+        "quote_asset": "usd",
+        "oracles": ["$oracle"],
+        "active": true
+      },
+      {
+        "market_id": "usdc:usd:30",
+        "base_asset": "usdc",
+        "quote_asset": "usd",
+        "oracles": ["$oracle"],
+        "active": true
+      },
+      {
+        "market_id": "usdt:usd",
+        "base_asset": "usdt",
+        "quote_asset": "usd",
+        "oracles": ["$oracle"],
+        "active": true
+      },
+      {
+        "market_id": "usdt:usd:30",
+        "base_asset": "usdt",
+        "quote_asset": "usd",
+        "oracles": ["$oracle"],
+        "active": true
+      },
+      {
+        "market_id": "dai:usd",
+        "base_asset": "dai",
+        "quote_asset": "usd",
+        "oracles": ["$oracle"],
+        "active": true
+      },
+      {
+        "market_id": "dai:usd:30",
+        "base_asset": "dai",
+        "quote_asset": "usd",
+        "oracles": ["$oracle"],
+        "active": true
+      },
+      {
+        "market_id": "eth:usd",
+        "base_asset": "eth",
+        "quote_asset": "usd",
+        "oracles": ["$oracle"],
+        "active": true
+      },
+      {
+        "market_id": "eth:usd:30",
+        "base_asset": "eth",
+        "quote_asset": "usd",
+        "oracles": ["$oracle"],
+        "active": true
       }
     ]
   },
   "posted_prices": [
     {
-      "expiry": "2023-07-20T00:00:00Z",
-      "market_id": "bnb:usd",
-      "oracle_address": "$oracle",
-      "price": "215.962650000000001782"
-    },
-    {
-      "expiry": "2023-07-20T00:00:00Z",
-      "market_id": "bnb:usd:30",
-      "oracle_address": "$oracle",
-      "price": "217.962650000000001782"
-    },
-    {
-      "expiry": "2023-07-20T00:00:00Z",
-      "market_id": "btc:usd",
-      "oracle_address": "$oracle",
-      "price": "29500.962650000000001782"
-    },
-    {
-      "expiry": "2023-07-20T00:00:00Z",
-      "market_id": "btc:usd:30",
-      "oracle_address": "$oracle",
-      "price": "28500.962650000000001782"
-    },
-    {
-      "expiry": "2023-07-20T00:00:00Z",
       "market_id": "akt:usd",
+      "price": "0.584749999999999992",
       "oracle_address": "$oracle",
-      "price": "1.962650000000001782"
+      "expiry": "2050-01-01T00:00:00Z"
     },
     {
-      "expiry": "2023-07-20T00:00:00Z",
       "market_id": "akt:usd:30",
+      "price": "0.584099666666666684",
       "oracle_address": "$oracle",
-      "price": "1.962650000000001782"
+      "expiry": "2050-01-01T00:00:00Z"
     },
     {
-      "expiry": "2023-07-20T00:00:00Z",
-      "market_id": "osmo:usd",
-      "oracle_address": "$oracle",
-      "price": "4.962650000000001782"
-    },
-    {
-      "expiry": "2023-07-20T00:00:00Z",
-      "market_id": "osmo:usd:30",
-      "oracle_address": "$oracle",
-      "price": "4.962650000000001782"
-    },
-    {
-      "expiry": "2023-07-20T00:00:00Z",
-      "market_id": "luna:usd",
-      "oracle_address": "$oracle",
-      "price": "92.962650000000001782"
-    },
-    {
-      "expiry": "2023-07-20T00:00:00Z",
-      "market_id": "luna:usd:30",
-      "oracle_address": "$oracle",
-      "price": "92.962650000000001782"
-    },
-    {
-      "expiry": "2023-07-20T00:00:00Z",
       "market_id": "atom:usd",
+      "price": "9.016999999999999460",
       "oracle_address": "$oracle",
-      "price": "24.962650000000001782"
+      "expiry": "2050-01-01T00:00:00Z"
     },
     {
-      "expiry": "2023-07-20T00:00:00Z",
       "market_id": "atom:usd:30",
+      "price": "8.993133333333332757",
       "oracle_address": "$oracle",
-      "price": "24.962650000000001782"
+      "expiry": "2050-01-01T00:00:00Z"
     },
     {
-      "expiry": "2023-07-20T00:00:00Z",
-      "market_id": "xrp:usd",
+      "market_id": "bnb:usd",
+      "price": "238.699999999999988631",
       "oracle_address": "$oracle",
-      "price": "0.552650000000001782"
+      "expiry": "2050-01-01T00:00:00Z"
     },
     {
-      "expiry": "2023-07-20T00:00:00Z",
-      "market_id": "xrp:usd:30",
+      "market_id": "bnb:usd:30",
+      "price": "238.043333333333379187",
       "oracle_address": "$oracle",
-      "price": "0.552650000000001782"
+      "expiry": "2050-01-01T00:00:00Z"
     },
     {
-      "expiry": "2023-07-20T00:00:00Z",
+      "market_id": "btc:usd",
+      "price": "29124.259999999998399289",
+      "oracle_address": "$oracle",
+      "expiry": "2050-01-01T00:00:00Z"
+    },
+    {
+      "market_id": "btc:usd:30",
+      "price": "29174.038333333322952967",
+      "oracle_address": "$oracle",
+      "expiry": "2050-01-01T00:00:00Z"
+    },
+    {
       "market_id": "busd:usd",
+      "price": "1.000000000000000000",
       "oracle_address": "$oracle",
-      "price": "1.000000000000000000"
+      "expiry": "2050-01-01T00:00:00Z"
     },
     {
-      "expiry": "2023-07-20T00:00:00Z",
       "market_id": "busd:usd:30",
+      "price": "1.000000000000000000",
       "oracle_address": "$oracle",
-      "price": "1.000000000000000000"
+      "expiry": "2050-01-01T00:00:00Z"
     },
     {
-      "expiry": "2023-07-20T00:00:00Z",
-      "market_id": "usdx:usd",
+      "market_id": "dai:usd",
+      "price": "1.000000000000000000",
       "oracle_address": "$oracle",
-      "price": "1.000000000000000000"
+      "expiry": "2050-01-01T00:00:00Z"
     },
     {
-      "expiry": "2023-07-20T00:00:00Z",
-      "market_id": "usdx:usd:30",
+      "market_id": "dai:usd:30",
+      "price": "1.000000000000000000",
       "oracle_address": "$oracle",
-      "price": "1.000000000000000000"
+      "expiry": "2050-01-01T00:00:00Z"
     },
     {
-      "expiry": "2023-07-20T00:00:00Z",
-      "market_id": "usdx:usd:720",
-      "oracle_address": "$oracle",
-      "price": "1.000000000000000000"
-    },
-    {
-      "expiry": "2023-07-20T00:00:00Z",
-      "market_id": "kava:usd",
-      "oracle_address": "$oracle",
-      "price": "3.000000000000000000"
-    },
-    {
-      "expiry": "2023-07-20T00:00:00Z",
-      "market_id": "kava:usd:30",
-      "oracle_address": "$oracle",
-      "price": "3.000000000000000000"
-    },
-    {
-      "expiry": "2023-07-20T00:00:00Z",
       "market_id": "hard:usd",
+      "price": "0.118099999999999997",
       "oracle_address": "$oracle",
-      "price": "0.500000000000000000"
+      "expiry": "2050-01-01T00:00:00Z"
     },
     {
-      "expiry": "2023-07-20T00:00:00Z",
       "market_id": "hard:usd:30",
+      "price": "0.118076666666666663",
       "oracle_address": "$oracle",
-      "price": "0.500000000000000000"
+      "expiry": "2050-01-01T00:00:00Z"
     },
     {
-      "expiry": "2023-07-20T00:00:00Z",
+      "market_id": "kava:usd",
+      "price": "0.863999999999999990",
+      "oracle_address": "$oracle",
+      "expiry": "2050-01-01T00:00:00Z"
+    },
+    {
+      "market_id": "kava:usd:30",
+      "price": "0.869700000000000251",
+      "oracle_address": "$oracle",
+      "expiry": "2050-01-01T00:00:00Z"
+    },
+    {
+      "market_id": "luna:usd",
+      "price": "0.617399999999999949",
+      "oracle_address": "$oracle",
+      "expiry": "2050-01-01T00:00:00Z"
+    },
+    {
+      "market_id": "luna:usd:30",
+      "price": "0.615783333333333460",
+      "oracle_address": "$oracle",
+      "expiry": "2050-01-01T00:00:00Z"
+    },
+    {
+      "market_id": "osmo:usd",
+      "price": "0.493765000000000009",
+      "oracle_address": "$oracle",
+      "expiry": "2050-01-01T00:00:00Z"
+    },
+    {
+      "market_id": "osmo:usd:30",
+      "price": "0.493601685594476869",
+      "oracle_address": "$oracle",
+      "expiry": "2050-01-01T00:00:00Z"
+    },
+    {
       "market_id": "swp:usd",
+      "price": "0.012359999999999999",
       "oracle_address": "$oracle",
-      "price": "2.150000000000000000"
+      "expiry": "2050-01-01T00:00:00Z"
     },
     {
-      "expiry": "2023-07-20T00:00:00Z",
       "market_id": "swp:usd:30",
+      "price": "0.012529333333333335",
       "oracle_address": "$oracle",
-      "price": "2.150000000000000000"
+      "expiry": "2050-01-01T00:00:00Z"
     },
     {
-      "expiry": "2023-07-20T00:00:00Z",
-      "market_id": "erc20/multichain/usdc:usd",
+      "market_id": "usdc:usd",
+      "price": "1.000000000000000000",
       "oracle_address": "$oracle",
-      "price": "1.000000000000000000"
+      "expiry": "2050-01-01T00:00:00Z"
     },
     {
-      "expiry": "2023-07-20T00:00:00Z",
-      "market_id": "erc20/multichain/usdc:usd:30",
+      "market_id": "usdc:usd:30",
+      "price": "1.000000000000000000",
       "oracle_address": "$oracle",
-      "price": "1.000000000000000000"
+      "expiry": "2050-01-01T00:00:00Z"
+    },
+    {
+      "market_id": "usdt:usd",
+      "price": "1.000000000000000000",
+      "oracle_address": "$oracle",
+      "expiry": "2050-01-01T00:00:00Z"
+    },
+    {
+      "market_id": "usdt:usd:30",
+      "price": "1.000000000000000000",
+      "oracle_address": "$oracle",
+      "expiry": "2050-01-01T00:00:00Z"
+    },
+    {
+      "market_id": "usdx:usd",
+      "price": "0.899599999999999955",
+      "oracle_address": "$oracle",
+      "expiry": "2050-01-01T00:00:00Z"
+    },
+    {
+      "market_id": "usdx:usd:30",
+      "price": "0.898733333333332940",
+      "oracle_address": "$oracle",
+      "expiry": "2050-01-01T00:00:00Z"
+    },
+    {
+      "market_id": "usdx:usd:720",
+      "price": "0.890397916666666678",
+      "oracle_address": "$oracle",
+      "expiry": "2050-01-01T00:00:00Z"
+    },
+    {
+      "market_id": "ust:usd",
+      "price": "0.000000000000000000",
+      "oracle_address": "$oracle",
+      "expiry": "2050-01-01T00:00:00Z"
+    },
+    {
+      "market_id": "ust:usd:30",
+      "price": "0.000000000000000000",
+      "oracle_address": "$oracle",
+      "expiry": "2050-01-01T00:00:00Z"
+    },
+    {
+      "market_id": "xrp:usd",
+      "price": "0.704099999999999948",
+      "oracle_address": "$oracle",
+      "expiry": "2050-01-01T00:00:00Z"
+    },
+    {
+      "market_id": "xrp:usd:30",
+      "price": "0.703160000000000118",
+      "oracle_address": "$oracle",
+      "expiry": "2050-01-01T00:00:00Z"
     }
   ]
 }

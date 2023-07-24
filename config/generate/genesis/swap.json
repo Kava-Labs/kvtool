@@ -1,29 +1,54 @@
 {
   "params": {
     "allowed_pools": [
-      { "token_a": "ukava", "token_b": "usdx" },
-      { "token_a": "hard", "token_b": "usdx" },
+      {
+        "token_a": "bnb",
+        "token_b": "usdx"
+      },
+      {
+        "token_a": "btcb",
+        "token_b": "usdx"
+      },
+      {
+        "token_a": "busd",
+        "token_b": "usdx"
+      },
+      {
+        "token_a": "hard",
+        "token_b": "usdx"
+      },
+      {
+        "token_a": "ibc/0471F1C4E7AFD3F07702BEF6DC365268D64570F7C1FDC98EA6098DD6DE59817B",
+        "token_b": "usdx"
+      },
       {
         "token_a": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
         "token_b": "usdx"
       },
       {
-        "token_a": "ibc/4129EB76C01ED14052054BB975DE0C6C5010E12FFD9253C20C58BCD828BEE9A5",
+        "token_a": "ibc/799FDD409719A1122586A629AE8FCA17380351A51C1F47A80A1B8E7F2A491098",
         "token_b": "usdx"
       },
       {
-        "token_a": "ibc/C72DE26FFF16DE62BE2784E12229BDF5F4465CE8B10530426D6DB53255FF01B2",
+        "token_a": "ibc/B448C0CA358B958301D328CCDC5D5AD642FC30A6D3AE106FF721DB315F3DDE5C",
         "token_b": "usdx"
       },
       {
-        "token_a": "ibc/ED07A3391A112B175915CD8FAF43A2DA8E4790EDE12566649D0C2F97716B8518",
+        "token_a": "ibc/B8AF5D92165F35AB31F3FC7C7B444B9D240760FA5D406C49D24862BD0284E395",
         "token_b": "usdx"
       },
-      { "token_a": "swp", "token_b": "usdx" },
-      { "token_a": "bnb", "token_b": "usdx" },
-      { "token_a": "btcb", "token_b": "usdx" },
-      { "token_a": "busd", "token_b": "usdx" },
-      { "token_a": "usdx", "token_b": "xrpb" }
+      {
+        "token_a": "swp",
+        "token_b": "usdx"
+      },
+      {
+        "token_a": "ukava",
+        "token_b": "usdx"
+      },
+      {
+        "token_a": "usdx",
+        "token_b": "xrpb"
+      }
     ],
     "swap_fee": "0.001500000000000000"
   },

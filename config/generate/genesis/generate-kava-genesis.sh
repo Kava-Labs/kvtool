@@ -172,8 +172,8 @@ export valoper
 add-genesis-account-key validator '.kava.validators[0]' 2000000000"$DENOM"
 
 $BINARY gentx validator 1000000000"$DENOM" \
---chain-id="$chainID" \
---moniker="validator"
+  --chain-id="$chainID" \
+  --moniker="validator"
 
 $BINARY collect-gentxs
 
@@ -223,7 +223,6 @@ user=$(get-address .kava.users.user)
 export user
 add-eth-genesis-account-key user '.kava.users.user' 1000000000ukava
 
-
 ibcdenom='ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2' # ATOM on mainnet
 whalefunds=1000000000000ukava,10000000000000000bkava-"$valoper",10000000000000000bnb,10000000000000000btcb,10000000000000000busd,1000000000000000000hard,1000000000000000000swp,10000000000000000usdx,10000000000000000xrpb,10000000000000000"$ibcdenom"
 # whale account
@@ -252,7 +251,6 @@ bridge_relayer=$(get-address '.kava.users.bridge_relayer')
 export bridge_relayer
 add-eth-genesis-account-key bridge_relayer '.kava.users.bridge_relayer' 1000000000000ukava
 
-
 # Accounts without keys
 # issuance module
 add-genesis-account kava1cj7njkw2g9fqx4e768zc75dp9sks8u9znxrf0w 1000000000000ukava,1000000000000swp,1000000000000hard
@@ -263,7 +261,8 @@ add-genesis-account kava1mfru9azs5nua2wxcd4sq64g5nt7nn4n8s2w8cu 5000000000ukava,
 # DO NOT CALL `add-genesis-account` AFTER HERE UNLESS IT IS AN EthAccount
 # this uses all exported account variables.
 account_data_dir='./config/generate/genesis/auth.accounts'
-account_data=$(jq -s '
+account_data=$(
+  jq -s '
   [ .[0][] | {
       "@type": "/cosmos.auth.v1beta1.BaseAccount",
       "account_number": "0",
@@ -275,10 +274,9 @@ account_data=$(jq -s '
   + [.[1]]
   + .[2]
 ' $account_data_dir/base-accounts.json $account_data_dir/vesting-periodic.json $account_data_dir/eth-accounts.json |
-  envsubst
+    envsubst
 )
 jq ".app_state.auth.accounts"' = '"$account_data" $DATA/config/genesis.json | sponge $DATA/config/genesis.json
-
 
 ############################
 ##### MODULE APP STATE #####
@@ -302,7 +300,7 @@ set-app-state authz.authorization
 set-app-state bep3.params.asset_params
 
 # x/cdp params
-jq '.app_state.cdp.params.global_debt_limit.amount = "53000000000000"' $DATA/config/genesis.json | sponge $DATA/config/genesis.json
+jq '.app_state.cdp.params.global_debt_limit.amount = "181350010000000"' $DATA/config/genesis.json | sponge $DATA/config/genesis.json
 set-app-state cdp.params.collateral_params
 
 # x/committee (uses $committee)
@@ -346,10 +344,10 @@ jq '.app_state.evmutil.params.allowed_cosmos_denoms = [
 ]' $DATA/config/genesis.json | sponge $DATA/config/genesis.json
 
 # x/feemarket: Disable fee market
-jq '.app_state.feemarket.params.no_base_fee = true' $DATA/config/genesis.json|sponge $DATA/config/genesis.json
+jq '.app_state.feemarket.params.no_base_fee = true' $DATA/config/genesis.json | sponge $DATA/config/genesis.json
 
 # x/gov: lower voting period to 30s
-jq '.app_state.gov.voting_params.voting_period = "30s"' $DATA/config/genesis.json|sponge $DATA/config/genesis.json
+jq '.app_state.gov.voting_params.voting_period = "30s"' $DATA/config/genesis.json | sponge $DATA/config/genesis.json
 
 # x/hard: money markets (Kava Lend)
 set-app-state hard.params.money_markets
