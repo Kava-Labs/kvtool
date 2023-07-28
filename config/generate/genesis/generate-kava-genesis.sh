@@ -85,6 +85,7 @@ trace = true' $DATA/config/app.toml
 
 # Enable unsafe CORs
 sed -i '' 's/enabled-unsafe-cors = false/enabled-unsafe-cors = true/g' $DATA/config/app.toml
+sed -i '' 's/enable-unsafe-cors = false/enable-unsafe-cors = true/g' $DATA/config/app.toml
 
 # Set the min gas fee
 sed -i '' 's/minimum-gas-prices = "0ukava"/minimum-gas-prices = "0.001ukava;1000000000akava"/g' $DATA/config/app.toml
@@ -224,7 +225,7 @@ export user
 add-eth-genesis-account-key user '.kava.users.user' 1000000000ukava
 
 ibcdenom='ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2' # ATOM on mainnet
-whalefunds=1000000000000ukava,10000000000000000bkava-"$valoper",10000000000000000bnb,10000000000000000btcb,10000000000000000busd,1000000000000000000hard,1000000000000000000swp,10000000000000000usdx,10000000000000000xrpb,10000000000000000"$ibcdenom"
+whalefunds=1000000000000ukava,10000000000000000bkava-"$valoper",10000000000000000bnb,10000000000000000btcb,10000000000000000busd,1000000000000000000hard,1000000000000000000swp,10000000000000000usdx,10000000000000000xrpb
 # whale account
 whale=$(get-address '.kava.users.whale')
 export whale
