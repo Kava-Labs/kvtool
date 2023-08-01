@@ -519,5 +519,180 @@
       }
     ],
     "nested_types": []
+  },
+  {
+    "msg_type_url": "/cosmos.distribution.v1beta1.MsgWithdrawDelegatorReward",
+    "msg_value_type_name": "MsgValueWithdrawDelegatorReward",
+    "value_types": [
+      {
+        "name": "delegator_address",
+        "type": "string"
+      },
+      {
+        "name": "validator_address",
+        "type": "string"
+      }
+    ],
+    "nested_types": []
+  },
+  {
+    "msg_type_url": "/ibc.applications.transfer.v1.MsgTransfer",
+    "msg_value_type_name": "MsgValueIBCTransfer",
+    "value_types": [
+      {
+        "name": "source_port",
+        "type": "string"
+      },
+      {
+        "name": "source_channel",
+        "type": "string"
+      },
+      {
+        "name": "token",
+        "type": "Coin"
+      },
+      {
+        "name": "sender",
+        "type": "string"
+      },
+      {
+        "name": "receiver",
+        "type": "string"
+      },
+      {
+        "name": "timeout_height",
+        "type": "Height"
+      },
+      {
+        "name": "timeout_timestamp",
+        "type": "uint64"
+      },
+      {
+        "name": "memo",
+        "type": "string"
+      }
+    ],
+    "nested_types": [
+      {
+        "name": "Height",
+        "attrs": [
+          {
+            "name": "revision_number",
+            "type": "uint64"
+          },
+          {
+            "name": "revision_height",
+            "type": "uint64"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "msg_type_url": "/kava.cdp.v1beta1.MsgCreateCDP",
+    "msg_value_type_name": "MsgValueCdpCreateCDP",
+    "value_types": [
+      {
+        "name": "sender",
+        "type": "string"
+      },
+      {
+        "name": "collateral",
+        "type": "Coin"
+      },
+      {
+        "name": "principal",
+        "type": "Coin"
+      },
+      {
+        "name": "collateral_type",
+        "type": "string"
+      }
+    ],
+    "nested_types": []
+  },
+  {
+    "msg_type_url": "/kava.cdp.v1beta1.MsgDeposit",
+    "msg_value_type_name": "MsgValueCdpDeposit",
+    "value_types": [
+      {
+        "name": "depositor",
+        "type": "string"
+      },
+      {
+        "name": "owner",
+        "type": "string"
+      },
+      {
+        "name": "collateral",
+        "type": "Coin"
+      },
+      {
+        "name": "collateral_type",
+        "type": "string"
+      }
+    ],
+    "nested_types": []
+  },
+  {
+    "msg_type_url": "/kava.cdp.v1beta1.MsgWithdraw",
+    "msg_value_type_name": "MsgValueCdpWithdraw",
+    "value_types": [
+      {
+        "name": "depositor",
+        "type": "string"
+      },
+      {
+        "name": "owner",
+        "type": "string"
+      },
+      {
+        "name": "collateral",
+        "type": "Coin"
+      },
+      {
+        "name": "collateral_type",
+        "type": "string"
+      }
+    ],
+    "nested_types": []
+  },
+  {
+    "msg_type_url": "/kava.cdp.v1beta1.MsgDrawDebt",
+    "msg_value_type_name": "MsgValueCdpDrawDebt",
+    "value_types": [
+      {
+        "name": "sender",
+        "type": "string"
+      },
+      {
+        "name": "collateral_type",
+        "type": "string"
+      },
+      {
+        "name": "principal",
+        "type": "Coin"
+      }
+    ],
+    "nested_types": []
+  },
+  {
+    "msg_type_url": "/kava.cdp.v1beta1.MsgRepayDebt",
+    "msg_value_type_name": "MsgValueCdpRepayDebt",
+    "value_types": [
+      {
+        "name": "sender",
+        "type": "string"
+      },
+      {
+        "name": "collateral_type",
+        "type": "string"
+      },
+      {
+        "name": "payment",
+        "type": "Coin"
+      }
+    ],
+    "nested_types": []
   }
 ]

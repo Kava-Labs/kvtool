@@ -39,7 +39,7 @@
     "liquidation_ratio": "1.010000000000000000",
     "debt_limit": {
       "denom": "usdx",
-      "amount": "150000000000000"
+      "amount": "50000000000000"
     },
     "stability_fee": "1.000000000000000000",
     "auction_size": "1000000000000",
@@ -148,6 +148,23 @@
     "liquidation_penalty": "0.025000000000000000",
     "spot_market_id": "swp:usd",
     "liquidation_market_id": "swp:usd:30",
+    "keeper_reward_percentage": "0.010000000000000000",
+    "check_collateralization_index_count": "10",
+    "conversion_factor": "6"
+  },
+  {
+    "denom": "erc20/tether/usdt",
+    "type": "usdt-a",
+    "liquidation_ratio": "1.010000000000000000",
+    "debt_limit": {
+      "denom": "usdx",
+      "amount": "25000000000000"
+    },
+    "stability_fee": "1.000000000000000000",
+    "auction_size": "100000000000",
+    "liquidation_penalty": "0.025000000000000000",
+    "spot_market_id": "usdt:usd",
+    "liquidation_market_id": "usdt:usd:30",
     "keeper_reward_percentage": "0.010000000000000000",
     "check_collateralization_index_count": "10",
     "conversion_factor": "6"
