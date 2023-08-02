@@ -335,7 +335,15 @@ jq '.app_state.evmutil.params.enabled_conversion_pairs = [
 ]' $DATA/config/genesis.json | sponge $DATA/config/genesis.json
 
 # x/evmutil: enable sdk -> evm conversion pair
+# HARD is enabled for kava's e2e tests (must be first in this list.)
+# the IBC denom is enabled for mainnet parity.
 jq '.app_state.evmutil.params.allowed_cosmos_denoms = [
+  {
+    "cosmos_denom": "hard",
+    "name": "Kava-wrapped HARD",
+    "symbol": "HARD",
+    "decimals": 6
+  },
   {
     "cosmos_denom": "'"$ibcdenom"'",
     "name": "Kava-wrapped ATOM",
