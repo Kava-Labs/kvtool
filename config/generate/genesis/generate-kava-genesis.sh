@@ -79,6 +79,9 @@ sed -i '' 's/enable = false/enable = true/g' $DATA/config/app.toml
 # Set evm tracer to json
 sed -i '' 's/tracer = ""/tracer = "json"/g' $DATA/config/app.toml
 
+# Enable tx tracing with debug namespace in evm
+sed -i '' 's/api = "eth,net,web3"/api = "eth,net,web3,debug"/g' $DATA/config/app.toml
+
 # Enable full error trace to be returned on tx failure
 sed -i '' '/iavl-cache-size/a\
 trace = true' $DATA/config/app.toml
