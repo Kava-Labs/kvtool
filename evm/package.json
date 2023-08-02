@@ -6,7 +6,7 @@
     "hardhat": "^2.8.3"
   },
   "dependencies": {
-    "@openzeppelin/contracts": "^4.4.2"
+    "@openzeppelin/contracts": "^4.9.2"
   },
   "scripts": {
     "token-deploy": "npx hardhat run --network local scripts/deploy/token.js",
