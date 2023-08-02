@@ -79,12 +79,16 @@ sed -i '' 's/enable = false/enable = true/g' $DATA/config/app.toml
 # Set evm tracer to json
 sed -i '' 's/tracer = ""/tracer = "json"/g' $DATA/config/app.toml
 
+# Enable tx tracing with debug namespace in evm
+sed -i '' 's/api = "eth,net,web3"/api = "eth,net,web3,debug"/g' $DATA/config/app.toml
+
 # Enable full error trace to be returned on tx failure
 sed -i '' '/iavl-cache-size/a\
 trace = true' $DATA/config/app.toml
 
 # Enable unsafe CORs
 sed -i '' 's/enabled-unsafe-cors = false/enabled-unsafe-cors = true/g' $DATA/config/app.toml
+sed -i '' 's/enable-unsafe-cors = false/enable-unsafe-cors = true/g' $DATA/config/app.toml
 
 # Set the min gas fee
 sed -i '' 's/minimum-gas-prices = "0ukava"/minimum-gas-prices = "0.001ukava;1000000000akava"/g' $DATA/config/app.toml
@@ -121,7 +125,7 @@ $BINARY config broadcast-mode block
 ##### CONSENSUS PARAMS #####
 ############################
 # set maximum gas allowed per block
-jq '.consensus_params.block.max_gas = "2000000"' $DATA/config/genesis.json | sponge $DATA/config/genesis.json
+jq '.consensus_params.block.max_gas = "20000000"' $DATA/config/genesis.json | sponge $DATA/config/genesis.json
 
 ###########################
 ##### SETUP ADDRESSES #####
@@ -172,8 +176,8 @@ export valoper
 add-genesis-account-key validator '.kava.validators[0]' 2000000000"$DENOM"
 
 $BINARY gentx validator 1000000000"$DENOM" \
---chain-id="$chainID" \
---moniker="validator"
+  --chain-id="$chainID" \
+  --moniker="validator"
 
 $BINARY collect-gentxs
 
@@ -223,9 +227,8 @@ user=$(get-address .kava.users.user)
 export user
 add-eth-genesis-account-key user '.kava.users.user' 1000000000ukava
 
-
 ibcdenom='ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2' # ATOM on mainnet
-whalefunds=1000000000000ukava,10000000000000000bkava-"$valoper",10000000000000000bnb,10000000000000000btcb,10000000000000000busd,1000000000000000000hard,1000000000000000000swp,10000000000000000usdx,10000000000000000xrpb,10000000000000000"$ibcdenom"
+whalefunds=1000000000000ukava,10000000000000000bkava-"$valoper",10000000000000000bnb,10000000000000000btcb,10000000000000000busd,1000000000000000000hard,1000000000000000000swp,10000000000000000usdx,10000000000000000xrpb
 # whale account
 whale=$(get-address '.kava.users.whale')
 export whale
@@ -252,7 +255,6 @@ bridge_relayer=$(get-address '.kava.users.bridge_relayer')
 export bridge_relayer
 add-eth-genesis-account-key bridge_relayer '.kava.users.bridge_relayer' 1000000000000ukava
 
-
 # Accounts without keys
 # issuance module
 add-genesis-account kava1cj7njkw2g9fqx4e768zc75dp9sks8u9znxrf0w 1000000000000ukava,1000000000000swp,1000000000000hard
@@ -263,7 +265,8 @@ add-genesis-account kava1mfru9azs5nua2wxcd4sq64g5nt7nn4n8s2w8cu 5000000000ukava,
 # DO NOT CALL `add-genesis-account` AFTER HERE UNLESS IT IS AN EthAccount
 # this uses all exported account variables.
 account_data_dir='./config/generate/genesis/auth.accounts'
-account_data=$(jq -s '
+account_data=$(
+  jq -s '
   [ .[0][] | {
       "@type": "/cosmos.auth.v1beta1.BaseAccount",
       "account_number": "0",
@@ -275,10 +278,9 @@ account_data=$(jq -s '
   + [.[1]]
   + .[2]
 ' $account_data_dir/base-accounts.json $account_data_dir/vesting-periodic.json $account_data_dir/eth-accounts.json |
-  envsubst
+    envsubst
 )
 jq ".app_state.auth.accounts"' = '"$account_data" $DATA/config/genesis.json | sponge $DATA/config/genesis.json
-
 
 ############################
 ##### MODULE APP STATE #####
@@ -302,7 +304,7 @@ set-app-state authz.authorization
 set-app-state bep3.params.asset_params
 
 # x/cdp params
-jq '.app_state.cdp.params.global_debt_limit.amount = "53000000000000"' $DATA/config/genesis.json | sponge $DATA/config/genesis.json
+jq '.app_state.cdp.params.global_debt_limit.amount = "181350010000000"' $DATA/config/genesis.json | sponge $DATA/config/genesis.json
 set-app-state cdp.params.collateral_params
 
 # x/committee (uses $committee)
@@ -331,12 +333,20 @@ set-app-state evm.params.eip712_allowed_msgs
 jq '.app_state.evmutil.params.enabled_conversion_pairs = [
   {
     "kava_erc20_address": "0xeA7100edA2f805356291B0E55DaD448599a72C6d",
-    "denom": "erc20/multichain/usdc"
+    "denom": "erc20/tether/usdt"
   }
 ]' $DATA/config/genesis.json | sponge $DATA/config/genesis.json
 
 # x/evmutil: enable sdk -> evm conversion pair
+# HARD is enabled for kava's e2e tests (must be first in this list.)
+# the IBC denom is enabled for mainnet parity.
 jq '.app_state.evmutil.params.allowed_cosmos_denoms = [
+  {
+    "cosmos_denom": "hard",
+    "name": "Kava-wrapped HARD",
+    "symbol": "HARD",
+    "decimals": 6
+  },
   {
     "cosmos_denom": "'"$ibcdenom"'",
     "name": "Kava-wrapped ATOM",
@@ -346,10 +356,10 @@ jq '.app_state.evmutil.params.allowed_cosmos_denoms = [
 ]' $DATA/config/genesis.json | sponge $DATA/config/genesis.json
 
 # x/feemarket: Disable fee market
-jq '.app_state.feemarket.params.no_base_fee = true' $DATA/config/genesis.json|sponge $DATA/config/genesis.json
+jq '.app_state.feemarket.params.no_base_fee = true' $DATA/config/genesis.json | sponge $DATA/config/genesis.json
 
 # x/gov: lower voting period to 30s
-jq '.app_state.gov.voting_params.voting_period = "30s"' $DATA/config/genesis.json|sponge $DATA/config/genesis.json
+jq '.app_state.gov.voting_params.voting_period = "30s"' $DATA/config/genesis.json | sponge $DATA/config/genesis.json
 
 # x/hard: money markets (Kava Lend)
 set-app-state hard.params.money_markets

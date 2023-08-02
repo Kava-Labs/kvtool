@@ -190,7 +190,7 @@ kava keys unsafe-import-eth-key new-eth-account3 [priv-key]
 
 ### ERC20 token
 
-The master template includes a pre-deployed ERC20 token with the name "USD Coin". The token is configured to be converted to an sdk coin of the denom `erc20/multichain/usdc`.
+The master template includes a pre-deployed ERC20 token with the name "USDT". The token is configured to be converted to an sdk coin of the denom `erc20/tether/usdt`.
 
 Token Address: `0xeA7100edA2f805356291B0E55DaD448599a72C6d`
 Funded Account: `whale2` - `0x03db6b11F47d074a532b9eb8a98aB7AdA5845087` (1000 USDC)

@@ -87,3 +87,47 @@ func Cmd() *cobra.Command {
 
 	return testnetCmd
 }
+
+func KavaCmd() *cobra.Command {
+	kavaCmd := &cobra.Command{
+		Use:     "kava -- [kava commands & args]",
+		Short:   "Run `kava` inside the kavanode container",
+		Long:    "An alias for `kvtool testnet dc exec kavanode -- kava <...all arguments>`.",
+		Example: `TODO`,
+		Args:    cobra.ArbitraryArgs,
+		RunE: func(_ *cobra.Command, args []string) error {
+			cmd := []string{
+				"docker-compose", "--file", generatedPath("docker-compose.yaml"),
+				"exec", "kavanode", "kava",
+			}
+			cmd = append(cmd, args...)
+			if err := replaceCurrentProcess(cmd...); err != nil {
+				return fmt.Errorf("could not run command: %v", err)
+			}
+			return nil
+		},
+	}
+	return kavaCmd
+}
+
+func IbcCmd() *cobra.Command {
+	kavaCmd := &cobra.Command{
+		Use:     "ibc -- [kava commands & args]",
+		Short:   "Run `kava` inside the ibcnode container (the IBC node is another kava chain, but with denom `uatom`)",
+		Long:    "An alias for `kvtool testnet dc exec ibcnode -- kava <...all arguments>`.",
+		Example: `TODO`,
+		Args:    cobra.ArbitraryArgs,
+		RunE: func(_ *cobra.Command, args []string) error {
+			cmd := []string{
+				"docker-compose", "--file", generatedPath("docker-compose.yaml"),
+				"exec", "ibcnode", "kava",
+			}
+			cmd = append(cmd, args...)
+			if err := replaceCurrentProcess(cmd...); err != nil {
+				return fmt.Errorf("could not run command: %v", err)
+			}
+			return nil
+		},
+	}
+	return kavaCmd
+}

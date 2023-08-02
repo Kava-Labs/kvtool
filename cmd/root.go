@@ -32,5 +32,9 @@ func Execute() error {
 	rootCmd.AddCommand(SwapIDCmd(cdc))
 	rootCmd.AddCommand(testnet.Cmd())
 
+	// testnet aliases
+	rootCmd.AddCommand(testnet.KavaCmd())
+	rootCmd.AddCommand(testnet.IbcCmd())
+
 	return rootCmd.Execute()
 }
