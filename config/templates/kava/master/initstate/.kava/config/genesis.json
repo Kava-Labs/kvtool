@@ -700,15 +700,23 @@
           "coins": [
             {
               "denom": "hard",
-              "amount": "1000000000000"
+              "amount": "65067510748750"
+            },
+            {
+              "denom": "ibc/799FDD409719A1122586A629AE8FCA17380351A51C1F47A80A1B8E7F2A491098",
+              "amount": "55336084902"
             },
             {
               "denom": "swp",
-              "amount": "1000000000000"
+              "amount": "107694023963811"
             },
             {
               "denom": "ukava",
-              "amount": "1000000000000"
+              "amount": "25615606138564"
+            },
+            {
+              "denom": "usdx",
+              "amount": "172"
             }
           ]
         },
@@ -802,6 +810,48 @@
             {
               "denom": "xrpb",
               "amount": "10000000000000000"
+            }
+          ]
+        },
+        {
+          "address": "kava1jv65s3grqf6v6jl3dp4t6c9t9rk99cd8m2splc",
+          "coins": [
+            {
+              "denom": "hard",
+              "amount": "229"
+            },
+            {
+              "denom": "ukava",
+              "amount": "132672172124420"
+            },
+            {
+              "denom": "usdx",
+              "amount": "1853"
+            }
+          ]
+        },
+        {
+          "address": "kava17d2wax0zhjrrecvaszuyxdf5wcu5a0p4qlx3t5",
+          "coins": [
+            {
+              "denom": "hard",
+              "amount": "10039584290"
+            },
+            {
+              "denom": "ibc/799FDD409719A1122586A629AE8FCA17380351A51C1F47A80A1B8E7F2A491098",
+              "amount": "2500000000000"
+            },
+            {
+              "denom": "swp",
+              "amount": "864276299273"
+            },
+            {
+              "denom": "ukava",
+              "amount": "168552459056328"
+            },
+            {
+              "denom": "usdx",
+              "amount": "130000545229"
             }
           ]
         }
@@ -1334,13 +1384,26 @@
     },
     "distribution": {
       "params": {
-        "community_tax": "0.750000000000000000",
+        "community_tax": "0.949500000000000000",
         "base_proposer_reward": "0.010000000000000000",
         "bonus_proposer_reward": "0.040000000000000000",
         "withdraw_addr_enabled": true
       },
       "fee_pool": {
-        "community_pool": []
+        "community_pool": [
+          {
+            "denom": "hard",
+            "amount": "229"
+          },
+          {
+            "denom": "ukava",
+            "amount": "132672172124420"
+          },
+          {
+            "denom": "usdx",
+            "amount": "1853"
+          }
+        ]
       },
       "delegator_withdraw_infos": [],
       "previous_proposer": "",
@@ -2753,54 +2816,6 @@
           },
           {
             "active": true,
-            "collateral_type": "erc20/axelar/usdc",
-            "start": "2023-03-22T16:00:00Z",
-            "end": "2024-03-22T16:00:00Z",
-            "rewards_per_second": [
-              {
-                "denom": "ukava",
-                "amount": "3189"
-              }
-            ]
-          },
-          {
-            "active": true,
-            "collateral_type": "erc20/multichain/usdc",
-            "start": "2023-04-25T17:00:00Z",
-            "end": "2024-04-25T17:00:00Z",
-            "rewards_per_second": [
-              {
-                "denom": "ukava",
-                "amount": "3189"
-              }
-            ]
-          },
-          {
-            "active": true,
-            "collateral_type": "erc20/multichain/usdt",
-            "start": "2023-04-25T17:00:00Z",
-            "end": "2024-04-25T17:00:00Z",
-            "rewards_per_second": [
-              {
-                "denom": "ukava",
-                "amount": "3189"
-              }
-            ]
-          },
-          {
-            "active": true,
-            "collateral_type": "erc20/multichain/wbtc",
-            "start": "2023-04-25T17:00:00Z",
-            "end": "2024-04-25T17:00:00Z",
-            "rewards_per_second": [
-              {
-                "denom": "ukava",
-                "amount": "3189"
-              }
-            ]
-          },
-          {
-            "active": true,
             "collateral_type": "erc20/axelar/wbtc",
             "start": "2023-06-09T17:00:00Z",
             "end": "2024-06-09T17:00:00Z",
@@ -2819,13 +2834,15 @@
             "rewards_per_second": [
               {
                 "denom": "ukava",
-                "amount": "79729"
+                "amount": "99502"
               }
             ]
           }
         ],
-        "hard_borrow_reward_periods": null,
-        "delegator_reward_periods": null,
+        "hard_borrow_reward_periods": [
+        ],
+        "delegator_reward_periods": [
+        ],
         "swap_reward_periods": [
           {
             "active": true,
@@ -2954,6 +2971,7 @@
             "multipliers": [
               {
                 "name": "large",
+                "months_lockup": "0",
                 "factor": "1.000000000000000000"
               }
             ]
@@ -2963,6 +2981,7 @@
             "multipliers": [
               {
                 "name": "large",
+                "months_lockup": "0",
                 "factor": "1.000000000000000000"
               }
             ]
@@ -2987,13 +3006,15 @@
             "multipliers": [
               {
                 "name": "large",
+                "months_lockup": "0",
                 "factor": "1.000000000000000000"
               }
             ]
           }
         ],
         "claim_end": "2026-04-08T14:00:00Z",
-        "savings_reward_periods": null,
+        "savings_reward_periods": [
+        ],
         "earn_reward_periods": [
           {
             "active": true,
@@ -3173,12 +3194,171 @@
     },
     "kavadist": {
       "params": {
-        "active": false,
-        "periods": [],
+        "active": true,
+        "periods": [
+          {
+            "start": "2020-06-01T14:00:00Z",
+            "end": "2021-06-01T14:00:00Z",
+            "inflation": "1.000000004431822130"
+          },
+          {
+            "start": "2021-06-01T14:00:00Z",
+            "end": "2022-06-01T14:00:00Z",
+            "inflation": "1.000000002293273137"
+          },
+          {
+            "start": "2022-06-01T14:00:00Z",
+            "end": "2023-06-01T14:00:00Z",
+            "inflation": "1.000000001167363430"
+          },
+          {
+            "start": "2023-06-01T14:00:00Z",
+            "end": "2024-06-01T14:00:00Z",
+            "inflation": "1.000000000782997609"
+          }
+        ],
         "infrastructure_params": {
-          "infrastructure_periods": [],
-          "core_rewards": [],
-          "partner_rewards": []
+          "infrastructure_periods": [
+            {
+              "start": "2022-10-27T15:00:00Z",
+              "end": "2026-10-27T15:00:00Z",
+              "inflation": "1.000000018148694690"
+            }
+          ],
+          "core_rewards": [
+            {
+              "address": "kava1gxlckwwzk9dhcw7qfapagm9ywcgfuhp0r5e3wj",
+              "weight": "1.000000000000000000"
+            }
+          ],
+          "partner_rewards": [
+            {
+              "address": "kava1w27q3jmv3lyx6t2ttedxdcfmxuk9ve4gl4rvlu",
+              "rewards_per_second": {
+                "denom": "ukava",
+                "amount": "31710"
+              }
+            },
+            {
+              "address": "kava1g2r44etkdh756urh9gaf26zzujms34v6j4afgh",
+              "rewards_per_second": {
+                "denom": "ukava",
+                "amount": "3171"
+              }
+            },
+            {
+              "address": "kava125ls9zymjl2739ulj5znmhevyq9lcj5m4fjnkc",
+              "rewards_per_second": {
+                "denom": "ukava",
+                "amount": "634"
+              }
+            },
+            {
+              "address": "kava13u8cqwhds2qghga0vajjpu6r7gk0323whkjkzm",
+              "rewards_per_second": {
+                "denom": "ukava",
+                "amount": "317"
+              }
+            },
+            {
+              "address": "kava1pjd09vjvy5trdmydqn9k36mhee3vtejc6tj6xy",
+              "rewards_per_second": {
+                "denom": "ukava",
+                "amount": "317"
+              }
+            },
+            {
+              "address": "kava140g8fnnl46mlvfhygj3zvjqlku6x0fwuhfj3uf",
+              "rewards_per_second": {
+                "denom": "ukava",
+                "amount": "6342"
+              }
+            },
+            {
+              "address": "kava1wf4mqk2k62puxh0apvr4ztnnvmrzwam30e7w6t",
+              "rewards_per_second": {
+                "denom": "ukava",
+                "amount": "317"
+              }
+            },
+            {
+              "address": "kava155svs6sgxe55rnvs6ghprtqu0mh69kehlxmsky",
+              "rewards_per_second": {
+                "denom": "ukava",
+                "amount": "634"
+              }
+            },
+            {
+              "address": "kava1fkshuyjja57yakf63welsy76zdlcc48dgxp7an",
+              "rewards_per_second": {
+                "denom": "ukava",
+                "amount": "317"
+              }
+            },
+            {
+              "address": "kava1d94gy2s6w88fsk7k664um53q3p6mhc0y9dhu5f",
+              "rewards_per_second": {
+                "denom": "ukava",
+                "amount": "159"
+              }
+            },
+            {
+              "address": "kava1tsfvkjmmn7eelflyx7s0av3leqz55pjf49vp8j",
+              "rewards_per_second": {
+                "denom": "ukava",
+                "amount": "1585"
+              }
+            },
+            {
+              "address": "kava1pr2u860fgn8fn0g8t2e7jc92jn22jldzqpde4r",
+              "rewards_per_second": {
+                "denom": "ukava",
+                "amount": "634"
+              }
+            },
+            {
+              "address": "kava17sfh0uh4hk537c7njcwvtz5036jumk8msmjyyw",
+              "rewards_per_second": {
+                "denom": "ukava",
+                "amount": "317"
+              }
+            },
+            {
+              "address": "kava1x8vwczqxp6l0f7j332ddrgcwer2nh42etjjspv",
+              "rewards_per_second": {
+                "denom": "ukava",
+                "amount": "317"
+              }
+            },
+            {
+              "address": "kava1zqktfkj34xfkhg3f005vjv95efjctpk6mv9x7l",
+              "rewards_per_second": {
+                "denom": "ukava",
+                "amount": "317"
+              }
+            },
+            {
+              "address": "kava1c9ye54e3pzwm3e0zpdlel6pnavrj9qqv6e8r4h",
+              "rewards_per_second": {
+                "denom": "ukava",
+                "amount": "317"
+              }
+            },
+            {
+              "address": "kava1spjfdd4cxat53sv6fpglz4qfqcuk9gl3k2wya2",
+              "rewards_per_second": {
+                "denom": "ukava",
+                "amount": "634"
+              }
+            },
+            {
+              "address": "kava16t00cvmr20eegltl8rhygcl0ljqe4783qzypk0",
+              "rewards_per_second": {
+                "denom": "ukava",
+                "amount": "634"
+              }
+            }
+          ]
         }
       },
       "previous_block_time": "1970-01-01T00:00:01Z"
@@ -3186,16 +3366,16 @@
     "liquid": {},
     "mint": {
       "minter": {
-        "inflation": "0.130000000000000000",
+        "inflation": "0.595000000000000000",
         "annual_provisions": "0.000000000000000000"
       },
       "params": {
         "mint_denom": "ukava",
         "inflation_rate_change": "0.130000000000000000",
-        "inflation_max": "0.750000000000000000",
-        "inflation_min": "0.750000000000000000",
+        "inflation_max": "0.595000000000000000",
+        "inflation_min": "0.595000000000000000",
         "goal_bonded": "0.670000000000000000",
-        "blocks_per_year": "6311520"
+        "blocks_per_year": "5256000"
       }
     },
     "params": null,
