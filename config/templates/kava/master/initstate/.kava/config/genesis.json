@@ -2816,54 +2816,6 @@
           },
           {
             "active": true,
-            "collateral_type": "erc20/axelar/usdc",
-            "start": "2023-03-22T16:00:00Z",
-            "end": "2024-03-22T16:00:00Z",
-            "rewards_per_second": [
-              {
-                "denom": "ukava",
-                "amount": "3189"
-              }
-            ]
-          },
-          {
-            "active": true,
-            "collateral_type": "erc20/multichain/usdc",
-            "start": "2023-04-25T17:00:00Z",
-            "end": "2024-04-25T17:00:00Z",
-            "rewards_per_second": [
-              {
-                "denom": "ukava",
-                "amount": "3189"
-              }
-            ]
-          },
-          {
-            "active": true,
-            "collateral_type": "erc20/multichain/usdt",
-            "start": "2023-04-25T17:00:00Z",
-            "end": "2024-04-25T17:00:00Z",
-            "rewards_per_second": [
-              {
-                "denom": "ukava",
-                "amount": "3189"
-              }
-            ]
-          },
-          {
-            "active": true,
-            "collateral_type": "erc20/multichain/wbtc",
-            "start": "2023-04-25T17:00:00Z",
-            "end": "2024-04-25T17:00:00Z",
-            "rewards_per_second": [
-              {
-                "denom": "ukava",
-                "amount": "3189"
-              }
-            ]
-          },
-          {
-            "active": true,
             "collateral_type": "erc20/axelar/wbtc",
             "start": "2023-06-09T17:00:00Z",
             "end": "2024-06-09T17:00:00Z",
@@ -2882,13 +2834,15 @@
             "rewards_per_second": [
               {
                 "denom": "ukava",
-                "amount": "79729"
+                "amount": "99502"
               }
             ]
           }
         ],
-        "hard_borrow_reward_periods": null,
-        "delegator_reward_periods": null,
+        "hard_borrow_reward_periods": [
+        ],
+        "delegator_reward_periods": [
+        ],
         "swap_reward_periods": [
           {
             "active": true,
@@ -3017,6 +2971,7 @@
             "multipliers": [
               {
                 "name": "large",
+                "months_lockup": "0",
                 "factor": "1.000000000000000000"
               }
             ]
@@ -3026,6 +2981,7 @@
             "multipliers": [
               {
                 "name": "large",
+                "months_lockup": "0",
                 "factor": "1.000000000000000000"
               }
             ]
@@ -3050,13 +3006,15 @@
             "multipliers": [
               {
                 "name": "large",
+                "months_lockup": "0",
                 "factor": "1.000000000000000000"
               }
             ]
           }
         ],
         "claim_end": "2026-04-08T14:00:00Z",
-        "savings_reward_periods": null,
+        "savings_reward_periods": [
+        ],
         "earn_reward_periods": [
           {
             "active": true,
