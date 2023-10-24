@@ -92,3 +92,13 @@ Fetch & merge [upstream](https://github.com/cosmos/relayer) changes if necessary
 
 Note that you will need docker hub permission for the kava org. Additionally, you will need buildx
 configured. Initial setup of docker buildx: `docker buildx create --use`
+
+## troubleshooting
+
+Problems can occur if the time since client update is too large. The error logs will look like this:
+```log
+ts=2023-10-24T23:58:58.336169Z lvl=info msg="Client close to expiration" chain_id:=kavalocalnet_8889-2 client_id:=07-tendermint-0 trusting_period=0 time_since_client_update=3052 client_threshold_time=0
+ts=2023-10-24T23:58:59.337188Z lvl=info msg="Client close to expiration" chain_id:=kavalocalnet_8888-1 client_id:=07-tendermint-0 trusting_period=0 time_since_client_update=4076 client_threshold_time=0
+```
+
+If that happens, regenerate the ibcchain template and the problem should resolve itself.

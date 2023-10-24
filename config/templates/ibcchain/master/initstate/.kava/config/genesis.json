@@ -1,11 +1,11 @@
 {
-  "genesis_time": "2023-03-02T23:32:38.985254Z",
+  "genesis_time": "2023-10-24T23:51:27.372245Z",
   "chain_id": "kavalocalnet_8889-2",
   "initial_height": "1",
   "consensus_params": {
     "block": {
       "max_bytes": "22020096",
-      "max_gas": "-1",
+      "max_gas": "20000000",
       "time_iota_ms": "1000"
     },
     "evidence": {
@@ -123,13 +123,6 @@
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
           "account_number": "0",
-          "address": "kava1n96qpdfcz2m7y364ewk8srv9zuq6ucwduyjaag",
-          "pub_key": null,
-          "sequence": "0"
-        },
-        {
-          "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "account_number": "0",
           "address": "kava1sw54s6gq76acm35ls6m5c0kr93dstgrh6eftld",
           "pub_key": null,
           "sequence": "0"
@@ -200,17 +193,7 @@
         {
           "@type": "/ethermint.types.v1.EthAccount",
           "base_account": {
-            "address": "kava1ak4pa9z2aty94ze2cs06wsdnkg9hsvfkp40r02",
-            "pub_key": null,
-            "account_number": "0",
-            "sequence": "0"
-          },
-          "code_hash": "0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470"
-        },
-        {
-          "@type": "/ethermint.types.v1.EthAccount",
-          "base_account": {
-            "address": "kava123fxg0l602etulhhcdm0vt7l57qya5wjcrwhzz",
+            "address": "kava1r3emvfrc242jcfr9f9ygc34ztpp58xxu6spvdq",
             "pub_key": null,
             "account_number": "0",
             "sequence": "0"
@@ -270,7 +253,233 @@
       ]
     },
     "authz": {
-      "authorization": []
+      "authorization": [
+        {
+          "authorization": {
+            "@type": "/cosmos.authz.v1beta1.GenericAuthorization",
+            "msg": "/cosmos.bank.v1beta1.MsgMultiSend"
+          },
+          "expiration": null,
+          "grantee": "kava10d07y265gmmuvt4z0w9aw880jnsr700jxh8cq5",
+          "granter": "kava17d2wax0zhjrrecvaszuyxdf5wcu5a0p4qlx3t5"
+        },
+        {
+          "authorization": {
+            "@type": "/cosmos.authz.v1beta1.GenericAuthorization",
+            "msg": "/cosmos.bank.v1beta1.MsgSend"
+          },
+          "expiration": null,
+          "grantee": "kava10d07y265gmmuvt4z0w9aw880jnsr700jxh8cq5",
+          "granter": "kava17d2wax0zhjrrecvaszuyxdf5wcu5a0p4qlx3t5"
+        },
+        {
+          "authorization": {
+            "@type": "/cosmos.authz.v1beta1.GenericAuthorization",
+            "msg": "/cosmos.distribution.v1beta1.MsgFundCommunityPool"
+          },
+          "expiration": null,
+          "grantee": "kava10d07y265gmmuvt4z0w9aw880jnsr700jxh8cq5",
+          "granter": "kava17d2wax0zhjrrecvaszuyxdf5wcu5a0p4qlx3t5"
+        },
+        {
+          "authorization": {
+            "@type": "/cosmos.authz.v1beta1.GenericAuthorization",
+            "msg": "/cosmos.distribution.v1beta1.MsgSetWithdrawAddress"
+          },
+          "expiration": null,
+          "grantee": "kava10d07y265gmmuvt4z0w9aw880jnsr700jxh8cq5",
+          "granter": "kava17d2wax0zhjrrecvaszuyxdf5wcu5a0p4qlx3t5"
+        },
+        {
+          "authorization": {
+            "@type": "/cosmos.authz.v1beta1.GenericAuthorization",
+            "msg": "/cosmos.distribution.v1beta1.MsgWithdrawDelegatorReward"
+          },
+          "expiration": null,
+          "grantee": "kava10d07y265gmmuvt4z0w9aw880jnsr700jxh8cq5",
+          "granter": "kava17d2wax0zhjrrecvaszuyxdf5wcu5a0p4qlx3t5"
+        },
+        {
+          "authorization": {
+            "@type": "/cosmos.authz.v1beta1.GenericAuthorization",
+            "msg": "/cosmos.distribution.v1beta1.MsgWithdrawValidatorCommission"
+          },
+          "expiration": null,
+          "grantee": "kava10d07y265gmmuvt4z0w9aw880jnsr700jxh8cq5",
+          "granter": "kava17d2wax0zhjrrecvaszuyxdf5wcu5a0p4qlx3t5"
+        },
+        {
+          "authorization": {
+            "@type": "/cosmos.authz.v1beta1.GenericAuthorization",
+            "msg": "/cosmos.staking.v1beta1.MsgBeginRedelegate"
+          },
+          "expiration": null,
+          "grantee": "kava10d07y265gmmuvt4z0w9aw880jnsr700jxh8cq5",
+          "granter": "kava17d2wax0zhjrrecvaszuyxdf5wcu5a0p4qlx3t5"
+        },
+        {
+          "authorization": {
+            "@type": "/cosmos.authz.v1beta1.GenericAuthorization",
+            "msg": "/cosmos.staking.v1beta1.MsgCancelUnbondingDelegation"
+          },
+          "expiration": null,
+          "grantee": "kava10d07y265gmmuvt4z0w9aw880jnsr700jxh8cq5",
+          "granter": "kava17d2wax0zhjrrecvaszuyxdf5wcu5a0p4qlx3t5"
+        },
+        {
+          "authorization": {
+            "@type": "/cosmos.authz.v1beta1.GenericAuthorization",
+            "msg": "/cosmos.staking.v1beta1.MsgDelegate"
+          },
+          "expiration": null,
+          "grantee": "kava10d07y265gmmuvt4z0w9aw880jnsr700jxh8cq5",
+          "granter": "kava17d2wax0zhjrrecvaszuyxdf5wcu5a0p4qlx3t5"
+        },
+        {
+          "authorization": {
+            "@type": "/cosmos.authz.v1beta1.GenericAuthorization",
+            "msg": "/cosmos.staking.v1beta1.MsgUndelegate"
+          },
+          "expiration": null,
+          "grantee": "kava10d07y265gmmuvt4z0w9aw880jnsr700jxh8cq5",
+          "granter": "kava17d2wax0zhjrrecvaszuyxdf5wcu5a0p4qlx3t5"
+        },
+        {
+          "authorization": {
+            "@type": "/cosmos.authz.v1beta1.GenericAuthorization",
+            "msg": "/kava.cdp.v1beta1.MsgCreateCDP"
+          },
+          "expiration": null,
+          "grantee": "kava10d07y265gmmuvt4z0w9aw880jnsr700jxh8cq5",
+          "granter": "kava17d2wax0zhjrrecvaszuyxdf5wcu5a0p4qlx3t5"
+        },
+        {
+          "authorization": {
+            "@type": "/cosmos.authz.v1beta1.GenericAuthorization",
+            "msg": "/kava.cdp.v1beta1.MsgDeposit"
+          },
+          "expiration": null,
+          "grantee": "kava10d07y265gmmuvt4z0w9aw880jnsr700jxh8cq5",
+          "granter": "kava17d2wax0zhjrrecvaszuyxdf5wcu5a0p4qlx3t5"
+        },
+        {
+          "authorization": {
+            "@type": "/cosmos.authz.v1beta1.GenericAuthorization",
+            "msg": "/kava.cdp.v1beta1.MsgDrawDebt"
+          },
+          "expiration": null,
+          "grantee": "kava10d07y265gmmuvt4z0w9aw880jnsr700jxh8cq5",
+          "granter": "kava17d2wax0zhjrrecvaszuyxdf5wcu5a0p4qlx3t5"
+        },
+        {
+          "authorization": {
+            "@type": "/cosmos.authz.v1beta1.GenericAuthorization",
+            "msg": "/kava.cdp.v1beta1.MsgRepayDebt"
+          },
+          "expiration": null,
+          "grantee": "kava10d07y265gmmuvt4z0w9aw880jnsr700jxh8cq5",
+          "granter": "kava17d2wax0zhjrrecvaszuyxdf5wcu5a0p4qlx3t5"
+        },
+        {
+          "authorization": {
+            "@type": "/cosmos.authz.v1beta1.GenericAuthorization",
+            "msg": "/kava.cdp.v1beta1.MsgWithdraw"
+          },
+          "expiration": null,
+          "grantee": "kava10d07y265gmmuvt4z0w9aw880jnsr700jxh8cq5",
+          "granter": "kava17d2wax0zhjrrecvaszuyxdf5wcu5a0p4qlx3t5"
+        },
+        {
+          "authorization": {
+            "@type": "/cosmos.authz.v1beta1.GenericAuthorization",
+            "msg": "/kava.hard.v1beta1.MsgBorrow"
+          },
+          "expiration": null,
+          "grantee": "kava10d07y265gmmuvt4z0w9aw880jnsr700jxh8cq5",
+          "granter": "kava17d2wax0zhjrrecvaszuyxdf5wcu5a0p4qlx3t5"
+        },
+        {
+          "authorization": {
+            "@type": "/cosmos.authz.v1beta1.GenericAuthorization",
+            "msg": "/kava.hard.v1beta1.MsgDeposit"
+          },
+          "expiration": null,
+          "grantee": "kava10d07y265gmmuvt4z0w9aw880jnsr700jxh8cq5",
+          "granter": "kava17d2wax0zhjrrecvaszuyxdf5wcu5a0p4qlx3t5"
+        },
+        {
+          "authorization": {
+            "@type": "/cosmos.authz.v1beta1.GenericAuthorization",
+            "msg": "/kava.hard.v1beta1.MsgRepay"
+          },
+          "expiration": null,
+          "grantee": "kava10d07y265gmmuvt4z0w9aw880jnsr700jxh8cq5",
+          "granter": "kava17d2wax0zhjrrecvaszuyxdf5wcu5a0p4qlx3t5"
+        },
+        {
+          "authorization": {
+            "@type": "/cosmos.authz.v1beta1.GenericAuthorization",
+            "msg": "/kava.hard.v1beta1.MsgWithdraw"
+          },
+          "expiration": null,
+          "grantee": "kava10d07y265gmmuvt4z0w9aw880jnsr700jxh8cq5",
+          "granter": "kava17d2wax0zhjrrecvaszuyxdf5wcu5a0p4qlx3t5"
+        },
+        {
+          "authorization": {
+            "@type": "/cosmos.authz.v1beta1.GenericAuthorization",
+            "msg": "/kava.liquid.v1beta1.MsgBurnDerivative"
+          },
+          "expiration": null,
+          "grantee": "kava10d07y265gmmuvt4z0w9aw880jnsr700jxh8cq5",
+          "granter": "kava17d2wax0zhjrrecvaszuyxdf5wcu5a0p4qlx3t5"
+        },
+        {
+          "authorization": {
+            "@type": "/cosmos.authz.v1beta1.GenericAuthorization",
+            "msg": "/kava.liquid.v1beta1.MsgMintDerivative"
+          },
+          "expiration": null,
+          "grantee": "kava10d07y265gmmuvt4z0w9aw880jnsr700jxh8cq5",
+          "granter": "kava17d2wax0zhjrrecvaszuyxdf5wcu5a0p4qlx3t5"
+        },
+        {
+          "authorization": {
+            "@type": "/cosmos.authz.v1beta1.GenericAuthorization",
+            "msg": "/kava.swap.v1beta1.MsgDeposit"
+          },
+          "expiration": null,
+          "grantee": "kava10d07y265gmmuvt4z0w9aw880jnsr700jxh8cq5",
+          "granter": "kava17d2wax0zhjrrecvaszuyxdf5wcu5a0p4qlx3t5"
+        },
+        {
+          "authorization": {
+            "@type": "/cosmos.authz.v1beta1.GenericAuthorization",
+            "msg": "/kava.swap.v1beta1.MsgSwapExactForTokens"
+          },
+          "expiration": null,
+          "grantee": "kava10d07y265gmmuvt4z0w9aw880jnsr700jxh8cq5",
+          "granter": "kava17d2wax0zhjrrecvaszuyxdf5wcu5a0p4qlx3t5"
+        },
+        {
+          "authorization": {
+            "@type": "/cosmos.authz.v1beta1.GenericAuthorization",
+            "msg": "/kava.swap.v1beta1.MsgSwapForExactTokens"
+          },
+          "expiration": null,
+          "grantee": "kava10d07y265gmmuvt4z0w9aw880jnsr700jxh8cq5",
+          "granter": "kava17d2wax0zhjrrecvaszuyxdf5wcu5a0p4qlx3t5"
+        },
+        {
+          "authorization": {
+            "@type": "/cosmos.authz.v1beta1.GenericAuthorization",
+            "msg": "/kava.swap.v1beta1.MsgWithdraw"
+          },
+          "expiration": null,
+          "grantee": "kava10d07y265gmmuvt4z0w9aw880jnsr700jxh8cq5",
+          "granter": "kava17d2wax0zhjrrecvaszuyxdf5wcu5a0p4qlx3t5"
+        }
+      ]
     },
     "bank": {
       "params": {
@@ -329,6 +538,15 @@
           ]
         },
         {
+          "address": "kava1r3emvfrc242jcfr9f9ygc34ztpp58xxu6spvdq",
+          "coins": [
+            {
+              "denom": "uatom",
+              "amount": "1000000000000"
+            }
+          ]
+        },
+        {
           "address": "kava1ypjp0m04pyp73hwgtc0dgkx0e9rrydecm054da",
           "coins": [
             {
@@ -361,19 +579,6 @@
             {
               "denom": "uatom",
               "amount": "10000000000"
-            }
-          ]
-        },
-        {
-          "address": "kava123fxg0l602etulhhcdm0vt7l57qya5wjcrwhzz",
-          "coins": [
-            {
-              "denom": "bnb",
-              "amount": "100000000000"
-            },
-            {
-              "denom": "uatom",
-              "amount": "1000000000"
             }
           ]
         },
@@ -464,20 +669,11 @@
           ]
         },
         {
-          "address": "kava1n96qpdfcz2m7y364ewk8srv9zuq6ucwduyjaag",
-          "coins": [
-            {
-              "denom": "uatom",
-              "amount": "1000000000000"
-            }
-          ]
-        },
-        {
           "address": "kava15tmj37vh7ch504px9fcfglmvx6y9m70646ev8t",
           "coins": [
             {
               "denom": "uatom",
-              "amount": "1000000000"
+              "amount": "1000000000000"
             }
           ]
         },
@@ -556,19 +752,6 @@
             {
               "denom": "uatom",
               "amount": "1000000000000"
-            }
-          ]
-        },
-        {
-          "address": "kava1ak4pa9z2aty94ze2cs06wsdnkg9hsvfkp40r02",
-          "coins": [
-            {
-              "denom": "bnb",
-              "amount": "100000000000"
-            },
-            {
-              "denom": "uatom",
-              "amount": "2000000000"
             }
           ]
         },
@@ -711,54 +894,37 @@
       "params": {
         "collateral_params": [
           {
-            "auction_size": "50000000000",
-            "conversion_factor": "8",
-            "debt_limit": {
-              "amount": "20000000000000",
-              "denom": "usdx"
-            },
             "denom": "bnb",
-            "liquidation_market_id": "bnb:usd:30",
-            "liquidation_penalty": "0.050000000000000000",
-            "liquidation_ratio": "1.500000000000000000",
-            "keeper_reward_percentage": "0.01",
-            "check_collateralization_index_count": "10",
-            "spot_market_id": "bnb:usd",
-            "stability_fee": "1.000000000782997700",
-            "type": "bnb-a"
-          },
-          {
-            "auction_size": "100000000",
-            "conversion_factor": "8",
-            "debt_limit": {
-              "amount": "2000000000000",
-              "denom": "usdx"
-            },
-            "denom": "btcb",
-            "liquidation_market_id": "btc:usd:30",
-            "liquidation_penalty": "0.050000000000000000",
-            "liquidation_ratio": "1.500000000000000000",
-            "keeper_reward_percentage": "0.01",
-            "check_collateralization_index_count": "10",
-            "spot_market_id": "btc:usd",
-            "stability_fee": "1.000000000782997700",
-            "type": "btcb-a"
-          },
-          {
-            "denom": "xrpb",
-            "type": "xrpb-a",
+            "type": "bnb-a",
             "liquidation_ratio": "1.500000000000000000",
             "debt_limit": {
               "denom": "usdx",
-              "amount": "1000000000000"
+              "amount": "5000000000000"
             },
-            "stability_fee": "1.000000001547125958",
-            "auction_size": "100000000000",
-            "liquidation_penalty": "0.075000000000000000",
-            "keeper_reward_percentage": "0.01",
+            "stability_fee": "1.000000000158153904",
+            "auction_size": "50000000000",
+            "liquidation_penalty": "0.025000000000000000",
+            "spot_market_id": "bnb:usd",
+            "liquidation_market_id": "bnb:usd:30",
+            "keeper_reward_percentage": "0.010000000000000000",
             "check_collateralization_index_count": "10",
-            "spot_market_id": "xrp:usd",
-            "liquidation_market_id": "xrp:usd:30",
+            "conversion_factor": "8"
+          },
+          {
+            "denom": "btcb",
+            "type": "btcb-a",
+            "liquidation_ratio": "1.500000000000000000",
+            "debt_limit": {
+              "denom": "usdx",
+              "amount": "10000000000000"
+            },
+            "stability_fee": "1.000000000782997609",
+            "auction_size": "100000000",
+            "liquidation_penalty": "0.025000000000000000",
+            "spot_market_id": "btc:usd",
+            "liquidation_market_id": "btc:usd:30",
+            "keeper_reward_percentage": "0.010000000000000000",
+            "check_collateralization_index_count": "10",
             "conversion_factor": "8"
           },
           {
@@ -767,15 +933,15 @@
             "liquidation_ratio": "1.010000000000000000",
             "debt_limit": {
               "denom": "usdx",
-              "amount": "3000000000000"
+              "amount": "50000000000000"
             },
             "stability_fee": "1.000000000000000000",
             "auction_size": "1000000000000",
-            "liquidation_penalty": "0.075000000000000000",
-            "check_collateralization_index_count": "10",
-            "keeper_reward_percentage": "0.01",
+            "liquidation_penalty": "0.025000000000000000",
             "spot_market_id": "busd:usd",
             "liquidation_market_id": "busd:usd:30",
+            "keeper_reward_percentage": "0.010000000000000000",
+            "check_collateralization_index_count": "10",
             "conversion_factor": "8"
           },
           {
@@ -784,135 +950,67 @@
             "liquidation_ratio": "1.100000000000000000",
             "debt_limit": {
               "denom": "usdx",
-              "amount": "3000000000000"
+              "amount": "1000000000000"
             },
             "stability_fee": "1.000000012857214317",
             "auction_size": "1000000000000",
-            "liquidation_penalty": "0.075000000000000000",
-            "check_collateralization_index_count": "10",
-            "keeper_reward_percentage": "0.01",
+            "liquidation_penalty": "0.025000000000000000",
             "spot_market_id": "busd:usd",
             "liquidation_market_id": "busd:usd:30",
+            "keeper_reward_percentage": "0.010000000000000000",
+            "check_collateralization_index_count": "10",
             "conversion_factor": "8"
           },
           {
-            "auction_size": "50000000000",
-            "conversion_factor": "6",
+            "denom": "xrpb",
+            "type": "xrpb-a",
+            "liquidation_ratio": "1.500000000000000000",
             "debt_limit": {
-              "amount": "2000000000000",
-              "denom": "usdx"
+              "denom": "usdx",
+              "amount": "5000000000000"
             },
+            "stability_fee": "1.000000000782997609",
+            "auction_size": "4000000000000",
+            "liquidation_penalty": "0.025000000000000000",
+            "spot_market_id": "xrp:usd",
+            "liquidation_market_id": "xrp:usd:30",
+            "keeper_reward_percentage": "0.010000000000000000",
+            "check_collateralization_index_count": "10",
+            "conversion_factor": "8"
+          },
+          {
             "denom": "uatom",
-            "liquidation_market_id": "kava:usd:30",
-            "liquidation_penalty": "0.050000000000000000",
+            "type": "uatom-a",
             "liquidation_ratio": "1.500000000000000000",
-            "keeper_reward_percentage": "0.01",
-            "check_collateralization_index_count": "10",
+            "debt_limit": {
+              "denom": "usdx",
+              "amount": "250000000000"
+            },
+            "stability_fee": "1.000000000782997609",
+            "auction_size": "5000000000",
+            "liquidation_penalty": "0.025000000000000000",
             "spot_market_id": "kava:usd",
-            "stability_fee": "1.000000000782997700",
-            "type": "uatom-a"
-          },
-          {
-            "auction_size": "50000000000",
-            "conversion_factor": "6",
-            "debt_limit": {
-              "amount": "2000000000000",
-              "denom": "usdx"
-            },
-            "denom": "ibc/C72DE26FFF16DE62BE2784E12229BDF5F4465CE8B10530426D6DB53255FF01B2",
-            "liquidation_market_id": "luna:usd:30",
-            "spot_market_id": "luna:usd",
-            "liquidation_penalty": "0.050000000000000000",
-            "liquidation_ratio": "1.500000000000000000",
-            "keeper_reward_percentage": "0.01",
+            "liquidation_market_id": "kava:usd:30",
+            "keeper_reward_percentage": "0.010000000000000000",
             "check_collateralization_index_count": "10",
-            "stability_fee": "1.000000000782997700",
-            "type": "luna-a"
+            "conversion_factor": "6"
           },
           {
-            "auction_size": "50000000000",
-            "conversion_factor": "6",
-            "debt_limit": {
-              "amount": "2000000000000",
-              "denom": "usdx"
-            },
-            "denom": "ibc/4129EB76C01ED14052054BB975DE0C6C5010E12FFD9253C20C58BCD828BEE9A5",
-            "liquidation_market_id": "akt:usd:30",
-            "spot_market_id": "akt:usd",
-            "liquidation_penalty": "0.050000000000000000",
-            "liquidation_ratio": "1.500000000000000000",
-            "keeper_reward_percentage": "0.01",
-            "check_collateralization_index_count": "10",
-            "stability_fee": "1.000000000782997700",
-            "type": "akt-a"
-          },
-          {
-            "auction_size": "50000000000",
-            "conversion_factor": "6",
-            "debt_limit": {
-              "amount": "2000000000000",
-              "denom": "usdx"
-            },
-            "denom": "ibc/ED07A3391A112B175915CD8FAF43A2DA8E4790EDE12566649D0C2F97716B8518",
-            "liquidation_market_id": "osmo:usd:30",
-            "spot_market_id": "osmo:usd",
-            "liquidation_penalty": "0.050000000000000000",
-            "liquidation_ratio": "1.500000000000000000",
-            "keeper_reward_percentage": "0.01",
-            "check_collateralization_index_count": "10",
-            "stability_fee": "1.000000000782997700",
-            "type": "osmo-a"
-          },
-          {
-            "auction_size": "50000000000",
-            "conversion_factor": "6",
-            "debt_limit": {
-              "amount": "2000000000000",
-              "denom": "usdx"
-            },
-            "denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
-            "liquidation_market_id": "atom:usd:30",
-            "spot_market_id": "atom:usd",
-            "liquidation_penalty": "0.050000000000000000",
-            "liquidation_ratio": "1.500000000000000000",
-            "keeper_reward_percentage": "0.01",
-            "check_collateralization_index_count": "10",
-            "stability_fee": "1.000000000782997700",
-            "type": "atom-a"
-          },
-          {
-            "auction_size": "50000000000",
-            "conversion_factor": "6",
-            "debt_limit": {
-              "amount": "2000000000000",
-              "denom": "usdx"
-            },
             "denom": "hard",
-            "liquidation_market_id": "hard:usd:30",
-            "liquidation_penalty": "0.050000000000000000",
+            "type": "hard-a",
             "liquidation_ratio": "1.500000000000000000",
-            "keeper_reward_percentage": "0.01",
-            "check_collateralization_index_count": "10",
-            "spot_market_id": "hard:usd",
-            "stability_fee": "1.000000000782997700",
-            "type": "hard-a"
-          },
-          {
-            "auction_size": "50000000000",
-            "conversion_factor": "6",
             "debt_limit": {
-              "amount": "2000000000000",
-              "denom": "usdx"
+              "denom": "usdx",
+              "amount": "100000000000"
             },
-            "denom": "swp",
-            "liquidation_market_id": "swp:usd:30",
-            "liquidation_penalty": "0.050000000000000000",
-            "liquidation_ratio": "1.500000000000000000",
-            "keeper_reward_percentage": "0.01",
+            "stability_fee": "1.000000000782997609",
+            "auction_size": "5000000000",
+            "liquidation_penalty": "0.025000000000000000",
+            "spot_market_id": "hard:usd",
+            "liquidation_market_id": "hard:usd:30",
+            "keeper_reward_percentage": "0.010000000000000000",
             "check_collateralization_index_count": "10",
-            "spot_market_id": "swp:usd",
-            "stability_fee": "1.000000000782997700",
-            "type": "swp-a"
+            "conversion_factor": "6"
           },
           {
             "denom": "hbtc",
@@ -923,13 +1021,47 @@
               "amount": "10000000000000"
             },
             "stability_fee": "1.000000001547125958",
-            "auction_size": "1000000000000",
-            "liquidation_penalty": "0.075000000000000000",
-            "check_collateralization_index_count": "10",
-            "keeper_reward_percentage": "0.01",
+            "auction_size": "100000000",
+            "liquidation_penalty": "0.025000000000000000",
             "spot_market_id": "btc:usd",
             "liquidation_market_id": "btc:usd:30",
+            "keeper_reward_percentage": "0.010000000000000000",
+            "check_collateralization_index_count": "10",
             "conversion_factor": "8"
+          },
+          {
+            "denom": "swp",
+            "type": "swp-a",
+            "liquidation_ratio": "1.500000000000000000",
+            "debt_limit": {
+              "denom": "usdx",
+              "amount": "10000000"
+            },
+            "stability_fee": "1.000000001547125958",
+            "auction_size": "50000000000",
+            "liquidation_penalty": "0.025000000000000000",
+            "spot_market_id": "swp:usd",
+            "liquidation_market_id": "swp:usd:30",
+            "keeper_reward_percentage": "0.010000000000000000",
+            "check_collateralization_index_count": "10",
+            "conversion_factor": "6"
+          },
+          {
+            "denom": "erc20/tether/usdt",
+            "type": "usdt-a",
+            "liquidation_ratio": "1.010000000000000000",
+            "debt_limit": {
+              "denom": "usdx",
+              "amount": "25000000000000"
+            },
+            "stability_fee": "1.000000000000000000",
+            "auction_size": "100000000000",
+            "liquidation_penalty": "0.025000000000000000",
+            "spot_market_id": "usdt:usd",
+            "liquidation_market_id": "usdt:usd:30",
+            "keeper_reward_percentage": "0.010000000000000000",
+            "check_collateralization_index_count": "10",
+            "conversion_factor": "6"
           }
         ],
         "debt_param": {
@@ -940,7 +1072,7 @@
         },
         "global_debt_limit": {
           "denom": "usdx",
-          "amount": "53000000000000"
+          "amount": "181350010000000"
         },
         "surplus_auction_threshold": "500000000000",
         "surplus_auction_lot": "10000000000",
@@ -965,11 +1097,14 @@
             "id": "1",
             "description": "Kava Stability Committee",
             "members": [
-              "kava1n96qpdfcz2m7y364ewk8srv9zuq6ucwduyjaag"
+              "kava1r3emvfrc242jcfr9f9ygc34ztpp58xxu6spvdq"
             ],
             "permissions": [
               {
                 "@type": "/kava.committee.v1beta1.TextPermission"
+              },
+              {
+                "@type": "/kava.committee.v1beta1.CommunityPoolLendWithdrawPermission"
               },
               {
                 "@type": "/kava.committee.v1beta1.ParamsChangePermission",
@@ -1060,7 +1195,7 @@
             "id": "2",
             "description": "Kava Safety Committee",
             "members": [
-              "kava1n96qpdfcz2m7y364ewk8srv9zuq6ucwduyjaag"
+              "kava1r3emvfrc242jcfr9f9ygc34ztpp58xxu6spvdq"
             ],
             "permissions": [
               {
@@ -1078,7 +1213,7 @@
             "id": "3",
             "description": "Kava God Committee (testing only)",
             "members": [
-              "kava1n96qpdfcz2m7y364ewk8srv9zuq6ucwduyjaag"
+              "kava1r3emvfrc242jcfr9f9ygc34ztpp58xxu6spvdq"
             ],
             "permissions": [
               {
@@ -1096,7 +1231,7 @@
             "id": "4",
             "description": "HARD Governance Committee",
             "members": [
-              "kava1n96qpdfcz2m7y364ewk8srv9zuq6ucwduyjaag"
+              "kava1r3emvfrc242jcfr9f9ygc34ztpp58xxu6spvdq"
             ],
             "permissions": [
               {
@@ -1141,7 +1276,7 @@
             "id": "5",
             "description": "SWP Governance Committee",
             "members": [
-              "kava1n96qpdfcz2m7y364ewk8srv9zuq6ucwduyjaag"
+              "kava1r3emvfrc242jcfr9f9ygc34ztpp58xxu6spvdq"
             ],
             "permissions": [
               {
@@ -1189,7 +1324,7 @@
     },
     "distribution": {
       "params": {
-        "community_tax": "0.000000000000000000",
+        "community_tax": "0.750000000000000000",
         "base_proposer_reward": "0.010000000000000000",
         "bonus_proposer_reward": "0.040000000000000000",
         "withdraw_addr_enabled": true
@@ -1253,11 +1388,11 @@
             },
             {
               "key": "0x0000000000000000000000000000000000000000000000000000000000000003",
-              "value": "0x55534420436f696e000000000000000000000000000000000000000000000010"
+              "value": "0x5553445400000000000000000000000000000000000000000000000000000010"
             },
             {
               "key": "0x0000000000000000000000000000000000000000000000000000000000000004",
-              "value": "0x5553444300000000000000000000000000000000000000000000000000000008"
+              "value": "0x5553445400000000000000000000000000000000000000000000000000000008"
             },
             {
               "key": "0x0f7b334bd042cdf6106f0b03608629c72b3dd9b502867391943cdad165052fd8",
@@ -1281,7 +1416,7 @@
             },
             {
               "key": "0x2c942ac975ca41e6510f3a38fdd96f840c5923682c849df648463765f8910bb8",
-              "value": "0x000000000000000000000000000000000000000000000000000000003b9aca00"
+              "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
             },
             {
               "key": "0x3195c024b2ddd6d9b8f6c836aa52f67fe69376c8903d009b80229b3ce4425f51",
@@ -1298,6 +1433,10 @@
             {
               "key": "0x54cdd369e4e8a8515e52ca72ec816c2101831ad1f18bf44102ed171459c9b4f8",
               "value": "0x0000000000000000000000000000000000000000000000000000000000000001"
+            },
+            {
+              "key": "0x6158a43c43e6be40bc62c8f697df5f056b7e3b360cd8ba8c7c415aceedb95e1e",
+              "value": "0x000000000000000000000000000000000000000000000000000000003b9aca00"
             },
             {
               "key": "0xb5cfa58595dee30140fb81207e9dab40b17aa1c01eb58fc78d547684f1782e43",
@@ -1354,9 +1493,710 @@
           "berlin_block": "0",
           "london_block": null,
           "arrow_glacier_block": null,
-          "merge_fork_block": null
+          "gray_glacier_block": null,
+          "merge_netsplit_block": null,
+          "shanghai_block": null,
+          "cancun_block": null
         },
-        "eip712_allowed_msgs": []
+        "eip712_allowed_msgs": [
+          {
+            "msg_type_url": "/kava.evmutil.v1beta1.MsgConvertERC20ToCoin",
+            "msg_value_type_name": "MsgValueEVMConvertERC20ToCoin",
+            "value_types": [
+              {
+                "name": "initiator",
+                "type": "string"
+              },
+              {
+                "name": "receiver",
+                "type": "string"
+              },
+              {
+                "name": "kava_erc20_address",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "string"
+              }
+            ],
+            "nested_types": []
+          },
+          {
+            "msg_type_url": "/kava.evmutil.v1beta1.MsgConvertCoinToERC20",
+            "msg_value_type_name": "MsgValueEVMConvertCoinToERC20",
+            "value_types": [
+              {
+                "name": "initiator",
+                "type": "string"
+              },
+              {
+                "name": "receiver",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "Coin"
+              }
+            ],
+            "nested_types": []
+          },
+          {
+            "msg_type_url": "/kava.earn.v1beta1.MsgDeposit",
+            "msg_value_type_name": "MsgValueEarnDeposit",
+            "value_types": [
+              {
+                "name": "depositor",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "Coin"
+              },
+              {
+                "name": "strategy",
+                "type": "int32"
+              }
+            ],
+            "nested_types": []
+          },
+          {
+            "msg_type_url": "/kava.earn.v1beta1.MsgWithdraw",
+            "msg_value_type_name": "MsgValueEarnWithdraw",
+            "value_types": [
+              {
+                "name": "from",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "Coin"
+              },
+              {
+                "name": "strategy",
+                "type": "int32"
+              }
+            ],
+            "nested_types": []
+          },
+          {
+            "msg_type_url": "/cosmos.staking.v1beta1.MsgDelegate",
+            "msg_value_type_name": "MsgValueStakingDelegate",
+            "value_types": [
+              {
+                "name": "delegator_address",
+                "type": "string"
+              },
+              {
+                "name": "validator_address",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "Coin"
+              }
+            ],
+            "nested_types": []
+          },
+          {
+            "msg_type_url": "/cosmos.staking.v1beta1.MsgUndelegate",
+            "msg_value_type_name": "MsgValueStakingUndelegate",
+            "value_types": [
+              {
+                "name": "delegator_address",
+                "type": "string"
+              },
+              {
+                "name": "validator_address",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "Coin"
+              }
+            ],
+            "nested_types": []
+          },
+          {
+            "msg_type_url": "/cosmos.staking.v1beta1.MsgBeginRedelegate",
+            "msg_value_type_name": "MsgValueStakingBeginRedelegate",
+            "value_types": [
+              {
+                "name": "delegator_address",
+                "type": "string"
+              },
+              {
+                "name": "validator_src_address",
+                "type": "string"
+              },
+              {
+                "name": "validator_dst_address",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "Coin"
+              }
+            ],
+            "nested_types": []
+          },
+          {
+            "msg_type_url": "/kava.incentive.v1beta1.MsgClaimUSDXMintingReward",
+            "msg_value_type_name": "MsgValueIncentiveClaimUSDXMintingReward",
+            "value_types": [
+              {
+                "name": "sender",
+                "type": "string"
+              },
+              {
+                "name": "multiplier_name",
+                "type": "string"
+              }
+            ],
+            "nested_types": []
+          },
+          {
+            "msg_type_url": "/kava.incentive.v1beta1.MsgClaimHardReward",
+            "msg_value_type_name": "MsgValueIncentiveClaimHardReward",
+            "value_types": [
+              {
+                "name": "sender",
+                "type": "string"
+              },
+              {
+                "name": "denoms_to_claim",
+                "type": "IncentiveSelection[]"
+              }
+            ],
+            "nested_types": [
+              {
+                "name": "IncentiveSelection",
+                "attrs": [
+                  {
+                    "name": "denom",
+                    "type": "string"
+                  },
+                  {
+                    "name": "multiplier_name",
+                    "type": "string"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "msg_type_url": "/kava.incentive.v1beta1.MsgClaimDelegatorReward",
+            "msg_value_type_name": "MsgValueIncentiveClaimDelegatorReward",
+            "value_types": [
+              {
+                "name": "sender",
+                "type": "string"
+              },
+              {
+                "name": "denoms_to_claim",
+                "type": "IncentiveSelection[]"
+              }
+            ],
+            "nested_types": [
+              {
+                "name": "IncentiveSelection",
+                "attrs": [
+                  {
+                    "name": "denom",
+                    "type": "string"
+                  },
+                  {
+                    "name": "multiplier_name",
+                    "type": "string"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "msg_type_url": "/kava.incentive.v1beta1.MsgClaimSwapReward",
+            "msg_value_type_name": "MsgValueIncentiveClaimSwapReward",
+            "value_types": [
+              {
+                "name": "sender",
+                "type": "string"
+              },
+              {
+                "name": "denoms_to_claim",
+                "type": "IncentiveSelection[]"
+              }
+            ],
+            "nested_types": [
+              {
+                "name": "IncentiveSelection",
+                "attrs": [
+                  {
+                    "name": "denom",
+                    "type": "string"
+                  },
+                  {
+                    "name": "multiplier_name",
+                    "type": "string"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "msg_type_url": "/kava.incentive.v1beta1.MsgClaimSavingsReward",
+            "msg_value_type_name": "MsgValueIncentiveClaimSavingsReward",
+            "value_types": [
+              {
+                "name": "sender",
+                "type": "string"
+              },
+              {
+                "name": "denoms_to_claim",
+                "type": "IncentiveSelection[]"
+              }
+            ],
+            "nested_types": [
+              {
+                "name": "IncentiveSelection",
+                "attrs": [
+                  {
+                    "name": "denom",
+                    "type": "string"
+                  },
+                  {
+                    "name": "multiplier_name",
+                    "type": "string"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "msg_type_url": "/kava.incentive.v1beta1.MsgClaimEarnReward",
+            "msg_value_type_name": "MsgValueIncentiveClaimEarnReward",
+            "value_types": [
+              {
+                "name": "sender",
+                "type": "string"
+              },
+              {
+                "name": "denoms_to_claim",
+                "type": "IncentiveSelection[]"
+              }
+            ],
+            "nested_types": [
+              {
+                "name": "IncentiveSelection",
+                "attrs": [
+                  {
+                    "name": "denom",
+                    "type": "string"
+                  },
+                  {
+                    "name": "multiplier_name",
+                    "type": "string"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "msg_type_url": "/kava.router.v1beta1.MsgMintDeposit",
+            "msg_value_type_name": "MsgValueRouterMintDeposit",
+            "value_types": [
+              {
+                "name": "depositor",
+                "type": "string"
+              },
+              {
+                "name": "validator",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "Coin"
+              }
+            ],
+            "nested_types": []
+          },
+          {
+            "msg_type_url": "/kava.router.v1beta1.MsgDelegateMintDeposit",
+            "msg_value_type_name": "MsgValueRouterDelegateMintDeposit",
+            "value_types": [
+              {
+                "name": "depositor",
+                "type": "string"
+              },
+              {
+                "name": "validator",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "Coin"
+              }
+            ],
+            "nested_types": []
+          },
+          {
+            "msg_type_url": "/kava.router.v1beta1.MsgWithdrawBurn",
+            "msg_value_type_name": "MsgValueRouterWithdrawBurn",
+            "value_types": [
+              {
+                "name": "from",
+                "type": "string"
+              },
+              {
+                "name": "validator",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "Coin"
+              }
+            ],
+            "nested_types": []
+          },
+          {
+            "msg_type_url": "/kava.router.v1beta1.MsgWithdrawBurnUndelegate",
+            "msg_value_type_name": "MsgValueRouterWithdrawBurnUndelegate",
+            "value_types": [
+              {
+                "name": "from",
+                "type": "string"
+              },
+              {
+                "name": "validator",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "Coin"
+              }
+            ],
+            "nested_types": []
+          },
+          {
+            "msg_type_url": "/cosmos.gov.v1beta1.MsgVote",
+            "msg_value_type_name": "MsgValueGovVote",
+            "value_types": [
+              {
+                "name": "proposal_id",
+                "type": "uint64"
+              },
+              {
+                "name": "voter",
+                "type": "string"
+              },
+              {
+                "name": "option",
+                "type": "int32"
+              }
+            ],
+            "nested_types": []
+          },
+          {
+            "msg_type_url": "/cosmos.bank.v1beta1.MsgSend",
+            "msg_value_type_name": "MsgValueBankSend",
+            "value_types": [
+              {
+                "name": "from_address",
+                "type": "string"
+              },
+              {
+                "name": "to_address",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "Coin[]"
+              }
+            ],
+            "nested_types": []
+          },
+          {
+            "msg_type_url": "/kava.liquid.v1beta1.MsgMintDerivative",
+            "msg_value_type_name": "MsgValueMintDerivative",
+            "value_types": [
+              {
+                "name": "sender",
+                "type": "string"
+              },
+              {
+                "name": "validator",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "Coin"
+              }
+            ],
+            "nested_types": []
+          },
+          {
+            "msg_type_url": "/kava.liquid.v1beta1.MsgBurnDerivative",
+            "msg_value_type_name": "MsgValueBurnDerivative",
+            "value_types": [
+              {
+                "name": "sender",
+                "type": "string"
+              },
+              {
+                "name": "validator",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "Coin"
+              }
+            ],
+            "nested_types": []
+          },
+          {
+            "msg_type_url": "/kava.hard.v1beta1.MsgWithdraw",
+            "msg_value_type_name": "MsgValueHardWithdraw",
+            "value_types": [
+              {
+                "name": "depositor",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "Coin[]"
+              }
+            ],
+            "nested_types": []
+          },
+          {
+            "msg_type_url": "/kava.hard.v1beta1.MsgDeposit",
+            "msg_value_type_name": "MsgValueHardDeposit",
+            "value_types": [
+              {
+                "name": "depositor",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "Coin[]"
+              }
+            ],
+            "nested_types": []
+          },
+          {
+            "msg_type_url": "/kava.evmutil.v1beta1.MsgConvertCosmosCoinToERC20",
+            "msg_value_type_name": "MsgConvertCosmosCoinToERC20",
+            "value_types": [
+              {
+                "name": "initiator",
+                "type": "string"
+              },
+              {
+                "name": "receiver",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "Coin"
+              }
+            ],
+            "nested_types": []
+          },
+          {
+            "msg_type_url": "/kava.evmutil.v1beta1.MsgConvertCosmosCoinFromERC20",
+            "msg_value_type_name": "MsgConvertCosmosCoinFromERC20",
+            "value_types": [
+              {
+                "name": "initiator",
+                "type": "string"
+              },
+              {
+                "name": "receiver",
+                "type": "string"
+              },
+              {
+                "name": "amount",
+                "type": "Coin"
+              }
+            ],
+            "nested_types": []
+          },
+          {
+            "msg_type_url": "/cosmos.distribution.v1beta1.MsgWithdrawDelegatorReward",
+            "msg_value_type_name": "MsgValueWithdrawDelegatorReward",
+            "value_types": [
+              {
+                "name": "delegator_address",
+                "type": "string"
+              },
+              {
+                "name": "validator_address",
+                "type": "string"
+              }
+            ],
+            "nested_types": []
+          },
+          {
+            "msg_type_url": "/ibc.applications.transfer.v1.MsgTransfer",
+            "msg_value_type_name": "MsgValueIBCTransfer",
+            "value_types": [
+              {
+                "name": "source_port",
+                "type": "string"
+              },
+              {
+                "name": "source_channel",
+                "type": "string"
+              },
+              {
+                "name": "token",
+                "type": "Coin"
+              },
+              {
+                "name": "sender",
+                "type": "string"
+              },
+              {
+                "name": "receiver",
+                "type": "string"
+              },
+              {
+                "name": "timeout_height",
+                "type": "Height"
+              },
+              {
+                "name": "timeout_timestamp",
+                "type": "uint64"
+              },
+              {
+                "name": "memo",
+                "type": "string"
+              }
+            ],
+            "nested_types": [
+              {
+                "name": "Height",
+                "attrs": [
+                  {
+                    "name": "revision_number",
+                    "type": "uint64"
+                  },
+                  {
+                    "name": "revision_height",
+                    "type": "uint64"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "msg_type_url": "/kava.cdp.v1beta1.MsgCreateCDP",
+            "msg_value_type_name": "MsgValueCdpCreateCDP",
+            "value_types": [
+              {
+                "name": "sender",
+                "type": "string"
+              },
+              {
+                "name": "collateral",
+                "type": "Coin"
+              },
+              {
+                "name": "principal",
+                "type": "Coin"
+              },
+              {
+                "name": "collateral_type",
+                "type": "string"
+              }
+            ],
+            "nested_types": []
+          },
+          {
+            "msg_type_url": "/kava.cdp.v1beta1.MsgDeposit",
+            "msg_value_type_name": "MsgValueCdpDeposit",
+            "value_types": [
+              {
+                "name": "depositor",
+                "type": "string"
+              },
+              {
+                "name": "owner",
+                "type": "string"
+              },
+              {
+                "name": "collateral",
+                "type": "Coin"
+              },
+              {
+                "name": "collateral_type",
+                "type": "string"
+              }
+            ],
+            "nested_types": []
+          },
+          {
+            "msg_type_url": "/kava.cdp.v1beta1.MsgWithdraw",
+            "msg_value_type_name": "MsgValueCdpWithdraw",
+            "value_types": [
+              {
+                "name": "depositor",
+                "type": "string"
+              },
+              {
+                "name": "owner",
+                "type": "string"
+              },
+              {
+                "name": "collateral",
+                "type": "Coin"
+              },
+              {
+                "name": "collateral_type",
+                "type": "string"
+              }
+            ],
+            "nested_types": []
+          },
+          {
+            "msg_type_url": "/kava.cdp.v1beta1.MsgDrawDebt",
+            "msg_value_type_name": "MsgValueCdpDrawDebt",
+            "value_types": [
+              {
+                "name": "sender",
+                "type": "string"
+              },
+              {
+                "name": "collateral_type",
+                "type": "string"
+              },
+              {
+                "name": "principal",
+                "type": "Coin"
+              }
+            ],
+            "nested_types": []
+          },
+          {
+            "msg_type_url": "/kava.cdp.v1beta1.MsgRepayDebt",
+            "msg_value_type_name": "MsgValueCdpRepayDebt",
+            "value_types": [
+              {
+                "name": "sender",
+                "type": "string"
+              },
+              {
+                "name": "collateral_type",
+                "type": "string"
+              },
+              {
+                "name": "payment",
+                "type": "Coin"
+              }
+            ],
+            "nested_types": []
+          }
+        ],
+        "allow_unprotected_txs": false
       }
     },
     "evmutil": {
@@ -1365,7 +2205,21 @@
         "enabled_conversion_pairs": [
           {
             "kava_erc20_address": "0xeA7100edA2f805356291B0E55DaD448599a72C6d",
-            "denom": "erc20/multichain/usdc"
+            "denom": "erc20/tether/usdt"
+          }
+        ],
+        "allowed_cosmos_denoms": [
+          {
+            "cosmos_denom": "hard",
+            "name": "Kava-wrapped HARD",
+            "symbol": "HARD",
+            "decimals": 6
+          },
+          {
+            "cosmos_denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
+            "name": "Kava-wrapped ATOM",
+            "symbol": "ATOM",
+            "decimals": 6
           }
         ]
       }
@@ -1376,7 +2230,9 @@
         "base_fee_change_denominator": 8,
         "elasticity_multiplier": 2,
         "enable_height": "0",
-        "base_fee": "1000000000"
+        "base_fee": "1000000000",
+        "min_gas_price": "0.000000000000000000",
+        "min_gas_multiplier": "0.500000000000000000"
       },
       "block_gas": "0"
     },
@@ -1412,7 +2268,7 @@
                 }
               }
             ],
-            "memo": "461d9761df5db0a112407ca8a82f1774ef2dbaa3@192.168.0.7:26656",
+            "memo": "461d9761df5db0a112407ca8a82f1774ef2dbaa3@10.0.0.4:26656",
             "timeout_height": "0",
             "extension_options": [],
             "non_critical_extension_options": []
@@ -1437,10 +2293,11 @@
               "gas_limit": "200000",
               "payer": "",
               "granter": ""
-            }
+            },
+            "tip": null
           },
           "signatures": [
-            "A/G3TAValTx0KtuHgdPZk8r5aIzCnIUagmtfVWJYJ240tbFFg2TJ1WBjH1KmpSXpZUq06eff9jU/DsOtYwMJxA=="
+            "bxEy6YbEW3/GJuz1TFcH4AHS56TlgWm8dt/13F2D5cV4Jq1ivyK5/WkLEEinGCRr7L7oJOSH/RuPhX3anQyv2Q=="
           ]
         }
       ]
@@ -1460,7 +2317,7 @@
         "max_deposit_period": "172800s"
       },
       "voting_params": {
-        "voting_period": "172800s"
+        "voting_period": "30s"
       },
       "tally_params": {
         "quorum": "0.334000000000000000",
@@ -1472,166 +2329,274 @@
       "params": {
         "money_markets": [
           {
-            "denom": "usdx",
+            "denom": "btcb",
             "borrow_limit": {
-              "has_max_limit": false,
-              "maximum_limit": "20000000",
-              "loan_to_value": "0.80"
+              "has_max_limit": true,
+              "maximum_limit": "1000000000.000000000000000000",
+              "loan_to_value": "0.500000000000000000"
             },
-            "spot_market_id": "usdx:usd",
-            "conversion_factor": "1000000",
+            "spot_market_id": "btc:usd:30",
+            "conversion_factor": "100000000",
             "interest_rate_model": {
-              "base_rate_apy": "0.05",
-              "base_multiplier": "0.1",
-              "kink": "0.8",
-              "jump_multiplier": "0.5"
+              "base_rate_apy": "0.000000000000000000",
+              "base_multiplier": "0.050000000000000000",
+              "kink": "0.800000000000000000",
+              "jump_multiplier": "5.000000000000000000"
             },
-            "reserve_factor": "0.0",
-            "keeper_reward_percentage": "0.05"
-          },
-          {
-            "denom": "uatom",
-            "borrow_limit": {
-              "has_max_limit": false,
-              "maximum_limit": "100000000000",
-              "loan_to_value": "0.80"
-            },
-            "spot_market_id": "kava:usd",
-            "conversion_factor": "1000000",
-            "interest_rate_model": {
-              "base_rate_apy": "0.05",
-              "base_multiplier": "2",
-              "kink": "0.85",
-              "jump_multiplier": "10"
-            },
-            "reserve_factor": "0.1",
-            "keeper_reward_percentage": "0.01"
-          },
-          {
-            "denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
-            "borrow_limit": {
-              "has_max_limit": false,
-              "maximum_limit": "100000000000",
-              "loan_to_value": "0.80"
-            },
-            "spot_market_id": "atom:usd",
-            "conversion_factor": "1000000",
-            "interest_rate_model": {
-              "base_rate_apy": "0.05",
-              "base_multiplier": "2",
-              "kink": "0.85",
-              "jump_multiplier": "10"
-            },
-            "reserve_factor": "0.1",
-            "keeper_reward_percentage": "0.01"
-          },
-          {
-            "denom": "ibc/4129EB76C01ED14052054BB975DE0C6C5010E12FFD9253C20C58BCD828BEE9A5",
-            "borrow_limit": {
-              "has_max_limit": false,
-              "maximum_limit": "100000000000",
-              "loan_to_value": "0.80"
-            },
-            "spot_market_id": "akt:usd",
-            "conversion_factor": "1000000",
-            "interest_rate_model": {
-              "base_rate_apy": "0.05",
-              "base_multiplier": "2",
-              "kink": "0.85",
-              "jump_multiplier": "10"
-            },
-            "reserve_factor": "0.1",
-            "keeper_reward_percentage": "0.01"
-          },
-          {
-            "denom": "ibc/C72DE26FFF16DE62BE2784E12229BDF5F4465CE8B10530426D6DB53255FF01B2",
-            "borrow_limit": {
-              "has_max_limit": false,
-              "maximum_limit": "100000000000",
-              "loan_to_value": "0.80"
-            },
-            "spot_market_id": "luna:usd",
-            "conversion_factor": "1000000",
-            "interest_rate_model": {
-              "base_rate_apy": "0.05",
-              "base_multiplier": "2",
-              "kink": "0.85",
-              "jump_multiplier": "10"
-            },
-            "reserve_factor": "0.1",
-            "keeper_reward_percentage": "0.01"
-          },
-          {
-            "denom": "ibc/ED07A3391A112B175915CD8FAF43A2DA8E4790EDE12566649D0C2F97716B8518",
-            "borrow_limit": {
-              "has_max_limit": false,
-              "maximum_limit": "100000000000",
-              "loan_to_value": "0.80"
-            },
-            "spot_market_id": "osmo:usd",
-            "conversion_factor": "1000000",
-            "interest_rate_model": {
-              "base_rate_apy": "0.05",
-              "base_multiplier": "2",
-              "kink": "0.85",
-              "jump_multiplier": "10"
-            },
-            "reserve_factor": "0.1",
-            "keeper_reward_percentage": "0.01"
+            "reserve_factor": "0.025000000000000000",
+            "keeper_reward_percentage": "0.020000000000000000"
           },
           {
             "denom": "bnb",
             "borrow_limit": {
-              "has_max_limit": false,
-              "maximum_limit": "100000000000",
-              "loan_to_value": "0.8"
+              "has_max_limit": true,
+              "maximum_limit": "250000000000.000000000000000000",
+              "loan_to_value": "0.500000000000000000"
             },
-            "spot_market_id": "bnb:usd",
+            "spot_market_id": "bnb:usd:30",
             "conversion_factor": "100000000",
             "interest_rate_model": {
-              "base_rate_apy": "0.05",
-              "base_multiplier": "2",
-              "kink": "0.8",
-              "jump_multiplier": "10"
+              "base_rate_apy": "0.000000000000000000",
+              "base_multiplier": "0.050000000000000000",
+              "kink": "0.800000000000000000",
+              "jump_multiplier": "5.000000000000000000"
             },
-            "reserve_factor": "0.01",
-            "keeper_reward_percentage": "0.01"
-          },
-          {
-            "denom": "busd",
-            "borrow_limit": {
-              "has_max_limit": false,
-              "maximum_limit": "100000000000",
-              "loan_to_value": "0.8"
-            },
-            "spot_market_id": "busd:usd",
-            "conversion_factor": "100000000",
-            "interest_rate_model": {
-              "base_rate_apy": "0.01",
-              "base_multiplier": "2",
-              "kink": "0.8",
-              "jump_multiplier": "10"
-            },
-            "reserve_factor": "0.01",
-            "keeper_reward_percentage": "0.01"
+            "reserve_factor": "0.025000000000000000",
+            "keeper_reward_percentage": "0.020000000000000000"
           },
           {
             "denom": "xrpb",
             "borrow_limit": {
-              "has_max_limit": false,
-              "maximum_limit": "100000000000",
-              "loan_to_value": "0.5"
+              "has_max_limit": true,
+              "maximum_limit": "10000000000000.000000000000000000",
+              "loan_to_value": "0.500000000000000000"
             },
-            "spot_market_id": "xrp:usd",
+            "spot_market_id": "xrp:usd:30",
             "conversion_factor": "100000000",
             "interest_rate_model": {
-              "base_rate_apy": "0.00",
-              "base_multiplier": "0.2",
-              "kink": "0.8",
-              "jump_multiplier": "1.0"
+              "base_rate_apy": "0.000000000000000000",
+              "base_multiplier": "0.050000000000000000",
+              "kink": "0.800000000000000000",
+              "jump_multiplier": "5.000000000000000000"
             },
-            "reserve_factor": "0.025",
-            "keeper_reward_percentage": "0.01"
+            "reserve_factor": "0.025000000000000000",
+            "keeper_reward_percentage": "0.020000000000000000"
+          },
+          {
+            "denom": "busd",
+            "borrow_limit": {
+              "has_max_limit": true,
+              "maximum_limit": "50000000000000.000000000000000000",
+              "loan_to_value": "0.500000000000000000"
+            },
+            "spot_market_id": "busd:usd:30",
+            "conversion_factor": "100000000",
+            "interest_rate_model": {
+              "base_rate_apy": "0.000000000000000000",
+              "base_multiplier": "0.050000000000000000",
+              "kink": "0.800000000000000000",
+              "jump_multiplier": "5.000000000000000000"
+            },
+            "reserve_factor": "0.025000000000000000",
+            "keeper_reward_percentage": "0.020000000000000000"
+          },
+          {
+            "denom": "erc20/axelar/usdc",
+            "borrow_limit": {
+              "has_max_limit": true,
+              "maximum_limit": "0.000000000000000000",
+              "loan_to_value": "0.000000000000000000"
+            },
+            "spot_market_id": "usdc:usd:30",
+            "conversion_factor": "1000000",
+            "interest_rate_model": {
+              "base_rate_apy": "0.000000000000000000",
+              "base_multiplier": "0.050000000000000000",
+              "kink": "0.800000000000000000",
+              "jump_multiplier": "5.000000000000000000"
+            },
+            "reserve_factor": "0.025000000000000000",
+            "keeper_reward_percentage": "0.020000000000000000"
+          },
+          {
+            "denom": "erc20/multichain/usdc",
+            "borrow_limit": {
+              "has_max_limit": true,
+              "maximum_limit": "0.000000000000000000",
+              "loan_to_value": "0.000000000000000000"
+            },
+            "spot_market_id": "usdc:usd:30",
+            "conversion_factor": "1000000",
+            "interest_rate_model": {
+              "base_rate_apy": "0.000000000000000000",
+              "base_multiplier": "0.050000000000000000",
+              "kink": "0.800000000000000000",
+              "jump_multiplier": "5.000000000000000000"
+            },
+            "reserve_factor": "0.025000000000000000",
+            "keeper_reward_percentage": "0.020000000000000000"
+          },
+          {
+            "denom": "erc20/multichain/usdt",
+            "borrow_limit": {
+              "has_max_limit": true,
+              "maximum_limit": "0.000000000000000000",
+              "loan_to_value": "0.000000000000000000"
+            },
+            "spot_market_id": "usdt:usd:30",
+            "conversion_factor": "1000000",
+            "interest_rate_model": {
+              "base_rate_apy": "0.000000000000000000",
+              "base_multiplier": "0.050000000000000000",
+              "kink": "0.800000000000000000",
+              "jump_multiplier": "5.000000000000000000"
+            },
+            "reserve_factor": "0.025000000000000000",
+            "keeper_reward_percentage": "0.020000000000000000"
+          },
+          {
+            "denom": "erc20/multichain/wbtc",
+            "borrow_limit": {
+              "has_max_limit": true,
+              "maximum_limit": "0.000000000000000000",
+              "loan_to_value": "0.000000000000000000"
+            },
+            "spot_market_id": "btc:usd:30",
+            "conversion_factor": "100000000",
+            "interest_rate_model": {
+              "base_rate_apy": "0.000000000000000000",
+              "base_multiplier": "0.050000000000000000",
+              "kink": "0.800000000000000000",
+              "jump_multiplier": "5.000000000000000000"
+            },
+            "reserve_factor": "0.025000000000000000",
+            "keeper_reward_percentage": "0.020000000000000000"
+          },
+          {
+            "denom": "usdx",
+            "borrow_limit": {
+              "has_max_limit": true,
+              "maximum_limit": "0.000000000000000000",
+              "loan_to_value": "0.250000000000000000"
+            },
+            "spot_market_id": "usdx:usd:720",
+            "conversion_factor": "1000000",
+            "interest_rate_model": {
+              "base_rate_apy": "0.000000000000000000",
+              "base_multiplier": "0.050000000000000000",
+              "kink": "0.800000000000000000",
+              "jump_multiplier": "5.000000000000000000"
+            },
+            "reserve_factor": "0.025000000000000000",
+            "keeper_reward_percentage": "0.020000000000000000"
+          },
+          {
+            "denom": "uatom",
+            "borrow_limit": {
+              "has_max_limit": true,
+              "maximum_limit": "500000000000.000000000000000000",
+              "loan_to_value": "0.500000000000000000"
+            },
+            "spot_market_id": "kava:usd:30",
+            "conversion_factor": "1000000",
+            "interest_rate_model": {
+              "base_rate_apy": "0.000000000000000000",
+              "base_multiplier": "0.050000000000000000",
+              "kink": "0.800000000000000000",
+              "jump_multiplier": "5.000000000000000000"
+            },
+            "reserve_factor": "0.025000000000000000",
+            "keeper_reward_percentage": "0.020000000000000000"
+          },
+          {
+            "denom": "hard",
+            "borrow_limit": {
+              "has_max_limit": true,
+              "maximum_limit": "0.000000000000000000",
+              "loan_to_value": "0.000000000000000000"
+            },
+            "spot_market_id": "hard:usd:30",
+            "conversion_factor": "1000000",
+            "interest_rate_model": {
+              "base_rate_apy": "0.000000000000000000",
+              "base_multiplier": "0.050000000000000000",
+              "kink": "0.800000000000000000",
+              "jump_multiplier": "5.000000000000000000"
+            },
+            "reserve_factor": "0.025000000000000000",
+            "keeper_reward_percentage": "0.020000000000000000"
+          },
+          {
+            "denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
+            "borrow_limit": {
+              "has_max_limit": true,
+              "maximum_limit": "200000000000.000000000000000000",
+              "loan_to_value": "0.500000000000000000"
+            },
+            "spot_market_id": "atom:usd:30",
+            "conversion_factor": "1000000",
+            "interest_rate_model": {
+              "base_rate_apy": "0.000000000000000000",
+              "base_multiplier": "0.050000000000000000",
+              "kink": "0.800000000000000000",
+              "jump_multiplier": "5.000000000000000000"
+            },
+            "reserve_factor": "0.025000000000000000",
+            "keeper_reward_percentage": "0.020000000000000000"
+          },
+          {
+            "denom": "ibc/799FDD409719A1122586A629AE8FCA17380351A51C1F47A80A1B8E7F2A491098",
+            "borrow_limit": {
+              "has_max_limit": true,
+              "maximum_limit": "0.000000000000000000",
+              "loan_to_value": "0.000000000000000000"
+            },
+            "spot_market_id": "akt:usd:30",
+            "conversion_factor": "1000000",
+            "interest_rate_model": {
+              "base_rate_apy": "0.000000000000000000",
+              "base_multiplier": "0.050000000000000000",
+              "kink": "0.800000000000000000",
+              "jump_multiplier": "5.000000000000000000"
+            },
+            "reserve_factor": "0.025000000000000000",
+            "keeper_reward_percentage": "0.020000000000000000"
+          },
+          {
+            "denom": "erc20/axelar/wbtc",
+            "borrow_limit": {
+              "has_max_limit": true,
+              "maximum_limit": "0.000000000000000000",
+              "loan_to_value": "0.000000000000000000"
+            },
+            "spot_market_id": "btc:usd:30",
+            "conversion_factor": "100000000",
+            "interest_rate_model": {
+              "base_rate_apy": "0.000000000000000000",
+              "base_multiplier": "0.050000000000000000",
+              "kink": "0.800000000000000000",
+              "jump_multiplier": "5.000000000000000000"
+            },
+            "reserve_factor": "0.025000000000000000",
+            "keeper_reward_percentage": "0.020000000000000000"
+          },
+          {
+            "denom": "erc20/tether/usdt",
+            "borrow_limit": {
+              "has_max_limit": true,
+              "maximum_limit": "0.000000000000000000",
+              "loan_to_value": "0.000000000000000000"
+            },
+            "spot_market_id": "usdt:usd:30",
+            "conversion_factor": "1000000",
+            "interest_rate_model": {
+              "base_rate_apy": "0.000000000000000000",
+              "base_multiplier": "0.050000000000000000",
+              "kink": "0.800000000000000000",
+              "jump_multiplier": "5.000000000000000000"
+            },
+            "reserve_factor": "0.025000000000000000",
+            "keeper_reward_percentage": "0.020000000000000000"
           }
         ],
         "minimum_borrow_usd_value": "10.000000000000000000"
@@ -1882,412 +2847,520 @@
       "params": {
         "markets": [
           {
-            "active": true,
-            "base_asset": "bnb",
             "market_id": "bnb:usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
-            "quote_asset": "usd"
-          },
-          {
-            "active": true,
             "base_asset": "bnb",
+            "quote_asset": "usd",
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
+            "active": true
+          },
+          {
             "market_id": "bnb:usd:30",
+            "base_asset": "bnb",
+            "quote_asset": "usd",
             "oracles": [
               "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
             ],
-            "quote_asset": "usd"
+            "active": true
           },
           {
-            "active": true,
-            "base_asset": "btc",
             "market_id": "btc:usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
-            "quote_asset": "usd"
-          },
-          {
-            "active": true,
             "base_asset": "btc",
+            "quote_asset": "usd",
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
+            "active": true
+          },
+          {
             "market_id": "btc:usd:30",
+            "base_asset": "btc",
+            "quote_asset": "usd",
             "oracles": [
               "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
             ],
-            "quote_asset": "usd"
+            "active": true
           },
           {
-            "active": true,
-            "base_asset": "xrp",
-            "market_id": "xrp:usd:30",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
-            "quote_asset": "usd"
-          },
-          {
-            "active": true,
-            "base_asset": "xrp",
             "market_id": "xrp:usd",
+            "base_asset": "xrp",
+            "quote_asset": "usd",
             "oracles": [
               "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
             ],
-            "quote_asset": "usd"
+            "active": true
           },
           {
-            "active": true,
-            "base_asset": "busd",
+            "market_id": "xrp:usd:30",
+            "base_asset": "xrp",
+            "quote_asset": "usd",
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
+            "active": true
+          },
+          {
             "market_id": "busd:usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
-            "quote_asset": "usd"
-          },
-          {
-            "active": true,
             "base_asset": "busd",
+            "quote_asset": "usd",
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
+            "active": true
+          },
+          {
             "market_id": "busd:usd:30",
+            "base_asset": "busd",
+            "quote_asset": "usd",
             "oracles": [
               "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
             ],
-            "quote_asset": "usd"
+            "active": true
           },
           {
-            "active": true,
-            "base_asset": "kava",
             "market_id": "kava:usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
-            "quote_asset": "usd"
-          },
-          {
-            "active": true,
             "base_asset": "kava",
+            "quote_asset": "usd",
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
+            "active": true
+          },
+          {
             "market_id": "kava:usd:30",
+            "base_asset": "kava",
+            "quote_asset": "usd",
             "oracles": [
               "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
             ],
-            "quote_asset": "usd"
+            "active": true
           },
           {
-            "active": true,
-            "base_asset": "hard",
             "market_id": "hard:usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
-            "quote_asset": "usd"
-          },
-          {
-            "active": true,
             "base_asset": "hard",
+            "quote_asset": "usd",
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
+            "active": true
+          },
+          {
             "market_id": "hard:usd:30",
+            "base_asset": "hard",
+            "quote_asset": "usd",
             "oracles": [
               "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
             ],
-            "quote_asset": "usd"
+            "active": true
           },
           {
-            "active": true,
-            "base_asset": "atom",
-            "market_id": "atom:usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
-            "quote_asset": "usd"
-          },
-          {
-            "active": true,
-            "base_asset": "atom",
-            "market_id": "atom:usd:30",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
-            "quote_asset": "usd"
-          },
-          {
-            "active": true,
-            "base_asset": "osmo",
-            "market_id": "osmo:usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
-            "quote_asset": "usd"
-          },
-          {
-            "active": true,
-            "base_asset": "osmo",
-            "market_id": "osmo:usd:30",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
-            "quote_asset": "usd"
-          },
-          {
-            "active": true,
-            "base_asset": "akt",
-            "market_id": "akt:usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
-            "quote_asset": "usd"
-          },
-          {
-            "active": true,
-            "base_asset": "akt",
-            "market_id": "akt:usd:30",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
-            "quote_asset": "usd"
-          },
-          {
-            "active": true,
-            "base_asset": "luna",
-            "market_id": "luna:usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
-            "quote_asset": "usd"
-          },
-          {
-            "active": true,
-            "base_asset": "luna",
-            "market_id": "luna:usd:30",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
-            "quote_asset": "usd"
-          },
-          {
-            "active": true,
-            "base_asset": "usdx",
             "market_id": "usdx:usd",
+            "base_asset": "usdx",
+            "quote_asset": "usd",
             "oracles": [
               "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
             ],
-            "quote_asset": "usd"
+            "active": true
           },
           {
-            "active": true,
-            "base_asset": "usdx",
             "market_id": "usdx:usd:30",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
-            "quote_asset": "usd"
-          },
-          {
-            "active": true,
             "base_asset": "usdx",
+            "quote_asset": "usd",
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
+            "active": true
+          },
+          {
             "market_id": "usdx:usd:720",
+            "base_asset": "usdx",
+            "quote_asset": "usd",
             "oracles": [
               "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
             ],
-            "quote_asset": "usd"
+            "active": true
           },
           {
-            "active": true,
-            "base_asset": "swp",
             "market_id": "swp:usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
-            "quote_asset": "usd"
-          },
-          {
-            "active": true,
             "base_asset": "swp",
+            "quote_asset": "usd",
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
+            "active": true
+          },
+          {
             "market_id": "swp:usd:30",
+            "base_asset": "swp",
+            "quote_asset": "usd",
             "oracles": [
               "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
             ],
-            "quote_asset": "usd"
+            "active": true
           },
           {
-            "active": true,
-            "base_asset": "erc20/multichain/usdc",
-            "market_id": "erc20/multichain/usdc:usd",
+            "market_id": "atom:usd",
+            "base_asset": "atom",
+            "quote_asset": "usd",
             "oracles": [
               "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
             ],
-            "quote_asset": "usd"
+            "active": true
           },
           {
-            "active": true,
-            "base_asset": "erc20/multichain/usdc",
-            "market_id": "erc20/multichain/usdc:usd:30",
+            "market_id": "atom:usd:30",
+            "base_asset": "atom",
+            "quote_asset": "usd",
             "oracles": [
               "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
             ],
-            "quote_asset": "usd"
+            "active": true
+          },
+          {
+            "market_id": "akt:usd",
+            "base_asset": "akt",
+            "quote_asset": "usd",
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
+            "active": true
+          },
+          {
+            "market_id": "akt:usd:30",
+            "base_asset": "akt",
+            "quote_asset": "usd",
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
+            "active": true
+          },
+          {
+            "market_id": "luna:usd",
+            "base_asset": "luna",
+            "quote_asset": "usd",
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
+            "active": true
+          },
+          {
+            "market_id": "luna:usd:30",
+            "base_asset": "luna",
+            "quote_asset": "usd",
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
+            "active": true
+          },
+          {
+            "market_id": "osmo:usd",
+            "base_asset": "osmo",
+            "quote_asset": "usd",
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
+            "active": true
+          },
+          {
+            "market_id": "osmo:usd:30",
+            "base_asset": "osmo",
+            "quote_asset": "usd",
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
+            "active": true
+          },
+          {
+            "market_id": "ust:usd",
+            "base_asset": "ust",
+            "quote_asset": "usd",
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
+            "active": true
+          },
+          {
+            "market_id": "ust:usd:30",
+            "base_asset": "ust",
+            "quote_asset": "usd",
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
+            "active": true
+          },
+          {
+            "market_id": "usdc:usd",
+            "base_asset": "usdc",
+            "quote_asset": "usd",
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
+            "active": true
+          },
+          {
+            "market_id": "usdc:usd:30",
+            "base_asset": "usdc",
+            "quote_asset": "usd",
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
+            "active": true
+          },
+          {
+            "market_id": "usdt:usd",
+            "base_asset": "usdt",
+            "quote_asset": "usd",
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
+            "active": true
+          },
+          {
+            "market_id": "usdt:usd:30",
+            "base_asset": "usdt",
+            "quote_asset": "usd",
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
+            "active": true
+          },
+          {
+            "market_id": "dai:usd",
+            "base_asset": "dai",
+            "quote_asset": "usd",
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
+            "active": true
+          },
+          {
+            "market_id": "dai:usd:30",
+            "base_asset": "dai",
+            "quote_asset": "usd",
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
+            "active": true
+          },
+          {
+            "market_id": "eth:usd",
+            "base_asset": "eth",
+            "quote_asset": "usd",
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
+            "active": true
+          },
+          {
+            "market_id": "eth:usd:30",
+            "base_asset": "eth",
+            "quote_asset": "usd",
+            "oracles": [
+              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
+            ],
+            "active": true
           }
         ]
       },
       "posted_prices": [
         {
-          "expiry": "2023-07-20T00:00:00Z",
-          "market_id": "bnb:usd",
-          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "price": "215.962650000000001782"
-        },
-        {
-          "expiry": "2023-07-20T00:00:00Z",
-          "market_id": "bnb:usd:30",
-          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "price": "217.962650000000001782"
-        },
-        {
-          "expiry": "2023-07-20T00:00:00Z",
-          "market_id": "btc:usd",
-          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "price": "29500.962650000000001782"
-        },
-        {
-          "expiry": "2023-07-20T00:00:00Z",
-          "market_id": "btc:usd:30",
-          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "price": "28500.962650000000001782"
-        },
-        {
-          "expiry": "2023-07-20T00:00:00Z",
           "market_id": "akt:usd",
+          "price": "0.584749999999999992",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "price": "1.962650000000001782"
+          "expiry": "2050-01-01T00:00:00Z"
         },
         {
-          "expiry": "2023-07-20T00:00:00Z",
           "market_id": "akt:usd:30",
+          "price": "0.584099666666666684",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "price": "1.962650000000001782"
+          "expiry": "2050-01-01T00:00:00Z"
         },
         {
-          "expiry": "2023-07-20T00:00:00Z",
-          "market_id": "osmo:usd",
-          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "price": "4.962650000000001782"
-        },
-        {
-          "expiry": "2023-07-20T00:00:00Z",
-          "market_id": "osmo:usd:30",
-          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "price": "4.962650000000001782"
-        },
-        {
-          "expiry": "2023-07-20T00:00:00Z",
-          "market_id": "luna:usd",
-          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "price": "92.962650000000001782"
-        },
-        {
-          "expiry": "2023-07-20T00:00:00Z",
-          "market_id": "luna:usd:30",
-          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "price": "92.962650000000001782"
-        },
-        {
-          "expiry": "2023-07-20T00:00:00Z",
           "market_id": "atom:usd",
+          "price": "9.016999999999999460",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "price": "24.962650000000001782"
+          "expiry": "2050-01-01T00:00:00Z"
         },
         {
-          "expiry": "2023-07-20T00:00:00Z",
           "market_id": "atom:usd:30",
+          "price": "8.993133333333332757",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "price": "24.962650000000001782"
+          "expiry": "2050-01-01T00:00:00Z"
         },
         {
-          "expiry": "2023-07-20T00:00:00Z",
-          "market_id": "xrp:usd",
+          "market_id": "bnb:usd",
+          "price": "238.699999999999988631",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "price": "0.552650000000001782"
+          "expiry": "2050-01-01T00:00:00Z"
         },
         {
-          "expiry": "2023-07-20T00:00:00Z",
-          "market_id": "xrp:usd:30",
+          "market_id": "bnb:usd:30",
+          "price": "238.043333333333379187",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "price": "0.552650000000001782"
+          "expiry": "2050-01-01T00:00:00Z"
         },
         {
-          "expiry": "2023-07-20T00:00:00Z",
+          "market_id": "btc:usd",
+          "price": "29124.259999999998399289",
+          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
+          "expiry": "2050-01-01T00:00:00Z"
+        },
+        {
+          "market_id": "btc:usd:30",
+          "price": "29174.038333333322952967",
+          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
+          "expiry": "2050-01-01T00:00:00Z"
+        },
+        {
           "market_id": "busd:usd",
+          "price": "1.000000000000000000",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "price": "1.000000000000000000"
+          "expiry": "2050-01-01T00:00:00Z"
         },
         {
-          "expiry": "2023-07-20T00:00:00Z",
           "market_id": "busd:usd:30",
+          "price": "1.000000000000000000",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "price": "1.000000000000000000"
+          "expiry": "2050-01-01T00:00:00Z"
         },
         {
-          "expiry": "2023-07-20T00:00:00Z",
-          "market_id": "usdx:usd",
+          "market_id": "dai:usd",
+          "price": "1.000000000000000000",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "price": "1.000000000000000000"
+          "expiry": "2050-01-01T00:00:00Z"
         },
         {
-          "expiry": "2023-07-20T00:00:00Z",
-          "market_id": "usdx:usd:30",
+          "market_id": "dai:usd:30",
+          "price": "1.000000000000000000",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "price": "1.000000000000000000"
+          "expiry": "2050-01-01T00:00:00Z"
         },
         {
-          "expiry": "2023-07-20T00:00:00Z",
-          "market_id": "usdx:usd:720",
-          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "price": "1.000000000000000000"
-        },
-        {
-          "expiry": "2023-07-20T00:00:00Z",
-          "market_id": "kava:usd",
-          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "price": "3.000000000000000000"
-        },
-        {
-          "expiry": "2023-07-20T00:00:00Z",
-          "market_id": "kava:usd:30",
-          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "price": "3.000000000000000000"
-        },
-        {
-          "expiry": "2023-07-20T00:00:00Z",
           "market_id": "hard:usd",
+          "price": "0.118099999999999997",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "price": "0.500000000000000000"
+          "expiry": "2050-01-01T00:00:00Z"
         },
         {
-          "expiry": "2023-07-20T00:00:00Z",
           "market_id": "hard:usd:30",
+          "price": "0.118076666666666663",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "price": "0.500000000000000000"
+          "expiry": "2050-01-01T00:00:00Z"
         },
         {
-          "expiry": "2023-07-20T00:00:00Z",
+          "market_id": "kava:usd",
+          "price": "0.863999999999999990",
+          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
+          "expiry": "2050-01-01T00:00:00Z"
+        },
+        {
+          "market_id": "kava:usd:30",
+          "price": "0.869700000000000251",
+          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
+          "expiry": "2050-01-01T00:00:00Z"
+        },
+        {
+          "market_id": "luna:usd",
+          "price": "0.617399999999999949",
+          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
+          "expiry": "2050-01-01T00:00:00Z"
+        },
+        {
+          "market_id": "luna:usd:30",
+          "price": "0.615783333333333460",
+          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
+          "expiry": "2050-01-01T00:00:00Z"
+        },
+        {
+          "market_id": "osmo:usd",
+          "price": "0.493765000000000009",
+          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
+          "expiry": "2050-01-01T00:00:00Z"
+        },
+        {
+          "market_id": "osmo:usd:30",
+          "price": "0.493601685594476869",
+          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
+          "expiry": "2050-01-01T00:00:00Z"
+        },
+        {
           "market_id": "swp:usd",
+          "price": "0.012359999999999999",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "price": "2.150000000000000000"
+          "expiry": "2050-01-01T00:00:00Z"
         },
         {
-          "expiry": "2023-07-20T00:00:00Z",
           "market_id": "swp:usd:30",
+          "price": "0.012529333333333335",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "price": "2.150000000000000000"
+          "expiry": "2050-01-01T00:00:00Z"
         },
         {
-          "expiry": "2023-07-20T00:00:00Z",
-          "market_id": "erc20/multichain/usdc:usd",
+          "market_id": "usdc:usd",
+          "price": "1.000000000000000000",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "price": "1.000000000000000000"
+          "expiry": "2050-01-01T00:00:00Z"
         },
         {
-          "expiry": "2023-07-20T00:00:00Z",
-          "market_id": "erc20/multichain/usdc:usd:30",
+          "market_id": "usdc:usd:30",
+          "price": "1.000000000000000000",
           "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "price": "1.000000000000000000"
+          "expiry": "2050-01-01T00:00:00Z"
+        },
+        {
+          "market_id": "usdt:usd",
+          "price": "1.000000000000000000",
+          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
+          "expiry": "2050-01-01T00:00:00Z"
+        },
+        {
+          "market_id": "usdt:usd:30",
+          "price": "1.000000000000000000",
+          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
+          "expiry": "2050-01-01T00:00:00Z"
+        },
+        {
+          "market_id": "usdx:usd",
+          "price": "0.899599999999999955",
+          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
+          "expiry": "2050-01-01T00:00:00Z"
+        },
+        {
+          "market_id": "usdx:usd:30",
+          "price": "0.898733333333332940",
+          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
+          "expiry": "2050-01-01T00:00:00Z"
+        },
+        {
+          "market_id": "usdx:usd:720",
+          "price": "0.890397916666666678",
+          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
+          "expiry": "2050-01-01T00:00:00Z"
+        },
+        {
+          "market_id": "ust:usd",
+          "price": "0.000000000000000000",
+          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
+          "expiry": "2050-01-01T00:00:00Z"
+        },
+        {
+          "market_id": "ust:usd:30",
+          "price": "0.000000000000000000",
+          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
+          "expiry": "2050-01-01T00:00:00Z"
+        },
+        {
+          "market_id": "xrp:usd",
+          "price": "0.704099999999999948",
+          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
+          "expiry": "2050-01-01T00:00:00Z"
+        },
+        {
+          "market_id": "xrp:usd:30",
+          "price": "0.703160000000000118",
+          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
+          "expiry": "2050-01-01T00:00:00Z"
         }
       ]
     },
@@ -2323,7 +3396,8 @@
         "max_validators": 100,
         "max_entries": 7,
         "historical_entries": 10000,
-        "bond_denom": "uatom"
+        "bond_denom": "uatom",
+        "min_commission_rate": "0.000000000000000000"
       },
       "last_total_power": "0",
       "last_validator_powers": [],
@@ -2337,34 +3411,6 @@
       "params": {
         "allowed_pools": [
           {
-            "token_a": "uatom",
-            "token_b": "usdx"
-          },
-          {
-            "token_a": "hard",
-            "token_b": "usdx"
-          },
-          {
-            "token_a": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
-            "token_b": "usdx"
-          },
-          {
-            "token_a": "ibc/4129EB76C01ED14052054BB975DE0C6C5010E12FFD9253C20C58BCD828BEE9A5",
-            "token_b": "usdx"
-          },
-          {
-            "token_a": "ibc/C72DE26FFF16DE62BE2784E12229BDF5F4465CE8B10530426D6DB53255FF01B2",
-            "token_b": "usdx"
-          },
-          {
-            "token_a": "ibc/ED07A3391A112B175915CD8FAF43A2DA8E4790EDE12566649D0C2F97716B8518",
-            "token_b": "usdx"
-          },
-          {
-            "token_a": "swp",
-            "token_b": "usdx"
-          },
-          {
             "token_a": "bnb",
             "token_b": "usdx"
           },
@@ -2374,6 +3420,38 @@
           },
           {
             "token_a": "busd",
+            "token_b": "usdx"
+          },
+          {
+            "token_a": "hard",
+            "token_b": "usdx"
+          },
+          {
+            "token_a": "ibc/0471F1C4E7AFD3F07702BEF6DC365268D64570F7C1FDC98EA6098DD6DE59817B",
+            "token_b": "usdx"
+          },
+          {
+            "token_a": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
+            "token_b": "usdx"
+          },
+          {
+            "token_a": "ibc/799FDD409719A1122586A629AE8FCA17380351A51C1F47A80A1B8E7F2A491098",
+            "token_b": "usdx"
+          },
+          {
+            "token_a": "ibc/B448C0CA358B958301D328CCDC5D5AD642FC30A6D3AE106FF721DB315F3DDE5C",
+            "token_b": "usdx"
+          },
+          {
+            "token_a": "ibc/B8AF5D92165F35AB31F3FC7C7B444B9D240760FA5D406C49D24862BD0284E395",
+            "token_b": "usdx"
+          },
+          {
+            "token_a": "swp",
+            "token_b": "usdx"
+          },
+          {
+            "token_a": "uatom",
             "token_b": "usdx"
           },
           {
