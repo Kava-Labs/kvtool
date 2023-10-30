@@ -36,4 +36,12 @@ chains:
       output-format: json
       sign-mode: direct
       extra-codecs: []
-paths: {}
+paths:
+  transfer:
+    src:
+      chain-id: kavalocalnet_8888-1
+    dst:
+      chain-id: kavalocalnet_8889-2
+    src-channel-filter:
+      rule: ""
+      channel-list: []
