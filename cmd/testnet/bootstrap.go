@@ -120,7 +120,7 @@ $ KAVA_TAG=v0.21.0 kvtool testnet bootstrap --upgrade-name v0.21.0 --upgrade-hei
 				}
 			}
 
-			upCmd := dockerComposeCmd("up", "-d")
+			upCmd := dockerComposeCmd("up", "-d", "--remove-orphans")
 			// when doing automated chain upgrade, ensure the node starts with the desired image tag
 			// if this is empty, the docker-compose should default to intended image tag
 			if chainUpgradeBaseImageTag != "" {
@@ -178,22 +178,18 @@ func validateBootstrapFlags() error {
 }
 
 func setupIbcChannelAndRelayer() error {
-	// wait for chain to be up and running before setting up ibc
-	if err := waitForBlock(1, 5*time.Second); err != nil {
+	// wait for chains to be up and running before setting up ibc
+	// wait for block 2, as waiting only for block 1 sometimes leads to client expiration problems
+	if err := waitForBlock(2, 10*time.Second, "kavanode"); err != nil {
+		return err
+	}
+	if err := waitForBlock(2, 5*time.Second, "ibcnode"); err != nil {
 		return err
 	}
 
-	fmt.Printf("Starting ibc connection between chains...\n")
-	// add new channel to relayer config
-	setupIbcPathCmd := exec.Command("docker", "run", "-v", fmt.Sprintf("%s:%s", generatedPath("relayer"), "/home/relayer/.relayer"), "--network", "generated_default", relayerImageTag, "rly", "paths", "new", kavaChainId, ibcChainId, "transfer")
-	setupIbcPathCmd.Stdout = os.Stdout
-	setupIbcPathCmd.Stderr = os.Stderr
-	if err := setupIbcPathCmd.Run(); err != nil {
-		fmt.Println(err.Error())
-		return fmt.Errorf("[relayer] failed to setup ibc path")
-	}
+	fmt.Println("Attempting to establish IBC channel connection between chains...")
 	// open the channel between kava and ibcnode
-	openConnectionCmd := exec.Command("docker", "run", "-v", fmt.Sprintf("%s:%s", generatedPath("relayer"), "/home/relayer/.relayer"), "--network", "generated_default", relayerImageTag, "rly", "transact", "link", "transfer")
+	openConnectionCmd := exec.Command("docker", "run", "-v", fmt.Sprintf("%s:%s", generatedPath("relayer"), "/home/relayer/.relayer"), "--name", "ibc-relayer", "--rm", "--net", "generated_default", relayerImageTag, "rly", "transact", "link", "transfer", "-r", "10", "-t", "30s")
 	openConnectionCmd.Stdout = os.Stdout
 	openConnectionCmd.Stderr = os.Stderr
 	if err := openConnectionCmd.Run(); err != nil {
@@ -232,7 +228,7 @@ func runChainUpgrade() error {
 	}
 
 	// wait for chain to start producing blocks
-	if err := waitForBlock(1, 5*time.Second); err != nil {
+	if err := waitForBlock(1, 5*time.Second, "kavanode"); err != nil {
 		return err
 	}
 
@@ -252,7 +248,7 @@ func runChainUpgrade() error {
 	}
 
 	// wait for chain halt at upgrade height
-	if err := waitForBlock(chainUpgradeHeight, time.Duration(chainUpgradeHeight)*4*time.Second); err != nil {
+	if err := waitForBlock(chainUpgradeHeight, time.Duration(chainUpgradeHeight)*4*time.Second, "kavanode"); err != nil {
 		return err
 	}
 	fmt.Printf("chain has reached upgrade height (%d) and halted!\n", chainUpgradeHeight)
@@ -283,20 +279,21 @@ func writeUpgradeProposal() (string, error) {
 	)
 }
 
-func waitForBlock(n int64, timeout time.Duration) error {
+func waitForBlock(n int64, timeout time.Duration, chainDockerServiceName string) error {
 	b := backoff.NewExponentialBackOff()
 	b.MaxInterval = 2 * time.Second
 	b.MaxElapsedTime = timeout
-	return backoff.Retry(blockGTE(n), b)
+	return backoff.Retry(blockGTE(chainDockerServiceName, n), b)
 }
 
 // blockGTE is a backoff operation that uses kava's CLI to query the chain for the current block number
 // the operation fails in the following cases:
 // 1. the chain cannot be reached, 2. result cannot be parsed, 3. current height is less than desired height `n`
-func blockGTE(n int64) backoff.Operation {
+func blockGTE(chainDockerServiceName string, n int64) backoff.Operation {
 	return func() error {
 		cmd := "kava status | jq -r .sync_info.latest_block_height"
-		out, err := exec.Command("docker-compose", "-f", generatedPath("docker-compose.yaml"), "exec", "-T", "kavanode", "bash", "-c", cmd).Output()
+		// can't use dockerComposeCmd because Output() sets Stdout
+		out, err := exec.Command("docker-compose", "-f", generatedPath("docker-compose.yaml"), "exec", "-T", chainDockerServiceName, "bash", "-c", cmd).Output()
 		if err != nil {
 			return err
 		}
@@ -305,7 +302,7 @@ func blockGTE(n int64) backoff.Operation {
 			return err
 		}
 		if height < n {
-			fmt.Printf("waiting for chain to reach height %d, currently @ %d\n", n, height)
+			fmt.Printf("waiting for %s to reach height %d, currently @ %d\n", chainDockerServiceName, n, height)
 			return fmt.Errorf("waiting for height %d, found %d", n, height)
 		}
 		return nil
@@ -324,9 +321,9 @@ func runKavaCli(args ...string) error {
 }
 
 func dockerComposeCmd(args ...string) *exec.Cmd {
-	pieces := make([]string, 2, len(args)+2)
-	pieces[0] = "--file"
-	pieces[1] = generatedPath("docker-compose.yaml")
+	// exec.Command requires all items to be in single []string variadic
+	// combine the args with the file flag & value
+	pieces := []string{"-f", generatedPath("docker-compose.yaml")}
 	pieces = append(pieces, args...)
 	cmd := exec.Command("docker-compose", pieces...)
 	cmd.Stdout = os.Stdout
