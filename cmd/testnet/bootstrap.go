@@ -68,6 +68,9 @@ $ kvtool testnet bootstrap --kava.configTemplate v0.12
 Run kava & another chain with open IBC channel & relayer:
 $ kvtool testnet bootstrap --ibc
 
+Run a kava network with an additional pruning node:
+$ kvtool testnet bootstrap --pruning
+
 Run kava & an ethereum node:
 $ kvtool testnet bootstrap --geth
 
@@ -180,6 +183,9 @@ func validateBootstrapFlags() error {
 	if hasUpgradeName && chainUpgradeHeight < 10 {
 		// TODO: is 10 a sufficient height for an upgrade to occur with proposal & voting? probs not..
 		return fmt.Errorf("upgrade height must be > 10, found %d", chainUpgradeHeight)
+	}
+	if kavaConfigTemplate == "pruning-node" {
+		return fmt.Errorf("the pruning node must be run alongside a different template, see --pruning")
 	}
 	return nil
 }
