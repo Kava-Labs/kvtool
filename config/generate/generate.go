@@ -129,50 +129,29 @@ func GenerateRelayerConfig(generatedConfigDir string) error {
 }
 
 func GenerateKavaPruningConfig(kavaConfigTemplate, generatedConfigDir string) error {
+	pruningTemplateDir := filepath.Join(ConfigTemplatesDir, "kava", "pruning-node")
 	serviceDir := filepath.Join(generatedConfigDir, "kava-pruning")
-	// copy kava validator's config files
+	// copy configuration files
 	if err := copy.Copy(
-		filepath.Join(ConfigTemplatesDir, "kava", kavaConfigTemplate),
-		serviceDir,
+		filepath.Join(pruningTemplateDir, "shared"),
+		filepath.Join(serviceDir, "shared"),
 	); err != nil {
 		return err
 	}
 
-	// remove validator-specific files
-	serviceConfigDir := filepath.Join(serviceDir, "initstate", ".kava", "config")
-	if err := os.Remove(filepath.Join(serviceConfigDir, "priv_validator_key.json")); err != nil {
-		return err
-	}
-	if err := os.Remove(filepath.Join(serviceConfigDir, "node_key.json")); err != nil {
-		return err
-	}
-
-	// replace node_key
-	pruningTemplateDir := filepath.Join(ConfigTemplatesDir, "kava", "pruning-node")
+	// copy genesis file from kava template
 	if err := copy.Copy(
-		filepath.Join(pruningTemplateDir, "node_key.json"),
-		filepath.Join(serviceConfigDir, "node_key.json"),
+		filepath.Join(ConfigTemplatesDir, "kava", kavaConfigTemplate, "initstate", ".kava", "config", "genesis.json"),
+		filepath.Join(serviceDir, "shared", "genesis.json"),
 	); err != nil {
 		return err
 	}
 
 	// get kava template's image tag
-	dockerComposeFilePath := filepath.Join(serviceDir, "docker-compose.yaml")
-	image, err := extractDockerComposeImage(dockerComposeFilePath)
+	image, err := extractDockerComposeImage(
+		filepath.Join(ConfigTemplatesDir, "kava", kavaConfigTemplate, "docker-compose.yaml"),
+	)
 	if err != nil {
-		return err
-	}
-
-	// remove underlying template's docker-compose file
-	if err := os.Remove(dockerComposeFilePath); err != nil {
-		return err
-	}
-
-	// copy pruning node's docker-compose file
-	if err := copy.Copy(
-		filepath.Join(pruningTemplateDir, "docker-compose.yaml"),
-		dockerComposeFilePath,
-	); err != nil {
 		return err
 	}
 
@@ -186,7 +165,8 @@ func GenerateKavaPruningConfig(kavaConfigTemplate, generatedConfigDir string) er
 	updatedDockerCompose := strings.ReplaceAll(string(content), "KAVA_IMAGE_TAG_REPLACED_BY_KVTOOL_HERE", image)
 
 	// save docker-compose
-	if err := os.WriteFile(dockerComposeFilePath, []byte(updatedDockerCompose), 0644); err != nil {
+	if err := os.WriteFile(filepath.Join(serviceDir, "docker-compose.yaml"),
+		[]byte(updatedDockerCompose), 0644); err != nil {
 		return err
 	}
 
