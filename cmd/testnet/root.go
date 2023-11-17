@@ -25,6 +25,7 @@ const (
 var (
 	ibcFlag            bool
 	gethFlag           bool
+	includePruningFlag bool
 	kavaConfigTemplate string
 
 	chainUpgradeName         string

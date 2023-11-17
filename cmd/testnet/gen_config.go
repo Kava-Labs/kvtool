@@ -43,6 +43,11 @@ available services: %s
 					return err
 				}
 			}
+			if includePruningFlag {
+				if err := generate.GenerateKavaPruningConfig(kavaConfigTemplate, generatedConfigDir); err != nil {
+					return err
+				}
+			}
 			if ibcFlag {
 				if err := generate.GenerateIbcChainConfig(generatedConfigDir); err != nil {
 					return err
@@ -59,6 +64,7 @@ available services: %s
 	}
 
 	genConfigCmd.Flags().StringVar(&kavaConfigTemplate, "kava.configTemplate", "master", "the directory name of the template used to generating the kava config")
+	genConfigCmd.Flags().BoolVar(&includePruningFlag, "pruning", false, "flag for running pruning node alongside kava validator")
 	genConfigCmd.Flags().BoolVar(&ibcFlag, "ibc", false, "flag for if ibc is enabled")
 	genConfigCmd.Flags().BoolVar(&gethFlag, "geth", false, "flag for if geth node is enabled")
 

@@ -1,0 +1,31 @@
+version: '3'
+services:
+    kava-pruning:
+        depends_on:
+            - kavanode
+        image: "KAVA_IMAGE_TAG_REPLACED_BY_KVTOOL_HERE"
+        # ports are shifted to allow access to validator & pruning node without conflicting local ports
+        ports:
+            # open default kava rpc port
+            - "26667:26657"
+            # open rest port
+            - "1327:1317"
+            # open grpc port
+            - "9100:9090"
+            # open grpc-web port
+            - "9101:9091"
+            # open EVM JSON-RPC port
+            - "8555:8545"
+            # open Eth websocket port
+            - "8556:8546"
+        expose:
+            - "26657"
+            - "8545"
+        volumes:
+            - "./kava-pruning/initstate/.kava:/root/.kava"
+        # start the blockchain, set rpc to listen to connections from outside the container, & set validator as peer
+        command:
+            - "sh"
+            - "-c"
+            # - "tail -f /dev/null"
+            - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657 --p2p.persistent_peers 461d9761df5db0a112407ca8a82f1774ef2dbaa3@kavanode:26656"

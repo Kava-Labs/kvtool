@@ -99,6 +99,12 @@ $ KAVA_TAG=v0.21.0 kvtool testnet bootstrap --upgrade-name v0.21.0 --upgrade-hei
 			if err := generate.GenerateKavaConfig(kavaConfigTemplate, generatedConfigDir); err != nil {
 				return err
 			}
+			// handle pruning node configuration
+			if includePruningFlag {
+				if err := generate.GenerateKavaPruningConfig(kavaConfigTemplate, generatedConfigDir); err != nil {
+					return err
+				}
+			}
 			// handle ibc configuration
 			if ibcFlag {
 				if err := generate.GenerateIbcConfigs(generatedConfigDir); err != nil {
@@ -150,6 +156,7 @@ $ KAVA_TAG=v0.21.0 kvtool testnet bootstrap --upgrade-name v0.21.0 --upgrade-hei
 	}
 
 	bootstrapCmd.Flags().StringVar(&kavaConfigTemplate, "kava.configTemplate", "master", "the directory name of the template used to generating the kava config")
+	bootstrapCmd.Flags().BoolVar(&includePruningFlag, "pruning", false, "flag for running pruning node alongside kava validator")
 	bootstrapCmd.Flags().BoolVar(&ibcFlag, "ibc", false, "flag for if ibc is enabled")
 	bootstrapCmd.Flags().BoolVar(&gethFlag, "geth", false, "flag for if geth is enabled")
 
