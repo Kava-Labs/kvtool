@@ -1,7 +1,11 @@
 package generate
 
 import (
+	"fmt"
+	"os"
 	"path/filepath"
+	"regexp"
+	"strings"
 
 	"github.com/otiai10/copy"
 )
@@ -122,4 +126,75 @@ func GenerateRelayerConfig(generatedConfigDir string) error {
 		copy.Options{AddPermission: 0666},
 	)
 	return err
+}
+
+func GenerateKavaPruningConfig(kavaConfigTemplate, generatedConfigDir string) error {
+	pruningTemplateDir := filepath.Join(ConfigTemplatesDir, "kava", "pruning-node")
+	serviceDir := filepath.Join(generatedConfigDir, "kava-pruning")
+	// copy configuration files
+	if err := copy.Copy(
+		filepath.Join(pruningTemplateDir, "shared"),
+		filepath.Join(serviceDir, "shared"),
+	); err != nil {
+		return err
+	}
+
+	// copy genesis file from kava template
+	if err := copy.Copy(
+		filepath.Join(ConfigTemplatesDir, "kava", kavaConfigTemplate, "initstate", ".kava", "config", "genesis.json"),
+		filepath.Join(serviceDir, "shared", "genesis.json"),
+	); err != nil {
+		return err
+	}
+
+	// get kava template's image tag
+	image, err := extractDockerComposeImage(
+		filepath.Join(ConfigTemplatesDir, "kava", kavaConfigTemplate, "docker-compose.yaml"),
+	)
+	if err != nil {
+		return err
+	}
+
+	// read template's docker-compose file
+	content, err := os.ReadFile(filepath.Join(pruningTemplateDir, "docker-compose.yaml"))
+	if err != nil {
+		return err
+	}
+
+	// replace image tag in template's docker-compose
+	updatedDockerCompose := strings.ReplaceAll(string(content), "KAVA_IMAGE_TAG_REPLACED_BY_KVTOOL_HERE", image)
+
+	// save docker-compose
+	if err := os.WriteFile(filepath.Join(serviceDir, "docker-compose.yaml"),
+		[]byte(updatedDockerCompose), 0644); err != nil {
+		return err
+	}
+
+	// put together final compose file
+	err = overwriteMergeYAML(
+		filepath.Join(serviceDir, "docker-compose.yaml"),
+		filepath.Join(generatedConfigDir, "docker-compose.yaml"),
+	)
+	return err
+}
+
+func extractDockerComposeImage(dockerComposeFilePath string) (string, error) {
+	// read docker-compose contents
+	content, err := os.ReadFile(dockerComposeFilePath)
+	if err != nil {
+		return "", fmt.Errorf("error opening docker-compose file (%s): %s", dockerComposeFilePath, err)
+	}
+
+	// extract image & tag
+	matches := regexp.MustCompile(`image:\s*"(.*)"`).FindStringSubmatch(string(content))
+	if len(matches) != 2 {
+		return "", fmt.Errorf("expected exactly one line with 'image:' in %s, found %+v", dockerComposeFilePath, matches)
+	}
+
+	dockerImage := strings.TrimSpace(matches[1])
+	if dockerImage == "" {
+		return "", fmt.Errorf("empty image found in %s", dockerComposeFilePath)
+	}
+
+	return dockerImage, nil
 }

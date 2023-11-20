@@ -68,6 +68,9 @@ $ kvtool testnet bootstrap --kava.configTemplate v0.12
 Run kava & another chain with open IBC channel & relayer:
 $ kvtool testnet bootstrap --ibc
 
+Run a kava network with an additional pruning node:
+$ kvtool testnet bootstrap --pruning
+
 Run kava & an ethereum node:
 $ kvtool testnet bootstrap --geth
 
@@ -98,6 +101,12 @@ $ KAVA_TAG=v0.21.0 kvtool testnet bootstrap --upgrade-name v0.21.0 --upgrade-hei
 			// generate kava node configuration
 			if err := generate.GenerateKavaConfig(kavaConfigTemplate, generatedConfigDir); err != nil {
 				return err
+			}
+			// handle pruning node configuration
+			if includePruningFlag {
+				if err := generate.GenerateKavaPruningConfig(kavaConfigTemplate, generatedConfigDir); err != nil {
+					return err
+				}
 			}
 			// handle ibc configuration
 			if ibcFlag {
@@ -150,6 +159,7 @@ $ KAVA_TAG=v0.21.0 kvtool testnet bootstrap --upgrade-name v0.21.0 --upgrade-hei
 	}
 
 	bootstrapCmd.Flags().StringVar(&kavaConfigTemplate, "kava.configTemplate", "master", "the directory name of the template used to generating the kava config")
+	bootstrapCmd.Flags().BoolVar(&includePruningFlag, "pruning", false, "flag for running pruning node alongside kava validator")
 	bootstrapCmd.Flags().BoolVar(&ibcFlag, "ibc", false, "flag for if ibc is enabled")
 	bootstrapCmd.Flags().BoolVar(&gethFlag, "geth", false, "flag for if geth is enabled")
 
@@ -173,6 +183,9 @@ func validateBootstrapFlags() error {
 	if hasUpgradeName && chainUpgradeHeight < 10 {
 		// TODO: is 10 a sufficient height for an upgrade to occur with proposal & voting? probs not..
 		return fmt.Errorf("upgrade height must be > 10, found %d", chainUpgradeHeight)
+	}
+	if kavaConfigTemplate == "pruning-node" {
+		return fmt.Errorf("the pruning node must be run alongside a different template, see --pruning")
 	}
 	return nil
 }
