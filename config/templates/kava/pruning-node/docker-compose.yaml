@@ -5,20 +5,19 @@ services:
             - kavanode
         image: "KAVA_IMAGE_TAG_REPLACED_BY_KVTOOL_HERE"
         # ports are shifted to allow access to validator & pruning node without conflicting local ports
-        # they are shifted inside the container, as well, because the validator is in the same network
         ports:
             # open default kava rpc port
-            - "26667:26667"
+            - "26667:26657"
             # open rest port
-            - "1327:1327"
+            - "1327:1317"
             # open grpc port
-            - "9100:9200"
+            - "9100:9090"
             # open grpc-web port
-            - "9101:9201"
+            - "9101:9091"
             # open EVM JSON-RPC port
-            - "8555:8555"
+            - "8555:8545"
             # open Eth websocket port
-            - "8556:8556"
+            - "8556:8546"
         volumes:
             - ./kava-pruning/initstate/.kava:/root/.kava
             - ./kava-pruning/shared:/docker/shared
