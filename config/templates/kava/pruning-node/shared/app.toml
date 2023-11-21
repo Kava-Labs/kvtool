@@ -8,7 +8,7 @@
 # The minimum gas prices a validator is willing to accept for processing a
 # transaction. A transaction's fees must meet the minimum of any denomination
 # specified in this config (e.g. 0.25token1;0.0001token2).
-minimum-gas-prices = "0ukava"
+minimum-gas-prices = "0.001ukava;1000000000akava"
 
 # default: the last 362880 states are kept, pruning at 10 block intervals
 # nothing: all historic states will be saved, nothing will be deleted (i.e. archiving node)
@@ -59,17 +59,17 @@ inter-block-cache = true
 # ["message.sender", "message.recipient"]
 index-events = []
 
-# IavlCacheSize set the size of the iavl tree cache.
+# IavlCacheSize set the size of the iavl tree cache. 
 # Default cache size is 50mb.
 iavl-cache-size = 781250
-
-# IavlDisableFastNode enables or disables the fast node feature of IAVL.
+trace = true
+# IavlDisableFastNode enables or disables the fast node feature of IAVL. 
 # Default is false.
 iavl-disable-fastnode = false
 
 # EXPERIMENTAL: IAVLLazyLoading enable/disable the lazy loading of iavl store.
 # Default is false.
-iavl-lazy-loading = false
+iavl-lazy-loading = true
 
 # AppDBBackend defines the database backend type to use for the application and snapshots DBs.
 # An empty string indicates that a fallback will be used.
@@ -108,7 +108,8 @@ prometheus-retention-time = 0
 #
 # Example:
 # [["chain_id", "cosmoshub-1"]]
-global-labels = []
+global-labels = [
+]
 
 ###############################################################################
 ###                           API Configuration                             ###
@@ -123,7 +124,7 @@ enable = true
 swagger = false
 
 # Address defines the API server to listen on.
-address = "tcp://0.0.0.0:1327"
+address = "tcp://0.0.0.0:1317"
 
 # MaxOpenConnections defines the number of maximum open connections.
 max-open-connections = 1000
@@ -138,7 +139,7 @@ rpc-write-timeout = 0
 rpc-max-body-bytes = 1000000
 
 # EnableUnsafeCORS defines if CORS should be enabled (unsafe - use it at your own risk).
-enabled-unsafe-cors = false
+enabled-unsafe-cors = true
 
 ###############################################################################
 ###                           Rosetta Configuration                         ###
@@ -147,7 +148,7 @@ enabled-unsafe-cors = false
 [rosetta]
 
 # Enable defines if the Rosetta API server should be enabled.
-enable = false
+enable = true
 
 # Address defines the Rosetta API server to listen on.
 address = ":8080"
@@ -186,7 +187,7 @@ denom-to-suggest = "uatom"
 enable = true
 
 # Address defines the gRPC server address to bind to.
-address = "0.0.0.0:9100"
+address = "0.0.0.0:9090"
 
 # MaxRecvMsgSize defines the max message size in bytes the server can receive.
 # The default value is 10MB.
@@ -207,10 +208,10 @@ max-send-msg-size = "2147483647"
 enable = true
 
 # Address defines the gRPC-web server address to bind to.
-address = "0.0.0.0:9101"
+address = "0.0.0.0:9091"
 
 # EnableUnsafeCORS defines if CORS should be enabled (unsafe - use it at your own risk).
-enable-unsafe-cors = false
+enable-unsafe-cors = true
 
 ###############################################################################
 ###                        State Sync Configuration                         ###
@@ -236,11 +237,11 @@ streamers = []
 
 [streamers]
 [streamers.file]
-keys = ["*"]
+keys = ["*", ]
 write_dir = ""
 prefix = ""
 
-# output-metadata specifies if output the metadata file which includes the abci request/responses
+# output-metadata specifies if output the metadata file which includes the abci request/responses 
 # during processing the block.
 output-metadata = "true"
 
@@ -259,7 +260,7 @@ fsync = "false"
 # Tracer defines the 'vm.Tracer' type that the EVM will use when the node is run in
 # debug mode. To enable tracing use the '--evm.tracer' flag when starting your node.
 # Valid types are: json|struct|access_list|markdown
-tracer = ""
+tracer = "json"
 
 # MaxTxGasWanted defines the gas wanted for each eth tx returned in ante handler in check tx mode.
 max-tx-gas-wanted = 0
@@ -274,14 +275,14 @@ max-tx-gas-wanted = 0
 enable = true
 
 # Address defines the EVM RPC HTTP server address to bind to.
-address = "0.0.0.0:8555"
+address = "0.0.0.0:8545"
 
 # Address defines the EVM WebSocket server address to bind to.
-ws-address = "127.0.0.1:8566"
+ws-address = "0.0.0.0:8546"
 
 # API defines a list of JSON-RPC namespaces that should be enabled
 # Example: "eth,txpool,personal,net,debug,web3"
-api = "eth,net,web3"
+api = "eth,net,web3,debug"
 
 # GasCap sets a cap on gas that can be used in eth_call/estimateGas (0=infinite). Default: 25,000,000.
 gas-cap = 25000000
