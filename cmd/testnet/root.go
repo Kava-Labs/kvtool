@@ -16,7 +16,7 @@ const (
 	binanceServiceName = "binance"
 	deputyServiceName  = "deputy"
 
-	relayerImageTag = "kava/relayer:v2.2.0"
+	relayerImageTag = "kava/relayer:v2.4.2"
 
 	kavaChainId = "kavalocalnet_8888-1"
 	ibcChainId  = "kavalocalnet_8889-2"
