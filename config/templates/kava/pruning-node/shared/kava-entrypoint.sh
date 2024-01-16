@@ -21,8 +21,19 @@ fi
 cp /docker/shared/app.toml ~/.kava/config/app.toml
 cp /docker/shared/config.toml ~/.kava/config/config.toml
 
-# get node id of validator
-VALIDATOR_NODE_ID="$(kava --node http://kavanode:26657 status | jq -r .node_info.id)"
+# get node id of validator, with retries to wait for kavanode apis to start
+MAX_RETRIES=10
+DELAY_SECONDS=2
+
+for ((i = 0; i < MAX_RETRIES; i++)); do
+  VALIDATOR_NODE_ID="$(kava --node http://kavanode:26657 status | jq -r .node_info.id)" && break
+  sleep $DELAY_SECONDS
+done
+
+if [ -z "$VALIDATOR_NODE_ID" ]; then
+  echo "error: unable to get validator node id from kavanode after $((MAX_RETRIES * DELAY_SECONDS)) seconds"
+  exit 1
+fi
 echo found validator: "$VALIDATOR_NODE_ID@kavanode:26656"
 
 # start the kava process
