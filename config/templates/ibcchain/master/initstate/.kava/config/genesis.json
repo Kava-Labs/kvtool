@@ -2616,8 +2616,7 @@
         "params": {
           "allowed_clients": [
             "06-solomachine",
-            "07-tendermint",
-            "09-localhost"
+            "07-tendermint"
           ]
         },
         "create_localhost": false,
