@@ -112,9 +112,6 @@ sed -i '' 's/chain-id = ""/chain-id = "'"$chainID"'"/g' $DATA/config/client.toml
 # lower default commit timeout
 sed -i '' 's/timeout_commit = "5s"/timeout_commit = "1s"/g' $DATA/config/config.toml
 
-# Set database to rocksdb
-sed -i '' 's/db_backend = "goleveldb"/db_backend = "rocksdb"/g' $DATA/config/config.toml
-
 #########################
 ##### CONFIGURATION #####
 #########################
