@@ -28,6 +28,8 @@ var (
 	includePruningFlag bool
 	kavaConfigTemplate string
 
+	kavaDbBackend string
+
 	chainUpgradeName         string
 	chainUpgradeHeight       int64
 	chainUpgradeBaseImageTag string

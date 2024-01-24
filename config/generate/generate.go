@@ -3,6 +3,7 @@ package generate
 import (
 	"fmt"
 	"os"
+	"path"
 	"path/filepath"
 	"regexp"
 	"strings"
@@ -197,4 +198,24 @@ func extractDockerComposeImage(dockerComposeFilePath string) (string, error) {
 	}
 
 	return dockerImage, nil
+}
+
+func ChangeKavaDb(generatedConfigDir string, db string) error {
+	// load the chain's config.toml
+	filepath := path.Join(generatedConfigDir, "kava", "initstate", ".kava", "config", "config.toml")
+	content, err := os.ReadFile(filepath)
+	if err != nil {
+		return err
+	}
+
+	// replace the db_backend line with new db
+	lines := strings.Split(string(content), "\n")
+	for i, line := range lines {
+		if strings.HasPrefix(line, "db_backend =") {
+			lines[i] = fmt.Sprintf("db_backend = \"%s\"", db)
+			break
+		}
+	}
+
+	return os.WriteFile(filepath, []byte(strings.Join(lines, "\n")), 0644)
 }
