@@ -17,8 +17,8 @@ var (
 	ConfigTemplatesDir string
 )
 
-func GenerateDefaultConfig(generatedConfigDir string) error {
-	if err := GenerateKavaConfig("v0.10", generatedConfigDir); err != nil {
+func GenerateDefaultConfig(generatedConfigDir, kavaDbBackend string) error {
+	if err := GenerateKavaConfig("v0.10", generatedConfigDir, kavaDbBackend); err != nil {
 		return err
 	}
 	if err := GenerateBnbConfig(generatedConfigDir); err != nil {
@@ -30,7 +30,7 @@ func GenerateDefaultConfig(generatedConfigDir string) error {
 	return nil
 }
 
-func GenerateKavaConfig(kavaConfigTemplate, generatedConfigDir string) error {
+func GenerateKavaConfig(kavaConfigTemplate, generatedConfigDir, dbBackend string) error {
 	// copy templates into generated config folder
 	err := copy.Copy(filepath.Join(ConfigTemplatesDir, "kava", kavaConfigTemplate), filepath.Join(generatedConfigDir, "kava"))
 	if err != nil {
@@ -38,11 +38,15 @@ func GenerateKavaConfig(kavaConfigTemplate, generatedConfigDir string) error {
 	}
 
 	// put together final compose file
-	err = overwriteMergeYAML(
+	if err := overwriteMergeYAML(
 		filepath.Join(ConfigTemplatesDir, "kava", kavaConfigTemplate, "docker-compose.yaml"),
 		filepath.Join(generatedConfigDir, "docker-compose.yaml"),
-	)
-	return err
+	); err != nil {
+		return err
+	}
+
+	configTomlPath := path.Join(generatedConfigDir, "kava", "initstate", ".kava", "config", "config.toml")
+	return changeConfigTomlDbBackend(configTomlPath, dbBackend)
 }
 
 func GenerateBnbConfig(generatedConfigDir string) error {
@@ -129,7 +133,7 @@ func GenerateRelayerConfig(generatedConfigDir string) error {
 	return err
 }
 
-func GenerateKavaPruningConfig(kavaConfigTemplate, generatedConfigDir string) error {
+func GenerateKavaPruningConfig(kavaConfigTemplate, generatedConfigDir, dbBackend string) error {
 	pruningTemplateDir := filepath.Join(ConfigTemplatesDir, "kava", "pruning-node")
 	serviceDir := filepath.Join(generatedConfigDir, "kava-pruning")
 	// copy configuration files
@@ -172,11 +176,15 @@ func GenerateKavaPruningConfig(kavaConfigTemplate, generatedConfigDir string) er
 	}
 
 	// put together final compose file
-	err = overwriteMergeYAML(
+	if err := overwriteMergeYAML(
 		filepath.Join(serviceDir, "docker-compose.yaml"),
 		filepath.Join(generatedConfigDir, "docker-compose.yaml"),
-	)
-	return err
+	); err != nil {
+		return err
+	}
+
+	configTomlPath := path.Join(generatedConfigDir, "kava-pruning", "shared", "config.toml")
+	return changeConfigTomlDbBackend(configTomlPath, dbBackend)
 }
 
 func extractDockerComposeImage(dockerComposeFilePath string) (string, error) {
@@ -200,10 +208,9 @@ func extractDockerComposeImage(dockerComposeFilePath string) (string, error) {
 	return dockerImage, nil
 }
 
-func ChangeKavaDb(generatedConfigDir string, db string) error {
+func changeConfigTomlDbBackend(configTomlPath, db string) error {
 	// load the chain's config.toml
-	filepath := path.Join(generatedConfigDir, "kava", "initstate", ".kava", "config", "config.toml")
-	content, err := os.ReadFile(filepath)
+	content, err := os.ReadFile(configTomlPath)
 	if err != nil {
 		return err
 	}
@@ -217,5 +224,5 @@ func ChangeKavaDb(generatedConfigDir string, db string) error {
 		}
 	}
 
-	return os.WriteFile(filepath, []byte(strings.Join(lines, "\n")), 0644)
+	return os.WriteFile(configTomlPath, []byte(strings.Join(lines, "\n")), 0644)
 }

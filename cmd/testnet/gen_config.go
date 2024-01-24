@@ -29,7 +29,7 @@ available services: %s
 
 			// 2) generate a complete docker-compose config
 			if stringSlice(args).contains(kavaServiceName) {
-				if err := generate.GenerateKavaConfig(kavaConfigTemplate, generatedConfigDir); err != nil {
+				if err := generate.GenerateKavaConfig(kavaConfigTemplate, generatedConfigDir, kavaDbBackend); err != nil {
 					return err
 				}
 			}
@@ -44,7 +44,7 @@ available services: %s
 				}
 			}
 			if includePruningFlag {
-				if err := generate.GenerateKavaPruningConfig(kavaConfigTemplate, generatedConfigDir); err != nil {
+				if err := generate.GenerateKavaPruningConfig(kavaConfigTemplate, generatedConfigDir, kavaDbBackend); err != nil {
 					return err
 				}
 			}
@@ -58,16 +58,12 @@ available services: %s
 					return err
 				}
 			}
-			if err := generate.ChangeKavaDb(generatedConfigDir, kavaDbBackend); err != nil {
-				return err
-			}
 
 			return nil
 		},
 	}
 
 	genConfigCmd.Flags().StringVar(&kavaConfigTemplate, "kava.configTemplate", "master", "the directory name of the template used to generating the kava config")
-	genConfigCmd.Flags().StringVar(&kavaDbBackend, "kava.db", "goleveldb", "update the db_backend of kava. KAVA_TAG must be compatible with db choice.")
 	genConfigCmd.Flags().BoolVar(&includePruningFlag, "pruning", false, "flag for running pruning node alongside kava validator")
 	genConfigCmd.Flags().BoolVar(&ibcFlag, "ibc", false, "flag for if ibc is enabled")
 	genConfigCmd.Flags().BoolVar(&gethFlag, "geth", false, "flag for if geth node is enabled")

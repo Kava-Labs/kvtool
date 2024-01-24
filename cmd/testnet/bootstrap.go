@@ -99,12 +99,12 @@ $ KAVA_TAG=v0.21.0 kvtool testnet bootstrap --upgrade-name v0.21.0 --upgrade-hei
 			}
 
 			// generate kava node configuration
-			if err := generate.GenerateKavaConfig(kavaConfigTemplate, generatedConfigDir); err != nil {
+			if err := generate.GenerateKavaConfig(kavaConfigTemplate, generatedConfigDir, kavaDbBackend); err != nil {
 				return err
 			}
 			// handle pruning node configuration
 			if includePruningFlag {
-				if err := generate.GenerateKavaPruningConfig(kavaConfigTemplate, generatedConfigDir); err != nil {
+				if err := generate.GenerateKavaPruningConfig(kavaConfigTemplate, generatedConfigDir, kavaDbBackend); err != nil {
 					return err
 				}
 			}
@@ -119,11 +119,6 @@ $ KAVA_TAG=v0.21.0 kvtool testnet bootstrap --upgrade-name v0.21.0 --upgrade-hei
 				if err := generate.GenerateGethConfig(generatedConfigDir); err != nil {
 					return err
 				}
-			}
-
-			// set desired db_backend
-			if err := generate.ChangeKavaDb(generatedConfigDir, kavaDbBackend); err != nil {
-				return err
 			}
 
 			// pull the kava image tag if not overridden to be "local"
@@ -164,7 +159,6 @@ $ KAVA_TAG=v0.21.0 kvtool testnet bootstrap --upgrade-name v0.21.0 --upgrade-hei
 	}
 
 	bootstrapCmd.Flags().StringVar(&kavaConfigTemplate, "kava.configTemplate", "master", "the directory name of the template used to generating the kava config")
-	bootstrapCmd.Flags().StringVar(&kavaDbBackend, "kava.db", "goleveldb", "update the db_backend of kava. KAVA_TAG must be compatible with db choice.")
 	bootstrapCmd.Flags().BoolVar(&includePruningFlag, "pruning", false, "flag for running pruning node alongside kava validator")
 	bootstrapCmd.Flags().BoolVar(&ibcFlag, "ibc", false, "flag for if ibc is enabled")
 	bootstrapCmd.Flags().BoolVar(&gethFlag, "geth", false, "flag for if geth is enabled")
