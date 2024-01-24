@@ -148,7 +148,7 @@ enabled-unsafe-cors = true
 [rosetta]
 
 # Enable defines if the Rosetta API server should be enabled.
-enable = true
+enable = false
 
 # Address defines the Rosetta API server to listen on.
 address = ":8080"
