@@ -16,8 +16,7 @@ services:
       # open Eth websocket port
       - "8546:8546"
     volumes:
-      - "./kava/initstate/.kava/config:/root/.kava/config"
-      - "./kava/initstate/.kava/keyring-test/:/root/.kava/keyring-test"
+      - "./kava/initstate/.kava:/root/.kava"
     # start the blockchain, and set rpc to listen to connections from outside the container
     command:
       - "sh"
