@@ -38,6 +38,8 @@ Option 2:
 
 To generate a testnet for kava, binance chain, and a deputy that relays swaps between them:
 
+*Note that if you ran `Option 1` previously you may need to run `sudo rm -rf full_configs/generated` before generating a new config.*
+
 ```bash
 # Generate a new kvtool configuration based off template files
 kvtool testnet gen-config kava binance deputy --kava.configTemplate master
