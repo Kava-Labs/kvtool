@@ -29,7 +29,7 @@ available services: %s
 
 			// 2) generate a complete docker-compose config
 			if stringSlice(args).contains(kavaServiceName) {
-				if err := generate.GenerateKavaConfig(kavaConfigTemplate, generatedConfigDir); err != nil {
+				if err := generate.GenerateKavaConfig(kavaConfigTemplate, generatedConfigDir, kavaDbBackend); err != nil {
 					return err
 				}
 			}
@@ -44,7 +44,7 @@ available services: %s
 				}
 			}
 			if includePruningFlag {
-				if err := generate.GenerateKavaPruningConfig(kavaConfigTemplate, generatedConfigDir); err != nil {
+				if err := generate.GenerateKavaPruningConfig(kavaConfigTemplate, generatedConfigDir, kavaDbBackend); err != nil {
 					return err
 				}
 			}

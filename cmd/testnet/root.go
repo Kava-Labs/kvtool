@@ -17,9 +17,6 @@ const (
 	deputyServiceName  = "deputy"
 
 	relayerImageTag = "kava/relayer:v2.4.2"
-
-	kavaChainId = "kavalocalnet_8888-1"
-	ibcChainId  = "kavalocalnet_8889-2"
 )
 
 var (
@@ -27,6 +24,8 @@ var (
 	gethFlag           bool
 	includePruningFlag bool
 	kavaConfigTemplate string
+
+	kavaDbBackend string
 
 	chainUpgradeName         string
 	chainUpgradeHeight       int64
@@ -61,7 +60,7 @@ func Cmd() *cobra.Command {
 			}
 
 			// 2) generate a complete docker-compose config
-			if err := generate.GenerateDefaultConfig(generatedConfigDir); err != nil {
+			if err := generate.GenerateDefaultConfig(generatedConfigDir, kavaDbBackend); err != nil {
 				return fmt.Errorf("could not generate config: %v", err)
 			}
 
@@ -76,6 +75,7 @@ func Cmd() *cobra.Command {
 	}
 
 	testnetCmd.PersistentFlags().StringVar(&generatedConfigDir, "generated-dir", defaultGeneratedConfigDir, "output directory for the generated config")
+	testnetCmd.PersistentFlags().StringVar(&kavaDbBackend, "kava.db", "goleveldb", "update the db_backend of kava. KAVA_TAG must be compatible with db choice.")
 
 	testnetCmd.AddCommand(GenConfigCmd())
 	testnetCmd.AddCommand(BootstrapCmd())

@@ -37,6 +37,10 @@ at runtime via the 'kava.configTemplate' flag. The Kava templates contain kava c
 
 Some templates, like "master", support overriding the image tag via the KAVA_TAG env variable.
 
+## Database backend
+The --kava.db flag can be used to change the db_backend value in the generated configuration's app.toml.
+Note that the KAVA_TAG used must be compatible with the provided backend type.
+
 # IBC
 The bootstrap command supports running a secondary chain and opening an IBC channel between the
 primary Kava node and the secondary chain. To set this up, simply use the --ibc flag.
@@ -64,6 +68,9 @@ The committee member account votes on the proposal and then we wait for the upgr
 reached. At that point, the chain halts and is restarted with the updated image tag.`,
 		Example: `Run kava node with particular template:
 $ kvtool testnet bootstrap --kava.configTemplate v0.12
+
+Run kava with rocksdb:
+$ KAVA_TAG=master-rocksdb kvtool testnet bootstrap --kava.db rocksdb
 
 Run kava & another chain with open IBC channel & relayer:
 $ kvtool testnet bootstrap --ibc
@@ -99,12 +106,12 @@ $ KAVA_TAG=v0.21.0 kvtool testnet bootstrap --upgrade-name v0.21.0 --upgrade-hei
 			}
 
 			// generate kava node configuration
-			if err := generate.GenerateKavaConfig(kavaConfigTemplate, generatedConfigDir); err != nil {
+			if err := generate.GenerateKavaConfig(kavaConfigTemplate, generatedConfigDir, kavaDbBackend); err != nil {
 				return err
 			}
 			// handle pruning node configuration
 			if includePruningFlag {
-				if err := generate.GenerateKavaPruningConfig(kavaConfigTemplate, generatedConfigDir); err != nil {
+				if err := generate.GenerateKavaPruningConfig(kavaConfigTemplate, generatedConfigDir, kavaDbBackend); err != nil {
 					return err
 				}
 			}
