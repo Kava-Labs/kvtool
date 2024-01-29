@@ -940,6 +940,7 @@
     },
     "cdp": {
       "params": {
+        "begin_blocker_execution_block_interval": 1,
         "collateral_params": [
           {
             "denom": "bnb",
