@@ -892,7 +892,6 @@
     },
     "cdp": {
       "params": {
-        "liquidation_block_interval": 1,
         "collateral_params": [
           {
             "denom": "bnb",
@@ -2334,23 +2333,6 @@
         "quorum": "0.334000000000000000",
         "threshold": "0.500000000000000000",
         "veto_threshold": "0.334000000000000000"
-      },
-      "params": {
-        "min_deposit": [
-          {
-            "denom": "ukava",
-            "amount": "10000000"
-          }
-        ],
-        "max_deposit_period": "172800s",
-        "voting_period": "30s",
-        "quorum": "0.334000000000000000",
-        "threshold": "0.500000000000000000",
-        "veto_threshold": "0.334000000000000000",
-        "min_initial_deposit_ratio": "0.000000000000000000",
-        "burn_vote_quorum": false,
-        "burn_proposal_deposit_prevote": false,
-        "burn_vote_veto": true
       }
     },
     "hard": {
