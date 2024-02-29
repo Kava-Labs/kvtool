@@ -29,7 +29,6 @@ import (
 	tmtypes "github.com/tendermint/tendermint/types"
 
 	"github.com/kava-labs/kava/app"
-	committeetypes "github.com/kava-labs/kava/x/committee/types"
 )
 
 // flag options for the command
@@ -409,42 +408,10 @@ func UpdateGenesisFileWithNewValidators(
 
 	// inject god committee w/ member, if desired
 	if ugvGodCommitteeMember != "" {
-		// unmarshal gov module state
-		committeeState := committeetypes.GenesisState{}
-		if err = codec.UnmarshalJSON(appState[committeetypes.ModuleName], &committeeState); err != nil {
-			return fmt.Errorf("failed to unmarshal app_state.committee: %s", err)
-		}
-
-		// inject god committee
-		nextCommitteeId := uint64(len(committeeState.Committees) + 1)
-		godCommittee := committeetypes.MustNewMemberCommittee(
-			nextCommitteeId,
-			"Kava God Committee (testing only)",
-			[]sdk.AccAddress{sdk.MustAccAddressFromBech32(ugvGodCommitteeMember)},
-			[]committeetypes.Permission{&committeetypes.GodPermission{}},
-			sdk.MustNewDecFromStr("0.667000000000000000"),
-			604800*time.Second,
-			committeetypes.TALLY_OPTION_FIRST_PAST_THE_POST,
-		)
-
-		// massage member committee to proto.Any for inclusion in genesis state
-		genesisCommittee := committeetypes.Committee(godCommittee)
-		if err = genesisCommittee.UnpackInterfaces(cdc); err != nil {
-			return fmt.Errorf("failed to unpack committee interface: %s", err)
-		}
-		anyCommittee, err := committeetypes.PackCommittee(genesisCommittee)
+		appState, err = InjectGodCommitteeMember(codec, appState, ugvGodCommitteeMember)
 		if err != nil {
-			return fmt.Errorf("failed to pack god committee: %s", err)
+			return fmt.Errorf("error injecting god committee member updates: %s", err)
 		}
-
-		committeeState.Committees = append(committeeState.Committees, anyCommittee)
-
-		// remarshal updated state
-		appState[committeetypes.ModuleName], err = codec.MarshalJSON(&committeeState)
-		if err != nil {
-			return fmt.Errorf("failed to marshal updated committee state: %s", err)
-		}
-		fmt.Printf("added god committee with member %s\n", ugvGodCommitteeMember)
 	}
 
 	//----------------------
