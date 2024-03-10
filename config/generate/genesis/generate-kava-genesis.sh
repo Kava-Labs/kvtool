@@ -118,8 +118,8 @@ sed -i '' 's/timeout_commit = "5s"/timeout_commit = "1s"/g' $DATA/config/config.
 # avoid having to use password for keys
 $BINARY config keyring-backend test
 
-# set broadcast-mode to block
-$BINARY config broadcast-mode block
+# set broadcast-mode to sync
+$BINARY config broadcast-mode sync
 
 ############################
 ##### CONSENSUS PARAMS #####
