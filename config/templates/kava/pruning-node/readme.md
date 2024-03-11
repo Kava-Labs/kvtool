@@ -6,7 +6,7 @@ The only difference is that it is stripped of its validator keys & is given a ne
 
 The docker image is automatically replaced in the docker-compose.yaml file based on the kava template used.
 
-**Note**: The node is "pruning" in name only. It's pruning configuration is controlled by the settings in app.toml.
+**Note**: The node is "pruning" in name only. Its pruning configuration is controlled by the settings in app.toml.
 
 **Example**
 ```
