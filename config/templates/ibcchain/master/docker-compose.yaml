@@ -2,7 +2,7 @@ version: "3"
 
 services:
   ibcnode:
-    image: "kava/kava:v0.24.0"
+    image: "kava/kava:v0.25.0-goleveldb"
     # use the default ports, but shift them when exposing to host so they dont conflict.
     ports:
       # open rpc port
