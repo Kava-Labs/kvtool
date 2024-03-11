@@ -1,6 +1,6 @@
 {
-  "genesis_time": "2023-10-24T23:51:27.372245Z",
   "chain_id": "kavalocalnet_8889-2",
+  "genesis_time": "2024-01-16T23:21:50.230063Z",
   "initial_height": "1",
   "consensus_params": {
     "block": {
@@ -1315,7 +1315,17 @@
       "proposals": [],
       "votes": []
     },
-    "community": {},
+    "community": {
+      "params": {
+        "upgrade_time_disable_inflation": "0001-01-01T00:00:00Z",
+        "staking_rewards_per_second": "0.000000000000000000",
+        "upgrade_time_set_staking_rewards_per_second": "0.000000000000000000"
+      },
+      "staking_rewards_state": {
+        "last_accumulation_time": "0001-01-01T00:00:00Z",
+        "last_truncation_error": "0.000000000000000000"
+      }
+    },
     "crisis": {
       "constant_fee": {
         "denom": "uatom",
@@ -2643,15 +2653,361 @@
     },
     "incentive": {
       "params": {
-        "usdx_minting_reward_periods": [],
-        "hard_supply_reward_periods": [],
-        "hard_borrow_reward_periods": [],
-        "delegator_reward_periods": [],
-        "swap_reward_periods": [],
-        "claim_multipliers": [],
-        "claim_end": "1970-01-01T00:00:01Z",
-        "savings_reward_periods": [],
-        "earn_reward_periods": []
+        "usdx_minting_reward_periods": null,
+        "hard_supply_reward_periods": [
+          {
+            "active": true,
+            "collateral_type": "usdx",
+            "start": "2022-11-11T15:00:00Z",
+            "end": "2024-10-16T14:00:00Z",
+            "rewards_per_second": [
+              {
+                "denom": "uatom",
+                "amount": "228026"
+              }
+            ]
+          },
+          {
+            "active": true,
+            "collateral_type": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
+            "start": "2022-11-11T15:00:00Z",
+            "end": "2024-10-16T14:00:00Z",
+            "rewards_per_second": [
+              {
+                "denom": "uatom",
+                "amount": "15945"
+              }
+            ]
+          },
+          {
+            "active": true,
+            "collateral_type": "hard",
+            "start": "2022-11-11T15:00:00Z",
+            "end": "2024-11-11T15:00:00Z",
+            "rewards_per_second": [
+              {
+                "denom": "uatom",
+                "amount": "3189"
+              }
+            ]
+          },
+          {
+            "active": true,
+            "collateral_type": "bnb",
+            "start": "2022-11-11T15:00:00Z",
+            "end": "2024-11-11T15:00:00Z",
+            "rewards_per_second": [
+              {
+                "denom": "uatom",
+                "amount": "2391"
+              }
+            ]
+          },
+          {
+            "active": true,
+            "collateral_type": "busd",
+            "start": "2022-11-11T15:00:00Z",
+            "end": "2024-11-11T15:00:00Z",
+            "rewards_per_second": [
+              {
+                "denom": "uatom",
+                "amount": "637"
+              }
+            ]
+          },
+          {
+            "active": true,
+            "collateral_type": "btcb",
+            "start": "2022-11-11T15:00:00Z",
+            "end": "2024-11-11T15:00:00Z",
+            "rewards_per_second": [
+              {
+                "denom": "uatom",
+                "amount": "3189"
+              }
+            ]
+          },
+          {
+            "active": true,
+            "collateral_type": "xrpb",
+            "start": "2022-11-11T15:00:00Z",
+            "end": "2024-11-11T15:00:00Z",
+            "rewards_per_second": [
+              {
+                "denom": "uatom",
+                "amount": "1594"
+              }
+            ]
+          },
+          {
+            "active": true,
+            "collateral_type": "uatom",
+            "start": "2022-11-11T15:00:00Z",
+            "end": "2024-11-11T15:00:00Z",
+            "rewards_per_second": [
+              {
+                "denom": "uatom",
+                "amount": "637"
+              }
+            ]
+          },
+          {
+            "active": true,
+            "collateral_type": "erc20/axelar/usdc",
+            "start": "2023-03-22T16:00:00Z",
+            "end": "2024-03-22T16:00:00Z",
+            "rewards_per_second": [
+              {
+                "denom": "uatom",
+                "amount": "3189"
+              }
+            ]
+          },
+          {
+            "active": true,
+            "collateral_type": "erc20/multichain/usdc",
+            "start": "2023-04-25T17:00:00Z",
+            "end": "2024-04-25T17:00:00Z",
+            "rewards_per_second": [
+              {
+                "denom": "uatom",
+                "amount": "3189"
+              }
+            ]
+          },
+          {
+            "active": true,
+            "collateral_type": "erc20/multichain/usdt",
+            "start": "2023-04-25T17:00:00Z",
+            "end": "2024-04-25T17:00:00Z",
+            "rewards_per_second": [
+              {
+                "denom": "uatom",
+                "amount": "3189"
+              }
+            ]
+          },
+          {
+            "active": true,
+            "collateral_type": "erc20/multichain/wbtc",
+            "start": "2023-04-25T17:00:00Z",
+            "end": "2024-04-25T17:00:00Z",
+            "rewards_per_second": [
+              {
+                "denom": "uatom",
+                "amount": "3189"
+              }
+            ]
+          },
+          {
+            "active": true,
+            "collateral_type": "erc20/axelar/wbtc",
+            "start": "2023-06-09T17:00:00Z",
+            "end": "2024-06-09T17:00:00Z",
+            "rewards_per_second": [
+              {
+                "denom": "uatom",
+                "amount": "23918"
+              }
+            ]
+          },
+          {
+            "active": true,
+            "collateral_type": "erc20/tether/usdt",
+            "start": "2023-07-13T17:00:00Z",
+            "end": "2024-07-13T17:00:00Z",
+            "rewards_per_second": [
+              {
+                "denom": "uatom",
+                "amount": "79729"
+              }
+            ]
+          }
+        ],
+        "hard_borrow_reward_periods": null,
+        "delegator_reward_periods": null,
+        "swap_reward_periods": [
+          {
+            "active": true,
+            "collateral_type": "bnb:usdx",
+            "start": "2022-11-11T15:00:00Z",
+            "end": "2025-08-29T15:00:00Z",
+            "rewards_per_second": [
+              {
+                "denom": "uatom",
+                "amount": "1275"
+              }
+            ]
+          },
+          {
+            "active": true,
+            "collateral_type": "btcb:usdx",
+            "start": "2022-11-11T15:00:00Z",
+            "end": "2025-08-29T15:00:00Z",
+            "rewards_per_second": [
+              {
+                "denom": "uatom",
+                "amount": "1594"
+              }
+            ]
+          },
+          {
+            "active": true,
+            "collateral_type": "busd:usdx",
+            "start": "2022-11-11T15:00:00Z",
+            "end": "2025-08-29T15:00:00Z",
+            "rewards_per_second": [
+              {
+                "denom": "uatom",
+                "amount": "6378"
+              }
+            ]
+          },
+          {
+            "active": true,
+            "collateral_type": "hard:usdx",
+            "start": "2022-11-11T15:00:00Z",
+            "end": "2025-08-29T15:00:00Z",
+            "rewards_per_second": [
+              {
+                "denom": "uatom",
+                "amount": "1116"
+              }
+            ]
+          },
+          {
+            "active": true,
+            "collateral_type": "ibc/0471F1C4E7AFD3F07702BEF6DC365268D64570F7C1FDC98EA6098DD6DE59817B:usdx",
+            "start": "2022-11-11T15:00:00Z",
+            "end": "2025-08-29T15:00:00Z",
+            "rewards_per_second": [
+              {
+                "denom": "uatom",
+                "amount": "318"
+              }
+            ]
+          },
+          {
+            "active": true,
+            "collateral_type": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2:usdx",
+            "start": "2022-11-11T15:00:00Z",
+            "end": "2025-08-29T15:00:00Z",
+            "rewards_per_second": [
+              {
+                "denom": "uatom",
+                "amount": "797"
+              }
+            ]
+          },
+          {
+            "active": true,
+            "collateral_type": "ibc/799FDD409719A1122586A629AE8FCA17380351A51C1F47A80A1B8E7F2A491098:usdx",
+            "start": "2022-11-11T15:00:00Z",
+            "end": "2025-08-29T15:00:00Z",
+            "rewards_per_second": [
+              {
+                "denom": "uatom",
+                "amount": "159"
+              }
+            ]
+          },
+          {
+            "active": true,
+            "collateral_type": "swp:usdx",
+            "start": "2022-11-11T15:00:00Z",
+            "end": "2025-08-29T15:00:00Z",
+            "rewards_per_second": [
+              {
+                "denom": "uatom",
+                "amount": "478"
+              }
+            ]
+          },
+          {
+            "active": true,
+            "collateral_type": "uatom:usdx",
+            "start": "2022-11-11T15:00:00Z",
+            "end": "2025-08-29T15:00:00Z",
+            "rewards_per_second": [
+              {
+                "denom": "uatom",
+                "amount": "2551"
+              }
+            ]
+          },
+          {
+            "active": true,
+            "collateral_type": "usdx:xrpb",
+            "start": "2022-11-11T15:00:00Z",
+            "end": "2025-08-29T15:00:00Z",
+            "rewards_per_second": [
+              {
+                "denom": "uatom",
+                "amount": "797"
+              }
+            ]
+          }
+        ],
+        "claim_multipliers": [
+          {
+            "denom": "hard",
+            "multipliers": [
+              {
+                "name": "large",
+                "factor": "1.000000000000000000"
+              }
+            ]
+          },
+          {
+            "denom": "ibc/799FDD409719A1122586A629AE8FCA17380351A51C1F47A80A1B8E7F2A491098",
+            "multipliers": [
+              {
+                "name": "large",
+                "factor": "1.000000000000000000"
+              }
+            ]
+          },
+          {
+            "denom": "uatom",
+            "multipliers": [
+              {
+                "name": "large",
+                "months_lockup": "12",
+                "factor": "1.000000000000000000"
+              },
+              {
+                "name": "small",
+                "months_lockup": "1",
+                "factor": "0.200000000000000000"
+              }
+            ]
+          },
+          {
+            "denom": "swp",
+            "multipliers": [
+              {
+                "name": "large",
+                "factor": "1.000000000000000000"
+              }
+            ]
+          }
+        ],
+        "claim_end": "2026-04-08T14:00:00Z",
+        "savings_reward_periods": null,
+        "earn_reward_periods": [
+          {
+            "active": true,
+            "collateral_type": "bkava",
+            "start": "2022-10-26T15:00:00Z",
+            "end": "2024-10-26T15:00:00Z",
+            "rewards_per_second": [
+              {
+                "denom": "uatom",
+                "amount": "159459"
+              }
+            ]
+          }
+        ]
       },
       "usdx_reward_state": {
         "accumulation_times": [],
@@ -2828,6 +3184,7 @@
       "previous_block_time": "1970-01-01T00:00:01Z"
     },
     "liquid": {},
+    "metrics": {},
     "mint": {
       "minter": {
         "inflation": "0.130000000000000000",
