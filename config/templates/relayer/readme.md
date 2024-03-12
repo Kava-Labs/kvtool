@@ -7,7 +7,7 @@ which is the service responsible for the initial setup of the ibc channel betwee
 ## setting up the configuration
 
 if you ever need to initialize this configuration again, these are the steps.
-here we use `v2.2.0`, published in a container to docker hub. to build & deploy updated versions,
+here we use `v2.4.2`, published in a container to docker hub. to build & deploy updated versions,
 see "build & deploy new relayer images".
 
 1. start up a local kava & ibc chain
@@ -18,9 +18,9 @@ see "build & deploy new relayer images".
 3. we use the docker container to run `rly`, the relayer's cli. initialize the config by running the following commands:
 ```bash
 # initialize the config
-docker run -v $PWD/temp:/home/relayer/.relayer --network generated_default kava/relayer:v2.2.0 rly config init
+docker run -v $PWD/temp:/home/relayer/.relayer --network generated_default kava/relayer:v2.4.2 rly config init
 # add kava chain. this will init the kava config to the defaults defined in https://github.com/cosmos/chain-registry
-docker run -v $PWD/temp:/home/relayer/.relayer --network generated_default kava/relayer:v2.2.0 rly chains add kava
+docker run -v $PWD/temp:/home/relayer/.relayer --network generated_default kava/relayer:v2.4.2 rly chains add kava
 ```
 open `temp/config.yaml`. copy & duplicate the `chains.kava` object and name it `ibcchain`.
 Then make the following updates:
@@ -60,17 +60,17 @@ here's the diff:
 ```bash
 export RELAYER_MNEMONIC='very health column only surface project output absent outdoor siren reject era legend legal twelve setup roast lion rare tunnel devote style random food'
 # add the key for kava
-docker run -v $PWD/temp:/home/relayer/.relayer --network generated_default kava/relayer:v2.2.0 rly keys restore --coin-type 459 kava testkey "$RELAYER_MNEMONIC"
+docker run -v $PWD/temp:/home/relayer/.relayer --network generated_default kava/relayer:v2.4.2 rly keys restore --coin-type 459 kava testkey "$RELAYER_MNEMONIC"
 # add the key for ibcchain
-docker run -v $PWD/temp:/home/relayer/.relayer --network generated_default kava/relayer:v2.2.0 rly keys restore --coin-type 459 ibcchain testkey "$RELAYER_MNEMONIC"
+docker run -v $PWD/temp:/home/relayer/.relayer --network generated_default kava/relayer:v2.4.2 rly keys restore --coin-type 459 ibcchain testkey "$RELAYER_MNEMONIC"
 ```
 
 That's it! Verify your configured relayer accounts have a balance on each chain:
 ```
-$ docker run -v $PWD/temp:/home/relayer/.relayer --network generated_default kava/relayer:v2.2.0 rly q balance kava
+$ docker run -v $PWD/temp:/home/relayer/.relayer --network generated_default kava/relayer:v2.4.2 rly q balance kava
 address {kava1ypjp0m04pyp73hwgtc0dgkx0e9rrydecm054da} balance {1000000000ukava}
 
-$ docker run -v $PWD/temp:/home/relayer/.relayer --network generated_default kava/relayer:v2.2.0 rly q balance ibcchain
+$ docker run -v $PWD/temp:/home/relayer/.relayer --network generated_default kava/relayer:v2.4.2 rly q balance ibcchain
 address {kava1ypjp0m04pyp73hwgtc0dgkx0e9rrydecm054da} balance {1000000000uatom}
 ```
 
