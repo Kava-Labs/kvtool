@@ -161,7 +161,7 @@ The above makes a delegation of 3M KAVA; 1M to each of the first THREE validator
 
 ### Arbitrary Complexity!
 
-Mix and match to you heart's content:
+Mix and match to your heart's content:
 ```json
 {
   "validators": [

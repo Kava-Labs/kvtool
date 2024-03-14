@@ -167,7 +167,7 @@ dkava q tx [tx-hash]
 Account keys can be created with two different algorithms in Kava: `secp256k1` and `eth_secp256k1`.
 Which algorithm is used is dictate by the presence of the `--eth` flag on key creation.
 
-Eth accounts can be exported for use in ethereum wallets like Metamask. A list of of the pre-funded eth accounts can be found [here](config/generate/genesis/auth.accounts/eth-accounts.json).
+Eth accounts can be exported for use in ethereum wallets like Metamask. A list of the pre-funded eth accounts can be found [here](config/generate/genesis/auth.accounts/eth-accounts.json).
 Notable, `whale2` is an eth account. These keys can be easily imported into a wallet via their private keys:
 ```bash
 # DANGEROUS EXPORT OF PRIVATE KEY BELOW! BE CAREFUL WITH YOUR PRIVATE KEYS FOR MAINNET ACCOUNTS.
