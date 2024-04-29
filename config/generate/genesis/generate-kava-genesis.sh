@@ -100,6 +100,9 @@ sed -i '' 's/pruning = "default"/pruning = "nothing"/g' $DATA/config/app.toml
 sed -i '' 's/address = "127.0.0.1:8545"/address = "0.0.0.0:8545"/g' $DATA/config/app.toml
 sed -i '' 's/ws-address = "127.0.0.1:8546"/ws-address = "0.0.0.0:8546"/g' $DATA/config/app.toml
 
+# Make all apis listen to outside the container
+sed -i '' 's/localhost:/0.0.0.0:/g' $DATA/config/app.toml
+
 #######################
 ##### CLIENT.TOML #####
 #######################

@@ -1,12 +1,11 @@
 {
-  "genesis_time": "2024-01-16T23:21:50.230063Z",
+  "genesis_time": "2024-04-29T18:30:59.080283Z",
   "chain_id": "kavalocalnet_8888-1",
   "initial_height": "1",
   "consensus_params": {
     "block": {
       "max_bytes": "22020096",
-      "max_gas": "20000000",
-      "time_iota_ms": "1000"
+      "max_gas": "20000000"
     },
     "evidence": {
       "max_age_num_blocks": "100000",
@@ -18,10 +17,14 @@
         "ed25519"
       ]
     },
-    "version": {}
+    "version": {
+      "app": "0"
+    }
   },
   "app_hash": "",
   "app_state": {
+    "06-solomachine": null,
+    "07-tendermint": null,
     "auction": {
       "next_auction_id": "1",
       "params": {
@@ -807,7 +810,8 @@
         }
       ],
       "supply": [],
-      "denom_metadata": []
+      "denom_metadata": [],
+      "send_enabled": []
     },
     "bep3": {
       "params": {
@@ -892,7 +896,6 @@
     },
     "cdp": {
       "params": {
-        "liquidation_block_interval": 1,
         "collateral_params": [
           {
             "denom": "bnb",
@@ -1079,7 +1082,8 @@
         "surplus_auction_lot": "10000000000",
         "debt_auction_threshold": "100000000000",
         "debt_auction_lot": "10000000000",
-        "circuit_breaker": false
+        "circuit_breaker": false,
+        "liquidation_block_interval": "1"
       },
       "cdps": [],
       "deposits": [],
@@ -1327,6 +1331,7 @@
         "last_truncation_error": "0.000000000000000000"
       }
     },
+    "consensus": null,
     "crisis": {
       "constant_fee": {
         "denom": "ukava",
@@ -1336,8 +1341,8 @@
     "distribution": {
       "params": {
         "community_tax": "0.750000000000000000",
-        "base_proposer_reward": "0.010000000000000000",
-        "bonus_proposer_reward": "0.040000000000000000",
+        "base_proposer_reward": "0.000000000000000000",
+        "bonus_proposer_reward": "0.000000000000000000",
         "withdraw_addr_enabled": true
       },
       "fee_pool": {
@@ -2279,7 +2284,7 @@
                 }
               }
             ],
-            "memo": "461d9761df5db0a112407ca8a82f1774ef2dbaa3@10.0.0.2:26656",
+            "memo": "461d9761df5db0a112407ca8a82f1774ef2dbaa3@192.168.0.14:26656",
             "timeout_height": "0",
             "extension_options": [],
             "non_critical_extension_options": []
@@ -2308,7 +2313,7 @@
             "tip": null
           },
           "signatures": [
-            "FqlD93be5qEARl2PuxIrnJnA3Ls5OW7ghFBuk6igQlgw/APrCzQCCePotOvX6EH8TPSpZjmKjLroxEnDqbm+Qg=="
+            "mdqCmMkaFMt/kCKso3ID+58hfz4rNfqPsmfY55XGP6160KjLv2OLjOzmO4Ulg0Vag4Zb/9/RE+eoT/uutmBsqA=="
           ]
         }
       ]
@@ -2318,23 +2323,11 @@
       "deposits": [],
       "votes": [],
       "proposals": [],
-      "deposit_params": {
-        "min_deposit": [
-          {
-            "denom": "ukava",
-            "amount": "10000000"
-          }
-        ],
-        "max_deposit_period": "172800s"
-      },
+      "deposit_params": null,
       "voting_params": {
         "voting_period": "30s"
       },
-      "tally_params": {
-        "quorum": "0.334000000000000000",
-        "threshold": "0.500000000000000000",
-        "veto_threshold": "0.334000000000000000"
-      },
+      "tally_params": null,
       "params": {
         "min_deposit": [
           {
@@ -2343,7 +2336,7 @@
           }
         ],
         "max_deposit_period": "172800s",
-        "voting_period": "30s",
+        "voting_period": "172800s",
         "quorum": "0.334000000000000000",
         "threshold": "0.500000000000000000",
         "veto_threshold": "0.334000000000000000",
@@ -2644,7 +2637,8 @@
         "params": {
           "allowed_clients": [
             "06-solomachine",
-            "07-tendermint"
+            "07-tendermint",
+            "09-localhost"
           ]
         },
         "create_localhost": false,
@@ -3217,13 +3211,13 @@
         "blocks_per_year": "6311520"
       }
     },
-    "params": null,
     "packetfowardmiddleware": {
       "params": {
         "fee_percentage": "0.000000000000000000"
       },
       "in_flight_packets": {}
     },
+    "params": null,
     "pricefeed": {
       "params": {
         "markets": [
@@ -3921,7 +3915,8 @@
       "params": {
         "send_enabled": true,
         "receive_enabled": true
-      }
+      },
+      "total_escrowed": []
     },
     "upgrade": {},
     "validatorvesting": null,
