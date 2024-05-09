@@ -362,7 +362,7 @@ jq '.app_state.evmutil.params.allowed_cosmos_denoms = [
 jq '.app_state.feemarket.params.no_base_fee = true' $DATA/config/genesis.json | sponge $DATA/config/genesis.json
 
 # x/gov: lower voting period to 30s
-jq '.app_state.gov.voting_params.voting_period = "30s"' $DATA/config/genesis.json | sponge $DATA/config/genesis.json
+jq '.app_state.gov.params.voting_period = "30s"' $DATA/config/genesis.json | sponge $DATA/config/genesis.json
 
 # x/hard: money markets (Kava Lend)
 set-app-state hard.params.money_markets
