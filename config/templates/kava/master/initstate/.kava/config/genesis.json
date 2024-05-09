@@ -1,5 +1,5 @@
 {
-  "genesis_time": "2024-04-29T18:30:59.080283Z",
+  "genesis_time": "2024-05-09T22:14:46.084778Z",
   "chain_id": "kavalocalnet_8888-1",
   "initial_height": "1",
   "consensus_params": {
@@ -2324,9 +2324,7 @@
       "votes": [],
       "proposals": [],
       "deposit_params": null,
-      "voting_params": {
-        "voting_period": "30s"
-      },
+      "voting_params": null,
       "tally_params": null,
       "params": {
         "min_deposit": [
@@ -2336,7 +2334,7 @@
           }
         ],
         "max_deposit_period": "172800s",
-        "voting_period": "172800s",
+        "voting_period": "30s",
         "quorum": "0.334000000000000000",
         "threshold": "0.500000000000000000",
         "veto_threshold": "0.334000000000000000",
