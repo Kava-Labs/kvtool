@@ -2207,7 +2207,8 @@
             "nested_types": []
           }
         ],
-        "allow_unprotected_txs": false
+        "allow_unprotected_txs": false,
+        "enabled_precompiles": ["0x9000000000000000000000000000000000000001"]
       }
     },
     "evmutil": {
