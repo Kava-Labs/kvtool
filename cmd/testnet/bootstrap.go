@@ -313,7 +313,7 @@ func blockGTE(chainDockerServiceName string, n int64) backoff.Operation {
 	return func() error {
 		cmd := "kava status | jq -r .sync_info.latest_block_height"
 		// can't use dockerComposeCmd because Output() sets Stdout
-		out, err := exec.Command("docker-compose", "-f", generatedPath("docker-compose.yaml"), "exec", "-T", chainDockerServiceName, "bash", "-c", cmd).Output()
+		out, err := exec.Command("docker", "compose", "-f", generatedPath("docker-compose.yaml"), "exec", "-T", chainDockerServiceName, "bash", "-c", cmd).Output()
 		if err != nil {
 			return err
 		}
@@ -343,9 +343,10 @@ func runKavaCli(args ...string) error {
 func dockerComposeCmd(args ...string) *exec.Cmd {
 	// exec.Command requires all items to be in single []string variadic
 	// combine the args with the file flag & value
-	pieces := []string{"-f", generatedPath("docker-compose.yaml")}
+	pieces := []string{"compose", "-f", generatedPath("docker-compose.yaml")}
 	pieces = append(pieces, args...)
-	cmd := exec.Command("docker-compose", pieces...)
+	fmt.Printf("run: docker compose %s\n", strings.Join(pieces, " "))
+	cmd := exec.Command("docker", pieces...)
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 	return cmd

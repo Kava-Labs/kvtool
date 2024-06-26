@@ -12,10 +12,10 @@ var runDetachedFlag bool
 func UpCmd() *cobra.Command {
 	upCmd := &cobra.Command{
 		Use:   "up",
-		Short: "A convenience command that runs `docker-compose up` on the generated config.",
+		Short: "A convenience command that runs `docker compose up` on the generated config.",
 		Args:  cobra.NoArgs,
 		RunE: func(_ *cobra.Command, _ []string) error {
-			cmd := []string{"docker-compose", "--file", generatedPath("docker-compose.yaml"), "up"}
+			cmd := []string{"docker", "compose", "--file", generatedPath("docker-compose.yaml"), "up"}
 			if runDetachedFlag {
 				cmd = append(cmd, "-d")
 			}

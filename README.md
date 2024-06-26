@@ -45,7 +45,7 @@ To generate a testnet for kava, binance chain, and a deputy that relays swaps be
 kvtool testnet gen-config kava binance deputy --kava.configTemplate master
 
 # Pull latest docker images. Docker must be running.
-cd ./full_configs/generated && docker-compose pull
+cd ./full_configs/generated && docker compose pull
 
 # start the testnet
 kvtool testnet up

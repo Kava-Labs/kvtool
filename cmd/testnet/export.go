@@ -17,7 +17,7 @@ func ExportCmd() *cobra.Command {
 		Example: "export",
 		Args:    cobra.NoArgs,
 		RunE: func(_ *cobra.Command, _ []string) error {
-			cmd := exec.Command("docker-compose", "--file", generatedPath("docker-compose.yaml"), "stop")
+			cmd := exec.Command("docker", "compose", "--file", generatedPath("docker-compose.yaml"), "stop")
 			cmd.Stdout = os.Stdout
 			cmd.Stderr = os.Stderr
 
@@ -123,7 +123,7 @@ func ExportCmd() *cobra.Command {
 			}
 
 			fmt.Printf("Restarting testnet...")
-			restartCmd := exec.Command("docker-compose", "--file", generatedPath("docker-compose.yaml"), "start")
+			restartCmd := exec.Command("docker", "compose", "--file", generatedPath("docker-compose.yaml"), "start")
 			restartCmd.Stdout = os.Stdout
 			restartCmd.Stderr = os.Stderr
 
