@@ -45,9 +45,9 @@ func Cmd() *cobra.Command {
 		Short:   "Start a default kava and binance local testnet with a deputy. Stop with Ctrl-C and remove with 'testnet down'. Use sub commands for more options.",
 		Long: fmt.Sprintf(`This command helps run local kava testnets composed of various independent processes.
 
-	Processes are run via docker-compose. This command generates a docker-compose.yaml and other necessary config files that are synchronized with each so the services all work together.
+	Processes are run via docker compose. This command generates a docker-compose.yaml and other necessary config files that are synchronized with each so the services all work together.
 
-	By default this command will generate configuration for a kvd node and rest server, a binance node and rest server, and a deputy. And then 'run docker-compose up'.
+	By default this command will generate configuration for a kvd node and rest server, a binance node and rest server, and a deputy. And then run 'docker compose up'.
 	This is the equivalent of running 'testnet gen-config kava binance deputy' then 'testnet up'.
 
 	Docker compose files are (by default) written to %s`, defaultGeneratedConfigDir),
@@ -65,7 +65,7 @@ func Cmd() *cobra.Command {
 			}
 
 			// 3) run docker-compose up
-			cmd := []string{"docker-compose", "--file", generatedPath("docker-compose.yaml"), "up"}
+			cmd := []string{"docker", "compose", "--file", generatedPath("docker-compose.yaml"), "up"}
 			fmt.Println("running:", strings.Join(cmd, " "))
 			if err := replaceCurrentProcess(cmd...); err != nil {
 				return fmt.Errorf("could not run command: %v", err)
@@ -98,7 +98,7 @@ func KavaCmd() *cobra.Command {
 		Args:    cobra.ArbitraryArgs,
 		RunE: func(_ *cobra.Command, args []string) error {
 			cmd := []string{
-				"docker-compose", "--file", generatedPath("docker-compose.yaml"),
+				"docker", "compose", "--file", generatedPath("docker-compose.yaml"),
 				"exec", "kavanode", "kava",
 			}
 			cmd = append(cmd, args...)
@@ -120,7 +120,7 @@ func IbcCmd() *cobra.Command {
 		Args:    cobra.ArbitraryArgs,
 		RunE: func(_ *cobra.Command, args []string) error {
 			cmd := []string{
-				"docker-compose", "--file", generatedPath("docker-compose.yaml"),
+				"docker", "compose", "--file", generatedPath("docker-compose.yaml"),
 				"exec", "ibcnode", "kava",
 			}
 			cmd = append(cmd, args...)

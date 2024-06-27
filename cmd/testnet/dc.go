@@ -35,7 +35,7 @@ balances:
 `,
 		Args: cobra.ArbitraryArgs,
 		RunE: func(_ *cobra.Command, args []string) error {
-			cmd := []string{"docker-compose", "--file", generatedPath("docker-compose.yaml")}
+			cmd := []string{"docker", "compose", "--file", generatedPath("docker-compose.yaml")}
 			cmd = append(cmd, args...)
 			fmt.Println("running:", strings.Join(cmd, " "))
 			if err := replaceCurrentProcess(cmd...); err != nil {
