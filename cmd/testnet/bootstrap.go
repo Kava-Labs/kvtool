@@ -1,6 +1,7 @@
 package testnet
 
 import (
+	"errors"
 	"fmt"
 	"os"
 	"os/exec"
@@ -88,6 +89,9 @@ Test a chain upgrade from v0.19.2 -> v0.21.0:
 $ KAVA_TAG=v0.21.0 kvtool testnet bootstrap --upgrade-name v0.21.0 --upgrade-height 15 --upgrade-base-image-tag v0.19.2
 `,
 		Args: cobra.NoArgs,
+		// Avoid printing usage on error, as its most likely to be caused by
+		// a configuration error leading to container errors if something fails.
+		SilenceUsage: true,
 		RunE: func(_ *cobra.Command, _ []string) error {
 			if err := validateBootstrapFlags(); err != nil {
 				return err
@@ -145,19 +149,50 @@ $ KAVA_TAG=v0.21.0 kvtool testnet bootstrap --upgrade-name v0.21.0 --upgrade-hei
 				fmt.Printf("starting chain with image tag %s\n", chainUpgradeBaseImageTag)
 			}
 			if err := upCmd.Run(); err != nil {
-				fmt.Println(err.Error())
+				fmt.Printf(
+					"failed to start chain with image %s: %s\n",
+					chainUpgradeBaseImageTag,
+					err.Error(),
+				)
+
+				os.Exit(1)
+			}
+
+			// First wait for blocks on the kava node to ensure it has no issues.
+			if err := waitForBlock(2, 10*time.Second, "kavanode"); err != nil {
+				fmt.Printf("error waiting for kavanode block: %s\n", err)
+
+				containerID, err := getContainerID("kavanode")
+				if err != nil {
+					return fmt.Errorf("failed getting container ID for logs: %w", err)
+				}
+
+				logs, err := getContainerLogs(containerID)
+				if err != nil {
+					return fmt.Errorf("failed getting container logs: %w", err)
+				}
+
+				// Dumps the container logs here, it shouldn't be too much since
+				// it will fail either immediately or after 20 seconds of
+				// retries.
+				fmt.Printf("kavanode (container ID %s) logs shown below:\n", containerID)
+				fmt.Printf("========================================\n")
+				fmt.Println(logs)
+
+				// Custom error handling, no return of error to cobra
+				os.Exit(1)
 			}
 
 			if ibcFlag {
 				if err := setupIbcChannelAndRelayer(); err != nil {
-					return err
+					return fmt.Errorf("failed to setup IBC channel and relayer: %w", err)
 				}
 			}
 
 			// validation of all necessary data for an automated chain upgrade is performed in validateBootstrapFlags()
 			if chainUpgradeName != "" {
 				if err := runChainUpgrade(); err != nil {
-					return err
+					return fmt.Errorf("failed to run chain upgrade: %w", err)
 				}
 			}
 
@@ -200,11 +235,8 @@ func validateBootstrapFlags() error {
 func setupIbcChannelAndRelayer() error {
 	// wait for chains to be up and running before setting up ibc
 	// wait for block 2, as waiting only for block 1 sometimes leads to client expiration problems
-	if err := waitForBlock(2, 10*time.Second, "kavanode"); err != nil {
-		return err
-	}
 	if err := waitForBlock(2, 5*time.Second, "ibcnode"); err != nil {
-		return err
+		return fmt.Errorf("error waiting for ibcnode block: %w", err)
 	}
 
 	fmt.Println("Attempting to establish IBC channel connection between chains...")
@@ -219,17 +251,17 @@ func setupIbcChannelAndRelayer() error {
 	fmt.Printf("IBC connection complete, starting relayer process...\n")
 	// setup and run the relayer
 	if err := generate.AddRelayerToNetwork(generatedConfigDir); err != nil {
-		return err
+		return fmt.Errorf("could not add relayer to network: %w", err)
 	}
 	if err := dockerComposeCmd("up", "-d", "relayer").Run(); err != nil {
-		return err
+		return fmt.Errorf("docker relayer up failed: %w", err)
 	}
 	// prune temp containers used to initialize ibc channel
 	pruneCmd := exec.Command("docker", "container", "prune", "-f")
 	pruneCmd.Stdout = os.Stdout
 	pruneCmd.Stderr = os.Stderr
 	if err := pruneCmd.Run(); err != nil {
-		return err
+		return fmt.Errorf("error running docker container prune: %w", err)
 	}
 	fmt.Println("IBC relayer ready!")
 	return nil
@@ -244,11 +276,6 @@ func runChainUpgrade() error {
 	// write upgrade proposal to json file
 	upgradeJson, err := writeUpgradeProposal()
 	if err != nil {
-		return err
-	}
-
-	// wait for chain to start producing blocks
-	if err := waitForBlock(1, 5*time.Second, "kavanode"); err != nil {
 		return err
 	}
 
@@ -311,11 +338,19 @@ func waitForBlock(n int64, timeout time.Duration, chainDockerServiceName string)
 // 1. the chain cannot be reached, 2. result cannot be parsed, 3. current height is less than desired height `n`
 func blockGTE(chainDockerServiceName string, n int64) backoff.Operation {
 	return func() error {
+		// Check before each attempt to check block height, as the container
+		// could have exited between attempts.
+		if err := checkContainerStatus(chainDockerServiceName); err != nil {
+			// Return PermanentError to not retry, if the container is exited
+			// then return with error immediately.
+			return backoff.Permanent(err)
+		}
+
 		cmd := "kava status | jq -r .sync_info.latest_block_height"
 		// can't use dockerComposeCmd because Output() sets Stdout
 		out, err := exec.Command("docker", "compose", "-f", generatedPath("docker-compose.yaml"), "exec", "-T", chainDockerServiceName, "bash", "-c", cmd).Output()
 		if err != nil {
-			return err
+			return fmt.Errorf("error docker exec kava status for latest_block_height: %w", err)
 		}
 		height, err := strconv.ParseInt(strings.TrimSpace(string(out)), 10, 64)
 		if err != nil {
@@ -327,6 +362,91 @@ func blockGTE(chainDockerServiceName string, n int64) backoff.Operation {
 		}
 		return nil
 	}
+}
+
+// checkContainerStatus returns an error if the specified container is not
+// running.
+func checkContainerStatus(
+	chainDockerServiceName string,
+) error {
+	fmt.Printf("checking container status for %s\n", chainDockerServiceName)
+
+	// check state of container
+	out, err := exec.Command(
+		"docker",
+		"compose",
+		"-f",
+		generatedPath("docker-compose.yaml"),
+		"ps",
+		"-a", // all including exited
+		"--format",
+		"{{.State}}",
+		chainDockerServiceName,
+	).Output()
+	if err != nil {
+		stderr := ""
+		if errors.Is(err, &exec.ExitError{}) {
+			stderr = string(err.(*exec.ExitError).Stderr)
+		}
+
+		return fmt.Errorf("error checking container state, %s: %w", stderr, err)
+	}
+
+	containerState := strings.TrimSpace(string(out))
+
+	fmt.Printf("%s container state: \"%s\"\n", chainDockerServiceName, containerState)
+
+	if containerState != "running" {
+		return fmt.Errorf(
+			"%s container is not running, current state is \"%s\"",
+			chainDockerServiceName,
+			containerState,
+		)
+	}
+
+	return nil
+}
+
+func getContainerID(
+	chainDockerServiceName string,
+) (string, error) {
+	out, err := exec.Command(
+		"docker",
+		"compose",
+		"-f",
+		generatedPath("docker-compose.yaml"),
+		"ps",
+		"-a", // all including exited
+		"--format",
+		"{{.ID}}",
+		chainDockerServiceName,
+	).Output()
+	if err != nil {
+		stderr := ""
+		if errors.Is(err, &exec.ExitError{}) {
+			stderr = string(err.(*exec.ExitError).Stderr)
+		}
+
+		return "", fmt.Errorf("failed compose ps, %s: %w", stderr, err)
+	}
+
+	containerID := strings.TrimSpace(string(out))
+	return containerID, nil
+}
+
+func getContainerLogs(
+	containerID string,
+) (string, error) {
+	out, err := exec.Command(
+		"docker",
+		"logs",
+		containerID,
+	).CombinedOutput()
+	if err != nil {
+		return "", fmt.Errorf("failed to get container logs: %w", err)
+	}
+
+	return string(out), nil
 }
 
 // runKavaCli execs into the kava container and runs `kava args...`
