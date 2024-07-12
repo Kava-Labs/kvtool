@@ -332,7 +332,7 @@ set-app-state evm.accounts
 # setup eip712 allowed messages
 set-app-state evm.params.eip712_allowed_msgs
 # setup enabled precompiles
-set-app-state evm.params.enabled_precompiles
+# set-app-state evm.params.enabled_precompiles
 
 # x/evmutil: enable evm -> sdk conversion pair
 jq '.app_state.evmutil.params.enabled_conversion_pairs = [
@@ -341,6 +341,9 @@ jq '.app_state.evmutil.params.enabled_conversion_pairs = [
     "denom": "erc20/tether/usdt"
   }
 ]' $DATA/config/genesis.json | sponge $DATA/config/genesis.json
+
+# fractional balances
+set-app-state evmutil.accounts
 
 # x/evmutil: enable sdk -> evm conversion pair
 # HARD is enabled for kava's e2e tests (must be first in this list.)
