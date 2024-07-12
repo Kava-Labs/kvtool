@@ -1,7 +1,7 @@
 package testnet
 
 import (
-	"errors"
+	"context"
 	"fmt"
 	"os"
 	"os/exec"
@@ -149,38 +149,17 @@ $ KAVA_TAG=v0.21.0 kvtool testnet bootstrap --upgrade-name v0.21.0 --upgrade-hei
 				fmt.Printf("starting chain with image tag %s\n", chainUpgradeBaseImageTag)
 			}
 			if err := upCmd.Run(); err != nil {
-				fmt.Printf(
-					"failed to start chain with image %s: %s\n",
+				return fmt.Errorf(
+					"failed to start chain with image %s: %w",
 					chainUpgradeBaseImageTag,
-					err.Error(),
+					err,
 				)
-
-				os.Exit(1)
 			}
 
 			// First wait for blocks on the kava node to ensure it has no issues.
-			if err := waitForBlock(2, 10*time.Second, "kavanode"); err != nil {
-				fmt.Printf("error waiting for kavanode block: %s\n", err)
-
-				containerID, err := getContainerID("kavanode")
-				if err != nil {
-					return fmt.Errorf("failed getting container ID for logs: %w", err)
-				}
-
-				logs, err := getContainerLogs(containerID)
-				if err != nil {
-					return fmt.Errorf("failed getting container logs: %w", err)
-				}
-
-				// Dumps the container logs here, it shouldn't be too much since
-				// it will fail either immediately or after 20 seconds of
-				// retries.
-				fmt.Printf("kavanode (container ID %s) logs shown below:\n", containerID)
-				fmt.Printf("========================================\n")
-				fmt.Println(logs)
-
-				// Custom error handling, no return of error to cobra
-				os.Exit(1)
+			// This will print container logs and exit if it fails.
+			if err := mustReachHeightOrLog(2, 10*time.Second, DockerServiceKavaNode); err != nil {
+				return err
 			}
 
 			if ibcFlag {
@@ -288,22 +267,52 @@ func runChainUpgrade() error {
 		return err
 	}
 
-	// vote on the committee proposal
-	cmd = "tx committee vote 1 yes --from committee --gas auto --gas-adjustment 1.2 --gas-prices 0.01ukava -y"
-	if err := runKavaCli(strings.Split(cmd, " ")...); err != nil {
-		return err
+	// Cosmos SDK no longer has broadcast mode block and the use of "sync" mode
+	// only waits for a CheckTx response. Voting will fail with an account
+	// sequence mismatch if the proposal is not committed to a block yet even
+	// when manually specifying the account sequence.
+	// We simply retry here until it succeeds instead of getting the tx hash
+	// from the previous tx and polling for the proposal to be committed. This
+	// is much simpler.
+	b := backoff.NewExponentialBackOff()
+	b.MaxInterval = 2 * time.Second
+	b.MaxElapsedTime = 20 * time.Second
+	err = backoff.Retry(func() error {
+		// vote on the committee proposal
+		cmd = "tx committee vote 1 yes --from committee --gas auto --gas-adjustment 1.8 --gas-prices 0.05ukava -y"
+		return runKavaCli(strings.Split(cmd, " ")...)
+	}, b)
+	if err != nil {
+		return fmt.Errorf("error voting on committee proposal: %w", err)
 	}
 
 	// wait for chain halt at upgrade height
-	if err := waitForBlock(chainUpgradeHeight, time.Duration(chainUpgradeHeight)*4*time.Second, "kavanode"); err != nil {
+	if err := waitForBlock(chainUpgradeHeight, time.Duration(chainUpgradeHeight)*4*time.Second, DockerServiceKavaNode); err != nil {
 		return err
 	}
-	fmt.Printf("chain has reached upgrade height (%d) and halted!\n", chainUpgradeHeight)
 
-	fmt.Println("restarting chain with upgraded image")
+	fmt.Printf("chain has reached upgrade height @ %d, checking if halted\n", chainUpgradeHeight)
+
+	// Check if chain actually halted, if proposal or vote failed then it will
+	// continue to produce blocks and produce an invalid state after continuing
+	// with the new binary.
+	ctx, cancel := context.WithTimeout(context.Background(), 20*time.Second)
+	defer cancel()
+	if err := waitForUpgradeHalt(ctx, chainUpgradeHeight, DockerServiceKavaNode); err != nil {
+		return fmt.Errorf("chain halt failed: %w", err)
+	}
+
+	fmt.Printf("chain has halted! restarting chain with upgraded image\n")
+
 	// this runs with the desired image because KAVA_TAG will be correctly set, or if that is unset,
 	// the docker-compose files supporting upgrades default to the desired template version.
-	if err := dockerComposeCmd("up", "--force-recreate", "-d", "kavanode").Run(); err != nil {
+	if err := dockerComposeCmd("up", "--force-recreate", "-d", DockerServiceKavaNode).Run(); err != nil {
+		return err
+	}
+
+	// Ensure upgraded chain produces new blocks, at least 1.
+	// Retry since it may return an error while the container is being re-created
+	if err := mustReachHeightOrLog(chainUpgradeHeight+1, 10*time.Second, DockerServiceKavaNode); err != nil {
 		return err
 	}
 
@@ -364,89 +373,69 @@ func blockGTE(chainDockerServiceName string, n int64) backoff.Operation {
 	}
 }
 
-// checkContainerStatus returns an error if the specified container is not
-// running.
-func checkContainerStatus(
+// waitForUpgradeHalt waits for the chain to halt at a specific height and
+// returns an error if the chain continues producing blocks after the specified
+// height.
+func waitForUpgradeHalt(
+	ctx context.Context,
+	n int64,
 	chainDockerServiceName string,
 ) error {
-	fmt.Printf("checking container status for %s\n", chainDockerServiceName)
+	ctx, cancel := context.WithCancel(ctx)
+	defer cancel()
 
-	// check state of container
-	out, err := exec.Command(
-		"docker",
-		"compose",
-		"-f",
-		generatedPath("docker-compose.yaml"),
-		"ps",
-		"-a", // all including exited
-		"--format",
-		"{{.State}}",
-		chainDockerServiceName,
-	).Output()
+	logsCh, err := getContainerLogsChannel(ctx, DockerServiceKavaNode)
 	if err != nil {
-		stderr := ""
-		if errors.Is(err, &exec.ExitError{}) {
-			stderr = string(err.(*exec.ExitError).Stderr)
+		return fmt.Errorf("failed to monitor container logs: %w", err)
+	}
+
+	done := make(chan error)
+	defer close(done)
+
+	// Two cases to monitor for:
+	// 1. The chain halts at the upgrade height and logs the expected upgrade
+	//    message. This returns nil to mark as done and no error.
+	// 2. The chain continues producing blocks after the upgrade height.
+	//    This returns an error.
+	go func() {
+		// Monitor logs for the expected upgrade message
+		expLog := fmt.Sprintf("UPGRADE \"%s\" NEEDED", chainUpgradeName)
+		for logLine := range logsCh {
+			// If found halt return nil to mark as done and no error
+			if strings.Contains(logLine, expLog) {
+				done <- nil
+				return
+			}
 		}
+	}()
 
-		return fmt.Errorf("error checking container state, %s: %w", stderr, err)
-	}
+	go func() {
+		for {
+			select {
+			case <-ctx.Done():
+				return
+			case <-time.After(5 * time.Second):
+				// Check if height exceeds halt height
+				atHeightFn := blockGTE(chainDockerServiceName, n+1)
 
-	containerState := strings.TrimSpace(string(out))
+				fmt.Printf("checking if chain is still producing blocks after height %d\n", n)
 
-	fmt.Printf("%s container state: \"%s\"\n", chainDockerServiceName, containerState)
-
-	if containerState != "running" {
-		return fmt.Errorf(
-			"%s container is not running, current state is \"%s\"",
-			chainDockerServiceName,
-			containerState,
-		)
-	}
-
-	return nil
-}
-
-func getContainerID(
-	chainDockerServiceName string,
-) (string, error) {
-	out, err := exec.Command(
-		"docker",
-		"compose",
-		"-f",
-		generatedPath("docker-compose.yaml"),
-		"ps",
-		"-a", // all including exited
-		"--format",
-		"{{.ID}}",
-		chainDockerServiceName,
-	).Output()
-	if err != nil {
-		stderr := ""
-		if errors.Is(err, &exec.ExitError{}) {
-			stderr = string(err.(*exec.ExitError).Stderr)
+				// If return is nil, then it successfully reached upgrade+1 height
+				// which means it has not halted and is still producing blocks.
+				if err := atHeightFn(); err == nil {
+					done <- fmt.Errorf("chain continued producing blocks after upgrade height")
+					return
+				}
+			}
 		}
+	}()
 
-		return "", fmt.Errorf("failed compose ps, %s: %w", stderr, err)
+	select {
+	case <-ctx.Done():
+		return fmt.Errorf("context cancelled")
+	case err := <-done:
+		return err
 	}
-
-	containerID := strings.TrimSpace(string(out))
-	return containerID, nil
-}
-
-func getContainerLogs(
-	containerID string,
-) (string, error) {
-	out, err := exec.Command(
-		"docker",
-		"logs",
-		containerID,
-	).CombinedOutput()
-	if err != nil {
-		return "", fmt.Errorf("failed to get container logs: %w", err)
-	}
-
-	return string(out), nil
 }
 
 // runKavaCli execs into the kava container and runs `kava args...`
@@ -454,7 +443,7 @@ func runKavaCli(args ...string) error {
 	pieces := make([]string, 4, len(args)+4)
 	pieces[0] = "exec"
 	pieces[1] = "-T"
-	pieces[2] = "kavanode"
+	pieces[2] = DockerServiceKavaNode
 	pieces[3] = "kava"
 	pieces = append(pieces, args...)
 	return dockerComposeCmd(pieces...).Run()
