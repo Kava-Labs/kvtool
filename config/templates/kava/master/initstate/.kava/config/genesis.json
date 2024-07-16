@@ -1,5 +1,5 @@
 {
-  "genesis_time": "2024-05-09T23:34:23.453894Z",
+  "genesis_time": "2024-07-12T00:27:25.024459Z",
   "chain_id": "kavalocalnet_8888-1",
   "initial_height": "1",
   "consensus_params": {
@@ -805,6 +805,15 @@
             {
               "denom": "xrpb",
               "amount": "10000000000000000"
+            }
+          ]
+        },
+        {
+          "address": "kava1w9vxuke5dz6hyza2j932qgmxltnfxwl78u920k",
+          "coins": [
+            {
+              "denom": "ukava",
+              "amount": "2"
             }
           ]
         }
@@ -2212,14 +2221,32 @@
             "nested_types": []
           }
         ],
-        "allow_unprotected_txs": false,
-        "enabled_precompiles": [
-          "0x9000000000000000000000000000000000000001"
-        ]
+        "allow_unprotected_txs": false
       }
     },
     "evmutil": {
-      "accounts": [],
+      "accounts": [
+        {
+          "address": "kava1ypjp0m04pyp73hwgtc0dgkx0e9rrydecm054da",
+          "balance": "700000000000"
+        },
+        {
+          "address": "kava1vlpsrmdyuywvaqrv7rx6xga224sqfwz3fyfhwq",
+          "balance": "300000000000"
+        },
+        {
+          "address": "kava1agcvt07tcw0tglu0hmwdecsnuxp2yd45f3avgm",
+          "balance": "200000000000"
+        },
+        {
+          "address": "kava1g33w0mh4mjllhaj3y4dcwkwquxgwrma9ga5t94",
+          "balance": "400000000000"
+        },
+        {
+          "address": "kava1kla4wl0ccv7u85cemvs3y987hqk0afcv7vue84",
+          "balance": "400000000000"
+        }
+      ],
       "params": {
         "enabled_conversion_pairs": [
           {
@@ -2287,7 +2314,7 @@
                 }
               }
             ],
-            "memo": "461d9761df5db0a112407ca8a82f1774ef2dbaa3@10.0.0.176:26656",
+            "memo": "461d9761df5db0a112407ca8a82f1774ef2dbaa3@192.168.1.137:26656",
             "timeout_height": "0",
             "extension_options": [],
             "non_critical_extension_options": []
@@ -2316,7 +2343,7 @@
             "tip": null
           },
           "signatures": [
-            "LDBw6Fd0rajEB9vKbdPIVc5TIfTbljifnL3Kta6mZ6E27bVO6NRK03g86qMfDD+4UXuikPnqm0wm3E/8yiWNdg=="
+            "qHfPN/7kgyuJeypt/EUbWbrEbE8tTM0NMgC0Z/W3GSsUlfXUyFfXkKY8u48e7hijJK/S+ESKUuLh+Vao69xiFg=="
           ]
         }
       ]
@@ -3219,6 +3246,10 @@
       "in_flight_packets": {}
     },
     "params": null,
+    "precisebank": {
+      "balances": [],
+      "remainder": "0"
+    },
     "pricefeed": {
       "params": {
         "markets": [
