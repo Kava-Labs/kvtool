@@ -76,6 +76,26 @@ iavl-lazy-loading = false
 app-db-backend = ""
 
 ###############################################################################
+###                         RocksDB Configuration                         ###
+###############################################################################
+
+[rocksdb]
+
+enable-metrics = true
+max-open-files = 16384
+block_size = 16384
+
+[rocksdb.tx_index]
+
+max-open-files = 4096
+block_size = 4096
+
+[rocksdb.blockstore]
+
+max-open-files = 1000
+block_size = 1000
+
+###############################################################################
 ###                         Telemetry Configuration                         ###
 ###############################################################################
 
@@ -331,7 +351,7 @@ allow-unprotected-txs = false
 max-open-connections = 0
 
 # EnableIndexer enables the custom transaction indexer for the EVM (ethereum transactions).
-enable-indexer = false
+enable-indexer = true
 
 # MetricsAddress defines the EVM Metrics server address to bind to. Pass --metrics in CLI to enable
 # Prometheus metrics path: /debug/metrics/prometheus

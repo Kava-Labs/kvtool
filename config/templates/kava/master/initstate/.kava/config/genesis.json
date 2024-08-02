@@ -1,5 +1,5 @@
 {
-  "genesis_time": "2024-05-09T22:14:46.084778Z",
+  "genesis_time": "2024-06-21T14:10:44.380538Z",
   "chain_id": "kavalocalnet_8888-1",
   "initial_height": "1",
   "consensus_params": {
@@ -2284,7 +2284,7 @@
                 }
               }
             ],
-            "memo": "461d9761df5db0a112407ca8a82f1774ef2dbaa3@192.168.0.14:26656",
+            "memo": "461d9761df5db0a112407ca8a82f1774ef2dbaa3@10.0.0.176:26656",
             "timeout_height": "0",
             "extension_options": [],
             "non_critical_extension_options": []
@@ -2313,7 +2313,7 @@
             "tip": null
           },
           "signatures": [
-            "mdqCmMkaFMt/kCKso3ID+58hfz4rNfqPsmfY55XGP6160KjLv2OLjOzmO4Ulg0Vag4Zb/9/RE+eoT/uutmBsqA=="
+            "LDBw6Fd0rajEB9vKbdPIVc5TIfTbljifnL3Kta6mZ6E27bVO6NRK03g86qMfDD+4UXuikPnqm0wm3E/8yiWNdg=="
           ]
         }
       ]
@@ -3216,6 +3216,10 @@
       "in_flight_packets": {}
     },
     "params": null,
+    "precisebank": {
+      "balances": [],
+      "remainder": "0"
+    },
     "pricefeed": {
       "params": {
         "markets": [
@@ -3537,204 +3541,6 @@
         ]
       },
       "posted_prices": [
-        {
-          "market_id": "akt:usd",
-          "price": "0.584749999999999992",
-          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "expiry": "2050-01-01T00:00:00Z"
-        },
-        {
-          "market_id": "akt:usd:30",
-          "price": "0.584099666666666684",
-          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "expiry": "2050-01-01T00:00:00Z"
-        },
-        {
-          "market_id": "atom:usd",
-          "price": "9.016999999999999460",
-          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "expiry": "2050-01-01T00:00:00Z"
-        },
-        {
-          "market_id": "atom:usd:30",
-          "price": "8.993133333333332757",
-          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "expiry": "2050-01-01T00:00:00Z"
-        },
-        {
-          "market_id": "bnb:usd",
-          "price": "238.699999999999988631",
-          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "expiry": "2050-01-01T00:00:00Z"
-        },
-        {
-          "market_id": "bnb:usd:30",
-          "price": "238.043333333333379187",
-          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "expiry": "2050-01-01T00:00:00Z"
-        },
-        {
-          "market_id": "btc:usd",
-          "price": "29124.259999999998399289",
-          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "expiry": "2050-01-01T00:00:00Z"
-        },
-        {
-          "market_id": "btc:usd:30",
-          "price": "29174.038333333322952967",
-          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "expiry": "2050-01-01T00:00:00Z"
-        },
-        {
-          "market_id": "busd:usd",
-          "price": "1.000000000000000000",
-          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "expiry": "2050-01-01T00:00:00Z"
-        },
-        {
-          "market_id": "busd:usd:30",
-          "price": "1.000000000000000000",
-          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "expiry": "2050-01-01T00:00:00Z"
-        },
-        {
-          "market_id": "dai:usd",
-          "price": "1.000000000000000000",
-          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "expiry": "2050-01-01T00:00:00Z"
-        },
-        {
-          "market_id": "dai:usd:30",
-          "price": "1.000000000000000000",
-          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "expiry": "2050-01-01T00:00:00Z"
-        },
-        {
-          "market_id": "hard:usd",
-          "price": "0.118099999999999997",
-          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "expiry": "2050-01-01T00:00:00Z"
-        },
-        {
-          "market_id": "hard:usd:30",
-          "price": "0.118076666666666663",
-          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "expiry": "2050-01-01T00:00:00Z"
-        },
-        {
-          "market_id": "kava:usd",
-          "price": "0.863999999999999990",
-          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "expiry": "2050-01-01T00:00:00Z"
-        },
-        {
-          "market_id": "kava:usd:30",
-          "price": "0.869700000000000251",
-          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "expiry": "2050-01-01T00:00:00Z"
-        },
-        {
-          "market_id": "luna:usd",
-          "price": "0.617399999999999949",
-          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "expiry": "2050-01-01T00:00:00Z"
-        },
-        {
-          "market_id": "luna:usd:30",
-          "price": "0.615783333333333460",
-          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "expiry": "2050-01-01T00:00:00Z"
-        },
-        {
-          "market_id": "osmo:usd",
-          "price": "0.493765000000000009",
-          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "expiry": "2050-01-01T00:00:00Z"
-        },
-        {
-          "market_id": "osmo:usd:30",
-          "price": "0.493601685594476869",
-          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "expiry": "2050-01-01T00:00:00Z"
-        },
-        {
-          "market_id": "swp:usd",
-          "price": "0.012359999999999999",
-          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "expiry": "2050-01-01T00:00:00Z"
-        },
-        {
-          "market_id": "swp:usd:30",
-          "price": "0.012529333333333335",
-          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "expiry": "2050-01-01T00:00:00Z"
-        },
-        {
-          "market_id": "usdc:usd",
-          "price": "1.000000000000000000",
-          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "expiry": "2050-01-01T00:00:00Z"
-        },
-        {
-          "market_id": "usdc:usd:30",
-          "price": "1.000000000000000000",
-          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "expiry": "2050-01-01T00:00:00Z"
-        },
-        {
-          "market_id": "usdt:usd",
-          "price": "1.000000000000000000",
-          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "expiry": "2050-01-01T00:00:00Z"
-        },
-        {
-          "market_id": "usdt:usd:30",
-          "price": "1.000000000000000000",
-          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "expiry": "2050-01-01T00:00:00Z"
-        },
-        {
-          "market_id": "usdx:usd",
-          "price": "0.899599999999999955",
-          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "expiry": "2050-01-01T00:00:00Z"
-        },
-        {
-          "market_id": "usdx:usd:30",
-          "price": "0.898733333333332940",
-          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "expiry": "2050-01-01T00:00:00Z"
-        },
-        {
-          "market_id": "usdx:usd:720",
-          "price": "0.890397916666666678",
-          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "expiry": "2050-01-01T00:00:00Z"
-        },
-        {
-          "market_id": "ust:usd",
-          "price": "0.000000000000000000",
-          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "expiry": "2050-01-01T00:00:00Z"
-        },
-        {
-          "market_id": "ust:usd:30",
-          "price": "0.000000000000000000",
-          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "expiry": "2050-01-01T00:00:00Z"
-        },
-        {
-          "market_id": "xrp:usd",
-          "price": "0.704099999999999948",
-          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "expiry": "2050-01-01T00:00:00Z"
-        },
-        {
-          "market_id": "xrp:usd:30",
-          "price": "0.703160000000000118",
-          "oracle_address": "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em",
-          "expiry": "2050-01-01T00:00:00Z"
-        }
       ]
     },
     "router": {},

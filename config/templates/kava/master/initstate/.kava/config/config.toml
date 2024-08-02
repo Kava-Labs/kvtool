@@ -44,13 +44,13 @@ block_sync = true
 # * badgerdb (uses github.com/dgraph-io/badger)
 #   - EXPERIMENTAL
 #   - use badgerdb build tag (go build -tags badgerdb)
-db_backend = "goleveldb"
+db_backend = "rocksdb"
 
 # Database directory
 db_dir = "data"
 
 # Output level for logging, including package level options
-log_level = "info"
+log_level = "error"
 
 # Output format: 'plain' (colored text) or 'json'
 log_format = "plain"
@@ -477,7 +477,7 @@ psql-conn = ""
 # When true, Prometheus metrics are served under /metrics on
 # PrometheusListenAddr.
 # Check out the documentation for the list of available metrics.
-prometheus = false
+prometheus = true
 
 # Address to listen for Prometheus collector(s) connections
 prometheus_listen_addr = ":26660"
