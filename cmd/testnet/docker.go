@@ -156,7 +156,10 @@ func getContainerLogsChannel(
 		"-f",
 		containerID,
 	)
+	// pipe all stdout to a ReadCloser we can scan
 	cmdReader, err := cmd.StdoutPipe()
+	// redirect all stderr output to stdout
+	cmd.Stderr = cmd.Stdout
 	if err != nil {
 		return nil, fmt.Errorf("failed to get command stdout pipe: %w", err)
 	}
