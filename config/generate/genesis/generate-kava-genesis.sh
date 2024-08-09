@@ -25,6 +25,7 @@ DENOM=${DENOM:-ukava}
 ADDRESSES=./config/common/addresses.json
 
 BINARY="kava --home $DATA"
+SED_CMD="sed -i=''"
 
 # set-app-state loads a json file in this directory and sets the app_state value matched by the filename.
 # files may contains bash variables exported from this file.
@@ -74,46 +75,46 @@ cp $DEST/config/priv_validator_key.json $DATA/config/priv_validator_key.json
 ##### APP.TOML #####
 ####################
 # hacky enable of rest api
-sed -i '' 's/enable = false/enable = true/g' $DATA/config/app.toml
+$SED_CMD 's/enable = false/enable = true/g' $DATA/config/app.toml
 
 # Set evm tracer to json
-sed -i '' 's/tracer = ""/tracer = "json"/g' $DATA/config/app.toml
+$SED_CMD 's/tracer = ""/tracer = "json"/g' $DATA/config/app.toml
 
 # Enable tx tracing with debug namespace in evm
-sed -i '' 's/api = "eth,net,web3"/api = "eth,net,web3,debug"/g' $DATA/config/app.toml
+$SED_CMD 's/api = "eth,net,web3"/api = "eth,net,web3,debug"/g' $DATA/config/app.toml
 
 # Enable full error trace to be returned on tx failure
-sed -i '' '/iavl-cache-size/a\
+$SED_CMD '/iavl-cache-size/a\
 trace = true' $DATA/config/app.toml
 
 # Enable unsafe CORs
-sed -i '' 's/enabled-unsafe-cors = false/enabled-unsafe-cors = true/g' $DATA/config/app.toml
-sed -i '' 's/enable-unsafe-cors = false/enable-unsafe-cors = true/g' $DATA/config/app.toml
+$SED_CMD 's/enabled-unsafe-cors = false/enabled-unsafe-cors = true/g' $DATA/config/app.toml
+$SED_CMD 's/enable-unsafe-cors = false/enable-unsafe-cors = true/g' $DATA/config/app.toml
 
 # Set the min gas fee
-sed -i '' 's/minimum-gas-prices = "0ukava"/minimum-gas-prices = "0.001ukava;1000000000akava"/g' $DATA/config/app.toml
+$SED_CMD 's/minimum-gas-prices = "0ukava"/minimum-gas-prices = "0.001ukava;1000000000akava"/g' $DATA/config/app.toml
 
 # Disable pruning
-sed -i '' 's/pruning = "default"/pruning = "nothing"/g' $DATA/config/app.toml
+$SED_CMD 's/pruning = "default"/pruning = "nothing"/g' $DATA/config/app.toml
 
 # Set EVM JSON-RPC starting IP addresses
-sed -i '' 's/address = "127.0.0.1:8545"/address = "0.0.0.0:8545"/g' $DATA/config/app.toml
-sed -i '' 's/ws-address = "127.0.0.1:8546"/ws-address = "0.0.0.0:8546"/g' $DATA/config/app.toml
+$SED_CMD 's/address = "127.0.0.1:8545"/address = "0.0.0.0:8545"/g' $DATA/config/app.toml
+$SED_CMD 's/ws-address = "127.0.0.1:8546"/ws-address = "0.0.0.0:8546"/g' $DATA/config/app.toml
 
 # Make all apis listen to outside the container
-sed -i '' 's/localhost:/0.0.0.0:/g' $DATA/config/app.toml
+$SED_CMD 's/localhost:/0.0.0.0:/g' $DATA/config/app.toml
 
 #######################
 ##### CLIENT.TOML #####
 #######################
 # Set client chain id
-sed -i '' 's/chain-id = ""/chain-id = "'"$chainID"'"/g' $DATA/config/client.toml
+$SED_CMD 's/chain-id = ""/chain-id = "'"$chainID"'"/g' $DATA/config/client.toml
 
 #######################
 ##### CONFIG.TOML #####
 #######################
 # lower default commit timeout
-sed -i '' 's/timeout_commit = "5s"/timeout_commit = "1s"/g' $DATA/config/config.toml
+$SED_CMD 's/timeout_commit = "5s"/timeout_commit = "1s"/g' $DATA/config/config.toml
 
 #########################
 ##### CONFIGURATION #####
@@ -290,9 +291,9 @@ jq ".app_state.auth.accounts"' = '"$account_data" $DATA/config/genesis.json | sp
 ############################
 
 # Replace stake with ukava
-sed -i '' 's/stake/ukava/g' $DATA/config/genesis.json
+$SED_CMD 's/stake/ukava/g' $DATA/config/genesis.json
 # Replace the default evm denom of aphoton with ukava
-sed -i '' 's/aphoton/akava/g' $DATA/config/genesis.json
+$SED_CMD 's/aphoton/akava/g' $DATA/config/genesis.json
 
 # Zero out the total supply so it gets recalculated during InitGenesis
 jq '.app_state.bank.supply = []' $DATA/config/genesis.json | sponge $DATA/config/genesis.json
@@ -415,9 +416,9 @@ set-app-state swap
 ########################
 if [ "$DENOM" != "ukava" ]; then
   # Replace ukava with $DENOM in genesis
-  sed -i '' 's/ukava/'"$DENOM"'/g' $DATA/config/genesis.json
+  $SED_CMD 's/ukava/'"$DENOM"'/g' $DATA/config/genesis.json
   # Replace ukava with $DENOM in app.toml
-  sed -i '' 's/ukava/'"$DENOM"'/g' $DATA/config/app.toml
+  $SED_CMD 's/ukava/'"$DENOM"'/g' $DATA/config/app.toml
 fi
 
 ############################
