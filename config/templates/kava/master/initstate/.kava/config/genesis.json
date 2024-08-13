@@ -1,5 +1,5 @@
 {
-  "genesis_time": "2024-08-07T19:42:20.993103531Z",
+  "genesis_time": "2024-08-13T17:57:22.552511877Z",
   "chain_id": "kavalocalnet_8888-1",
   "initial_height": "1",
   "consensus_params": {
@@ -258,6 +258,16 @@
           "base_account": {
             "account_number": "0",
             "address": "kava1jqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqpej7s5d",
+            "pub_key": null,
+            "sequence": "1"
+          },
+          "code_hash": "0x5fe7f977e71dba2ea1a68e21057beebb9be2ac30c6410aa38d4f3fbe41dcffd2"
+        },
+        {
+          "@type": "/ethermint.types.v1.EthAccount",
+          "base_account": {
+            "account_number": "0",
+            "address": "kava1jqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqzhptx6j",
             "pub_key": null,
             "sequence": "1"
           },
@@ -1508,6 +1518,11 @@
         },
         {
           "address": "0x9000000000000000000000000000000000000001",
+          "code": "01",
+          "storage": []
+        },
+        {
+          "address": "0x9000000000000000000000000000000000000002",
           "code": "01",
           "storage": []
         }
