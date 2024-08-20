@@ -1,4 +1,3 @@
-
 services:
     kavanode:
         image: kava/kava:${KAVA_TAG:-v0.10.0}
