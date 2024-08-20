@@ -1,4 +1,3 @@
-version: "3"
 services:
   bnb_deputy:
     image: kava/deputy:v0.4.0

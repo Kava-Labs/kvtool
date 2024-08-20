@@ -1,4 +1,3 @@
-version: "3"
 services:
   relayer:
     image: kava/relayer:v2.4.2
