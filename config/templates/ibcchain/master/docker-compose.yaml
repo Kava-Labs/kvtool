@@ -1,4 +1,3 @@
-
 services:
   ibcnode:
     image: "kava/kava:v0.25.0-goleveldb"
