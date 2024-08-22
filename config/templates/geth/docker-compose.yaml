@@ -1,4 +1,3 @@
-version: '3'
 services:
     gethnode:
         image: "ethereum/client-go:latest"

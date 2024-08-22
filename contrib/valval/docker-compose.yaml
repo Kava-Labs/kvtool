@@ -1,4 +1,3 @@
-version: '3'
 services:
   kava-1:
     image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
