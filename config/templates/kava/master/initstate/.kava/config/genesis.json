@@ -1,5 +1,5 @@
 {
-  "genesis_time": "2024-08-13T17:57:22.552511877Z",
+  "genesis_time": "2024-09-19T21:26:16.810531227Z",
   "chain_id": "kavalocalnet_8888-1",
   "initial_height": "1",
   "consensus_params": {
@@ -268,6 +268,46 @@
           "base_account": {
             "account_number": "0",
             "address": "kava1jqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqzhptx6j",
+            "pub_key": null,
+            "sequence": "1"
+          },
+          "code_hash": "0x5fe7f977e71dba2ea1a68e21057beebb9be2ac30c6410aa38d4f3fbe41dcffd2"
+        },
+        {
+          "@type": "/ethermint.types.v1.EthAccount",
+          "base_account": {
+            "account_number": "0",
+            "address": "kava1jqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqr2hln8q",
+            "pub_key": null,
+            "sequence": "1"
+          },
+          "code_hash": "0x5fe7f977e71dba2ea1a68e21057beebb9be2ac30c6410aa38d4f3fbe41dcffd2"
+        },
+        {
+          "@type": "/ethermint.types.v1.EthAccount",
+          "base_account": {
+            "account_number": "0",
+            "address": "kava1jqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqytwgrx9",
+            "pub_key": null,
+            "sequence": "1"
+          },
+          "code_hash": "0x5fe7f977e71dba2ea1a68e21057beebb9be2ac30c6410aa38d4f3fbe41dcffd2"
+        },
+        {
+          "@type": "/ethermint.types.v1.EthAccount",
+          "base_account": {
+            "account_number": "0",
+            "address": "kava1jqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq9kcukmh",
+            "pub_key": null,
+            "sequence": "1"
+          },
+          "code_hash": "0x5fe7f977e71dba2ea1a68e21057beebb9be2ac30c6410aa38d4f3fbe41dcffd2"
+        },
+        {
+          "@type": "/ethermint.types.v1.EthAccount",
+          "base_account": {
+            "account_number": "0",
+            "address": "kava1jqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqxctfq4g",
             "pub_key": null,
             "sequence": "1"
           },
@@ -1525,6 +1565,26 @@
           "address": "0x9000000000000000000000000000000000000002",
           "code": "01",
           "storage": []
+        },
+        {
+          "address": "0x9000000000000000000000000000000000000003",
+          "code": "01",
+          "storage": []
+        },
+        {
+          "address": "0x9000000000000000000000000000000000000004",
+          "code": "01",
+          "storage": []
+        },
+        {
+          "address": "0x9000000000000000000000000000000000000005",
+          "code": "01",
+          "storage": []
+        },
+        {
+          "address": "0x9000000000000000000000000000000000000006",
+          "code": "01",
+          "storage": []
         }
       ],
       "params": {
@@ -2253,7 +2313,12 @@
         ],
         "allow_unprotected_txs": false,
         "enabled_precompiles": [
-          "0x9000000000000000000000000000000000000001"
+          "0x9000000000000000000000000000000000000001",
+          "0x9000000000000000000000000000000000000002",
+          "0x9000000000000000000000000000000000000003",
+          "0x9000000000000000000000000000000000000004",
+          "0x9000000000000000000000000000000000000005",
+          "0x9000000000000000000000000000000000000006"
         ]
       }
     },
