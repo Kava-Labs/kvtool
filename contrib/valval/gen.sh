@@ -2,7 +2,18 @@
 
 peers=()
 num_validators=$(tr -d '[:space:]' <NUM_VALIDATORS)
-there_is_a_new_validator=true
+there_is_a_new_validator=false
+
+# handle difference between GNU (ubuntu) and BSD (macos) sed
+sed_edit() {
+  if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    # GNU sed
+    sed -i "$@"
+  else
+    # BSD sed
+    sed -i '' "$@"
+  fi
+}
 
 mkdir -p keys
 for ((i = 1; i <= num_validators; i++)); do
@@ -23,10 +34,10 @@ for ((i = 1; i <= num_validators; i++)); do
   peers+=("$(kava tendermint show-node-id --home $home)@$home:26656")
 
   # force use of rocksdb
-  sed -i '' -e "s#^db_backend = .*#db_backend = \"rocksdb\"#" $home/config/config.toml
+  sed_edit -e "s#^db_backend = .*#db_backend = \"rocksdb\"#" $home/config/config.toml
 
   # update max_num_outbound_peers to be number of other validators
-  sed -i '' -e "s#^max_num_outbound_peers = .*#max_num_outbound_peers = $((num_validators - 1))#" $home/config/config.toml
+  sed_edit -e "s#^max_num_outbound_peers = .*#max_num_outbound_peers = $((num_validators - 1))#" $home/config/config.toml
 done
 
 if [ "$there_is_a_new_validator" = true ]; then
@@ -47,7 +58,7 @@ if [ "$there_is_a_new_validator" = true ]; then
     peer_list=$(echo "${persistent_peers[*]}" | tr ' ' ',')
 
     # replace existing persistent peers
-    sed -i '' -e "s#^persistent_peers = .*#persistent_peers = \"$peer_list\"#" "$configtoml"
+    sed_edit -e "s#^persistent_peers = .*#persistent_peers = \"$peer_list\"#" "$configtoml"
   done
 else
   echo No change to the number of validators was made.
