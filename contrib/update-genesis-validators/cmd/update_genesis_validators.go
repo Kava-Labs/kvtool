@@ -24,9 +24,9 @@ import (
 	slashingtypes "github.com/cosmos/cosmos-sdk/x/slashing/types"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 
-	tmjson "github.com/tendermint/tendermint/libs/json"
-	pvtypes "github.com/tendermint/tendermint/privval"
-	tmtypes "github.com/tendermint/tendermint/types"
+	tmjson "github.com/cometbft/cometbft/libs/json"
+	pvtypes "github.com/cometbft/cometbft/privval"
+	tmtypes "github.com/cometbft/cometbft/types"
 
 	"github.com/kava-labs/kava/app"
 )
