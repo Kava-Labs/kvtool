@@ -392,7 +392,7 @@ func UpdateGenesisFileWithNewValidators(
 
 		// update voting period
 		newVotingPeriod := time.Second * time.Duration(ugvVotingPeriod)
-		governanceState.VotingParams.VotingPeriod = &newVotingPeriod
+		governanceState.Params.VotingPeriod = &newVotingPeriod
 		fmt.Printf("updated x/gov voting period to %s\n", newVotingPeriod)
 
 		// remarshal updated state
