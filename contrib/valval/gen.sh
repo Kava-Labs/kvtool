@@ -2,7 +2,7 @@
 
 peers=()
 num_validators=$(tr -d '[:space:]' <NUM_VALIDATORS)
-there_is_a_new_validator=false
+there_is_a_new_validator=true
 
 # handle difference between GNU (ubuntu) and BSD (macos) sed
 sed_edit() {
@@ -41,24 +41,25 @@ for ((i = 1; i <= num_validators; i++)); do
 done
 
 if [ "$there_is_a_new_validator" = true ]; then
-  echo The number of validators has changed. Updating the persistent peers of each one.
+  echo The number of validators has changed. Updating peer network topology.
 
-  for ((i = 1; i <= num_validators; i++)); do
+  # for performance, we set the first validators peers to all other validators
+  # all other validators are given only the first validator as a peer.
+
+  first_validator_addr="${peers[0]}" # the peer address of the first validator
+  persistent_peers=$(IFS=, echo "${peers[@]:1}")  # comma-delimited list of all other validator peer addresses
+  peer_list=$(echo "${persistent_peers[*]}" | tr ' ' ',')
+
+  # set first validator to have all other validators as peers
+  echo setting first validator to have \""$peer_list"\" as peers
+  sed_edit -e "s#^persistent_peers = .*#persistent_peers = \"$peer_list\"#" "kava-1/config/config.toml"
+
+  echo setting all other validators to have \""$first_validator_addr"\" as peer
+  # set all other validators to have 1st as their only peer
+  for ((i = 2; i <= num_validators; i++)); do
     configtoml=kava-$i/config/config.toml
-    echo "$configtoml"
-
-    persistent_peers=()
-    for ((j = 0; j < num_validators; j++)); do
-      if [[ $j -ne $((i - 1)) ]]; then
-        persistent_peers+=("${peers[j]}")
-      fi
-    done
-
-    # make comma-delimited
-    peer_list=$(echo "${persistent_peers[*]}" | tr ' ' ',')
-
     # replace existing persistent peers
-    sed_edit -e "s#^persistent_peers = .*#persistent_peers = \"$peer_list\"#" "$configtoml"
+    sed_edit -e "s#^persistent_peers = .*#persistent_peers = \"$first_validator_addr\"#" "$configtoml"
   done
 else
   echo No change to the number of validators was made.
