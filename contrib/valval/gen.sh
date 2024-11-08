@@ -53,6 +53,9 @@ for ((i = 1; i <= num_validators; i++)); do
   # update max_num_outbound_peers to be number of other validators
   sed_edit -e "s#^max_num_outbound_peers = .*#max_num_outbound_peers = $((num_validators - 1))#" $home/config/config.toml
 
+  # listen to all ips for evm json-rpc api
+  sed_edit -e "s#127.0.0.1:8545#0.0.0.0:8545#" $home/config/app.toml
+
   # include rocksdb configuration tweaks
   {
     echo
