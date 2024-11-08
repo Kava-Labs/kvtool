@@ -122,7 +122,7 @@ enable = false
 swagger = false
 
 # Address defines the API server to listen on.
-address = "tcp://localhost:1317"
+address = "tcp://0.0.0.0:1317"
 
 # MaxOpenConnections defines the number of maximum open connections.
 max-open-connections = 1000
@@ -185,7 +185,7 @@ denom-to-suggest = "uatom"
 enable = true
 
 # Address defines the gRPC server address to bind to.
-address = "localhost:9090"
+address = "0.0.0.0:9090"
 
 # MaxRecvMsgSize defines the max message size in bytes the server can receive.
 # The default value is 10MB.
@@ -206,7 +206,7 @@ max-send-msg-size = "2147483647"
 enable = true
 
 # Address defines the gRPC-web server address to bind to.
-address = "localhost:9091"
+address = "0.0.0.0:9091"
 
 # EnableUnsafeCORS defines if CORS should be enabled (unsafe - use it at your own risk).
 enable-unsafe-cors = false
@@ -289,7 +289,7 @@ enable = true
 address = "0.0.0.0:8545"
 
 # Address defines the EVM WebSocket server address to bind to.
-ws-address = "127.0.0.1:8546"
+ws-address = "0.0.0.0:8546"
 
 # API defines a list of JSON-RPC namespaces that should be enabled
 # Example: "eth,txpool,personal,net,debug,web3"
@@ -335,7 +335,7 @@ enable-indexer = false
 
 # MetricsAddress defines the EVM Metrics server address to bind to. Pass --metrics in CLI to enable
 # Prometheus metrics path: /debug/metrics/prometheus
-metrics-address = "127.0.0.1:6065"
+metrics-address = "0.0.0.0:6065"
 
 ###############################################################################
 ###                             TLS Configuration                           ###
