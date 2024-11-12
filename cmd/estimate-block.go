@@ -48,7 +48,7 @@ $ kvtool estimate-block-height 2050-05-22T15:00
 				int(math.Round(secondsUntilThen)),
 			)
 
-			blockAverages := []int64{10000, 50000, 75000, 100000}
+			blockAverages := []int64{10000, 50000, 75000, 100000, 250000, 500000}
 
 			currentBlock, err := k.LatestBlock(numRetries)
 			if err != nil {
