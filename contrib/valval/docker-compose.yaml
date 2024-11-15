@@ -1,6 +1,8 @@
 services:
   kava-1:
     image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
+    environment:
+      GOMAXPROCS: 6
     ports:
       # open default kava rpc port
       - "26657:26657"
@@ -23,6 +25,8 @@ services:
       - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
   kava-2:
     image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
+    environment:
+      GOMAXPROCS: 6
     volumes:
       - "./kava-2:/root/.kava"
     # start the blockchain, and set rpc to listen to connections from outside the container
@@ -32,6 +36,8 @@ services:
       - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
   kava-3:
     image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
+    environment:
+      GOMAXPROCS: 6
     volumes:
       - "./kava-3:/root/.kava"
     # start the blockchain, and set rpc to listen to connections from outside the container
@@ -41,6 +47,8 @@ services:
       - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
   kava-4:
     image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
+    environment:
+      GOMAXPROCS: 6
     volumes:
       - "./kava-4:/root/.kava"
     # start the blockchain, and set rpc to listen to connections from outside the container
@@ -50,6 +58,8 @@ services:
       - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
   kava-5:
     image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
+    environment:
+      GOMAXPROCS: 6
     volumes:
       - "./kava-5:/root/.kava"
     # start the blockchain, and set rpc to listen to connections from outside the container
@@ -59,6 +69,8 @@ services:
       - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
   kava-6:
     image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
+    environment:
+      GOMAXPROCS: 6
     volumes:
       - "./kava-6:/root/.kava"
     # start the blockchain, and set rpc to listen to connections from outside the container
@@ -68,6 +80,8 @@ services:
       - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
   kava-7:
     image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
+    environment:
+      GOMAXPROCS: 6
     volumes:
       - "./kava-7:/root/.kava"
     # start the blockchain, and set rpc to listen to connections from outside the container
@@ -77,6 +91,8 @@ services:
       - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
   kava-8:
     image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
+    environment:
+      GOMAXPROCS: 6
     volumes:
       - "./kava-8:/root/.kava"
     # start the blockchain, and set rpc to listen to connections from outside the container
@@ -86,6 +102,8 @@ services:
       - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
   kava-9:
     image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
+    environment:
+      GOMAXPROCS: 6
     volumes:
       - "./kava-9:/root/.kava"
     # start the blockchain, and set rpc to listen to connections from outside the container
@@ -95,35 +113,10 @@ services:
       - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
   kava-10:
     image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
+    environment:
+      GOMAXPROCS: 6
     volumes:
       - "./kava-10:/root/.kava"
-    # start the blockchain, and set rpc to listen to connections from outside the container
-    command:
-      - "sh"
-      - "-c"
-      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
-  kava-11:
-    image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
-    volumes:
-      - "./kava-11:/root/.kava"
-    # start the blockchain, and set rpc to listen to connections from outside the container
-    command:
-      - "sh"
-      - "-c"
-      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
-  kava-12:
-    image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
-    volumes:
-      - "./kava-12:/root/.kava"
-    # start the blockchain, and set rpc to listen to connections from outside the container
-    command:
-      - "sh"
-      - "-c"
-      - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
-  kava-13:
-    image: "kava/kava:${KAVA_IMAGE_TAG:-master}"
-    volumes:
-      - "./kava-13:/root/.kava"
     # start the blockchain, and set rpc to listen to connections from outside the container
     command:
       - "sh"

@@ -1,0 +1,6 @@
+{
+  "@type": "/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal",
+  "title": "My Chain Upgrade",
+  "description": "hello mirrornet 👋, welcome to the new version of kava.",
+  "plan": { "name": "v0.27.0", "height": "100" }
+}
