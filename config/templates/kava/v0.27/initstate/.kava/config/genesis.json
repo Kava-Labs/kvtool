@@ -854,6 +854,103 @@
           ]
         },
         {
+          "address": "kava1a53udazy8ayufvy0s434pfwjcedzqv342ekcaf",
+          "coins": [
+            {
+              "denom": "busd",
+              "amount": "1100000000"
+            },
+            {
+              "denom": "erc20/tether/usdt",
+              "amount": "20100547710"
+            },
+            {
+              "denom": "hard",
+              "amount": "358369986"
+            },
+            {
+              "denom": "ibc/0471F1C4E7AFD3F07702BEF6DC365268D64570F7C1FDC98EA6098DD6DE59817B",
+              "amount": "2012731"
+            },
+            {
+              "denom": "ibc/2BBF3EEB88F4BB5285A5075DE1B40EF65E5028947B7751096FFF9D05585ACFD1",
+              "amount": "876229"
+            },
+            {
+              "denom": "ibc/2FEB22EDE1AA35104266A97AEC454C1DD3855385DE995DE6DD8A5CEE1D3AA171",
+              "amount": "2000000000000"
+            },
+            {
+              "denom": "ibc/4AC88A18DD2C53282258AABCB045ACB5673302D606DD5FAE6D14B1295F0D66C0",
+              "amount": "315000000000"
+            },
+            {
+              "denom": "ibc/4D622C83933B16DD6C8398D18BD2C3E8501F3EA348478F6790111891E0363FE7",
+              "amount": "45050000000000"
+            },
+            {
+              "denom": "ibc/4E18C5B247C122A6380C8CF6E3B2AEF252864733FD010E3E844BC28925B0261C",
+              "amount": "200000000000000"
+            },
+            {
+              "denom": "ibc/5149EACA571130C26F97CB76E83EA0BDB408B47620A8D167B945344E645657E1",
+              "amount": "50000000000000"
+            },
+            {
+              "denom": "ibc/6DD9A114AB2841CF013E1B0A4F5ABD76ABAF811D4267D30E7BC90BB2545B16D6",
+              "amount": "1000000"
+            },
+            {
+              "denom": "ibc/78525963E6C9E257454B004AFF59AF8681AE8853E30B1774447F00659A395221",
+              "amount": "163000000000"
+            },
+            {
+              "denom": "ibc/799FDD409719A1122586A629AE8FCA17380351A51C1F47A80A1B8E7F2A491098",
+              "amount": "1000000"
+            },
+            {
+              "denom": "ibc/815FC81EB6BD612206BD9A9909A02F7691D24A5B97CDFE2124B1BDCA9D4AB14C",
+              "amount": "2000000"
+            },
+            {
+              "denom": "ibc/9D61880BE44FD804422D76432B9B37DA6FE6F58B30F039BD3F289E3806698A8E",
+              "amount": "1000000000000000"
+            },
+            {
+              "denom": "ibc/A1E1A20C1E4F2F76F301DA625CC476FBD0FCD8CA94DAF60814CA5257B6CD3E3E",
+              "amount": "15000000"
+            },
+            {
+              "denom": "ibc/A8CC572688E2C90F0F4C58D5A972622A4E2C105AAD3650DFC619D2F6511775EE",
+              "amount": "1019961"
+            },
+            {
+              "denom": "ibc/B8AF5D92165F35AB31F3FC7C7B444B9D240760FA5D406C49D24862BD0284E395",
+              "amount": "1000000000"
+            },
+            {
+              "denom": "ibc/D5CCD845ADA5B020CF58C4EBB7EADD302995507D5D7E08DADD993E4F738BF82C",
+              "amount": "1000000"
+            },
+            {
+              "denom": "ibc/FA0006F056DB6719B8C16C551FC392B62F5729978FC0B125AC9A432DBB2AA1A5",
+              "amount": "600000"
+            },
+            {
+              "denom": "swp",
+              "amount": "1705007341"
+            },
+            {
+              "denom": "ukava",
+              "amount": "1125462509"
+            },
+            {
+              "denom": "usdx",
+              "amount": "94970463"
+            }
+          ]
+        },
+        {
           "address": "kava1pqfg6dxled596k4k9g0vmn76q4p2cuvfcpt308",
           "coins": [
             {
@@ -3271,6 +3368,18 @@
       },
       "channel_genesis": {
         "channels": [
+          {
+            "channel_id": "channel-0",
+            "connection_hops": ["connection-0"],
+            "counterparty": {
+              "channel_id": "channel-277",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
           {
             "channel_id": "channel-1",
             "connection_hops": ["connection-1"],
