@@ -20,7 +20,8 @@ services:
         command:
             - "sh"
             - "-c"
-            - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657"
+            # Need --x-crisis-skip-assert-invariants since the IBC state is not actually valid
+            - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657 --x-crisis-skip-assert-invariants"
         healthcheck:
             test: [
                 "CMD",

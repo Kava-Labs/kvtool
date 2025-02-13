@@ -14,9 +14,7 @@
       "max_bytes": "1048576"
     },
     "validator": {
-      "pub_key_types": [
-        "ed25519"
-      ]
+      "pub_key_types": ["ed25519"]
     },
     "version": {}
   },
@@ -854,6 +852,577 @@
               "amount": "130000545229"
             }
           ]
+        },
+        {
+          "address": "kava1pqfg6dxled596k4k9g0vmn76q4p2cuvfcpt308",
+          "coins": [
+            {
+              "amount": "32403678539",
+              "denom": "erc20/tether/usdt"
+            },
+            {
+              "amount": "366923053",
+              "denom": "ukava"
+            }
+          ]
+        },
+        {
+          "address": "kava1p9a0t4w5dpv94phumjfks5su2jwdlg59l5v7c6",
+          "coins": [
+            {
+              "amount": "201396000116",
+              "denom": "erc20/tether/usdt"
+            },
+            {
+              "amount": "70537108",
+              "denom": "ukava"
+            }
+          ]
+        },
+        {
+          "address": "kava1plk6au939l5zk6zu0cz0s2e5v8sw94tsxhlq2n",
+          "coins": [
+            {
+              "amount": "4000",
+              "denom": "erc20/tether/usdt"
+            }
+          ]
+        },
+        {
+          "address": "kava1zv2kd8the2435wu09js34rjkp9atzmnkz9ppu4",
+          "coins": [
+            {
+              "amount": "6201103",
+              "denom": "erc20/tether/usdt"
+            },
+            {
+              "amount": "1000000",
+              "denom": "hard"
+            },
+            {
+              "amount": "1000",
+              "denom": "ukava"
+            }
+          ]
+        },
+        {
+          "address": "kava1r0l0augkcfj7lzmxen08jcp7y0nem7c5lms54p",
+          "coins": [
+            {
+              "amount": "400",
+              "denom": "erc20/tether/usdt"
+            }
+          ]
+        },
+        {
+          "address": "kava1rj3jzhns793s9r4xggyerfqca5zaavmd933mz9",
+          "coins": [
+            {
+              "amount": "200000",
+              "denom": "ukava"
+            }
+          ]
+        },
+        {
+          "address": "kava1r4edsha0cd9dcuwl67vhana3jkxyfdprn9tmtj",
+          "coins": [
+            {
+              "amount": "1600000",
+              "denom": "erc20/tether/usdt"
+            },
+            {
+              "amount": "8",
+              "denom": "ukava"
+            }
+          ]
+        },
+        {
+          "address": "kava1ygckl664egn34wr50j5v27dpj850hhwt95tste",
+          "coins": [
+            {
+              "amount": "5922068",
+              "denom": "erc20/tether/usdt"
+            }
+          ]
+        },
+        {
+          "address": "kava1yngyqraflvkw78aw3alxnx83ns0wsavgvtrtge",
+          "coins": [
+            {
+              "amount": "9971460548",
+              "denom": "erc20/tether/usdt"
+            },
+            {
+              "amount": "21000000",
+              "denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2"
+            },
+            {
+              "amount": "275111595344",
+              "denom": "ukava"
+            }
+          ]
+        },
+        {
+          "address": "kava1y48w7f9g9876a6s65r3v99q89ksmsh2vfn94gm",
+          "coins": [
+            {
+              "amount": "15537946",
+              "denom": "erc20/tether/usdt"
+            }
+          ]
+        },
+        {
+          "address": "kava1ya79tgmkgevampdn432zuwye88v05wklmuwxta",
+          "coins": [
+            {
+              "amount": "104874670",
+              "denom": "erc20/tether/usdt"
+            }
+          ]
+        },
+        {
+          "address": "kava19grztmrfep4slux2jgfymc48demtn6qxkvfqa3",
+          "coins": [
+            {
+              "amount": "340000",
+              "denom": "erc20/tether/usdt"
+            }
+          ]
+        },
+        {
+          "address": "kava1fp9wuhq58pz53wxvv3tnrxkw8m8s6swp3q5fq9",
+          "coins": [
+            {
+              "amount": "5406100305",
+              "denom": "ukava"
+            }
+          ]
+        },
+        {
+          "address": "kava1taa8tfzqtykdgse4ct5ln37p4zjr8gwynpyg6u",
+          "coins": [
+            {
+              "amount": "191027",
+              "denom": "bnb"
+            },
+            {
+              "amount": "1538307",
+              "denom": "erc20/tether/usdt"
+            },
+            {
+              "amount": "4261461",
+              "denom": "hard"
+            },
+            {
+              "amount": "100000",
+              "denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2"
+            },
+            {
+              "amount": "2788426",
+              "denom": "ibc/BF640659C4EB687BE08CE351459EAC96C0FAF29A43A2501F72357CF4D24A6611"
+            },
+            {
+              "amount": "10267872",
+              "denom": "ukava"
+            },
+            {
+              "amount": "1010000",
+              "denom": "usdx"
+            }
+          ]
+        },
+        {
+          "address": "kava1v09crew3znwjjyff6d35c9rsmz4d49u93s632w",
+          "coins": [
+            {
+              "amount": "100000",
+              "denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2"
+            }
+          ]
+        },
+        {
+          "address": "kava1v4qzm9h50dyfk5lm0tyjz62qyvs3mrcjhfwud8",
+          "coins": [
+            {
+              "amount": "96193856378",
+              "denom": "erc20/tether/usdt"
+            },
+            {
+              "amount": "174900",
+              "denom": "ukava"
+            }
+          ]
+        },
+        {
+          "address": "kava1w8ent9jwwqy2d5s8grq6muk2hqa6kj28vdcglh",
+          "coins": [
+            {
+              "amount": "1000000",
+              "denom": "erc20/tether/usdt"
+            }
+          ]
+        },
+        {
+          "address": "kava1w22m27s66sal35luf2f6jt9ups4kj7q7v34zae",
+          "coins": [
+            {
+              "amount": "71977903",
+              "denom": "erc20/tether/usdt"
+            },
+            {
+              "amount": "13428991",
+              "denom": "ukava"
+            }
+          ]
+        },
+        {
+          "address": "kava1004rr9e45qpm2ylvxymphm8sryvxq3a2zw98x8",
+          "coins": [
+            {
+              "amount": "20000",
+              "denom": "usdx"
+            }
+          ]
+        },
+        {
+          "address": "kava1s2uker5zq8d3ttxk35ze68fa4qn2xn66xhf66k",
+          "coins": [
+            {
+              "amount": "160000",
+              "denom": "erc20/tether/usdt"
+            }
+          ]
+        },
+        {
+          "address": "kava1j8rrc5epz0wppvl7jpy9p7q0u4ky9dceut0yk4",
+          "coins": [
+            {
+              "amount": "17077072",
+              "denom": "erc20/tether/usdt"
+            },
+            {
+              "amount": "100000",
+              "denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2"
+            },
+            {
+              "amount": "12070372",
+              "denom": "ukava"
+            }
+          ]
+        },
+        {
+          "address": "kava1nd0rqaxs6qwh860a6xm2e7v68jzgz39s3nm6nk",
+          "coins": [
+            {
+              "amount": "100000",
+              "denom": "ukava"
+            }
+          ]
+        },
+        {
+          "address": "kava1nw56y3789stusz79kf30gkqlqz2zlza82m38jx",
+          "coins": [
+            {
+              "amount": "1",
+              "denom": "erc20/tether/usdt"
+            },
+            {
+              "amount": "11521044528",
+              "denom": "ukava"
+            }
+          ]
+        },
+        {
+          "address": "kava1nmmg4nyv39ufgjfn029qjeeut8tvvxg5swjpys",
+          "coins": [
+            {
+              "amount": "209001",
+              "denom": "ukava"
+            }
+          ]
+        },
+        {
+          "address": "kava1nu9xjt8y55dh6ueqdetfxfh8njrjpmtjarfker",
+          "coins": [
+            {
+              "amount": "1000000",
+              "denom": "erc20/tether/usdt"
+            }
+          ]
+        },
+        {
+          "address": "kava15srw5yjv53fp42aghxt50k78lfndccu8mpvzzr",
+          "coins": [
+            {
+              "amount": "22939305",
+              "denom": "erc20/tether/usdt"
+            }
+          ]
+        },
+        {
+          "address": "kava14nskpww3yjf0sw3qvgmkrwjlv3mw3hm9sxqhh4",
+          "coins": [
+            {
+              "amount": "1000",
+              "denom": "erc20/tether/usdt"
+            }
+          ]
+        },
+        {
+          "address": "kava1kq2rzz6fq2q7fsu75a9g7cpzjeanmk685s3zdn",
+          "coins": [
+            {
+              "amount": "38094942",
+              "denom": "bnb"
+            },
+            {
+              "amount": "601762532",
+              "denom": "busd"
+            },
+            {
+              "amount": "1411730720598",
+              "denom": "erc20/tether/usdt"
+            },
+            {
+              "amount": "7039555627",
+              "denom": "hard"
+            },
+            {
+              "amount": "20558080",
+              "denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2"
+            },
+            {
+              "amount": "100000",
+              "denom": "ibc/3E6D338287478B97F20FD36455DC367A366EF132AC3DBAEABBA5685F09AFF39F"
+            },
+            {
+              "amount": "500000",
+              "denom": "ibc/3FB835464BA493073A540B3FDE5B52F983FE626F428FA17CC52BAC5EC7D04C6A"
+            },
+            {
+              "amount": "4950000000000",
+              "denom": "ibc/4D622C83933B16DD6C8398D18BD2C3E8501F3EA348478F6790111891E0363FE7"
+            },
+            {
+              "amount": "499465000000000",
+              "denom": "ibc/5D1E5923BCB85D1C518790129A6278D9B493E0941CFAADEC5A0D66FE70EBBF06"
+            },
+            {
+              "amount": "201000000000",
+              "denom": "ibc/63C194F8964AE86454ECFAD75D41FAE490620454FF30CA458E0CBA831250A5E4"
+            },
+            {
+              "amount": "138423793268",
+              "denom": "ibc/72F108F32DEFE985A54272B79F078E581D3ECA751408DF9F725FAF7DCE97CBC0"
+            },
+            {
+              "amount": "1000000",
+              "denom": "ibc/73888451D32A80580E791D13146E3BF68FF0BA34786C11073B63794CDE3134DA"
+            },
+            {
+              "amount": "10000",
+              "denom": "ibc/750CAF0C9E51C33E0E730CBA6BF2DC6889A3C97C5ED28A4DE2152989AD6C3429"
+            },
+            {
+              "amount": "876229",
+              "denom": "ibc/7C74924936C7FBEADF6CD1ABE0F572BCE66CFD3F9FD8BC9075961A01EF87BE3A"
+            },
+            {
+              "amount": "1000000",
+              "denom": "ibc/B2719736BC8BE3AF15336EBEDD5FED70B5D9377CB5CF1F60DABEF5ABB61BCF7A"
+            },
+            {
+              "amount": "109192444",
+              "denom": "ibc/B448C0CA358B958301D328CCDC5D5AD642FC30A6D3AE106FF721DB315F3DDE5C"
+            },
+            {
+              "amount": "13634744901",
+              "denom": "ibc/B8AF5D92165F35AB31F3FC7C7B444B9D240760FA5D406C49D24862BD0284E395"
+            },
+            {
+              "amount": "50000000000000",
+              "denom": "ibc/E105B1176B6B101202CB9FED35524B6FFE94712D7203296789E1F62FD4848C71"
+            },
+            {
+              "amount": "81896798904",
+              "denom": "swp"
+            },
+            {
+              "amount": "221794751024",
+              "denom": "ukava"
+            },
+            {
+              "amount": "2548864443",
+              "denom": "usdx"
+            }
+          ]
+        },
+        {
+          "address": "kava1kx2k3mpugtwtajd4zsykx90cn8xawe546pqsyn",
+          "coins": [
+            {
+              "amount": "35000",
+              "denom": "ukava"
+            }
+          ]
+        },
+        {
+          "address": "kava1hru4a5w0c29wr36l2dgaymqqd4h0vju9yewgs6",
+          "coins": [
+            {
+              "amount": "300",
+              "denom": "erc20/tether/usdt"
+            }
+          ]
+        },
+        {
+          "address": "kava1hvqewh6lm54daqdn928y6px2amm3d5p7736fk8",
+          "coins": [
+            {
+              "amount": "126421678",
+              "denom": "erc20/tether/usdt"
+            },
+            {
+              "amount": "9726753",
+              "denom": "ukava"
+            }
+          ]
+        },
+        {
+          "address": "kava1cklm6dh7d6vcgkgpzuahhn3t7chy9llq7muhh4",
+          "coins": [
+            {
+              "amount": "331744889882",
+              "denom": "erc20/tether/usdt"
+            },
+            {
+              "amount": "102525695",
+              "denom": "ukava"
+            }
+          ]
+        },
+        {
+          "address": "kava1e208ua3rjzua3hxzkfefz9nl3sz42lt0vkj36f",
+          "coins": [
+            {
+              "amount": "1259209544",
+              "denom": "erc20/tether/usdt"
+            }
+          ]
+        },
+        {
+          "address": "kava1ekte4vu7g6hn5tvaf68yvxuqlagxjde7r352h5",
+          "coins": [
+            {
+              "amount": "3100402",
+              "denom": "erc20/tether/usdt"
+            },
+            {
+              "amount": "10993",
+              "denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2"
+            },
+            {
+              "amount": "592849",
+              "denom": "usdx"
+            }
+          ]
+        },
+        {
+          "address": "kava1e7wq2m6tvfvzp09f0yt5g8xvpkv5gmv5jvpa0m",
+          "coins": [
+            {
+              "amount": "623000",
+              "denom": "erc20/tether/usdt"
+            }
+          ]
+        },
+        {
+          "address": "kava17q5av7jldcecm5ta73k8nympx6gru3zhnrsygr",
+          "coins": [
+            {
+              "amount": "9538646355",
+              "denom": "erc20/tether/usdt"
+            },
+            {
+              "amount": "6252",
+              "denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2"
+            },
+            {
+              "amount": "886062005",
+              "denom": "ukava"
+            }
+          ]
+        },
+        {
+          "address": "kava17sael2kcmm8npe2pmkxj3un90xfg60vvgqss46",
+          "coins": [
+            {
+              "amount": "6377",
+              "denom": "ibc/08646A1BBD26646B12EB4088D7EF6B6091BC4AD36A3921CA6083160FE4A8147D"
+            },
+            {
+              "amount": "400000",
+              "denom": "ibc/2BBF3EEB88F4BB5285A5075DE1B40EF65E5028947B7751096FFF9D05585ACFD1"
+            },
+            {
+              "amount": "1000000",
+              "denom": "ibc/2DBD8C881802B4245F157844D7E4DED558F010941639280C4922D7B8CA693BFE"
+            },
+            {
+              "amount": "734136550",
+              "denom": "ibc/30C9FA3DF80892CF4615A84845349EAD427670CB38C6B03B0388BE8543B2AB4D"
+            },
+            {
+              "amount": "500000",
+              "denom": "ibc/4C953E392F3356F67193EEB20EAE8AEC77E7F303CB790EA6E8B272B61E4FC463"
+            },
+            {
+              "amount": "5244581069",
+              "denom": "ibc/815FC81EB6BD612206BD9A9909A02F7691D24A5B97CDFE2124B1BDCA9D4AB14C"
+            },
+            {
+              "amount": "1000000000",
+              "denom": "ibc/A1E1A20C1E4F2F76F301DA625CC476FBD0FCD8CA94DAF60814CA5257B6CD3E3E"
+            },
+            {
+              "amount": "350000",
+              "denom": "ibc/D3061CE56780EE3EC35058B8D01F6751F7B21032F1B1A171C13D481F95EBAC75"
+            },
+            {
+              "amount": "155000000",
+              "denom": "ibc/EABFDE7CD6F649871FA98F938563F5F92D8DFD1D41C0DD878A58912ACF7096F3"
+            }
+          ]
+        },
+        {
+          "address": "kava17nrp0hwgtjfh8ucs695gxxp7jv0asyu6gwv58x",
+          "coins": [
+            {
+              "amount": "4857178300708",
+              "denom": "erc20/tether/usdt"
+            },
+            {
+              "amount": "22000",
+              "denom": "ibc/AC59E5954242F951189C8033151DB1F5D8583542A8078DC856C54C80D61A22FE"
+            },
+            {
+              "amount": "1019900",
+              "denom": "ibc/D48AF41B67879B5154C1897EF3BF92501826D6DD1B575FE3824F69983C68DE80"
+            }
+          ]
+        },
+        {
+          "address": "kava1lzh48w3wyj23zcjxtjhaw25xlcafceclxd9czk",
+          "coins": [
+            {
+              "amount": "19711878567",
+              "denom": "erc20/tether/usdt"
+            },
+            {
+              "amount": "52671459",
+              "denom": "ukava"
+            }
+          ]
         }
       ],
       "supply": [],
@@ -1147,9 +1716,7 @@
           "base_committee": {
             "id": "1",
             "description": "Kava Stability Committee",
-            "members": [
-              "kava1r3emvfrc242jcfr9f9ygc34ztpp58xxu6spvdq"
-            ],
+            "members": ["kava1r3emvfrc242jcfr9f9ygc34ztpp58xxu6spvdq"],
             "permissions": [
               {
                 "@type": "/kava.committee.v1beta1.TextPermission"
@@ -1245,9 +1812,7 @@
           "base_committee": {
             "id": "2",
             "description": "Kava Safety Committee",
-            "members": [
-              "kava1r3emvfrc242jcfr9f9ygc34ztpp58xxu6spvdq"
-            ],
+            "members": ["kava1r3emvfrc242jcfr9f9ygc34ztpp58xxu6spvdq"],
             "permissions": [
               {
                 "@type": "/kava.committee.v1beta1.SoftwareUpgradePermission"
@@ -1263,9 +1828,7 @@
           "base_committee": {
             "id": "3",
             "description": "Kava God Committee (testing only)",
-            "members": [
-              "kava1r3emvfrc242jcfr9f9ygc34ztpp58xxu6spvdq"
-            ],
+            "members": ["kava1r3emvfrc242jcfr9f9ygc34ztpp58xxu6spvdq"],
             "permissions": [
               {
                 "@type": "/kava.committee.v1beta1.GodPermission"
@@ -1281,9 +1844,7 @@
           "base_committee": {
             "id": "4",
             "description": "HARD Governance Committee",
-            "members": [
-              "kava1r3emvfrc242jcfr9f9ygc34ztpp58xxu6spvdq"
-            ],
+            "members": ["kava1r3emvfrc242jcfr9f9ygc34ztpp58xxu6spvdq"],
             "permissions": [
               {
                 "@type": "/kava.committee.v1beta1.TextPermission"
@@ -1326,9 +1887,7 @@
           "base_committee": {
             "id": "5",
             "description": "SWP Governance Committee",
-            "members": [
-              "kava1r3emvfrc242jcfr9f9ygc34ztpp58xxu6spvdq"
-            ],
+            "members": ["kava1r3emvfrc242jcfr9f9ygc34ztpp58xxu6spvdq"],
             "permissions": [
               {
                 "@type": "/kava.committee.v1beta1.TextPermission"
@@ -1420,27 +1979,19 @@
         "allowed_vaults": [
           {
             "denom": "usdx",
-            "strategies": [
-              "STRATEGY_TYPE_HARD"
-            ]
+            "strategies": ["STRATEGY_TYPE_HARD"]
           },
           {
             "denom": "ukava",
-            "strategies": [
-              "STRATEGY_TYPE_SAVINGS"
-            ]
+            "strategies": ["STRATEGY_TYPE_SAVINGS"]
           },
           {
             "denom": "bkava",
-            "strategies": [
-              "STRATEGY_TYPE_SAVINGS"
-            ]
+            "strategies": ["STRATEGY_TYPE_SAVINGS"]
           },
           {
             "denom": "erc20/multichain/usdc",
-            "strategies": [
-              "STRATEGY_TYPE_SAVINGS"
-            ]
+            "strategies": ["STRATEGY_TYPE_SAVINGS"]
           }
         ]
       },
@@ -2705,11 +3256,7 @@
         "clients_consensus": [],
         "clients_metadata": [],
         "params": {
-          "allowed_clients": [
-            "06-solomachine",
-            "07-tendermint",
-            "09-localhost"
-          ]
+          "allowed_clients": ["06-solomachine", "07-tendermint", "09-localhost"]
         },
         "create_localhost": false,
         "next_client_sequence": "0"
@@ -2723,14 +3270,1887 @@
         }
       },
       "channel_genesis": {
-        "channels": [],
+        "channels": [
+          {
+            "channel_id": "channel-1",
+            "connection_hops": ["connection-1"],
+            "counterparty": {
+              "channel_id": "channel-143",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-10",
+            "connection_hops": ["connection-10"],
+            "counterparty": {
+              "channel_id": "channel-3",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-100",
+            "connection_hops": ["connection-134"],
+            "counterparty": {
+              "channel_id": "channel-29",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-101",
+            "connection_hops": ["connection-135"],
+            "counterparty": {
+              "channel_id": "channel-85",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-102",
+            "connection_hops": ["connection-137"],
+            "counterparty": {
+              "channel_id": "channel-34",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-103",
+            "connection_hops": ["connection-140"],
+            "counterparty": {
+              "channel_id": "channel-73",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-104",
+            "connection_hops": ["connection-141"],
+            "counterparty": {
+              "channel_id": "channel-120",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-105",
+            "connection_hops": ["connection-142"],
+            "counterparty": {
+              "channel_id": "channel-72",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-106",
+            "connection_hops": ["connection-143"],
+            "counterparty": {
+              "channel_id": "channel-22",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-107",
+            "connection_hops": ["connection-144"],
+            "counterparty": {
+              "channel_id": "channel-159",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-108",
+            "connection_hops": ["connection-146"],
+            "counterparty": {
+              "channel_id": "channel-102",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-109",
+            "connection_hops": ["connection-148"],
+            "counterparty": {
+              "channel_id": "channel-79",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-11",
+            "connection_hops": ["connection-11"],
+            "counterparty": {
+              "channel_id": "channel-4",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-110",
+            "connection_hops": ["connection-149"],
+            "counterparty": {
+              "channel_id": "channel-76",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-111",
+            "connection_hops": ["connection-151"],
+            "counterparty": {
+              "channel_id": "channel-87",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-112",
+            "connection_hops": ["connection-152"],
+            "counterparty": {
+              "channel_id": "channel-23",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-113",
+            "connection_hops": ["connection-153"],
+            "counterparty": {
+              "channel_id": "channel-50",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-114",
+            "connection_hops": ["connection-154"],
+            "counterparty": {
+              "channel_id": "channel-101",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_TRYOPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-115",
+            "connection_hops": ["connection-155"],
+            "counterparty": {
+              "channel_id": "channel-43",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-116",
+            "connection_hops": ["connection-156"],
+            "counterparty": {
+              "channel_id": "channel-95",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-117",
+            "connection_hops": ["connection-157"],
+            "counterparty": {
+              "channel_id": "channel-83",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-118",
+            "connection_hops": ["connection-158"],
+            "counterparty": {
+              "channel_id": "channel-185",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_TRYOPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-119",
+            "connection_hops": ["connection-160"],
+            "counterparty": {
+              "channel_id": "channel-98",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-12",
+            "connection_hops": ["connection-12"],
+            "counterparty": {
+              "channel_id": "channel-5",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-120",
+            "connection_hops": ["connection-162"],
+            "counterparty": {
+              "channel_id": "channel-48",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-121",
+            "connection_hops": ["connection-165"],
+            "counterparty": {
+              "channel_id": "channel-51",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-122",
+            "connection_hops": ["connection-166"],
+            "counterparty": {
+              "channel_id": "channel-143",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-123",
+            "connection_hops": ["connection-167"],
+            "counterparty": {
+              "channel_id": "channel-2",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-124",
+            "connection_hops": ["connection-168"],
+            "counterparty": {
+              "channel_id": "channel-7",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-125",
+            "connection_hops": ["connection-169"],
+            "counterparty": {
+              "channel_id": "channel-11",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-126",
+            "connection_hops": ["connection-170"],
+            "counterparty": {
+              "channel_id": "channel-54",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-127",
+            "connection_hops": ["connection-171"],
+            "counterparty": {
+              "channel_id": "channel-24",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-128",
+            "connection_hops": ["connection-172"],
+            "counterparty": {
+              "channel_id": "channel-25",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-129",
+            "connection_hops": ["connection-173"],
+            "counterparty": {
+              "channel_id": "channel-216",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-13",
+            "connection_hops": ["connection-13"],
+            "counterparty": {
+              "channel_id": "channel-4",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-130",
+            "connection_hops": ["connection-175"],
+            "counterparty": {
+              "channel_id": "channel-17",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-131",
+            "connection_hops": ["connection-176"],
+            "counterparty": {
+              "channel_id": "channel-36",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-132",
+            "connection_hops": ["connection-181"],
+            "counterparty": {
+              "channel_id": "channel-18",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-133",
+            "connection_hops": ["connection-182"],
+            "counterparty": {
+              "channel_id": "channel-63",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-134",
+            "connection_hops": ["connection-189"],
+            "counterparty": {
+              "channel_id": "channel-129",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-135",
+            "connection_hops": ["connection-193"],
+            "counterparty": {
+              "channel_id": "channel-6",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-136",
+            "connection_hops": ["connection-194"],
+            "counterparty": {
+              "channel_id": "channel-36",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-137",
+            "connection_hops": ["connection-195"],
+            "counterparty": {
+              "channel_id": "channel-7",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-138",
+            "connection_hops": ["connection-196"],
+            "counterparty": {
+              "channel_id": "channel-272",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-139",
+            "connection_hops": ["connection-197"],
+            "counterparty": {
+              "channel_id": "channel-37",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-14",
+            "connection_hops": ["connection-14"],
+            "counterparty": {
+              "channel_id": "channel-0",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_TRYOPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-140",
+            "connection_hops": ["connection-198"],
+            "counterparty": {
+              "channel_id": "channel-13",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-141",
+            "connection_hops": ["connection-199"],
+            "counterparty": {
+              "channel_id": "channel-11",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-142",
+            "connection_hops": ["connection-200"],
+            "counterparty": {
+              "channel_id": "channel-18",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-143",
+            "connection_hops": ["connection-202"],
+            "counterparty": {
+              "channel_id": "channel-88",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-144",
+            "connection_hops": ["connection-203"],
+            "counterparty": {
+              "channel_id": "channel-3",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-145",
+            "connection_hops": ["connection-204"],
+            "counterparty": {
+              "channel_id": "channel-4",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-146",
+            "connection_hops": ["connection-205"],
+            "counterparty": {
+              "channel_id": "channel-1",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-147",
+            "connection_hops": ["connection-209"],
+            "counterparty": {
+              "channel_id": "channel-0",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-148",
+            "connection_hops": ["connection-210"],
+            "counterparty": {
+              "channel_id": "channel-158",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-149",
+            "connection_hops": ["connection-212"],
+            "counterparty": {
+              "channel_id": "channel-0",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-15",
+            "connection_hops": ["connection-15"],
+            "counterparty": {
+              "channel_id": "channel-1",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_TRYOPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-150",
+            "connection_hops": ["connection-213"],
+            "counterparty": {
+              "channel_id": "channel-0",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-151",
+            "connection_hops": ["connection-215"],
+            "counterparty": {
+              "channel_id": "channel-88",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-152",
+            "connection_hops": ["connection-216"],
+            "counterparty": {
+              "channel_id": "channel-0",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-153",
+            "connection_hops": ["connection-218"],
+            "counterparty": {
+              "channel_id": "channel-0",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-154",
+            "connection_hops": ["connection-219"],
+            "counterparty": {
+              "channel_id": "channel-0",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-155",
+            "connection_hops": ["connection-220"],
+            "counterparty": {
+              "channel_id": "channel-0",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-156",
+            "connection_hops": ["connection-221"],
+            "counterparty": {
+              "channel_id": "channel-13",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-16",
+            "connection_hops": ["connection-17"],
+            "counterparty": {
+              "channel_id": "channel-3",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-17",
+            "connection_hops": ["connection-18"],
+            "counterparty": {
+              "channel_id": "channel-4",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-18",
+            "connection_hops": ["connection-19"],
+            "counterparty": {
+              "channel_id": "channel-5",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-19",
+            "connection_hops": ["connection-21"],
+            "counterparty": {
+              "channel_id": "channel-6",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-2",
+            "connection_hops": ["connection-3"],
+            "counterparty": {
+              "channel_id": "",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_INIT",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-20",
+            "connection_hops": ["connection-22"],
+            "counterparty": {
+              "channel_id": "channel-7",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-21",
+            "connection_hops": ["connection-23"],
+            "counterparty": {
+              "channel_id": "channel-8",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-22",
+            "connection_hops": ["connection-23"],
+            "counterparty": {
+              "channel_id": "channel-8",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_TRYOPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-23",
+            "connection_hops": ["connection-25"],
+            "counterparty": {
+              "channel_id": "channel-9",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-24",
+            "connection_hops": ["connection-27"],
+            "counterparty": {
+              "channel_id": "channel-10",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-25",
+            "connection_hops": ["connection-29"],
+            "counterparty": {
+              "channel_id": "channel-11",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-26",
+            "connection_hops": ["connection-30"],
+            "counterparty": {
+              "channel_id": "channel-12",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-27",
+            "connection_hops": ["connection-30"],
+            "counterparty": {
+              "channel_id": "channel-12",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_TRYOPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-28",
+            "connection_hops": ["connection-31"],
+            "counterparty": {
+              "channel_id": "channel-13",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-29",
+            "connection_hops": ["connection-32"],
+            "counterparty": {
+              "channel_id": "channel-14",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-3",
+            "connection_hops": ["connection-3"],
+            "counterparty": {
+              "channel_id": "channel-37",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-30",
+            "connection_hops": ["connection-33"],
+            "counterparty": {
+              "channel_id": "channel-15",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-31",
+            "connection_hops": ["connection-34"],
+            "counterparty": {
+              "channel_id": "channel-16",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-32",
+            "connection_hops": ["connection-35"],
+            "counterparty": {
+              "channel_id": "channel-17",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-33",
+            "connection_hops": ["connection-36"],
+            "counterparty": {
+              "channel_id": "channel-18",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-34",
+            "connection_hops": ["connection-37"],
+            "counterparty": {
+              "channel_id": "channel-19",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-35",
+            "connection_hops": ["connection-37"],
+            "counterparty": {
+              "channel_id": "channel-19",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_TRYOPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-36",
+            "connection_hops": ["connection-39"],
+            "counterparty": {
+              "channel_id": "channel-20",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-37",
+            "connection_hops": ["connection-40"],
+            "counterparty": {
+              "channel_id": "channel-21",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-38",
+            "connection_hops": ["connection-41"],
+            "counterparty": {
+              "channel_id": "channel-22",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-39",
+            "connection_hops": ["connection-42"],
+            "counterparty": {
+              "channel_id": "channel-23",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-4",
+            "connection_hops": ["connection-4"],
+            "counterparty": {
+              "channel_id": "channel-24",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-40",
+            "connection_hops": ["connection-42"],
+            "counterparty": {
+              "channel_id": "channel-23",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_TRYOPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-41",
+            "connection_hops": ["connection-46"],
+            "counterparty": {
+              "channel_id": "channel-24",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-42",
+            "connection_hops": ["connection-47"],
+            "counterparty": {
+              "channel_id": "channel-25",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-43",
+            "connection_hops": ["connection-47"],
+            "counterparty": {
+              "channel_id": "channel-25",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_TRYOPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-44",
+            "connection_hops": ["connection-48"],
+            "counterparty": {
+              "channel_id": "channel-26",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-45",
+            "connection_hops": ["connection-49"],
+            "counterparty": {
+              "channel_id": "channel-27",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-46",
+            "connection_hops": ["connection-50"],
+            "counterparty": {
+              "channel_id": "channel-28",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-47",
+            "connection_hops": ["connection-51"],
+            "counterparty": {
+              "channel_id": "channel-29",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-48",
+            "connection_hops": ["connection-53"],
+            "counterparty": {
+              "channel_id": "channel-30",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-49",
+            "connection_hops": ["connection-55"],
+            "counterparty": {
+              "channel_id": "channel-31",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-5",
+            "connection_hops": ["connection-5"],
+            "counterparty": {
+              "channel_id": "channel-37",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-50",
+            "connection_hops": ["connection-56"],
+            "counterparty": {
+              "channel_id": "channel-32",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-51",
+            "connection_hops": ["connection-58"],
+            "counterparty": {
+              "channel_id": "channel-33",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-52",
+            "connection_hops": ["connection-59"],
+            "counterparty": {
+              "channel_id": "channel-34",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-53",
+            "connection_hops": ["connection-59"],
+            "counterparty": {
+              "channel_id": "channel-34",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_TRYOPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-54",
+            "connection_hops": ["connection-60"],
+            "counterparty": {
+              "channel_id": "channel-35",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-55",
+            "connection_hops": ["connection-61"],
+            "counterparty": {
+              "channel_id": "channel-36",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-56",
+            "connection_hops": ["connection-63"],
+            "counterparty": {
+              "channel_id": "channel-37",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-57",
+            "connection_hops": ["connection-64"],
+            "counterparty": {
+              "channel_id": "channel-38",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-58",
+            "connection_hops": ["connection-65"],
+            "counterparty": {
+              "channel_id": "channel-39",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-59",
+            "connection_hops": ["connection-65"],
+            "counterparty": {
+              "channel_id": "channel-40",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-6",
+            "connection_hops": ["connection-6"],
+            "counterparty": {
+              "channel_id": "channel-32",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-60",
+            "connection_hops": ["connection-67"],
+            "counterparty": {
+              "channel_id": "channel-41",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-61",
+            "connection_hops": ["connection-68"],
+            "counterparty": {
+              "channel_id": "channel-42",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-62",
+            "connection_hops": ["connection-69"],
+            "counterparty": {
+              "channel_id": "channel-43",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-63",
+            "connection_hops": ["connection-71"],
+            "counterparty": {
+              "channel_id": "channel-44",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-64",
+            "connection_hops": ["connection-72"],
+            "counterparty": {
+              "channel_id": "channel-45",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-65",
+            "connection_hops": ["connection-74"],
+            "counterparty": {
+              "channel_id": "channel-46",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-66",
+            "connection_hops": ["connection-75"],
+            "counterparty": {
+              "channel_id": "channel-51",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-67",
+            "connection_hops": ["connection-76"],
+            "counterparty": {
+              "channel_id": "channel-52",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-68",
+            "connection_hops": ["connection-77"],
+            "counterparty": {
+              "channel_id": "channel-60",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-69",
+            "connection_hops": ["connection-78"],
+            "counterparty": {
+              "channel_id": "channel-61",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-7",
+            "connection_hops": ["connection-7"],
+            "counterparty": {
+              "channel_id": "channel-213",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-70",
+            "connection_hops": ["connection-79"],
+            "counterparty": {
+              "channel_id": "channel-62",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-71",
+            "connection_hops": ["connection-80"],
+            "counterparty": {
+              "channel_id": "channel-63",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-72",
+            "connection_hops": ["connection-82"],
+            "counterparty": {
+              "channel_id": "channel-0",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_TRYOPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-73",
+            "connection_hops": ["connection-83"],
+            "counterparty": {
+              "channel_id": "channel-1",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-74",
+            "connection_hops": ["connection-85"],
+            "counterparty": {
+              "channel_id": "channel-2",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-75",
+            "connection_hops": ["connection-86"],
+            "counterparty": {
+              "channel_id": "channel-3",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-76",
+            "connection_hops": ["connection-87"],
+            "counterparty": {
+              "channel_id": "channel-4",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-77",
+            "connection_hops": ["connection-90"],
+            "counterparty": {
+              "channel_id": "channel-5",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-78",
+            "connection_hops": ["connection-97"],
+            "counterparty": {
+              "channel_id": "",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_INIT",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-79",
+            "connection_hops": ["connection-97"],
+            "counterparty": {
+              "channel_id": "channel-9",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-8",
+            "connection_hops": ["connection-8"],
+            "counterparty": {
+              "channel_id": "channel-225",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-80",
+            "connection_hops": ["connection-98"],
+            "counterparty": {
+              "channel_id": "channel-10",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-81",
+            "connection_hops": ["connection-99"],
+            "counterparty": {
+              "channel_id": "channel-0",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-82",
+            "connection_hops": ["connection-106"],
+            "counterparty": {
+              "channel_id": "channel-45",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-83",
+            "connection_hops": ["connection-108"],
+            "counterparty": {
+              "channel_id": "channel-39",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-84",
+            "connection_hops": ["connection-111"],
+            "counterparty": {
+              "channel_id": "channel-1",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-85",
+            "connection_hops": ["connection-112"],
+            "counterparty": {
+              "channel_id": "channel-2",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-86",
+            "connection_hops": ["connection-113"],
+            "counterparty": {
+              "channel_id": "channel-3",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-87",
+            "connection_hops": ["connection-114"],
+            "counterparty": {
+              "channel_id": "channel-13",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-88",
+            "connection_hops": ["connection-117"],
+            "counterparty": {
+              "channel_id": "channel-100",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-89",
+            "connection_hops": ["connection-118"],
+            "counterparty": {
+              "channel_id": "channel-147",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-9",
+            "connection_hops": ["connection-9"],
+            "counterparty": {
+              "channel_id": "channel-56",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-90",
+            "connection_hops": ["connection-119"],
+            "counterparty": {
+              "channel_id": "channel-45",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-91",
+            "connection_hops": ["connection-120"],
+            "counterparty": {
+              "channel_id": "channel-33",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-92",
+            "connection_hops": ["connection-121"],
+            "counterparty": {
+              "channel_id": "channel-38",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-93",
+            "connection_hops": ["connection-122"],
+            "counterparty": {
+              "channel_id": "channel-36",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-94",
+            "connection_hops": ["connection-123"],
+            "counterparty": {
+              "channel_id": "channel-89",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-95",
+            "connection_hops": ["connection-124"],
+            "counterparty": {
+              "channel_id": "channel-30",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-96",
+            "connection_hops": ["connection-128"],
+            "counterparty": {
+              "channel_id": "channel-53",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-97",
+            "connection_hops": ["connection-129"],
+            "counterparty": {
+              "channel_id": "channel-55",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-98",
+            "connection_hops": ["connection-130"],
+            "counterparty": {
+              "channel_id": "channel-21",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          },
+          {
+            "channel_id": "channel-99",
+            "connection_hops": ["connection-132"],
+            "counterparty": {
+              "channel_id": "channel-45",
+              "port_id": "transfer"
+            },
+            "ordering": "ORDER_UNORDERED",
+            "port_id": "transfer",
+            "state": "STATE_OPEN",
+            "version": "ics20-1"
+          }
+        ],
         "acknowledgements": [],
         "commitments": [],
         "receipts": [],
         "send_sequences": [],
         "recv_sequences": [],
         "ack_sequences": [],
-        "next_channel_sequence": "0"
+        "next_channel_sequence": "157"
       }
     },
     "incentive": {
@@ -3408,315 +5828,245 @@
             "market_id": "bnb:usd",
             "base_asset": "bnb",
             "quote_asset": "usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "active": true
           },
           {
             "market_id": "bnb:usd:30",
             "base_asset": "bnb",
             "quote_asset": "usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "active": true
           },
           {
             "market_id": "btc:usd",
             "base_asset": "btc",
             "quote_asset": "usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "active": true
           },
           {
             "market_id": "btc:usd:30",
             "base_asset": "btc",
             "quote_asset": "usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "active": true
           },
           {
             "market_id": "xrp:usd",
             "base_asset": "xrp",
             "quote_asset": "usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "active": true
           },
           {
             "market_id": "xrp:usd:30",
             "base_asset": "xrp",
             "quote_asset": "usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "active": true
           },
           {
             "market_id": "busd:usd",
             "base_asset": "busd",
             "quote_asset": "usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "active": true
           },
           {
             "market_id": "busd:usd:30",
             "base_asset": "busd",
             "quote_asset": "usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "active": true
           },
           {
             "market_id": "kava:usd",
             "base_asset": "kava",
             "quote_asset": "usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "active": true
           },
           {
             "market_id": "kava:usd:30",
             "base_asset": "kava",
             "quote_asset": "usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "active": true
           },
           {
             "market_id": "hard:usd",
             "base_asset": "hard",
             "quote_asset": "usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "active": true
           },
           {
             "market_id": "hard:usd:30",
             "base_asset": "hard",
             "quote_asset": "usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "active": true
           },
           {
             "market_id": "usdx:usd",
             "base_asset": "usdx",
             "quote_asset": "usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "active": true
           },
           {
             "market_id": "usdx:usd:30",
             "base_asset": "usdx",
             "quote_asset": "usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "active": true
           },
           {
             "market_id": "usdx:usd:720",
             "base_asset": "usdx",
             "quote_asset": "usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "active": true
           },
           {
             "market_id": "swp:usd",
             "base_asset": "swp",
             "quote_asset": "usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "active": true
           },
           {
             "market_id": "swp:usd:30",
             "base_asset": "swp",
             "quote_asset": "usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "active": true
           },
           {
             "market_id": "atom:usd",
             "base_asset": "atom",
             "quote_asset": "usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "active": true
           },
           {
             "market_id": "atom:usd:30",
             "base_asset": "atom",
             "quote_asset": "usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "active": true
           },
           {
             "market_id": "akt:usd",
             "base_asset": "akt",
             "quote_asset": "usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "active": true
           },
           {
             "market_id": "akt:usd:30",
             "base_asset": "akt",
             "quote_asset": "usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "active": true
           },
           {
             "market_id": "luna:usd",
             "base_asset": "luna",
             "quote_asset": "usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "active": true
           },
           {
             "market_id": "luna:usd:30",
             "base_asset": "luna",
             "quote_asset": "usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "active": true
           },
           {
             "market_id": "osmo:usd",
             "base_asset": "osmo",
             "quote_asset": "usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "active": true
           },
           {
             "market_id": "osmo:usd:30",
             "base_asset": "osmo",
             "quote_asset": "usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "active": true
           },
           {
             "market_id": "ust:usd",
             "base_asset": "ust",
             "quote_asset": "usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "active": true
           },
           {
             "market_id": "ust:usd:30",
             "base_asset": "ust",
             "quote_asset": "usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "active": true
           },
           {
             "market_id": "usdc:usd",
             "base_asset": "usdc",
             "quote_asset": "usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "active": true
           },
           {
             "market_id": "usdc:usd:30",
             "base_asset": "usdc",
             "quote_asset": "usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "active": true
           },
           {
             "market_id": "usdt:usd",
             "base_asset": "usdt",
             "quote_asset": "usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "active": true
           },
           {
             "market_id": "usdt:usd:30",
             "base_asset": "usdt",
             "quote_asset": "usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "active": true
           },
           {
             "market_id": "dai:usd",
             "base_asset": "dai",
             "quote_asset": "usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "active": true
           },
           {
             "market_id": "dai:usd:30",
             "base_asset": "dai",
             "quote_asset": "usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "active": true
           },
           {
             "market_id": "eth:usd",
             "base_asset": "eth",
             "quote_asset": "usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "active": true
           },
           {
             "market_id": "eth:usd:30",
             "base_asset": "eth",
             "quote_asset": "usd",
-            "oracles": [
-              "kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"
-            ],
+            "oracles": ["kava1acge4tcvhf3q6fh53fgwaa7vsq40wvx6wn50em"],
             "active": true
           }
         ]
@@ -4098,7 +6448,209 @@
       "params": {
         "send_enabled": true,
         "receive_enabled": true
-      }
+      },
+      "total_escrowed": [
+        {
+          "amount": "38285969",
+          "denom": "bnb"
+        },
+        {
+          "amount": "1701762532",
+          "denom": "busd"
+        },
+        {
+          "amount": "151397066254",
+          "denom": "erc20/tether/usdt"
+        },
+        {
+          "amount": "7417982457",
+          "denom": "hard"
+        },
+        {
+          "amount": "1935041847",
+          "denom": "ibc/0471F1C4E7AFD3F07702BEF6DC365268D64570F7C1FDC98EA6098DD6DE59817B"
+        },
+        {
+          "amount": "6377",
+          "denom": "ibc/08646A1BBD26646B12EB4088D7EF6B6091BC4AD36A3921CA6083160FE4A8147D"
+        },
+        {
+          "amount": "41875325",
+          "denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2"
+        },
+        {
+          "amount": "1276229",
+          "denom": "ibc/2BBF3EEB88F4BB5285A5075DE1B40EF65E5028947B7751096FFF9D05585ACFD1"
+        },
+        {
+          "amount": "1000000",
+          "denom": "ibc/2DBD8C881802B4245F157844D7E4DED558F010941639280C4922D7B8CA693BFE"
+        },
+        {
+          "amount": "2000000000000",
+          "denom": "ibc/2FEB22EDE1AA35104266A97AEC454C1DD3855385DE995DE6DD8A5CEE1D3AA171"
+        },
+        {
+          "amount": "913637750",
+          "denom": "ibc/30C9FA3DF80892CF4615A84845349EAD427670CB38C6B03B0388BE8543B2AB4D"
+        },
+        {
+          "amount": "128000000",
+          "denom": "ibc/32EBA8A841CB2F76702CD7922305FD2E9848C8896D51829955024C8175EBC46D"
+        },
+        {
+          "amount": "1000000",
+          "denom": "ibc/34DFCA8EEDE4A14ECDA79AC56E024EE3AA497DC4D7E812DE9FD09B17D348E282"
+        },
+        {
+          "amount": "128000000",
+          "denom": "ibc/34F518637AA8535072B918F6270AC25501DEF920CB0C25A505EA81B3DC534466"
+        },
+        {
+          "amount": "100000",
+          "denom": "ibc/3E6D338287478B97F20FD36455DC367A366EF132AC3DBAEABBA5685F09AFF39F"
+        },
+        {
+          "amount": "500000",
+          "denom": "ibc/3FB835464BA493073A540B3FDE5B52F983FE626F428FA17CC52BAC5EC7D04C6A"
+        },
+        {
+          "amount": "315000000000",
+          "denom": "ibc/4AC88A18DD2C53282258AABCB045ACB5673302D606DD5FAE6D14B1295F0D66C0"
+        },
+        {
+          "amount": "500000",
+          "denom": "ibc/4C953E392F3356F67193EEB20EAE8AEC77E7F303CB790EA6E8B272B61E4FC463"
+        },
+        {
+          "amount": "50000000000000",
+          "denom": "ibc/4D622C83933B16DD6C8398D18BD2C3E8501F3EA348478F6790111891E0363FE7"
+        },
+        {
+          "amount": "200000000000000",
+          "denom": "ibc/4E18C5B247C122A6380C8CF6E3B2AEF252864733FD010E3E844BC28925B0261C"
+        },
+        {
+          "amount": "50000000000000",
+          "denom": "ibc/5149EACA571130C26F97CB76E83EA0BDB408B47620A8D167B945344E645657E1"
+        },
+        {
+          "amount": "499465000000000",
+          "denom": "ibc/5D1E5923BCB85D1C518790129A6278D9B493E0941CFAADEC5A0D66FE70EBBF06"
+        },
+        {
+          "amount": "201000000000",
+          "denom": "ibc/63C194F8964AE86454ECFAD75D41FAE490620454FF30CA458E0CBA831250A5E4"
+        },
+        {
+          "amount": "1000000",
+          "denom": "ibc/6DD9A114AB2841CF013E1B0A4F5ABD76ABAF811D4267D30E7BC90BB2545B16D6"
+        },
+        {
+          "amount": "143000000000",
+          "denom": "ibc/7273E504D39CDB7983C428107C7B7AB4D4B89BC66709C4891D68E0455A8D61E0"
+        },
+        {
+          "amount": "138423793268",
+          "denom": "ibc/72F108F32DEFE985A54272B79F078E581D3ECA751408DF9F725FAF7DCE97CBC0"
+        },
+        {
+          "amount": "1000000",
+          "denom": "ibc/73888451D32A80580E791D13146E3BF68FF0BA34786C11073B63794CDE3134DA"
+        },
+        {
+          "amount": "10000",
+          "denom": "ibc/750CAF0C9E51C33E0E730CBA6BF2DC6889A3C97C5ED28A4DE2152989AD6C3429"
+        },
+        {
+          "amount": "163000000000",
+          "denom": "ibc/78525963E6C9E257454B004AFF59AF8681AE8853E30B1774447F00659A395221"
+        },
+        {
+          "amount": "1000000",
+          "denom": "ibc/799FDD409719A1122586A629AE8FCA17380351A51C1F47A80A1B8E7F2A491098"
+        },
+        {
+          "amount": "876229",
+          "denom": "ibc/7C74924936C7FBEADF6CD1ABE0F572BCE66CFD3F9FD8BC9075961A01EF87BE3A"
+        },
+        {
+          "amount": "5250581069",
+          "denom": "ibc/815FC81EB6BD612206BD9A9909A02F7691D24A5B97CDFE2124B1BDCA9D4AB14C"
+        },
+        {
+          "amount": "1000000000000000",
+          "denom": "ibc/9D61880BE44FD804422D76432B9B37DA6FE6F58B30F039BD3F289E3806698A8E"
+        },
+        {
+          "amount": "1015000000",
+          "denom": "ibc/A1E1A20C1E4F2F76F301DA625CC476FBD0FCD8CA94DAF60814CA5257B6CD3E3E"
+        },
+        {
+          "amount": "1019961",
+          "denom": "ibc/A8CC572688E2C90F0F4C58D5A972622A4E2C105AAD3650DFC619D2F6511775EE"
+        },
+        {
+          "amount": "22000",
+          "denom": "ibc/AC59E5954242F951189C8033151DB1F5D8583542A8078DC856C54C80D61A22FE"
+        },
+        {
+          "amount": "1000000",
+          "denom": "ibc/B2719736BC8BE3AF15336EBEDD5FED70B5D9377CB5CF1F60DABEF5ABB61BCF7A"
+        },
+        {
+          "amount": "133456802",
+          "denom": "ibc/B448C0CA358B958301D328CCDC5D5AD642FC30A6D3AE106FF721DB315F3DDE5C"
+        },
+        {
+          "amount": "15244744901",
+          "denom": "ibc/B8AF5D92165F35AB31F3FC7C7B444B9D240760FA5D406C49D24862BD0284E395"
+        },
+        {
+          "amount": "2000000",
+          "denom": "ibc/BDADF655A81BF0888E6D81E13E7F4B1C1E1FBE9AB0D513AC773EA6AAC798DDFF"
+        },
+        {
+          "amount": "2788426",
+          "denom": "ibc/BF640659C4EB687BE08CE351459EAC96C0FAF29A43A2501F72357CF4D24A6611"
+        },
+        {
+          "amount": "350000",
+          "denom": "ibc/D3061CE56780EE3EC35058B8D01F6751F7B21032F1B1A171C13D481F95EBAC75"
+        },
+        {
+          "amount": "1019900",
+          "denom": "ibc/D48AF41B67879B5154C1897EF3BF92501826D6DD1B575FE3824F69983C68DE80"
+        },
+        {
+          "amount": "1000000",
+          "denom": "ibc/D5CCD845ADA5B020CF58C4EBB7EADD302995507D5D7E08DADD993E4F738BF82C"
+        },
+        {
+          "amount": "50000000000000",
+          "denom": "ibc/E105B1176B6B101202CB9FED35524B6FFE94712D7203296789E1F62FD4848C71"
+        },
+        {
+          "amount": "155000000",
+          "denom": "ibc/EABFDE7CD6F649871FA98F938563F5F92D8DFD1D41C0DD878A58912ACF7096F3"
+        },
+        {
+          "amount": "600000",
+          "denom": "ibc/FA0006F056DB6719B8C16C551FC392B62F5729978FC0B125AC9A432DBB2AA1A5"
+        },
+        {
+          "amount": "83603045920",
+          "denom": "swp"
+        },
+        {
+          "amount": "516527529552",
+          "denom": "ukava"
+        },
+        {
+          "amount": "2673796665",
+          "denom": "usdx"
+        }
+      ]
     },
     "upgrade": {},
     "validatorvesting": null,
