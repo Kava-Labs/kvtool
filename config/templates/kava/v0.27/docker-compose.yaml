@@ -1,6 +1,6 @@
 services:
     kavanode:
-        image: "kava/kava:${KAVA_TAG:-master-goleveldb}"
+        image: "kava/kava:${KAVA_TAG:-v0.27.1-goleveldb}"
         ports:
             # open default kava rpc port
             - "26657:26657"
@@ -22,7 +22,16 @@ services:
             - "-c"
             - "/root/.kava/config/init-data-directory.sh && kava start --rpc.laddr=tcp://0.0.0.0:26657"
         healthcheck:
-            test: ["CMD", "curl", "-f", "http://localhost:26657/status"]
+            test: [
+                "CMD",
+                "curl",
+                "-f",
+                "-X",
+                "POST",
+                "-H",
+                "Content-Type: application/json",
+                "http://localhost:8545",
+            ]
             interval: 30s
             timeout: 30s
             start_period: 1m
