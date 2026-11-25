@@ -1,6 +1,11 @@
 services:
     kavanode:
         image: "kava/kava:${KAVA_TAG:-master-goleveldb}"
+        user: "${KVTOOL_USER:-0:0}"
+        environment:
+            HOME: /root
+        tmpfs:
+            - /root:mode=0755
         ports:
             # open default kava rpc port
             - "26657:26657"

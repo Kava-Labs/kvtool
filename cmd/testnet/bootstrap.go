@@ -219,28 +219,15 @@ func setupIbcChannelAndRelayer() error {
 	}
 
 	fmt.Println("Attempting to establish IBC channel connection between chains...")
-	// open the channel between kava and ibcnode
-	openConnectionCmd := exec.Command("docker", "run", "-v", fmt.Sprintf("%s:%s", generatedPath("relayer"), "/home/relayer/.relayer"), "--name", "ibc-relayer", "--rm", "--net", "generated_default", relayerImageTag, "rly", "transact", "link", "transfer", "-r", "10", "-t", "30s")
-	openConnectionCmd.Stdout = os.Stdout
-	openConnectionCmd.Stderr = os.Stderr
-	if err := openConnectionCmd.Run(); err != nil {
-		fmt.Println(err.Error())
-		return fmt.Errorf("[relayer] failed to open ibc connection")
-	}
-	fmt.Printf("IBC connection complete, starting relayer process...\n")
-	// setup and run the relayer
 	if err := generate.AddRelayerToNetwork(generatedConfigDir); err != nil {
 		return fmt.Errorf("could not add relayer to network: %w", err)
 	}
+	if err := dockerComposeCmd("run", "--rm", "--no-deps", "relayer", "rly", "transact", "link", "transfer", "-r", "10", "-t", "30s").Run(); err != nil {
+		return fmt.Errorf("failed to open IBC connection: %w", err)
+	}
+	fmt.Println("IBC connection complete, starting relayer process...")
 	if err := dockerComposeCmd("up", "-d", "relayer").Run(); err != nil {
 		return fmt.Errorf("docker relayer up failed: %w", err)
-	}
-	// prune temp containers used to initialize ibc channel
-	pruneCmd := exec.Command("docker", "container", "prune", "-f")
-	pruneCmd.Stdout = os.Stdout
-	pruneCmd.Stderr = os.Stderr
-	if err := pruneCmd.Run(); err != nil {
-		return fmt.Errorf("error running docker container prune: %w", err)
 	}
 	fmt.Println("IBC relayer ready!")
 	return nil

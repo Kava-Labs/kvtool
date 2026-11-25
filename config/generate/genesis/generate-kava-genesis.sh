@@ -264,8 +264,7 @@ add-eth-genesis-account-key bridge_relayer '.kava.users.bridge_relayer' 10000000
 add-genesis-account kava1cj7njkw2g9fqx4e768zc75dp9sks8u9znxrf0w 1000000000000ukava,1000000000000swp,1000000000000hard
 # swap module
 add-genesis-account kava1mfru9azs5nua2wxcd4sq64g5nt7nn4n8s2w8cu 5000000000ukava,200000000btcb,1000000000hard,5000000000swp,103000000000usdx
-# fractional balance test account used for x/precisebank development and
-# must match total value of evmutil.accounts[].balance (2ukava)
+# Back the fractional evmutil balances in the module account (2 ukava).
 add-genesis-account kava1w9vxuke5dz6hyza2j932qgmxltnfxwl78u920k "2ukava"
 
 # override `auth.accounts` array.
@@ -335,8 +334,6 @@ jq '.app_state.evm.params.chain_config.cancun_block = null' $DATA/config/genesis
 set-app-state evm.accounts
 # setup eip712 allowed messages
 set-app-state evm.params.eip712_allowed_msgs
-# setup enabled precompiles
-set-app-state evm.params.enabled_precompiles
 
 # x/evmutil: enable evm -> sdk conversion pair
 jq '.app_state.evmutil.params.enabled_conversion_pairs = [
