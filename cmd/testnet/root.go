@@ -15,8 +15,6 @@ const (
 	kavaServiceName    = "kava"
 	binanceServiceName = "binance"
 	deputyServiceName  = "deputy"
-
-	relayerImageTag = "kava/relayer:v2.4.2"
 )
 
 var (

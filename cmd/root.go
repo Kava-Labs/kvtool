@@ -1,6 +1,9 @@
 package cmd
 
 import (
+	"fmt"
+	"os"
+
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/kava-labs/kava/app"
@@ -18,6 +21,12 @@ var rootCmd = &cobra.Command{
 
 // Execute runs the root command.
 func Execute() error {
+	// Keep bind-mounted node files writable by the developer who generated them.
+	if _, ok := os.LookupEnv("KVTOOL_USER"); !ok {
+		if err := os.Setenv("KVTOOL_USER", fmt.Sprintf("%d:%d", os.Getuid(), os.Getgid())); err != nil {
+			return err
+		}
+	}
 	config := sdk.GetConfig()
 	app.SetBech32AddressPrefixes(config)
 	app.SetBip44CoinType(config)
